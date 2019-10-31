@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** for_norme
 ** File description:
-** Core.hpp
+** CoreServer.hpp
 */
 
 #pragma once
@@ -10,14 +10,12 @@
 //#include <map> // ?
 #include "ACore.hpp"
 
-class Core : public ACore
+class CoreServer : public ACore
 {
 public:
-    void display(); // ?
+    void addEntity(EntityPtr &entity);
+    void removeEntity(EntityPtr &entity);
 
 private:
-    void drawEntityMap();
-
-private:
-    RenderWindow window;
+    //
 };

@@ -7,12 +7,13 @@
 
 #include "Core.hpp"
 
-void Core::addEntity(EntityPtr &entity)
+void Core::display()
 {
-    entityMap[entity.getId()] = entity; // move ?
+    drawEntityMap(renderTarget);
 }
 
-void Core::removeEntity(EntityPtr &entity)
+void Core::drawEntityMap()
 {
-    entityMap.erase(entity.getId());
+    for (const auto &entityTuple : entityMap)
+        entityTuple.second->aff(window);
 }

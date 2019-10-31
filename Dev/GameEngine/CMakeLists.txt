@@ -13,10 +13,15 @@ set(INCDIR Include/)
 
 set(SRC
   ${SRCDIR}Main.cpp
+  ${SRCDIR}ACore.cpp
+  ${SRCDIR}Entity.cpp
+  ${SRCDIR}HaveId.cpp
   )
 
 set(INCLUDE
-  # TODO
+  ${INCDIR}ACore.hpp
+  ${INCDIR}Entity.hpp
+  ${INCDIR}HaveId.hpp
   )
 
 # Includes directories
