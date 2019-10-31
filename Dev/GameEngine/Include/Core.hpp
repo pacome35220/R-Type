@@ -13,6 +13,7 @@
 class Core : public ACore
 {
 public:
+    Core();
     void display(); // ?
 
 private:

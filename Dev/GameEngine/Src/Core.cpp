@@ -7,6 +7,11 @@
 
 #include "Core.hpp"
 
+Core:Core(const string &windowTitle)
+    : window(VideoMode::getDesktopMode(), windowTitle, Style::Fullscreen) // TODO add antialiasing ? (if rotate)
+{
+}
+
 void Core::display()
 {
     drawEntityMap(renderTarget);
