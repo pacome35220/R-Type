@@ -17,3 +17,8 @@ HaveId::HaveId(const size_t &_id)
 {
     //idGen = id + 1; // ??
 }
+
+const size_t &HaveId::getId() const
+{
+    return id;
+}

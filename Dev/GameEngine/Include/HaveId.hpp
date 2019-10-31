@@ -14,6 +14,7 @@ class HaveId
 public:
     HaveId();
     HaveId(const size_t &_id);
+    const size_t &getId() const;
 
 protected:
     const size_t id;
