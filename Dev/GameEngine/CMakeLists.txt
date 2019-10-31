@@ -10,16 +10,20 @@ set(CMAKE_CXX_STANDARD 14)
 # Variables
 set(SRCDIR Src/)
 set(INCDIR Include/)
+set(CORDIR Core/)
 
 set(SRC
-  ${SRCDIR}Main.cpp
-  ${SRCDIR}ACore.cpp
+  ${SRCDIR}${CORDIR}ACore.cpp
+  ${SRCDIR}${CORDIR}Core.cpp
+  ${SRCDIR}${CORDIR}CoreServer.cpp
   ${SRCDIR}Entity.cpp
   ${SRCDIR}HaveId.cpp
   )
 
 set(INCLUDE
-  ${INCDIR}ACore.hpp
+  ${INCDIR}${CORDIR}ACore.hpp
+  ${INCDIR}${CORDIR}Core.hpp
+  ${INCDIR}${CORDIR}CoreServer.hpp
   ${INCDIR}Entity.hpp
   ${INCDIR}HaveId.hpp
   )
