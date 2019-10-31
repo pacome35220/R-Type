@@ -7,8 +7,12 @@
 
 #pragma once
 
+#include <string> // ?
 #include <SFML/Graphics.hpp>
 #include "HaveId.hpp"
+
+using namespace std;
+using namespace sf;
 
 class Entity : public HaveId // HaveId ?? (server OK / client KO)
 {
@@ -22,7 +26,7 @@ public:
 
 private:
     const string type; // string ?
-    RectangleShape sprite;
+    RectangleShape sprite; // RectangleShape or Sprite ?
     Vector2f position;
 };
 

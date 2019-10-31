@@ -11,3 +11,9 @@ HaveId::HaveId()
     : id(idGen++)
 {
 }
+
+HaveId::HaveId(const size_t &_id)
+    : id(_id)
+{
+    //idGen = id + 1; // ??
+}

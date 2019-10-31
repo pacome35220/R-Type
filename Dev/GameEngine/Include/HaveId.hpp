@@ -13,6 +13,7 @@ class HaveId
 {
 public:
     HaveId();
+    HaveId(const size_t &_id);
 
 protected:
     const size_t id;
