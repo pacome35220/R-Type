@@ -13,8 +13,6 @@
 
 using namespace std;
 
-#define EntityPtr unique_ptr<Entity> // move in Entity.hpp ?
-
 class ACore
 {
 public:

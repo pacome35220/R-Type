@@ -18,6 +18,7 @@ set(SRC
   ${SRCDIR}${CORDIR}CoreServer.cpp
   ${SRCDIR}Entity.cpp
   ${SRCDIR}HaveId.cpp
+  ${SRCDIR}Error.cpp
   )
 
 set(INCLUDE
@@ -26,6 +27,7 @@ set(INCLUDE
   ${INCDIR}${CORDIR}CoreServer.hpp
   ${INCDIR}Entity.hpp
   ${INCDIR}HaveId.hpp
+  ${INCDIR}Error.hpp
   )
 
 # Includes directories

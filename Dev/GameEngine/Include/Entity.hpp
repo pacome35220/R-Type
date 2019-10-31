@@ -14,6 +14,8 @@
 using namespace std;
 using namespace sf;
 
+#define EntityPtr unique_ptr<Entity>
+
 class Entity : public HaveId // HaveId ?? (server OK / client KO)
 {
 public:
@@ -29,9 +31,3 @@ private:
     RectangleShape sprite; // RectangleShape or Sprite ?
     Vector2f position;
 };
-
-// TODO move in .cpp
-Entity::Entity(const string &_type)
-    : type(_type)
-{
-}
