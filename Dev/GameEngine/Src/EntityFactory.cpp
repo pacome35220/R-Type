@@ -21,7 +21,3 @@ EntityPtr EntityFactory::build(const string &type) const
         throw ERROR("builder \"" + type + "\" does not exist");
     return (*it)();
 }
-
-private:
-    map<string, Builder> builderMap;
-};
