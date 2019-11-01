@@ -7,7 +7,7 @@
 
 #pragma once
 
-//#include <> // ?
+#include <cstddef> // for size_t
 
 class HaveId
 {

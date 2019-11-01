@@ -13,7 +13,7 @@
 class Core : public ACore
 {
 public:
-    Core();
+    Core(const string &windowTitle);
     void display(); // ?
 
 private:

@@ -12,7 +12,7 @@ Entity::Entity(const string &_type)
 {
 }
 
-Entity::update()
+void Entity::update()
 {
 }
 

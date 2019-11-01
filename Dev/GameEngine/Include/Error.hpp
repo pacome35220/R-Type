@@ -17,7 +17,7 @@ using namespace std;
 class Error : public std::exception
 {
 public:
-    Error(const string &_message, const string &_file, const string &_function, const size_t &_line)
+    Error(const string &_message, const string &_file, const string &_function, const size_t &_line);
 
 public:
     const char *what() const throw();

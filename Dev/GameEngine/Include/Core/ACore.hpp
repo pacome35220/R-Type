@@ -17,8 +17,8 @@ class ACore
 {
 public:
     virtual ~ACore() = default;
-    void addEntity(EntityPtr &entity);
-    void removeEntity(EntityPtr &entity);
+    void addEntity(EntityPtr entity);
+    void removeEntity(EntityPtr entity);
 
 protected:
     map<size_t, EntityPtr> entityMap;

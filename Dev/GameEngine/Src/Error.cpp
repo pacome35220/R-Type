@@ -14,9 +14,9 @@ Error::Error(const string &_message, const string &_file, const string &_functio
 {
 }
 
-const char *what() const throw()
+const char *Error::what() const throw()
 {
-    const string str = message + " (file:" + file + " | function:" + function + "| line:" + line + ")";
+    const string str = message + " (file:" + file + " | function:" + function + "| line:" + to_string(line) + ")";
 
     return str.c_str();
 }

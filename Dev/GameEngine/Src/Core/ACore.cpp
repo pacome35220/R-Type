@@ -5,14 +5,14 @@
 ** ACore.cpp
 */
 
-#include "ACore.hpp"
+#include "Core/ACore.hpp"
 
-void ACore::addEntity(EntityPtr &entity)
+void ACore::addEntity(EntityPtr entity)
 {
-    entityMap[entity.getId()] = entity; // move ?
+    entityMap[entity->getId()] = move(entity); // move ?
 }
 
-void ACore::removeEntity(EntityPtr &entity)
+void ACore::removeEntity(EntityPtr entity)
 {
-    entityMap.erase(entity.getId());
+    entityMap.erase(entity->getId());
 }
