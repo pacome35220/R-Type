@@ -9,6 +9,7 @@
 
 #include <string> // ?
 #include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
 #include "HaveId.hpp"
 
 using namespace std;
@@ -16,11 +17,12 @@ using namespace sf;
 
 #define EntityPtr unique_ptr<Entity>
 
-class Entity : public HaveId // HaveId ?? (server OK / client KO)
+class Entity : public HaveId // AEntity ?
 {
 public:
     Entity(const string &_type);
-    virtual ~Entity() = default;
+    Entity(const string &_type, Packet &packet);
+    virtual ~Entity() = default; // ?
     // getPosition
     // move
     void update(); // virtual ? // virtual pur ?

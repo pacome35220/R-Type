@@ -12,10 +12,18 @@ Entity::Entity(const string &_type)
 {
 }
 
+Entity::Entity(const string &_type, Packet &packet)
+    : Entity(type)
+{
+    // TODO get id, position, sprite...
+}
+
 void Entity::update()
 {
+    // TODO ??
 }
 
 void aff(RenderTarget &renderTarget)
 {
+    // TODO ?
 }
