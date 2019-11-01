@@ -38,7 +38,7 @@ include(../../build/conanbuildinfo.cmake)
 conan_basic_setup()
 
 # Compiled files
-add_library(libGameEngine.a ${SRC} ${INCLUDE})
+add_library(GameEngine STATIC ${SRC} ${INCLUDE})
 
 # specify which libraries to connect
 target_link_libraries(GameEngine ${CONAN_LIBS})
