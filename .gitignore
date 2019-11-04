@@ -9,3 +9,6 @@ CMakeFiles
 Makefile
 bin
 build
+.idea/
+
+cmake-build-debug/
