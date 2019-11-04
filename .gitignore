@@ -1,12 +1,20 @@
 *~
-*.o
-*.a
-*.so
 #*#
+*#*#
+.#*
+*mdr*
+*lol*
+*.a
+*.o
+*.so
+*.out
+*.gcda
+*.gcno
 vgcore.*
+node_modules
+.vscode
 
 CMakeFiles
-Makefile
 bin
 build
 .idea/
