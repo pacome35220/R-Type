@@ -8,8 +8,8 @@ project(GameEngine)
 set(CMAKE_CXX_STANDARD 14)
 
 # Variables
-set(SRCDIR Src/)
-set(INCDIR Include/)
+set(SRCDIR src/)
+set(INCDIR include/)
 set(CORDIR Core/)
 
 set(SRC
@@ -36,7 +36,7 @@ set(INCLUDE
 include_directories(${INCDIR})
 
 # Conan libraries includes
-include(../../build/conanbuildinfo.cmake)
+include(../build/conanbuildinfo.cmake)
 conan_basic_setup()
 
 # Compiled files

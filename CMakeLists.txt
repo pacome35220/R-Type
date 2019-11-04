@@ -1,4 +1,4 @@
-# Sub_directories with another CMakeLists.txt
-add_subdirectory(Dev/GameEngine)
-#add_subdirectory(Dev/Client)
-#add_subdirectory(Dev/Server)
+cmake_minimum_required(VERSION 3.14)
+add_subdirectory(GameEngine)
+add_subdirectory(Client)
+add_subdirectory(Server)

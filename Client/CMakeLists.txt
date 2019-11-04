@@ -8,8 +8,8 @@ project(RTypeClient)
 set(CMAKE_CXX_STANDARD 14)
 
 # Variables
-set(SRCDIR Src/)
-set(INCDIR Include/)
+set(SRCDIR src/)
+set(INCDIR include/)
 
 set(SRC
   ${SRCDIR}Main.cpp
@@ -23,11 +23,11 @@ set(INCLUDE
 include_directories(${INCDIR})
 
 # Conan libraries includes
-include(../../build/conanbuildinfo.cmake)
+include(../build/conanbuildinfo.cmake)
 conan_basic_setup()
 
 # Compiled files
 add_executable(r-type_client ${SRC} ${INCLUDE})
 
 # specify which libraries to connect
-target_link_libraries(RTypeClient ${CONAN_LIBS})
+target_link_libraries(r-type_client ${CONAN_LIBS})
