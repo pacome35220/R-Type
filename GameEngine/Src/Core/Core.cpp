@@ -12,6 +12,14 @@ Core::Core(const string &windowTitle)
 {
 }
 
+void Core::run()
+{
+    while (window.isOpen()) {
+        // TODO
+        display();
+    }
+}
+
 void Core::display()
 {
     drawEntityMap();

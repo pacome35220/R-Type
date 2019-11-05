@@ -18,3 +18,8 @@ void CoreServer::removeEntity(AEntityPtr entity)
     ACore::removeEntity(move(entity));
     // TODO send to clients
 }
+
+void CoreServer::run()
+{
+    // TOOD
+}

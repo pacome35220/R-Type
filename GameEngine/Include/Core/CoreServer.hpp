@@ -15,6 +15,7 @@ class CoreServer : public ACore
 public:
     void addEntity(AEntityPtr entity);
     void removeEntity(AEntityPtr entity);
+    void run();
 
 private:
     //

@@ -7,6 +7,8 @@
 
 #include "HaveId.hpp"
 
+size_t HaveId::idGen = 0;
+
 HaveId::HaveId()
     : id(idGen++)
 {

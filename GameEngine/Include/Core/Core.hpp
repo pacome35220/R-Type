@@ -14,6 +14,7 @@ class Core : public ACore
 {
 public:
     Core(const string &windowTitle);
+    void run();
     void display(); // ?
 
 private:
