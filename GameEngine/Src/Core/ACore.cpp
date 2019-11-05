@@ -7,12 +7,12 @@
 
 #include "Core/ACore.hpp"
 
-void ACore::addEntity(EntityPtr entity)
+void ACore::addEntity(AEntityPtr entity)
 {
     entityMap[entity->getId()] = move(entity); // move ?
 }
 
-void ACore::removeEntity(EntityPtr entity)
+void ACore::removeEntity(AEntityPtr entity)
 {
     entityMap.erase(entity->getId());
 }

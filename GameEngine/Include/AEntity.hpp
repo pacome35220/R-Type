@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** for_norme
 ** File description:
-** Entity.hpp
+** AEntity.hpp
 */
 
 #pragma once
@@ -15,22 +15,22 @@
 using namespace std;
 using namespace sf;
 
-#define EntityPtr unique_ptr<Entity>
+#define AEntityPtr unique_ptr<AEntity>
 
 class ACore;
 
-class Entity : public HaveId // AEntity ?
+class AEntity : public HaveId // AAEntity ?
 {
 public:
-    Entity(ACore &_core, const string &_type);
-    Entity(ACore &_core, const string &_type, Packet &packet);
-    virtual ~Entity() = default; // ?
+    AEntity(ACore &_core, const string &_type);
+    AEntity(ACore &_core, const string &_type, Packet &packet);
+    virtual ~AEntity() = default; // ?
     const string &getType() const;
     const size_t &getHp() const;
     const Vector2f &getPosition() const;
     const float &getAngle() const;
     virtual void update() = 0; // Param ?
-    virtual void onCollision(Entity &other) = 0; // class HaveCollision ?
+    virtual void onCollision(AEntity &other) = 0; // class HaveCollision ?
     void aff(RenderTarget &renderTarget); // name ? // virtual ?
 
 protected:

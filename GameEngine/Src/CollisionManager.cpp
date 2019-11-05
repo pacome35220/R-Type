@@ -23,17 +23,17 @@ void CollisionManager::setCollision(const string &type1, const string &type2, co
         collisionMatrix[type2][type1] = status;
 }
 
-void CollisionManager::processCollision(list<EntityPtr> &entityList)
+void CollisionManager::processCollision(list<AEntityPtr> &entityList)
 {
     // TODO
 }
 
-bool CollisionManager::rectCollision(Entity &entity1, Entity &entity2)
+bool CollisionManager::rectCollision(AEntity &entity1, AEntity &entity2)
 {
     // TODO
 }
 
-bool CollisionManager::pixelCollision(Entity &entity1, Entity &entity2)
+bool CollisionManager::pixelCollision(AEntity &entity1, AEntity &entity2)
 {
     // TODO
 }

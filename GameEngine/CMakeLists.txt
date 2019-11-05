@@ -18,7 +18,7 @@ set(SRC
   ${SRCDIR}${CORDIR}CoreServer.cpp
   ${SRCDIR}CollisionManager.cpp
   ${SRCDIR}EntityFactory.cpp
-  ${SRCDIR}Entity.cpp
+  ${SRCDIR}AEntity.cpp
   ${SRCDIR}HaveId.cpp
   ${SRCDIR}Error.cpp
   )
@@ -29,7 +29,7 @@ set(INCLUDE
   ${INCDIR}${CORDIR}CoreServer.hpp
   ${INCDIR}CollisionManager.hpp
   ${INCDIR}EntityFactory.hpp
-  ${INCDIR}Entity.hpp
+  ${INCDIR}AEntity.hpp
   ${INCDIR}HaveId.hpp
   ${INCDIR}Error.hpp
   )

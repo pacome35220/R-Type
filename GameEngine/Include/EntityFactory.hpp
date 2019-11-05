@@ -10,20 +10,20 @@
 #include <string> // ?
 #include <functional>
 #include <SFML/Network.hpp>
-#include "Entity.hpp"
+#include "AEntity.hpp"
 
 using namespace std;
 using namespace sf;
 
-#define Builder function<EntityPtr()>
-#define BuilderLoad function<EntityPtr(Packet&)>
+#define Builder function<AEntityPtr()>
+#define BuilderLoad function<AEntityPtr(Packet&)>
 
 class EntityFactory // template ?
 {
 public:
     void addBuilder(const string &type, const Builder &builder, const BuilderLoad &builderLoad);
-    EntityPtr build(const string &type) const;
-    EntityPtr build(Packet &packet) const;
+    AEntityPtr build(const string &type) const;
+    AEntityPtr build(Packet &packet) const;
 
 private:
     template<typename T>

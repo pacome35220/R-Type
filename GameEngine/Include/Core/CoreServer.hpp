@@ -13,8 +13,8 @@
 class CoreServer : public ACore
 {
 public:
-    void addEntity(EntityPtr entity);
-    void removeEntity(EntityPtr entity);
+    void addEntity(AEntityPtr entity);
+    void removeEntity(AEntityPtr entity);
 
 private:
     //

@@ -14,12 +14,12 @@ void EntityFactory::addBuilder(const string &type, const Builder &builder, const
     builderLoadMap[type] = builderLoad;
 }
 
-EntityPtr EntityFactory::build(const string &type) const
+AEntityPtr EntityFactory::build(const string &type) const
 {
     return getBuilder(builderMap, type)();
 }
 
-EntityPtr EntityFactory::build(Packet &packet) const
+AEntityPtr EntityFactory::build(Packet &packet) const
 {
     string type;
 
