@@ -5,17 +5,24 @@
 ** Entity.cpp
 */
 
+#include <cmath>
 #include "Entity.hpp"
 
 Entity::Entity(ACore &_core, const string &_type)
     : core(_core), type(_type)
 {
+    // TODO sprite setOrigin
 }
 
 Entity::Entity(ACore &_core, const string &_type, Packet &packet)
     : Entity(_core, type)
 {
     // TODO get id, position, sprite...
+}
+
+const string &Entity::getType() const
+{
+    return type;
 }
 
 const size_t &Entity::getHp() const
@@ -33,17 +40,9 @@ const float &Entity::getAngle() const
     return angle;
 }
 
-void Entity::update()
+void Entity::aff(RenderTarget &renderTarget)
 {
-    // TODO ??
-}
-
-void Entity::onCollision(Entity &other)
-{
-    //
-}
-
-void aff(RenderTarget &renderTarget)
-{
-    // TODO ?
+    sprite.setPosition(position);
+    sprite.setRotation(angle * 180.0 / M_PI);
+    renderTarget.draw(sprite);
 }
