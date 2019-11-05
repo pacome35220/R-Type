@@ -22,5 +22,5 @@ private:
     bool pixelCollision(Entity &entity1, Entity &entity2);
 
 private:
-    map<string, map<string, bool>> configMap;
+    map<string, map<string, bool>> collisionMatrix;
 };

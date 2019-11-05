@@ -29,7 +29,6 @@ public:
     const size_t &getHp() const;
     const Vector2f &getPosition() const;
     const float &getAngle() const;
-    // TODO move ?
     virtual void update() = 0; // Param ?
     virtual void onCollision(Entity &other) = 0; // class HaveCollision ?
     void aff(RenderTarget &renderTarget); // name ? // virtual ?
