@@ -25,15 +25,16 @@ public:
     Entity(ACore &_core, const string &_type);
     Entity(ACore &_core, const string &_type, Packet &packet);
     virtual ~Entity() = default; // ?
+    const string &getType() const;
     const size_t &getHp() const;
     const Vector2f &getPosition() const;
     const float &getAngle() const;
     // TODO move ?
-    void update(); // Param ? // virtual ? // virtual pur ?
-    virtual void onCollision(Entity &other); // class HaveCollision ?
-    void aff(RenderTarget &renderTarget); // name ? // virtual ? // virtual pur ?
+    virtual void update() = 0; // Param ?
+    virtual void onCollision(Entity &other) = 0; // class HaveCollision ?
+    void aff(RenderTarget &renderTarget); // name ? // virtual ?
 
-private:
+protected:
     ACore &core;
     const string type; // string ?
     RectangleShape sprite; // RectangleShape or Sprite ? // server ??

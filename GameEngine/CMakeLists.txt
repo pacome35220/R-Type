@@ -16,6 +16,7 @@ set(SRC
   ${SRCDIR}${CORDIR}ACore.cpp
   ${SRCDIR}${CORDIR}Core.cpp
   ${SRCDIR}${CORDIR}CoreServer.cpp
+  ${SRCDIR}CollisionManager.cpp
   ${SRCDIR}EntityFactory.cpp
   ${SRCDIR}Entity.cpp
   ${SRCDIR}HaveId.cpp
@@ -26,6 +27,7 @@ set(INCLUDE
   ${INCDIR}${CORDIR}ACore.hpp
   ${INCDIR}${CORDIR}Core.hpp
   ${INCDIR}${CORDIR}CoreServer.hpp
+  ${INCDIR}CollisionManager.hpp
   ${INCDIR}EntityFactory.hpp
   ${INCDIR}Entity.hpp
   ${INCDIR}HaveId.hpp
@@ -44,6 +46,7 @@ add_library(GameEngine STATIC ${SRC} ${INCLUDE})
 
 # specify which libraries to connect
 target_link_libraries(GameEngine ${CONAN_LIBS})
+target_link_libraries(GameEngine -l m)
 
 # Compiled Options
 target_compile_options(GameEngine PRIVATE -W -Wall -Wextra -pedantic)
