@@ -8,8 +8,8 @@ project(GameEngine)
 set(CMAKE_CXX_STANDARD 14)
 
 # Variables
-set(SRCDIR src/)
-set(INCDIR include/)
+set(SRCDIR Src/)
+set(INCDIR Include/)
 set(CORDIR Core/)
 
 set(SRC
