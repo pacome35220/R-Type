@@ -1,12 +1,14 @@
-/*
-** EPITECH PROJECT, 2019
-** CPP_rtype_2019
-** File description:
-** PacketType.hpp
-*/
+/**
+ * @file      Id.hpp
+ * @brief     This is the enumeration of the packets types.
+ * @details   This enumeration regroup all types used in the code.
+ */
 
 #pragma once
 
+/**
+ * @namespace network  "Include/PacketType.hpp"
+ */
 namespace network {
     enum PACKET_TYPE {
         PT_PORT_REDIRECTION,

@@ -14,7 +14,7 @@ set(CORDIR Core/)
 
 set(SRC
   ${SRCDIR}${CORDIR}ACore.cpp
-  ${SRCDIR}${CORDIR}Core.cpp
+  ${SRCDIR}${CORDIR}CoreClient.cpp
   ${SRCDIR}${CORDIR}CoreServer.cpp
   ${SRCDIR}CollisionManager.cpp
   ${SRCDIR}EntityFactory.cpp
@@ -25,7 +25,7 @@ set(SRC
 
 set(INCLUDE
   ${INCDIR}${CORDIR}ACore.hpp
-  ${INCDIR}${CORDIR}Core.hpp
+  ${INCDIR}${CORDIR}CoreClient.hpp
   ${INCDIR}${CORDIR}CoreServer.hpp
   ${INCDIR}CollisionManager.hpp
   ${INCDIR}EntityFactory.hpp

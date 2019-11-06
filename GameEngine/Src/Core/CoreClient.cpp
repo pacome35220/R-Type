@@ -5,14 +5,14 @@
 ** CoreClient.cpp
 */
 
-#include "Core/Core.hpp"
+#include "Core/CoreClient.hpp"
 
-Core::Core(const string &windowTitle)
+CoreClient::CoreClient(const string &windowTitle)
     : window(VideoMode::getDesktopMode(), windowTitle, Style::Fullscreen) // TODO add antialiasing ? (if rotate)
 {
 }
 
-void Core::run()
+void CoreClient::run()
 {
     while (window.isOpen()) {
         // TODO
@@ -20,12 +20,12 @@ void Core::run()
     }
 }
 
-void Core::display()
+void CoreClient::display()
 {
     drawEntityMap();
 }
 
-void Core::drawEntityMap()
+void CoreClient::drawEntityMap()
 {
     for (const auto &entityTuple : entityMap)
         entityTuple.second->aff(window);

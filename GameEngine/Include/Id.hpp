@@ -8,6 +8,9 @@
 
 #include <cstddef>
 
+/**
+ * @class Id Id.hpp "Include/Id.hpp"
+ */
 class Id
 {
 public:

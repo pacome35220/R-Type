@@ -7,13 +7,12 @@
 
 #pragma once
 
-//#include <map> // ?
 #include "ACore.hpp"
 
 class CoreClient : public ACore
 {
 public:
-    Core(const string &windowTitle);
+    CoreClient(const string &windowTitle);
     void run();
     void display(); // ?
 
