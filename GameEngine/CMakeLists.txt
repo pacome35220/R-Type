@@ -20,7 +20,6 @@ set(SRC
         ${SRCDIR}EntityFactory.cpp
         ${SRCDIR}AEntity.cpp
         ${SRCDIR}Id.cpp
-        ${SRCDIR}Error.cpp
         ${SRCDIR}ActionManager.cpp
         ${SRCDIR}AudioManager.cpp
         ${SRCDIR}Client.cpp
@@ -35,14 +34,13 @@ set(INCLUDE
         ${INCDIR}EntityFactory.hpp
         ${INCDIR}AEntity.hpp
         ${INCDIR}Id.hpp
-        ${INCDIR}Error.hpp
         ${INCDIR}ActionManager.hpp
         ${INCDIR}AudioManager.hpp
         ${INCDIR}Client.hpp
         ${INCDIR}NetworkManager.hpp)
 
 # Includes directories
-include_directories(${INCDIR})
+include_directories(${INCDIR} ../Common/${INCDIR})
 
 # Conan libraries includes
 include(../build/conanbuildinfo.cmake)
@@ -54,6 +52,10 @@ add_library(GameEngine STATIC ${SRC} ${INCLUDE})
 # specify which libraries to connect
 target_link_libraries(GameEngine ${CONAN_LIBS})
 target_link_libraries(GameEngine -l m)
+
+#common includes
+set(COMMON_DIR ../Common/)
+include(${COMMON_DIR}Common.cmake)
 
 # Compiled Options
 target_compile_options(GameEngine PRIVATE -W -Wall -Wextra -pedantic)

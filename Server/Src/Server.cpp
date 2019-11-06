@@ -8,12 +8,12 @@
 ** Last update Thu Nov 6 10:58:48 AM 2019 test
 */
 
+#include <SFML/Network.hpp>
 #include "Server.hpp"
 #include "Core/CoreServer.hpp" 
 
 void Server::start(unsigned short port)
 {
-
     int idx = 0;
     sf::Packet packet;
     sf::UdpSocket socket;
@@ -40,6 +40,7 @@ void Server::start(unsigned short port)
         }
     }
 }
+
 void Server::entityFeeder(ACore &core)
 {
 // sf::Vector2f pos(100, 0);

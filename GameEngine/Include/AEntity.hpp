@@ -27,7 +27,7 @@ class AEntity : public Id
 {
 public:
     AEntity(Vector2f &position, std::string texturePath, ACore *entryPoint);
-    ~AEntity();
+    virtual ~AEntity() = default;
     const Vector2f &getPosition() const;
     const Sprite &getSprite() const;
     const CollisionManager &getCollisionManager() const;

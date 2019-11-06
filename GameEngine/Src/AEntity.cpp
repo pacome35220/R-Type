@@ -11,10 +11,10 @@ AEntity::AEntity(Vector2f &_position, std::string _texturePath, ACore *_entryPoi
 {
     //TODO
 }
-AEntity::~AEntity()
-{
-    // TODO
-}
+// AEntity::~AEntity()
+// {
+//     // TODO
+// }
 
 const Vector2f &AEntity::getPosition() const
 {

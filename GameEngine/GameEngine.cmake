@@ -1,8 +1,8 @@
-set(CMSRCDIR ${COMMOM_DIR}Src/)
-set(CMINCDIR ${COMMOM_DIR}Include/)
+set(CMSRCDIR ${GE_DIR}Src/)
+set(CMINCDIR ${GE_DIR}Include/)
 
 # Includes common directories
-include_directories(${COMMOM_DIR}Include/)
+include_directories(${GE_DIR}Include/)
 
 # Append common source file to SRC
 list(APPEND SRC

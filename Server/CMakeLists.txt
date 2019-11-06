@@ -28,8 +28,10 @@ include(../build/conanbuildinfo.cmake)
 conan_basic_setup()
 
 #Common includes
-set(COMMOM_DIR ../GameEngine/)
-include(${COMMOM_DIR}GameEngine.cmake)
+set(GE_DIR ../GameEngine/)
+set(COMMON_DIR ../Common/)
+include(${GE_DIR}GameEngine.cmake)
+include(${COMMON_DIR}Common.cmake)
 
 # Compiled files
 add_executable(r-type_server ${SRC} ${INCLUDE})
