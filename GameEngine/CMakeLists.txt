@@ -24,6 +24,7 @@ set(SRC
         ${SRCDIR}ActionManager.cpp
         ${SRCDIR}AudioManager.cpp
         ${SRCDIR}Client.cpp
+        ${SRCDIR}NetworkManager.cpp
         )
 
 set(INCLUDE
@@ -38,7 +39,7 @@ set(INCLUDE
         ${INCDIR}ActionManager.hpp
         ${INCDIR}AudioManager.hpp
         ${INCDIR}Client.hpp
-        )
+        ${INCDIR}NetworkManager.hpp)
 
 # Includes directories
 include_directories(${INCDIR})

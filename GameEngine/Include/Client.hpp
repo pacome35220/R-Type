@@ -3,7 +3,6 @@
  * @brief     This is the implementation of each client in the server
  */
 
-
 #pragma once
 
 #include <SFML/Network/IpAddress.hpp>
