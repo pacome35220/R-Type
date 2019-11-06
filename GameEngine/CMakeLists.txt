@@ -19,7 +19,7 @@ set(SRC
   ${SRCDIR}CollisionManager.cpp
   ${SRCDIR}EntityFactory.cpp
   ${SRCDIR}AEntity.cpp
-  ${SRCDIR}HaveId.cpp
+  ${SRCDIR}Id.cpp
   ${SRCDIR}Error.cpp
   )
 
@@ -30,7 +30,7 @@ set(INCLUDE
   ${INCDIR}CollisionManager.hpp
   ${INCDIR}EntityFactory.hpp
   ${INCDIR}AEntity.hpp
-  ${INCDIR}HaveId.hpp
+  ${INCDIR}Id.hpp
   ${INCDIR}Error.hpp
   )
 

@@ -10,7 +10,7 @@
 #include <string> // ?
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
-#include "HaveId.hpp"
+#include "Id.hpp"
 
 using namespace std;
 using namespace sf;
@@ -19,7 +19,7 @@ using namespace sf;
 
 class ACore;
 
-class AEntity : public HaveId // AAEntity ?
+class AEntity : public Id // AAEntity ?
 {
 public:
     AEntity(ACore &_core, const string &_type);

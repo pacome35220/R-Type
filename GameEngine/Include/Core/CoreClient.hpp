@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** for_norme
 ** File description:
-** Core.hpp
+** CoreClient.hpp
 */
 
 #pragma once
@@ -10,7 +10,7 @@
 //#include <map> // ?
 #include "ACore.hpp"
 
-class Core : public ACore
+class CoreClient : public ACore
 {
 public:
     Core(const string &windowTitle);

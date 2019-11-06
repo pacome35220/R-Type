@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
+project(CPP_rtype_2019)
 add_subdirectory(GameEngine)
 add_subdirectory(Client)
 add_subdirectory(Server)

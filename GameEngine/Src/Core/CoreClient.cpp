@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** for_norme
 ** File description:
-** Core.cpp
+** CoreClient.cpp
 */
 
 #include "Core/Core.hpp"
