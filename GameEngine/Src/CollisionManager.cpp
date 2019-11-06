@@ -5,6 +5,7 @@
 ** CollisionManager.cpp
 */
 
+#include <string>
 #include "CollisionManager.hpp"
 
 CollisionManager::CollisionManager()
