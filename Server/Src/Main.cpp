@@ -1,9 +1,17 @@
 #include <iostream>
+#include "Server.hpp"
+#include "Error.hpp"
 
-using namespace std;
-
-int main()
+int main(int argc, char **argv)
 {
-    cout << "Hello World !" << endl;
-    return 0;
+    if (argc < 2)
+        return EXIT_FAILURE;
+    try {
+        Server::start(std::atoi(argv[1]));
+    }
+    catch (Error error) {
+        std::cerr << error.what() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
 }

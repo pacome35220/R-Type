@@ -16,6 +16,7 @@ void CoreClient::run()
 {
     while (window.isOpen()) {
         // TODO
+        std::cout << "hey client !" << std::endl
         display();
     }
 }

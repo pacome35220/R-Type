@@ -21,5 +21,6 @@ void CoreServer::removeEntity(AEntityPtr entity)
 
 void CoreServer::run()
 {
+    std::cout << "hey Server !" << std::endl
     // TOOD
 }
