@@ -13,26 +13,28 @@ set(INCDIR Include/)
 set(CORDIR Core/)
 
 set(SRC
-  ${SRCDIR}${CORDIR}ACore.cpp
-  ${SRCDIR}${CORDIR}CoreClient.cpp
-  ${SRCDIR}${CORDIR}CoreServer.cpp
-  ${SRCDIR}CollisionManager.cpp
-  ${SRCDIR}EntityFactory.cpp
-  ${SRCDIR}AEntity.cpp
-  ${SRCDIR}Id.cpp
-  ${SRCDIR}Error.cpp
-  )
+        ${SRCDIR}${CORDIR}ACore.cpp
+        ${SRCDIR}${CORDIR}CoreClient.cpp
+        ${SRCDIR}${CORDIR}CoreServer.cpp
+        ${SRCDIR}CollisionManager.cpp
+        ${SRCDIR}EntityFactory.cpp
+        ${SRCDIR}AEntity.cpp
+        ${SRCDIR}Id.cpp
+        ${SRCDIR}Error.cpp
+        ${SRCDIR}ActionManager.cpp
+        )
 
 set(INCLUDE
-  ${INCDIR}${CORDIR}ACore.hpp
-  ${INCDIR}${CORDIR}CoreClient.hpp
-  ${INCDIR}${CORDIR}CoreServer.hpp
-  ${INCDIR}CollisionManager.hpp
-  ${INCDIR}EntityFactory.hpp
-  ${INCDIR}AEntity.hpp
-  ${INCDIR}Id.hpp
-  ${INCDIR}Error.hpp
-  )
+        ${INCDIR}${CORDIR}ACore.hpp
+        ${INCDIR}${CORDIR}CoreClient.hpp
+        ${INCDIR}${CORDIR}CoreServer.hpp
+        ${INCDIR}CollisionManager.hpp
+        ${INCDIR}EntityFactory.hpp
+        ${INCDIR}AEntity.hpp
+        ${INCDIR}Id.hpp
+        ${INCDIR}Error.hpp
+        ${INCDIR}ActionManager.hpp
+        )
 
 # Includes directories
 include_directories(${INCDIR})
