@@ -16,6 +16,7 @@ using namespace std;
 class ACore
 {
 public:
+    ACore() {};
     virtual ~ACore() = default;
     virtual void addEntity(AEntityPtr entity);
     virtual void removeEntity(AEntityPtr entity);
