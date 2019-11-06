@@ -8,19 +8,20 @@
 
 #pragma once
 
-#include <string> // ?
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
 #include "Id.hpp"
 #include "CollisionManager.hpp"
 #include "PacketType.hpp"
+#include <memory>
 
-using namespace std;
 using namespace sf;
 
-#define AEntityPtr unique_ptr<AEntity>
-
 class ACore;
+
+class AEntity;
+
+#define AEntityPtr std::unique_ptr<AEntity>
 
 class AEntity : public Id
 {

@@ -19,4 +19,4 @@ namespace network {
         PT_STREAM_END,
         PT_INPUT
     };
-};
+}

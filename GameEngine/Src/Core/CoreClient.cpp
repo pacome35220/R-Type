@@ -29,6 +29,5 @@ void CoreClient::display()
 
 void CoreClient::drawEntityMap()
 {
-    for (const auto &entityTuple : entityMap)
-        entityTuple.second->aff(window);
+    // TODO
 }

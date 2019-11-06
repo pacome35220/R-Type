@@ -21,7 +21,7 @@ CollisionManager::~CollisionManager()
  * @param type2
  * @return True | False
  */
-bool CollisionManager::getCollision(const string &type1, const string &type2) const
+bool CollisionManager::getCollision(const std::string &type1, const std::string &type2) const
 {
     // Todo
     if (type1 < type2)
@@ -35,7 +35,8 @@ bool CollisionManager::getCollision(const string &type1, const string &type2) co
  * @param type2
  * @return True | False
  */
-void CollisionManager::setCollision(const string &type1, const string &type2, const bool &status)
+void
+CollisionManager::setCollision(const std::string &type1, const std::string &type2, const bool &status)
 {
     // Todo
     if (type1 < type2)
@@ -49,7 +50,7 @@ void CollisionManager::setCollision(const string &type1, const string &type2, co
  * @param type2
  * @return True | False
  */
-void CollisionManager::processCollision(list<AEntityPtr> &entityList)
+void CollisionManager::processCollision(std::list<AEntityPtr > &entityList)
 {
     // TODO
 }
