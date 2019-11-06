@@ -17,7 +17,7 @@ DOC_DIR         =       doc/
 DOXYFILE        =       Doxyfile
 
 all:	fclean
-		conan install . --build=missing --install-folder $(BUILD_DIR)
+		conan install .  --build=missing --install-folder $(BUILD_DIR)
 		cmake . -G "Unix Makefiles" -B $(BUILD_DIR)
 		cmake --build $(BUILD_DIR)
 		mkdir -p $(BIN_DIR)
