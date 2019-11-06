@@ -3,7 +3,6 @@
  * @brief     This class manages the music of the game
  */
 
-
 #pragma once
 
 #include <SFML/Audio.hpp>
@@ -21,8 +20,8 @@ public:
 
 public:
     void stopBackgroundMusic();
-    bool playBackgroundMusic(const std::string musicPath);
-    bool playSound(const std::string soundPath);
+    bool playBackgroundMusic(std::string musicPath);
+    bool playSound(std::string soundPath);
 
 private:
     bool isPlaying;
