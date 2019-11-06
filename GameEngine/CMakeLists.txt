@@ -22,6 +22,7 @@ set(SRC
         ${SRCDIR}Id.cpp
         ${SRCDIR}Error.cpp
         ${SRCDIR}ActionManager.cpp
+        ${SRCDIR}AudioManager.cpp
         )
 
 set(INCLUDE
@@ -34,6 +35,7 @@ set(INCLUDE
         ${INCDIR}Id.hpp
         ${INCDIR}Error.hpp
         ${INCDIR}ActionManager.hpp
+        ${INCDIR}AudioManager.hpp
         )
 
 # Includes directories
