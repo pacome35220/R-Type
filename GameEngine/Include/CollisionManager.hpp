@@ -1,9 +1,7 @@
-/*
-** EPITECH PROJECT, 2019
-** for_norme
-** File description:
-** CollisionManager.hpp
-*/
+/**
+ * @file      CollisionManager.hpp
+ * @brief     This class manages all the entity collisions
+ */
 
 #pragma once
 
@@ -13,6 +11,8 @@
 class CollisionManager
 {
 public:
+    CollisionManager();
+    ~CollisionManager();
     bool getCollision(const string &type1, const string &type2) const;
     void setCollision(const string &type1, const string &type2, const bool &status);
     void processCollision(list<AEntityPtr> &entityList);
