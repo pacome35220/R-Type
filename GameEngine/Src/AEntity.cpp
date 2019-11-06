@@ -1,48 +1,65 @@
 /*
 ** EPITECH PROJECT, 2019
-** for_norme
+** CPP_rtype_2019
 ** File description:
 ** AEntity.cpp
 */
 
-#include <cmath>
 #include "AEntity.hpp"
 
-AEntity::AEntity(ACore &_core, const string &_type)
-    : core(_core), type(_type)
+AEntity::AEntity(Vector2f &_position, std::string _texturePath, ACore *_entryPoint)
 {
-    // TODO sprite setOrigin
+    //TODO
 }
-
-AEntity::AEntity(ACore &_core, const string &_type, Packet &packet)
-    : AEntity(_core, type)
+AEntity::~AEntity()
 {
-    // TODO get id, position, sprite...
-}
-
-const string &AEntity::getType() const
-{
-    return type;
-}
-
-const size_t &AEntity::getHp() const
-{
-    return hp;
+    // TODO
 }
 
 const Vector2f &AEntity::getPosition() const
 {
     return position;
 }
-
-const float &AEntity::getAngle() const
+const Sprite &AEntity::getSprite() const
 {
-    return angle;
+    return sprite;
+}
+const CollisionManager &AEntity::getCollisionManager() const
+{
+    return collisionManager;
+}
+void AEntity::setPosition(const Vector2f &_position)
+{
+    AEntity::position = _position;
+}
+void AEntity::setSprite(const Sprite &_sprite)
+{
+    AEntity::sprite = _sprite;
+}
+/**
+ * Build a packet from this attributes
+ * @param _packetType
+ * @return The packet built
+ */
+Packet AEntity::buildMyPacket(network::PACKET_TYPE _packetType)
+{
+    //TODO
+    return Packet();
+}
+/**
+ * Update this with the \_packet
+ * @param _packet
+ */
+void AEntity::updateFromPacket(Packet _packet)
+{
+    //TODO
+}
+/**
+ * Display this
+ */
+void AEntity::render()
+{
+    //TODO
 }
 
-void AEntity::aff(RenderTarget &renderTarget)
-{
-    sprite.setPosition(position);
-    sprite.setRotation(angle * 180.0 / M_PI);
-    renderTarget.draw(sprite);
-}
+

@@ -1,9 +1,10 @@
-/*
-** EPITECH PROJECT, 2019
-** for_norme
-** File description:
-** AEntity.hpp
-*/
+/**
+ * @file      AEntity.hpp
+ * @brief     This class is the entity abstract class. It inherits from Id class
+ * @brief     to get an unique ID for each entity
+ * @details   It will be inherits by all the entities in the project
+ * @details   (Monster, Asteroid, etc...)
+ */
 
 #pragma once
 
@@ -11,6 +12,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
 #include "Id.hpp"
+#include "CollisionManager.hpp"
+#include "PacketType.hpp"
 
 using namespace std;
 using namespace sf;
@@ -19,25 +22,36 @@ using namespace sf;
 
 class ACore;
 
-class AEntity : public Id // AAEntity ?
+class AEntity : public Id
 {
 public:
-    AEntity(ACore &_core, const string &_type);
-    AEntity(ACore &_core, const string &_type, Packet &packet);
-    virtual ~AEntity() = default; // ?
-    const string &getType() const;
-    const size_t &getHp() const;
+    AEntity(Vector2f &position, std::string texturePath, ACore *entryPoint);
+    ~AEntity();
     const Vector2f &getPosition() const;
-    const float &getAngle() const;
-    virtual void update() = 0; // Param ?
-    virtual void onCollision(AEntity &other) = 0; // class HaveCollision ?
-    void aff(RenderTarget &renderTarget); // name ? // virtual ?
+    const Sprite &getSprite() const;
+    const CollisionManager &getCollisionManager() const;
+    void setPosition(const Vector2f &position);
+    void setSprite(const Sprite &sprite);
+
+public:
+    virtual void onCollision(AEntity *entity) = 0;
+    virtual void update() = 0;
+
+public:
+    Packet buildMyPacket(network::PACKET_TYPE packetType);
+    void updateFromPacket(Packet packet);
+    void render();
+
+private:
+    Vector2f position;
+    const std::string type;
+    float angle;
+    size_t packetNumber;
 
 protected:
-    ACore &core;
-    const string type; // string ?
-    RectangleShape sprite; // RectangleShape or Sprite ? // server ??
-    size_t hp;
-    Vector2f position;
-    float angle;
+    std::string texturePath;
+    Texture texture;
+    Sprite sprite;
+    CollisionManager collisionManager;
+    ACore *entryPoint;
 };
