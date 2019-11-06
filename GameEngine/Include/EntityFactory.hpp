@@ -1,9 +1,9 @@
-/*
-** EPITECH PROJECT, 2019
-** for_norme
-** File description:
-** EntityFactory.hpp
-*/
+/**
+ * @file      EntityFactory.hpp
+ * @brief     This is class is a factory.
+ * @brief     This factory creates all the entity registered in it.
+ */
+
 
 #pragma once
 
@@ -15,10 +15,19 @@
 using namespace std;
 using namespace sf;
 
+/**
+ * @typedef Return a pointer on entity
+ */
 #define Builder function<AEntityPtr()>
+/**
+ * @typedef Return a pointer on entity from packet
+ */
 #define BuilderLoad function<AEntityPtr(Packet&)>
 
-class EntityFactory // template ?
+/**
+ * @class EntityFactory "Include/EntityFactory.hpp"
+ */
+class EntityFactory
 {
 public:
     void addBuilder(const string &type, const Builder &builder, const BuilderLoad &builderLoad);
