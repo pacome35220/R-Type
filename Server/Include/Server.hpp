@@ -15,5 +15,5 @@ namespace Server
     void start(unsigned short port);
     void entityFeeder(ACore &core);
     void threadEntryPoint(unsigned short port);
-    void onPlayerJoin(ACore &core, const sf::ipAddress &senderIP, const unsigned short &senderPort);
+    void onPlayerJoin(ACore &core, const sf::IpAddress &senderIP, const unsigned short &senderPort);
 }

@@ -21,11 +21,15 @@ set(INCLUDE
 )
 
 # Includes directories
-include_directories(${INCDIR})
+include_directories(${INCDIR} ../GameEngine/${INCDIR})
 
 # Conan libraries includes
 include(../build/conanbuildinfo.cmake)
 conan_basic_setup()
+
+#Common includes
+set(COMMOM_DIR ../GameEngine/)
+include(${COMMOM_DIR}GameEngine.cmake)
 
 # Compiled files
 add_executable(r-type_server ${SRC} ${INCLUDE})
