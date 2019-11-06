@@ -8,7 +8,7 @@
 
 #include <vector>
 #include <SFML/Network.hpp>
-#include "ACore.hpp"
+#include "Core/ACore.hpp"
 
 namespace Server 
 {
