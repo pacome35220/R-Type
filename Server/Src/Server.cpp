@@ -9,6 +9,7 @@
 */
 
 #include "Server.hpp"
+#include "Core/CoreServer.hpp" 
 
 void Server::start(unsigned short port)
 {
@@ -32,14 +33,14 @@ void Server::start(unsigned short port)
                 thread->launch();
             }
             auto *answer = new sf::Packet();
-            *answer << network::PORT_REDIRECTION << port;
+            //*answer << network::PORT_REDIRECTION << port;
             socket.send(*answer, sender, senderPort);
             delete answer;
             idx++;
         }
     }
 }
-void Server::entityFeeder(ACore &core);
+void Server::entityFeeder(ACore &core)
 {
 // sf::Vector2f pos(100, 0);
 // auto monsterPos = sf::Vector2f(100, 0);
@@ -71,7 +72,7 @@ void Server::entityFeeder(ACore &core);
 
 void Server::threadEntryPoint(unsigned short port)
 {
-    coreServer core();
+    CoreServer core;
     // auto networkManager = core.getNetworkManager();
 
     // core.setServerStatus(true);
@@ -80,7 +81,7 @@ void Server::threadEntryPoint(unsigned short port)
     // Server::entityFeeder(core);
     core.run();
 }
-void Server::onPlayerJoin(ACore &core, const sf::ipAddress &senderIP, const unsigned short &senderPort)
+void Server::onPlayerJoin(ACore &core, const sf::IpAddress &senderIP, const unsigned short &senderPort)
 {
     // sf::Vector2f pos(-90, 0);
     //core.feedEntity(new Player(pos, (int)core.getNetworkManager()->getClientVector().size()));
