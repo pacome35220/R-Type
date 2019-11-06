@@ -1,4 +1,4 @@
-# Install script for directory: /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Server
+# Install script for directory: /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Entity
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

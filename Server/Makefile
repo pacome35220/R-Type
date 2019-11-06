@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.15.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Server
+CMAKE_SOURCE_DIR = /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Server
+CMAKE_BINARY_DIR = /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Server/CMakeFiles /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Server/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Server/CMakeFiles 0
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/CMakeFiles /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Server/CMakeFiles/progress.marks
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f CMakeFiles/Makefile2 Server/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f CMakeFiles/Makefile2 Server/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,30 +97,32 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f CMakeFiles/Makefile2 Server/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f CMakeFiles/Makefile2 Server/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named r-type_server
+# Convenience name for target.
+Server/CMakeFiles/r-type_server.dir/rule:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f CMakeFiles/Makefile2 Server/CMakeFiles/r-type_server.dir/rule
+.PHONY : Server/CMakeFiles/r-type_server.dir/rule
 
-# Build rule for target.
-r-type_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 r-type_server
+# Convenience name for target.
+r-type_server: Server/CMakeFiles/r-type_server.dir/rule
+
 .PHONY : r-type_server
 
 # fast build rule for target.
 r-type_server/fast:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/build
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/build
 .PHONY : r-type_server/fast
 
 Src/Main.o: Src/Main.cpp.o
@@ -129,7 +131,7 @@ Src/Main.o: Src/Main.cpp.o
 
 # target to build an object file
 Src/Main.cpp.o:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Src/Main.cpp.o
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/Src/Main.cpp.o
 .PHONY : Src/Main.cpp.o
 
 Src/Main.i: Src/Main.cpp.i
@@ -138,7 +140,7 @@ Src/Main.i: Src/Main.cpp.i
 
 # target to preprocess a source file
 Src/Main.cpp.i:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Src/Main.cpp.i
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/Src/Main.cpp.i
 .PHONY : Src/Main.cpp.i
 
 Src/Main.s: Src/Main.cpp.s
@@ -147,7 +149,7 @@ Src/Main.s: Src/Main.cpp.s
 
 # target to generate assembly for a file
 Src/Main.cpp.s:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Src/Main.cpp.s
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/Src/Main.cpp.s
 .PHONY : Src/Main.cpp.s
 
 Src/Server.o: Src/Server.cpp.o
@@ -156,7 +158,7 @@ Src/Server.o: Src/Server.cpp.o
 
 # target to build an object file
 Src/Server.cpp.o:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Src/Server.cpp.o
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/Src/Server.cpp.o
 .PHONY : Src/Server.cpp.o
 
 Src/Server.i: Src/Server.cpp.i
@@ -165,7 +167,7 @@ Src/Server.i: Src/Server.cpp.i
 
 # target to preprocess a source file
 Src/Server.cpp.i:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Src/Server.cpp.i
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/Src/Server.cpp.i
 .PHONY : Src/Server.cpp.i
 
 Src/Server.s: Src/Server.cpp.s
@@ -174,89 +176,116 @@ Src/Server.s: Src/Server.cpp.s
 
 # target to generate assembly for a file
 Src/Server.cpp.s:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Src/Server.cpp.s
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/Src/Server.cpp.s
 .PHONY : Src/Server.cpp.s
 
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.o: Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.o
+__/Common/Src/Error.o: __/Common/Src/Error.cpp.o
 
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.o
-
-# target to build an object file
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.o:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.o
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.o
-
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.i: Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.i
-
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.i
-
-# target to preprocess a source file
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.i:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.i
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.i
-
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.s: Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.s
-
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.s
-
-# target to generate assembly for a file
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.s:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.s
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.cpp.s
-
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.o: Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.o
-
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.o
+.PHONY : __/Common/Src/Error.o
 
 # target to build an object file
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.o:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.o
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.o
+__/Common/Src/Error.cpp.o:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/Common/Src/Error.cpp.o
+.PHONY : __/Common/Src/Error.cpp.o
 
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.i: Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.i
+__/Common/Src/Error.i: __/Common/Src/Error.cpp.i
 
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.i
+.PHONY : __/Common/Src/Error.i
 
 # target to preprocess a source file
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.i:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.i
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.i
+__/Common/Src/Error.cpp.i:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/Common/Src/Error.cpp.i
+.PHONY : __/Common/Src/Error.cpp.i
 
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.s: Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.s
+__/Common/Src/Error.s: __/Common/Src/Error.cpp.s
 
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.s
+.PHONY : __/Common/Src/Error.s
 
 # target to generate assembly for a file
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.s:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.s
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.cpp.s
+__/Common/Src/Error.cpp.s:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/Common/Src/Error.cpp.s
+.PHONY : __/Common/Src/Error.cpp.s
 
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.o: Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.o
+__/GameEngine/Src/Core/ACore.o: __/GameEngine/Src/Core/ACore.cpp.o
 
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.o
+.PHONY : __/GameEngine/Src/Core/ACore.o
 
 # target to build an object file
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.o:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.o
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.o
+__/GameEngine/Src/Core/ACore.cpp.o:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/GameEngine/Src/Core/ACore.cpp.o
+.PHONY : __/GameEngine/Src/Core/ACore.cpp.o
 
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.i: Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.i
+__/GameEngine/Src/Core/ACore.i: __/GameEngine/Src/Core/ACore.cpp.i
 
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.i
+.PHONY : __/GameEngine/Src/Core/ACore.i
 
 # target to preprocess a source file
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.i:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.i
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.i
+__/GameEngine/Src/Core/ACore.cpp.i:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/GameEngine/Src/Core/ACore.cpp.i
+.PHONY : __/GameEngine/Src/Core/ACore.cpp.i
 
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.s: Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.s
+__/GameEngine/Src/Core/ACore.s: __/GameEngine/Src/Core/ACore.cpp.s
 
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.s
+.PHONY : __/GameEngine/Src/Core/ACore.s
 
 # target to generate assembly for a file
-Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.s:
-	$(MAKE) -f CMakeFiles/r-type_server.dir/build.make CMakeFiles/r-type_server.dir/Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.s
-.PHONY : Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.cpp.s
+__/GameEngine/Src/Core/ACore.cpp.s:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/GameEngine/Src/Core/ACore.cpp.s
+.PHONY : __/GameEngine/Src/Core/ACore.cpp.s
+
+__/GameEngine/Src/Core/CoreServer.o: __/GameEngine/Src/Core/CoreServer.cpp.o
+
+.PHONY : __/GameEngine/Src/Core/CoreServer.o
+
+# target to build an object file
+__/GameEngine/Src/Core/CoreServer.cpp.o:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/GameEngine/Src/Core/CoreServer.cpp.o
+.PHONY : __/GameEngine/Src/Core/CoreServer.cpp.o
+
+__/GameEngine/Src/Core/CoreServer.i: __/GameEngine/Src/Core/CoreServer.cpp.i
+
+.PHONY : __/GameEngine/Src/Core/CoreServer.i
+
+# target to preprocess a source file
+__/GameEngine/Src/Core/CoreServer.cpp.i:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/GameEngine/Src/Core/CoreServer.cpp.i
+.PHONY : __/GameEngine/Src/Core/CoreServer.cpp.i
+
+__/GameEngine/Src/Core/CoreServer.s: __/GameEngine/Src/Core/CoreServer.cpp.s
+
+.PHONY : __/GameEngine/Src/Core/CoreServer.s
+
+# target to generate assembly for a file
+__/GameEngine/Src/Core/CoreServer.cpp.s:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/GameEngine/Src/Core/CoreServer.cpp.s
+.PHONY : __/GameEngine/Src/Core/CoreServer.cpp.s
+
+__/GameEngine/Src/Id.o: __/GameEngine/Src/Id.cpp.o
+
+.PHONY : __/GameEngine/Src/Id.o
+
+# target to build an object file
+__/GameEngine/Src/Id.cpp.o:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/GameEngine/Src/Id.cpp.o
+.PHONY : __/GameEngine/Src/Id.cpp.o
+
+__/GameEngine/Src/Id.i: __/GameEngine/Src/Id.cpp.i
+
+.PHONY : __/GameEngine/Src/Id.i
+
+# target to preprocess a source file
+__/GameEngine/Src/Id.cpp.i:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/GameEngine/Src/Id.cpp.i
+.PHONY : __/GameEngine/Src/Id.cpp.i
+
+__/GameEngine/Src/Id.s: __/GameEngine/Src/Id.cpp.s
+
+.PHONY : __/GameEngine/Src/Id.s
+
+# target to generate assembly for a file
+__/GameEngine/Src/Id.cpp.s:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/__/GameEngine/Src/Id.cpp.s
+.PHONY : __/GameEngine/Src/Id.cpp.s
 
 # Help Target
 help:
@@ -273,15 +302,18 @@ help:
 	@echo "... Src/Server.o"
 	@echo "... Src/Server.i"
 	@echo "... Src/Server.s"
-	@echo "... Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.o"
-	@echo "... Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.i"
-	@echo "... Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Common/Src/Error.s"
-	@echo "... Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.o"
-	@echo "... Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.i"
-	@echo "... Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/ACore.s"
-	@echo "... Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.o"
-	@echo "... Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.i"
-	@echo "... Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/GameEngine/Src/Core/CoreServer.s"
+	@echo "... __/Common/Src/Error.o"
+	@echo "... __/Common/Src/Error.i"
+	@echo "... __/Common/Src/Error.s"
+	@echo "... __/GameEngine/Src/Core/ACore.o"
+	@echo "... __/GameEngine/Src/Core/ACore.i"
+	@echo "... __/GameEngine/Src/Core/ACore.s"
+	@echo "... __/GameEngine/Src/Core/CoreServer.o"
+	@echo "... __/GameEngine/Src/Core/CoreServer.i"
+	@echo "... __/GameEngine/Src/Core/CoreServer.s"
+	@echo "... __/GameEngine/Src/Id.o"
+	@echo "... __/GameEngine/Src/Id.i"
+	@echo "... __/GameEngine/Src/Id.s"
 .PHONY : help
 
 
@@ -293,6 +325,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/CMakeFiles /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/CMakeFiles /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/Client/CMakeFiles/progress.marks
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f CMakeFiles/Makefile2 Client/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f CMakeFiles/Makefile2 Client/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,70 +97,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f CMakeFiles/Makefile2 Client/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f CMakeFiles/Makefile2 Client/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named GameEngine
+# Convenience name for target.
+Client/CMakeFiles/r-type_client.dir/rule:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f CMakeFiles/Makefile2 Client/CMakeFiles/r-type_client.dir/rule
+.PHONY : Client/CMakeFiles/r-type_client.dir/rule
 
-# Build rule for target.
-GameEngine: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 GameEngine
-.PHONY : GameEngine
+# Convenience name for target.
+r-type_client: Client/CMakeFiles/r-type_client.dir/rule
 
-# fast build rule for target.
-GameEngine/fast:
-	$(MAKE) -f GameEngine/CMakeFiles/GameEngine.dir/build.make GameEngine/CMakeFiles/GameEngine.dir/build
-.PHONY : GameEngine/fast
-
-#=============================================================================
-# Target rules for targets named r-type_client
-
-# Build rule for target.
-r-type_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 r-type_client
 .PHONY : r-type_client
 
 # fast build rule for target.
 r-type_client/fast:
-	$(MAKE) -f Client/CMakeFiles/r-type_client.dir/build.make Client/CMakeFiles/r-type_client.dir/build
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Client/CMakeFiles/r-type_client.dir/build.make Client/CMakeFiles/r-type_client.dir/build
 .PHONY : r-type_client/fast
 
-#=============================================================================
-# Target rules for targets named r-type_server
+Src/Main.o: Src/Main.cpp.o
 
-# Build rule for target.
-r-type_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 r-type_server
-.PHONY : r-type_server
+.PHONY : Src/Main.o
 
-# fast build rule for target.
-r-type_server/fast:
-	$(MAKE) -f Server/CMakeFiles/r-type_server.dir/build.make Server/CMakeFiles/r-type_server.dir/build
-.PHONY : r-type_server/fast
+# target to build an object file
+Src/Main.cpp.o:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Client/CMakeFiles/r-type_client.dir/build.make Client/CMakeFiles/r-type_client.dir/Src/Main.cpp.o
+.PHONY : Src/Main.cpp.o
 
-#=============================================================================
-# Target rules for targets named Entity
+Src/Main.i: Src/Main.cpp.i
 
-# Build rule for target.
-Entity: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Entity
-.PHONY : Entity
+.PHONY : Src/Main.i
 
-# fast build rule for target.
-Entity/fast:
-	$(MAKE) -f Entity/CMakeFiles/Entity.dir/build.make Entity/CMakeFiles/Entity.dir/build
-.PHONY : Entity/fast
+# target to preprocess a source file
+Src/Main.cpp.i:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Client/CMakeFiles/r-type_client.dir/build.make Client/CMakeFiles/r-type_client.dir/Src/Main.cpp.i
+.PHONY : Src/Main.cpp.i
+
+Src/Main.s: Src/Main.cpp.s
+
+.PHONY : Src/Main.s
+
+# target to generate assembly for a file
+Src/Main.cpp.s:
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(MAKE) -f Client/CMakeFiles/r-type_client.dir/build.make Client/CMakeFiles/r-type_client.dir/Src/Main.cpp.s
+.PHONY : Src/Main.cpp.s
 
 # Help Target
 help:
@@ -170,10 +160,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... GameEngine"
 	@echo "... r-type_client"
-	@echo "... r-type_server"
-	@echo "... Entity"
+	@echo "... Src/Main.o"
+	@echo "... Src/Main.i"
+	@echo "... Src/Main.s"
 .PHONY : help
 
 
@@ -185,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/hadibereksi/Epitech_link/TEK3/CPP/CPP_rtype_2019 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -6,12 +6,14 @@ include_directories(${GE_DIR}Include/)
 
 # Append common source file to SRC
 list(APPEND SRC
+    ${CMSRCDIR}Id.cpp
     ${CMSRCDIR}Core/ACore.cpp
     ${CMSRCDIR}Core/CoreServer.cpp
 )
 
 # Append common include file to INCLUDE
 list(APPEND INCLUDE
-  ${CMINCDIR}Core/ACore.hpp
-  ${CMINCDIR}Core/CoreServer.hpp
+    ${CMINCDIR}Id.hpp
+    ${CMINCDIR}Core/ACore.hpp
+    ${CMINCDIR}Core/CoreServer.hpp
   )

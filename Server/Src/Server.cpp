@@ -14,31 +14,31 @@
 
 void Server::start(unsigned short port)
 {
-    int idx = 0;
-    sf::Packet packet;
-    sf::UdpSocket socket;
-    sf::IpAddress sender;
-    unsigned short senderPort;
-    std::vector<sf::Thread *> threads;
+    // int idx = 0;
+    // sf::Packet packet;
+    // sf::UdpSocket socket;
+    // sf::IpAddress sender;
+    // unsigned short senderPort;
+    // std::vector<sf::Thread *> threads;
 
-    if (socket.bind(port) != sf::Socket::Done)
-        return;
-    while (true) {
-        auto state = socket.receive(packet, sender, senderPort);
-        if (state == sf::Socket::Done) {
-            if (idx % 4 == 0) {
-                port++;
-                auto *thread = new sf::Thread(Server::threadEntryPoint, port);
-                threads.push_back(thread);
-                thread->launch();
-            }
-            auto *answer = new sf::Packet();
-            //*answer << network::PORT_REDIRECTION << port;
-            socket.send(*answer, sender, senderPort);
-            delete answer;
-            idx++;
-        }
-    }
+    // if (socket.bind(port) != sf::Socket::Done)
+    //     return;
+    // while (true) {
+    //     auto state = socket.receive(packet, sender, senderPort);
+    //     if (state == sf::Socket::Done) {
+    //         if (idx % 4 == 0) {
+    //             port++;
+    //             auto *thread = new sf::Thread(Server::threadEntryPoint, port);
+    //             threads.push_back(thread);
+    //             thread->launch();
+    //         }
+    //         auto *answer = new sf::Packet();
+    //         //*answer << network::PORT_REDIRECTION << port;
+    //         socket.send(*answer, sender, senderPort);
+    //         delete answer;
+    //         idx++;
+    //     }
+    // }
 }
 
 void Server::entityFeeder(ACore &core)
