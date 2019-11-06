@@ -9,6 +9,7 @@
 #include <SFML/Network/UdpSocket.hpp>
 #include "Client.hpp"
 #include "EntityFactory.hpp"
+#include "PacketType.hpp"
 
 using namespace sf;
 
@@ -27,6 +28,11 @@ public:
     const vector<Client> &getClients() const;
 
 public:
+    void bindSocket(uint16 port);
+    void sendPacket(Packet, IpAddress ip, uint16 port);
+    void readSocket(ACore &core);
+    bool isClientKeyPressed(int clientId, Keyboard::Key key);
+    void execEntityAction(AEntity *entity, network::PACKET_TYPE packetType);
 
 private:
     std::vector<Client> clients;
