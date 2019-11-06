@@ -5,6 +5,7 @@
 ** CoreServer.cpp
 */
 
+#include <iostream>
 #include "Core/CoreServer.hpp"
 
 void CoreServer::addEntity(AEntityPtr entity)
@@ -21,5 +22,6 @@ void CoreServer::removeEntity(AEntityPtr entity)
 
 void CoreServer::run()
 {
+    std::cout << "hey Server !" << std::endl;
     // TOOD
 }

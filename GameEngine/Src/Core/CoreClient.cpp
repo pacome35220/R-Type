@@ -5,6 +5,7 @@
 ** CoreClient.cpp
 */
 
+#include <iostream>
 #include "Core/CoreClient.hpp"
 
 CoreClient::CoreClient(const string &windowTitle)
@@ -16,6 +17,7 @@ void CoreClient::run()
 {
     while (window.isOpen()) {
         // TODO
+        std::cout << "hey client !" << std::endl;
         display();
     }
 }

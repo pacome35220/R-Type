@@ -12,12 +12,13 @@ set(SRCDIR Src/)
 set(INCDIR Include/)
 
 set(SRC
-  ${SRCDIR}Main.cpp
+    ${SRCDIR}Main.cpp
+    ${SRCDIR}Server.cpp
   )
 
 set(INCLUDE
-  # TODO
-  )
+    ${INCDIR}Server.hpp
+)
 
 # Includes directories
 include_directories(${INCDIR})
