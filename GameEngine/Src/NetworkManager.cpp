@@ -14,7 +14,7 @@ NetworkManager::NetworkManager() {
     this->socket.setBlocking(false);
 }
 
-void NetworkManager::setIpTarget(const string &ipTarget) {
+void NetworkManager::setIpTarget(const std::string &ipTarget) {
     this->ipTarget = ipTarget;
 }
 

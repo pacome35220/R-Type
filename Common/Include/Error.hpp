@@ -10,21 +10,17 @@
 #include <string>
 #include <exception>
 
-using namespace std;
-
-#define ERROR(message) Error(message, __FILE__, __FUNCTION__, __LINE__)
-
-class Error : public std::exception
-{
+class Error : public std::exception {
 public:
-    Error(const string &_message, const string &_file, const string &_function, const size_t &_line);
+    Error(const std::string &_message, const std::string &_file,
+          const std::string &_function, const size_t &_line);
 
 public:
     const char *what() const throw();
 
 private:
-    const string message;
-    const string file;
-    const string function;
+    const std::string message;
+    const std::string file;
+    const std::string function;
     const size_t line;
 };
