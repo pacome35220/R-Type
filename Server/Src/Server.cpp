@@ -42,29 +42,28 @@ void Server::start(unsigned short port)
     }
 }
 
-void Server::entityFeeder(ACore &core)
+void Server::entityFeeder(CoreServer &core)
 {
-// sf::Vector2f pos(100, 0);
-// auto monsterPos = sf::Vector2f(100, 0);
-// for (int i = 0; i < 2; i++)
-// {
-// 	sf::Vector2f randomPos(100, (std::rand() % 200) - 100);
-// 	float speed = (float)(std::rand() % 200) / 100;
-// 	float amplitude = (float)(std::rand() % 1000) / 100;
-// 	float amplitudeSpeed = (float)(std::rand() % 5) / 100;
-// 	auto monster = new ClassicMonster(monsterPos,
-// 									  speed,
-// 									  amplitude,
-// 									  amplitudeSpeed, 4);
+    sf::Vector2f pos(100, 0);
+    auto monsterPos = sf::Vector2f(100, 0);
+    for (int i = 0; i < 2; i++) {
+        sf::Vector2f randomPos(100, (std::rand() % 200) - 100);
+        float speed = (float)(std::rand() % 200) / 100;
+        float amplitude = (float)(std::rand() % 1000) / 100;
+        float amplitudeSpeed = (float)(std::rand() % 5) / 100;
+        // auto monster = new ClassicMonster(monsterPos,
+        //                                 speed,
+        //                                 amplitude,
+        //                                 amplitudeSpeed, 4);
 
-// 	auto dumbMonster = new DumbMonster(randomPos, 4);
-// 	auto speedMonster = new SpeedMonster(randomPos, 4);
-// 	auto venerMonster = new VenerMonster(randomPos, 4);
-// 	core.feedEntity(monster);
-// 	core.feedEntity(dumbMonster);
-// 	core.feedEntity(speedMonster);
-// 	core.feedEntity(venerMonster);
-// }
+        // auto dumbMonster = new DumbMonster(randomPos, 4);
+        // auto speedMonster = new SpeedMonster(randomPos, 4);
+        // auto venerMonster = new VenerMonster(randomPos, 4);
+        // core.feedEntity(monster);
+        // core.feedEntity(dumbMonster);
+        // core.feedEntity(speedMonster);
+        // core.feedEntity(venerMonster);
+    }
 
 // sf::Vector2f v(90, 0);
 // core.feedEntity(new BlackStar(v));
@@ -75,12 +74,11 @@ void Server::entityFeeder(ACore &core)
 void Server::threadEntryPoint(unsigned short port)
 {
     CoreServer core;
-    // auto networkManager = core.getNetworkManager();
+    auto networkManager = core.getNetworkManager();
 
-    // core.setServerStatus(true);
     // networkManager->setPlayerJoinCallback(Server::onPlayerJoin);
-    // networkManager->bindSocket(portNbr);
-    // Server::entityFeeder(core);
+    networkManager->bindSocket(port);
+    Server::entityFeeder(core);
     core.run();
 }
 void Server::onPlayerJoin(ACore &core, const sf::IpAddress &senderIP, const unsigned short &senderPort)

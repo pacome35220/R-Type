@@ -24,18 +24,29 @@ public:
     void addEntity(AEntityPtr entity);
     void removeEntity(AEntityPtr entity);
 
+    void setActionManager(std::shared_ptr<ActionManager> actionManager) override;
+    void setCollisionManager(std::shared_ptr<CollisionManager> collisionManager) override;
+    void setNetworkManager(std::shared_ptr<NetworkManager> networkManager) override;
+    void setAudioManager(std::shared_ptr<AudioManager> audioManager) override;
+
+    std::shared_ptr<AudioManager> getAudioManager() const override;
+	std::shared_ptr<ActionManager> getActionManager() const override;
+	std::shared_ptr<NetworkManager> getNetworkManager() const override;
+	std::shared_ptr<CollisionManager> getPhysicManager() const override;
+
+    AEntityPtr getEntityFromId(size_t id) override;
+
 protected:
     int frameRate;
-    bool canRender;
     bool canFeed;
     sf::Vector2i screenSize;
-    std::vector<AEntityPtr> sprites;
+    std::vector<AEntityPtr> entities;
     std::vector<AEntityPtr> deletionQueue;
     std::vector<int> topQueue;
-    sf::RenderWindow *window;
-    AudioManager *audioManager;
-    CollisionManager *collisionManager;
-    NetworkManager *networkManager;
+    std::shared_ptr<ActionManager> actionManager;
+    std::shared_ptr<AudioManager> audioManager;
+    std::shared_ptr<CollisionManager> collisionManager;
+    std::shared_ptr<NetworkManager> networkManager;
 
 private:
     void updateEntities();

@@ -30,7 +30,7 @@ public:
     void readSocket(ACore &core);
     void streamInput(ActionManager *actionManager);
     bool isClientKeyPressed(std::size_t clientId, Keyboard::Key key);
-    void execEntityAction(AEntity *entity, network::PACKET_TYPE packetType);
+    void execEntityAction(const AEntityPtr &entity, network::PACKET_TYPE packetType);
 
 private:
     void resetClientKeyMap();

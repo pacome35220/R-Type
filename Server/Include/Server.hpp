@@ -8,12 +8,12 @@
 
 #include <vector>
 #include <SFML/Network.hpp>
-#include "Core/ACore.hpp"
+#include "Core/CoreServer.hpp"
 
 namespace Server 
 {
     void start(unsigned short port);
-    void entityFeeder(ACore &core);
+    void entityFeeder(CoreServer &core);
     void threadEntryPoint(unsigned short port);
     void onPlayerJoin(ACore &core, const sf::IpAddress &senderIP, const unsigned short &senderPort);
 }

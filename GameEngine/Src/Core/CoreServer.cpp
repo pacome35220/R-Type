@@ -20,8 +20,11 @@
 //     // TODO send to clients
 // }
 
-NetworkManager *CoreServer::getNetworkManager() const {
-    return networkManager;
+void CoreServer::feedEntity(AEntityPtr entity)
+{
+    networkManager->execEntityAction(entity, network::PT_ENTITY_CREATION);
+    if (this->canFeed)
+	    this->entities.push_back(entity);
 }
 
 void CoreServer::run()

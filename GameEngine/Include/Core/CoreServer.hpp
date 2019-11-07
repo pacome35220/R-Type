@@ -15,7 +15,7 @@ class CoreServer : public ACore
 public:
     CoreServer() {};
     ~CoreServer() = default;
-    NetworkManager *getNetworkManager() const;
+    void feedEntity(AEntityPtr entity);
     //void addEntity(AEntityPtr entity);
     //void removeEntity(AEntityPtr entity);
     void run();

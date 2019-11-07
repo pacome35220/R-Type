@@ -124,7 +124,7 @@ bool NetworkManager::isClientKeyPressed(std::size_t clientId,
     return this->clients[clientId].keyMap[key % sf::Keyboard::KeyCount] != 0;
 }
 
-void NetworkManager::execEntityAction(AEntity *entity,
+void NetworkManager::execEntityAction(const AEntityPtr &entity,
                                       network::PACKET_TYPE packetType) {
     sf::Packet packet = entity->buildMyPacket(packetType);
 
