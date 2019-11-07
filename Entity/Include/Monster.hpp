@@ -36,6 +36,6 @@ protected:
     float scale;
     float amplitude;
     float amplitudeSpeed;
-    bool isDroppingPowerUp;
+    bool hasPowerUp;
     size_t health;
 };
