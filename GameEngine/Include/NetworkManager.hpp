@@ -11,6 +11,7 @@
 #include "Client.hpp"
 #include "EntityFactory.hpp"
 #include "PacketType.hpp"
+#include "ActionManager.hpp"
 
 /**
  * @class NetworkManager "Include/NetworkManager.hpp"
@@ -27,6 +28,7 @@ public:
     void bindSocket(unsigned short port);
     void sendPacket(sf::Packet, sf::IpAddress ip, unsigned short port);
     void readSocket(ACore &core);
+    void streamInput(ActionManager *actionManager);
     bool isClientKeyPressed(std::size_t clientId, Keyboard::Key key);
     void execEntityAction(AEntity *entity, network::PACKET_TYPE packetType);
 

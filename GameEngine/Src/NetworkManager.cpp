@@ -98,6 +98,18 @@ void NetworkManager::readSocket(ACore &core) {
     }
 }
 
+void NetworkManager::streamInput(ActionManager *actionManager) {
+    auto pressedKey = actionManager->getKeyPressed();
+
+    for (const auto &keyCode : pressedKey) {
+        sf::Packet packet;
+
+        packet << network::PT_INPUT;
+        packet << keyCode;
+        this->sendPacket(packet, this->ipTarget, this->portTarget);
+    }
+}
+
 void NetworkManager::resetClientKeyMap() {
     for (auto &client : this->clients)
         std::memset(client.keyMap, 0, sizeof(client.keyMap));
