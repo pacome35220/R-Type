@@ -15,7 +15,7 @@
 class Monster : public AEntity
 {
 public:
-    Monster(ACore *entryPoint, Vector2f &position, std::string texturePath, size_t health, float speed,
+    Monster(ACore *entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed,
             float amplitude, float amplitudeSpeed);
     ~Monster();
     float getCounter() const;
@@ -26,8 +26,8 @@ public:
 public:
     void updateMonster();
     void onCollision(AEntity *entity) override;
-    Packet decodeEntityPacket(network::PACKET_TYPE packetType);
-    void updateEntityPacket(Packet packet);
+    sf::Packet decodeEntityPacket(network::PACKET_TYPE packetType);
+    void updateEntityPacket(sf::Packet packet);
 
 protected:
     float counter;

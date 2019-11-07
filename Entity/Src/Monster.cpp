@@ -7,7 +7,7 @@
 
 #include "Monster.hpp"
 
-Monster::Monster(ACore *entryPoint, Vector2f &position, std::string texturePath, size_t health,
+Monster::Monster(ACore *entryPoint, sf::Vector2f &position, std::string texturePath, size_t health,
                  float speed, float amplitude, float amplitudeSpeed) : AEntity(position, texturePath,
                                                                                entryPoint)
 {
@@ -53,12 +53,12 @@ void Monster::onCollision(AEntity *entity)
  * @param packetType
  * @return the
  */
-Packet Monster::decodeEntityPacket(network::PACKET_TYPE packetType)
+sf::Packet Monster::decodeEntityPacket(network::PACKET_TYPE packetType)
 {
     //TODO
-    return Packet();
+    return sf::Packet();
 }
-void Monster::updateEntityPacket(Packet packet)
+void Monster::updateEntityPacket(sf::Packet packet)
 {
     //TODO
 }

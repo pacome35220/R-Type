@@ -8,17 +8,15 @@
 
 #pragma once
 
+#include <memory>
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
+#include <SFML/System.hpp>
 #include "Id.hpp"
 #include "CollisionManager.hpp"
 #include "PacketType.hpp"
-#include <memory>
-
-using namespace sf;
 
 class ACore;
-
 class AEntity;
 
 typedef std::unique_ptr<AEntity> AEntityPtr;
@@ -26,36 +24,35 @@ typedef std::unique_ptr<AEntity> AEntityPtr;
 /**
  * @class AEntity "Include/AEntity.hpp"
  */
-class AEntity : public Id
-{
+class AEntity : public Id {
 public:
-    AEntity(Vector2f &position, std::string texturePath, ACore *entryPoint);
+    AEntity(sf::Vector2f position, std::string texturePath, ACore *entryPoint);
     virtual ~AEntity() = default;
-    const Vector2f &getPosition() const;
-    const Sprite &getSprite() const;
+    const sf::Vector2f &getPosition() const;
+    const sf::Sprite &getSprite() const;
     const CollisionManager &getCollisionManager() const;
-    void setPosition(const Vector2f &position);
-    void setSprite(const Sprite &sprite);
+    void setPosition(const sf::Vector2f &position);
+    void setSprite(const sf::Sprite &sprite);
 
 public:
     virtual void onCollision(AEntity *entity) = 0;
     virtual void update() = 0;
 
 public:
-    Packet buildMyPacket(network::PACKET_TYPE packetType);
-    void updateFromPacket(Packet packet);
+    sf::Packet buildMyPacket(network::PACKET_TYPE packetType);
+    void updateFromPacket(sf::Packet packet);
     void render();
 
 private:
-    Vector2f position;
+    sf::Vector2f position;
     const std::string type;
     float angle;
     size_t packetNumber;
 
 protected:
     std::string texturePath;
-    Texture texture;
-    Sprite sprite;
+    sf::Texture texture;
+    sf::Sprite sprite;
     CollisionManager collisionManager;
     ACore *entryPoint;
 };

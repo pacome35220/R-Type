@@ -44,7 +44,7 @@ void NetworkManager::readSocket(ACore &core) {
     unsigned short senderPort;
 
     int opCode;
-    int objectId;
+    int entityID;
     int id;
 
     this->resetClientKeyMap();
@@ -57,7 +57,6 @@ void NetworkManager::readSocket(ACore &core) {
         packet >> opCode;
         auto networkCode = static_cast<enum network::PACKET_TYPE>(opCode);
 
-        // A new player connected ?
         if (networkCode == network::PT_PLAYER_JOIN &&
             this->clients.size() < 4) {
             // if (_playerJoinCallback)
@@ -74,17 +73,20 @@ void NetworkManager::readSocket(ACore &core) {
         }
 
         if (networkCode == network::PT_ENTITY_CREATION) {
-            packet >> objectId;
-            // core.feedEntity(this->constructor[objectId](core, packet));
+            packet >> entityID;
+            core.addEntity(
+                this->entityFactory.buildEntity(entityID, core, packet));
         }
 
         if (networkCode == network::PT_ENTITY_UPDATE) {
             packet >> id;
-            packet >> objectId;
+            packet >> entityID;
+
+            // If you miss the CREATION event, recreate it
 
             // AEntity *target = core.getEntityFromId(id);
             // if (target == nullptr) {
-            // 	core.feedEntity(_constructor[objectId](core, packet));
+            // 	core.feedEntity(_constructor[entityID](core, packet));
             // } else {
             //     target->updateFromPacket(packet);
             // }

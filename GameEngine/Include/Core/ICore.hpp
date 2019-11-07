@@ -7,12 +7,14 @@
 
 #pragma once
 
-#include "AEntity.hpp"
-#include "AudioManager.hpp"
-#include "ActionManager.hpp"
-#include "NetworkManager.hpp"
-#include "CollisionManager.hpp"
+class AEntity;
 
+typedef std::unique_ptr<AEntity> AEntityPtr;
+
+class AudioManager;
+class NetworkManager;
+class ActionManager;
+class CollisionManager;
 
 /**
  * @interface ICore ICore.hpp "Include/ICore.hpp"

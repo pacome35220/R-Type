@@ -7,7 +7,7 @@
 
 #include "AEntity.hpp"
 
-AEntity::AEntity(Vector2f &_position, std::string _texturePath, ACore *_entryPoint)
+AEntity::AEntity(sf::Vector2f _position, std::string _texturePath, ACore *_entryPoint)
 {
     //TODO
 }
@@ -16,11 +16,11 @@ AEntity::AEntity(Vector2f &_position, std::string _texturePath, ACore *_entryPoi
 //     // TODO
 // }
 
-const Vector2f &AEntity::getPosition() const
+const sf::Vector2f &AEntity::getPosition() const
 {
     return position;
 }
-const Sprite &AEntity::getSprite() const
+const sf::Sprite &AEntity::getSprite() const
 {
     return sprite;
 }
@@ -28,11 +28,11 @@ const CollisionManager &AEntity::getCollisionManager() const
 {
     return collisionManager;
 }
-void AEntity::setPosition(const Vector2f &_position)
+void AEntity::setPosition(const sf::Vector2f &_position)
 {
     AEntity::position = _position;
 }
-void AEntity::setSprite(const Sprite &_sprite)
+void AEntity::setSprite(const sf::Sprite &_sprite)
 {
     AEntity::sprite = _sprite;
 }
@@ -41,16 +41,16 @@ void AEntity::setSprite(const Sprite &_sprite)
  * @param _packetType
  * @return The packet built
  */
-Packet AEntity::buildMyPacket(network::PACKET_TYPE _packetType)
+sf::Packet AEntity::buildMyPacket(network::PACKET_TYPE _packetType)
 {
     //TODO
-    return Packet();
+    return sf::Packet();
 }
 /**
  * Update this with the \_packet
  * @param _packet
  */
-void AEntity::updateFromPacket(Packet _packet)
+void AEntity::updateFromPacket(sf::Packet packet)
 {
     //TODO
 }
@@ -61,5 +61,3 @@ void AEntity::render()
 {
     //TODO
 }
-
-

@@ -10,7 +10,10 @@
 #include <vector>
 //#include <SFML/Graphics.hpp> // ?
 #include "AEntity.hpp"
-#include "ICore.hpp" 
+#include "ICore.hpp"
+#include "ActionManager.hpp"
+#include "AudioManager.hpp"
+#include "NetworkManager.hpp"
 
 class ACore : public ICore {
 public:
@@ -25,11 +28,11 @@ protected:
     int frameRate;
     bool canRender;
     bool canFeed;
-    Vector2i screenSize;
+    sf::Vector2i screenSize;
     std::vector<AEntityPtr> sprites;
     std::vector<AEntityPtr> deletionQueue;
     std::vector<int> topQueue;
-    RenderWindow *window;
+    sf::RenderWindow *window;
     AudioManager *audioManager;
     CollisionManager *collisionManager;
     NetworkManager *networkManager;

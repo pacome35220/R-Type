@@ -9,10 +9,9 @@
 
 #include "ACore.hpp"
 
-class CoreClient : public ACore
-{
+class CoreClient : public ACore {
 public:
-    CoreClient(const string &windowTitle);
+    CoreClient(const std::string &windowTitle);
     void run();
     void display(); // ?
 
@@ -20,5 +19,5 @@ private:
     void drawEntityMap();
 
 private:
-    RenderWindow window;
+    sf::RenderWindow window;
 };

@@ -8,13 +8,12 @@
 #include <iostream>
 #include "Core/CoreClient.hpp"
 
-CoreClient::CoreClient(const string &windowTitle)
-    : window(VideoMode::getDesktopMode(), windowTitle, Style::Fullscreen) // TODO add antialiasing ? (if rotate)
-{
-}
+CoreClient::CoreClient(const std::string &windowTitle)
+    : window(VideoMode::getDesktopMode(), windowTitle,
+             Style::Fullscreen) // TODO add antialiasing ? (if rotate)
+{}
 
-void CoreClient::run()
-{
+void CoreClient::run() {
     while (window.isOpen()) {
         // TODO
         std::cout << "hey client !" << std::endl;
@@ -22,12 +21,10 @@ void CoreClient::run()
     }
 }
 
-void CoreClient::display()
-{
+void CoreClient::display() {
     drawEntityMap();
 }
 
-void CoreClient::drawEntityMap()
-{
+void CoreClient::drawEntityMap() {
     // TODO
 }

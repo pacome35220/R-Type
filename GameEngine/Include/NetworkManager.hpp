@@ -20,7 +20,7 @@ class NetworkManager {
 public:
     NetworkManager();
     ~NetworkManager() = default;
-    void setIpTarget(const string &ipTarget);
+    void setIpTarget(const std::string &ipTarget);
     void setPortTarget(unsigned short portTarget);
     const std::vector<Client> &getClients() const;
 
