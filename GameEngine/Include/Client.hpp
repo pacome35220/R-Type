@@ -13,7 +13,7 @@ using namespace sf;
 typedef unsigned short uint16;
 
 /**
- * @class Client Client.hpp "Include/Client.hpp"
+ * @class Client "Include/Client.hpp"
  */
 class Client
 {

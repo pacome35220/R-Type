@@ -12,7 +12,7 @@
 using namespace sf;
 
 /**
- * @class ActionManager ActionManager.hpp "Include/ActionManager.hpp"
+ * @class ActionManager  "Include/ActionManager.hpp"
  */
 class ActionManager
 {

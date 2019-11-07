@@ -23,6 +23,9 @@ class AEntity;
 
 #define AEntityPtr std::unique_ptr<AEntity>
 
+/**
+ * @class AEntity "Include/AEntity.hpp"
+ */
 class AEntity : public Id
 {
 public:

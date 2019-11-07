@@ -10,7 +10,7 @@
 using namespace sf;
 
 /**
- * @class AudioManager AudioManager.hpp "Include/AudioManager.hpp"
+ * @class AudioManager "Include/AudioManager.hpp"
  */
 class AudioManager
 {
