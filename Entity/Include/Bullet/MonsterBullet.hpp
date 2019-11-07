@@ -6,7 +6,7 @@
 #pragma once
 
 /**
- * @class MonsterBullet.hpp "Include/MonsterBullet.hpp"
+ * @class MonsterBullet "Include/MonsterBullet.hpp"
  */
 class MonsterBullet
 {

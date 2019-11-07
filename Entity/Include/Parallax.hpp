@@ -6,7 +6,7 @@
 #pragma once
 
 /**
- * @class Parallax.hpp "Include/Parallax.hpp"
+ * @class Parallax "Include/Parallax.hpp"
  */
 class Parallax
 {

@@ -6,7 +6,7 @@
 #pragma once
 
 /**
- * @class Player.hpp "Include/Player.hpp"
+ * @class Player "Include/Player.hpp"
  */
 class Player
 {

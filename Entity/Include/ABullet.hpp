@@ -6,7 +6,7 @@
 #pragma once
 
 /**
- * @class ABullet.hpp "Include/ABullet.hpp"
+ * @class ABullet "Include/ABullet.hpp"
  */
 class ABullet
 {

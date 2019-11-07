@@ -10,7 +10,7 @@
 #include "../../GameEngine/Include/AEntity.hpp"
 
 /**
- * @class Monster.hpp "Include/Monster.hpp"
+ * @class Monster "Include/Monster.hpp"
  */
 class Monster : public AEntity
 {

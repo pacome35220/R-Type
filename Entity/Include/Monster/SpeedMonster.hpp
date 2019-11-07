@@ -6,7 +6,7 @@
 #pragma once
 
 /**
- * @class SpeedMonster.hpp "Include/SpeedMonster.hpp"
+ * @class SpeedMonster "Include/SpeedMonster.hpp"
  */
 class SpeedMonster
 {

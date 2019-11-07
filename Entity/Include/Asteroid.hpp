@@ -6,7 +6,7 @@
 #pragma once
 
 /**
- * @class Asteroid.hpp "Include/Asteroid.hpp"
+ * @class Asteroid "Include/Asteroid.hpp"
  */
 class Asteroid
 {

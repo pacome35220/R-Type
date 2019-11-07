@@ -6,7 +6,7 @@
 #pragma once
 
 /**
- * @class PowerUp.hpp "Include/PowerUp.hpp"
+ * @class PowerUp "Include/PowerUp.hpp"
  */
 class PowerUp
 {

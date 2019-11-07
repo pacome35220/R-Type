@@ -6,7 +6,7 @@
 #pragma once
 
 /**
- * @class DeathStar.hpp "Include/DeathStar.hpp"
+ * @class DeathStar "Include/DeathStar.hpp"
  */
 class DeathStar
 {

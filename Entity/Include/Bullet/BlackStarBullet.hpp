@@ -6,7 +6,7 @@
 #pragma once
 
 /**
- * @class BlackStarBullet.hpp "Include/BlackStarBullet.hpp"
+ * @class BlackStarBullet "Include/BlackStarBullet.hpp"
  */
 class BlackStarBullet
 {
