@@ -8,48 +8,22 @@
 #include "EntityFactory.hpp"
 #include "Error.hpp"
 
-void EntityFactory::addBuilder(const string &type, const Builder &builder, const BuilderLoad &builderLoad)
-{
-    builderMap[type] = builder;
-    builderLoadMap[type] = builderLoad;
+void EntityFactory::feedFactory(
+    int entityID, const std::function<std::unique_ptr<AEntity>(
+                      ACore &core, sf::Packet packet)> &constructor) {
+
+    try {
+        this->entityList[entityID] = constructor;
+    } catch (const std::exception &e) {
+        throw Error(e.what(), __FILE__, __func__, __LINE__);
+    }
 }
 
-/**
- * Calls the constructor of the \p type
- * @param type
- * @return The constructor of the type
- */
-AEntityPtr EntityFactory::build(const string &type) const
-{
-    return getBuilder(builderMap, type)();
-}
-
-/**
- * Calls the constructor given in \p packet
- * @param type
- * @return The constructor of the type
- */
-AEntityPtr EntityFactory::build(Packet &packet) const
-{
-    string type;
-
-    if (!(packet >> type))
-        throw ERROR("can not extract entity type of packet");
-    return getBuilder(builderLoadMap, type)(packet);
-}
-/**
- * Get the constructor given in parameters
- * @tparam T
- * @param map
- * @param type
- * @return The constructor
- */
-template<typename T>
-const T &EntityFactory::getBuilder(const map<string, T> &map, const string &type) const
-{
-    auto it = map.find(type);
-
-    if (it == map.end())
-        throw ERROR("builder \"" + type + "\" does not exist");
-    return it->second;
+std::unique_ptr<AEntity> EntityFactory::buildEntity(int entityID, ACore &core,
+                                                    sf::Packet packet) {
+    try {
+        return this->entityList[entityID](core, packet);
+    } catch (const std::exception &e) {
+        throw Error(e.what(), __FILE__, __func__, __LINE__);
+    }
 }

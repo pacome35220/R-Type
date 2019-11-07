@@ -22,7 +22,6 @@ set(SRC
         ${SRCDIR}Id.cpp
         ${SRCDIR}ActionManager.cpp
         ${SRCDIR}AudioManager.cpp
-        ${SRCDIR}Client.cpp
         ${SRCDIR}NetworkManager.cpp
         )
 
