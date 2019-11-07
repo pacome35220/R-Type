@@ -7,37 +7,36 @@
 
 #include <vector>
 #include <SFML/Network/UdpSocket.hpp>
+#include "Core/ACore.hpp"
 #include "Client.hpp"
 #include "EntityFactory.hpp"
 #include "PacketType.hpp"
 
-using namespace sf;
-
-typedef unsigned short uint16;
-
 /**
  * @class NetworkManager "Include/NetworkManager.hpp"
  */
-class NetworkManager
-{
+class NetworkManager {
 public:
     NetworkManager();
-    ~NetworkManager();
+    ~NetworkManager() = default;
     void setIpTarget(const string &ipTarget);
-    void setPortTarget(uint16 portTarget);
-    const vector<Client> &getClients() const;
+    void setPortTarget(unsigned short portTarget);
+    const std::vector<Client> &getClients() const;
 
 public:
-    void bindSocket(uint16 port);
-    void sendPacket(Packet, IpAddress ip, uint16 port);
+    void bindSocket(unsigned short port);
+    void sendPacket(sf::Packet, sf::IpAddress ip, unsigned short port);
     void readSocket(ACore &core);
-    bool isClientKeyPressed(int clientId, Keyboard::Key key);
+    bool isClientKeyPressed(std::size_t clientId, Keyboard::Key key);
     void execEntityAction(AEntity *entity, network::PACKET_TYPE packetType);
 
 private:
+    void resetClientKeyMap();
+
+private:
     std::vector<Client> clients;
-    UdpSocket socket;
+    sf::UdpSocket socket;
     std::string ipTarget;
-    uint16 portTarget;
+    unsigned short portTarget;
     EntityFactory entityFactory;
 };
