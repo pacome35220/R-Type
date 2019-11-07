@@ -11,7 +11,7 @@
 
 class AEntity;
 
-#define AEntityPtr std::unique_ptr<AEntity>
+typedef std::unique_ptr<AEntity> AEntityPtr;
 
 /**
  * @class CollisionManager "Include/Collision.hpp"

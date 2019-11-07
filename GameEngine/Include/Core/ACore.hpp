@@ -1,27 +1,43 @@
-/*
-** EPITECH PROJECT, 2019
-** for_norme
-** File description:
-** ACore.hpp
-*/
+/**
+ * @file      ACore.hpp
+ * @brief     This is the Abstract Core
+ * @details   This Abstract Class will be the parent of the CoreServer and CoreClients classes.
+ * @details   It brings an abstraction for each of these classes
+ */
 
 #pragma once
 
-#include <map>
+#include <vector>
 //#include <SFML/Graphics.hpp> // ?
 #include "AEntity.hpp"
+#include "ICore.hpp" 
 
-using namespace std;
-
-class ACore
-{
+class ACore : public ICore {
 public:
     ACore() {};
     virtual ~ACore() = default;
-    virtual void addEntity(AEntityPtr entity);
-    virtual void removeEntity(AEntityPtr entity);
-    virtual void run() = 0;
+
+public:
+    void addEntity(AEntityPtr entity);
+    void removeEntity(AEntityPtr entity);
 
 protected:
-    map<size_t, AEntityPtr> entityMap;
+    int frameRate;
+    bool canRender;
+    bool canFeed;
+    Vector2i screenSize;
+    std::vector<AEntityPtr> sprites;
+    std::vector<AEntityPtr> deletionQueue;
+    std::vector<int> topQueue;
+    RenderWindow *window;
+    AudioManager *audioManager;
+    CollisionManager *collisionManager;
+    NetworkManager *networkManager;
+
+private:
+    void updateEntities();
+    void renderEntities();
+    void streamEntityFeed();
+    void handleWindow();
+    void procTopQueue();
 };

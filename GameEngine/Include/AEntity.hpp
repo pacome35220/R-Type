@@ -21,7 +21,7 @@ class ACore;
 
 class AEntity;
 
-#define AEntityPtr std::unique_ptr<AEntity>
+typedef std::unique_ptr<AEntity> AEntityPtr;
 
 /**
  * @class AEntity "Include/AEntity.hpp"

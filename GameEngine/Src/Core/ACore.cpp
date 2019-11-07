@@ -9,10 +9,10 @@
 
 void ACore::addEntity(AEntityPtr entity)
 {
-    entityMap[entity->getId()] = move(entity); // move ?
+    //entityMap[entity->getId()] = move(entity); // move ?
 }
 
 void ACore::removeEntity(AEntityPtr entity)
 {
-    entityMap.erase(entity->getId());
+    //entityMap.erase(entity->getId());
 }

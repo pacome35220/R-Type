@@ -27,6 +27,7 @@ set(SRC
         )
 
 set(INCLUDE
+        ${INCDIR}${CORDIR}ICore.hpp
         ${INCDIR}${CORDIR}ACore.hpp
         ${INCDIR}${CORDIR}CoreClient.hpp
         ${INCDIR}${CORDIR}CoreServer.hpp
