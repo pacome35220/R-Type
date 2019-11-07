@@ -15,12 +15,14 @@
  */
 class EntityFactory {
 public:
-    void feedFactory(const std::string &type,
+    void feedFactory(int entityID,
                      const std::function<std::unique_ptr<AEntity>(
                          ACore &core, sf::Packet packet)> &constructor);
+    std::unique_ptr<AEntity> buildEntity(int entityID, ACore &core,
+                                         sf::Packet packet);
 
 private:
-    std::map<std::string, std::function<std::unique_ptr<AEntity>(
-                              ACore &core, sf::Packet packet)>>
+    std::map<int, std::function<std::unique_ptr<AEntity>(ACore &core,
+                                                         sf::Packet packet)>>
         entityList;
 };
