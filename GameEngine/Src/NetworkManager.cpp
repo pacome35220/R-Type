@@ -124,5 +124,8 @@ bool NetworkManager::isClientKeyPressed(std::size_t clientId,
 
 void NetworkManager::execEntityAction(AEntity *entity,
                                       network::PACKET_TYPE packetType) {
-    // Todo
+    sf::Packet packet = entity->buildMyPacket(packetType);
+
+    for (auto &client : this->clients)
+        this->socket.send(packet, client.ip, client.port);
 }
