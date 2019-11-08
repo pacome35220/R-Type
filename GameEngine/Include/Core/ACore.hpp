@@ -49,10 +49,8 @@ protected:
     std::shared_ptr<CollisionManager> collisionManager;
     std::shared_ptr<NetworkManager> networkManager;
 
-private:
-    void updateEntities();
-    void renderEntities();
-    void streamEntityFeed();
-    void handleWindow();
+protected:
+    void updateEntities() override;
+    // void streamEntityFeed();
     void procTopQueue();
 };

@@ -12,11 +12,11 @@
 class CoreClient : public ACore {
 public:
     CoreClient(const std::string &windowTitle);
-    void run();
-    void display(); // ?
+    void run() override;
 
 private:
-    void drawEntityMap();
+    void renderEntities() override;
+    void handleWindowEvent();
 
 private:
     sf::RenderWindow window;

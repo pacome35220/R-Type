@@ -21,6 +21,7 @@ class CollisionManager;
  */
 class ICore {
 public:
+    virtual ~ICore() = default;
     // virtual Vector2i getScreenSize() const = 0;
     // virtual CollisionManager getCollisionManager() = 0;
     virtual AEntityPtr getEntityFromId(size_t id) = 0;
@@ -39,7 +40,7 @@ public:
     //virtual void setOnTop(int id) = 0;
 
 public:
-    virtual void feedEntity(AEntityPtr entity) = 0;
+    // virtual void feedEntity(AEntityPtr entity) = 0;
     // virtual void addToDeletionQueue(AEntityPtr entity) = 0;
     // virtual void addDeletionQueueById(int id) = 0; //param id ?
     // virtual void authorizeFeed(bool auth) = 0;
@@ -49,4 +50,10 @@ public:
     // virtual float absoluteToAbsoluteX(float x) = 0;
     // virtual float absoluteToAbsoluteY(float y) = 0;
     virtual void run() = 0;
+
+private:
+    virtual void updateEntities() = 0;
+    virtual void renderEntities() = 0;
+    // virtual void streamEntityFeed() = 0;
+    virtual void procTopQueue() = 0;
 };

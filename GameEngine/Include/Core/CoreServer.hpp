@@ -21,5 +21,5 @@ public:
     void run();
 
 private:
-    //
+    void renderEntities() override;
 };
