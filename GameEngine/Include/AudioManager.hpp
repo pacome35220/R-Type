@@ -5,25 +5,26 @@
 
 #pragma once
 
+#include <map>
 #include <SFML/Audio.hpp>
-
-using namespace sf;
 
 /**
  * @class AudioManager "Include/AudioManager.hpp"
  */
-class AudioManager
-{
+class AudioManager {
 public:
     AudioManager();
-    ~AudioManager();
+    ~AudioManager() = default;
 
 public:
     void stopBackgroundMusic();
-    bool playBackgroundMusic(std::string musicPath);
-    bool playSound(std::string soundPath);
+    bool playBackgroundMusic(const std::string &path);
+    bool addSound(const std::string &name, const std::string &path);
+    void playSound(const std::string &name);
+    void stopSound(const std::string &name);
 
 private:
     bool isPlaying;
-    Music backgroundMusic;
+    sf::Music backgroundMusic;
+    std::map<std::string, sf::Sound> musics;
 };

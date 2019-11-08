@@ -7,35 +7,38 @@
 
 #include "AudioManager.hpp"
 
-/*
- *   Constructors // Destructor
-*/
-AudioManager::AudioManager()
-{
-    // Todo
-}
-AudioManager::~AudioManager()
-{
-    // Todo
-}
-/*
- *   Getters // Setters
-*/
+AudioManager::AudioManager() : isPlaying(false) {}
 
-/*
- *   Methods
-*/
-bool AudioManager::playBackgroundMusic(const std::string musicPath)
-{
-    // Todo
-    return false;
+bool AudioManager::playBackgroundMusic(const std::string &musicPath) {
+    if (!this->isPlaying) {
+        if (!this->backgroundMusic.openFromFile(musicPath))
+            return false;
+        this->backgroundMusic.play();
+        this->isPlaying = true;
+    }
+    return this->isPlaying;
 }
-void AudioManager::stopBackgroundMusic()
-{
-    // Todo
+
+void AudioManager::stopBackgroundMusic() {
+    if (this->isPlaying) {
+        this->backgroundMusic.stop();
+        this->isPlaying = false;
+    }
 }
-bool AudioManager::playSound(const std::string soundPath)
-{
-    // Todo
-    return false;
+
+bool AudioManager::addSound(const std::string &name, const std::string &path) {
+    sf::SoundBuffer sound;
+
+    if (!sound.loadFromFile(path))
+        return false;
+    this->musics[name].setBuffer(sound);
+    return true;
+}
+
+void AudioManager::playSound(const std::string &name) {
+    this->musics[name].play();
+}
+
+void AudioManager::stopSound(const std::string &name) {
+    this->musics[name].stop();
 }
