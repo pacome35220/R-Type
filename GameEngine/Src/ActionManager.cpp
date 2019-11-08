@@ -11,7 +11,7 @@
  *   Constructors // Destructor
 */
 ActionManager::ActionManager()
-    : isFocused(true), internalKeyMap(), previousState(), currentState()
+    : isFocused(true), internalKeyMap(), currentState(), previousState()
 {
     mapKey(sf::Keyboard::Up);
     mapKey(sf::Keyboard::Left);
@@ -94,10 +94,10 @@ void ActionManager::flush()
 {
     if (!this->isFocused)
         return;
-	for (auto it = this->currentState.begin(); it != this->currentState.end(); ++it) {
-		this->previousState[it->first] = this->currentState[it->first];
-		this->currentState[it->first] = sf::Keyboard::isKeyPressed(it->first);
-		if (this->currentState[it->first])
-			this->internalKeyMap[it->first] = 1;
+	for (const auto &it: this->currentState) {
+		this->previousState[it.first] = this->currentState[it.first];
+		this->currentState[it.first] = sf::Keyboard::isKeyPressed(it.first);
+		if (this->currentState[it.first])
+			this->internalKeyMap[it.first] = 1;
 	}
 }
