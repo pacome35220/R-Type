@@ -10,7 +10,7 @@ list(APPEND SRC
     ${CMSRCDIR}AEntity.cpp
     ${CMSRCDIR}EntityFactory.cpp
     ${CMSRCDIR}ActionManager.cpp
-    ${CMSRCDIR}networkManager.cpp
+    ${CMSRCDIR}NetworkManager.cpp
     ${CMSRCDIR}Id.cpp
     ${CMSRCDIR}Core/ACore.cpp
     ${CMSRCDIR}Core/CoreServer.cpp
@@ -22,7 +22,7 @@ list(APPEND INCLUDE
     ${CMINCDIR}AEntity.hpp
     ${CMINCDIR}EntityFactory.hpp
     ${CMINCDIR}ActionManager.hpp
-    ${CMINCDIR}networkManager.hpp
+    ${CMINCDIR}NetworkManager.hpp
     ${CMINCDIR}Id.hpp
     ${CMINCDIR}Core/ACore.hpp
     ${CMINCDIR}Core/CoreServer.hpp

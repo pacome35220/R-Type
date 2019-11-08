@@ -26,6 +26,17 @@ const std::vector<Client> &NetworkManager::getClients() const {
     return this->clients;
 }
 
+void NetworkManager::addNewClient(const sf::IpAddress &ip, const unsigned short &port)
+{
+    Client newClient;
+
+    newClient.ip = ip;
+    newClient.port = port;
+    for (size_t i = 0; i < sf::Keyboard::KeyCount; i++)
+        newClient.keyMap[i] = 0;
+    this->clients.push_back(newClient);
+}
+
 void NetworkManager::bindSocket(unsigned short port) {
     if (this->socket.bind(port) != sf::Socket::Done)
         throw Error("Bind fail", __FILE__, __func__, __LINE__);

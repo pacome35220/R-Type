@@ -18,22 +18,22 @@ void ACore::removeEntity(AEntityPtr entity)
 }
 
 /**
- * setter 
+ * setter
  */
 
-void ACore::setActionManager(std::shared_ptr<ActionManager> actionManager) 
+void ACore::setActionManager(std::shared_ptr<ActionManager> actionManager)
 {
     this->actionManager = actionManager;
 }
-void ACore::setCollisionManager(std::shared_ptr<CollisionManager> collisionManager) 
+void ACore::setCollisionManager(std::shared_ptr<CollisionManager> collisionManager)
 {
     this->collisionManager = collisionManager;
 }
-void ACore::setNetworkManager(std::shared_ptr<NetworkManager> networkManager) 
+void ACore::setNetworkManager(std::shared_ptr<NetworkManager> networkManager)
 {
     this->networkManager = networkManager;
 }
-void ACore::setAudioManager(std::shared_ptr<AudioManager> audioManager) 
+void ACore::setAudioManager(std::shared_ptr<AudioManager> audioManager)
 {
     this->audioManager = audioManager;
 }
@@ -59,10 +59,20 @@ std::shared_ptr<CollisionManager> ACore::getPhysicManager() const
     return this->collisionManager;
 }
 
-AEntityPtr ACore::getEntityFromId(size_t id) 
+AEntityPtr ACore::getEntityFromId(size_t id)
 {
     for (const auto &entity: entities)
         if (entity->getId() == id)
             return entity;
     return nullptr;
+}
+
+void ACore::onPlayerJoin(const sf::IpAddress &senderIp, const unsigned short &senderPort)
+{
+    sf::Vector2f pos(-90, 0);
+    //feedEntity(new Player(pos, (int)core.getNetworkManager()->getClientVector().size()));
+    for (const auto &value: networkManager->getClients())
+        if (value.ip == senderIp && value.port == senderPort)
+     		return;
+    networkManager->addNewClient(senderIp, senderPort);
 }
