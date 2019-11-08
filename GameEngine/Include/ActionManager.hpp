@@ -19,7 +19,7 @@ class ActionManager
 public:
     ActionManager();
     virtual ~ActionManager();
-    void setIsFocused(bool isFocused);
+    void setIsFocused(const bool &isFocused);
 
 public:
     bool isKeyPressed(Keyboard::Key key);
@@ -29,10 +29,11 @@ public:
     bool isKeyMapped(Keyboard::Key key);
     std::vector<Keyboard::Key> getKeyPressed();
     void flush();
-
+private:
+    void mapKey(sf::Keyboard::Key key);
 private:
     bool isFocused;
     int internalKeyMap[Keyboard::KeyCount];
-    std::map<Keyboard, bool> currentState;
-    std::map<Keyboard::Key, bool> previousState;
+    std::map<sf::Keyboard::Key, bool> currentState;
+    std::map<sf::Keyboard::Key, bool> previousState;
 };

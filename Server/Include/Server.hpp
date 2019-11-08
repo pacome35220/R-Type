@@ -10,10 +10,9 @@
 #include <SFML/Network.hpp>
 #include "Core/CoreServer.hpp"
 
-namespace Server 
+namespace Server
 {
     void start(unsigned short port);
     void entityFeeder(CoreServer &core);
     void threadEntryPoint(unsigned short port);
-    void onPlayerJoin(ACore &core, const sf::IpAddress &senderIP, const unsigned short &senderPort);
 }
