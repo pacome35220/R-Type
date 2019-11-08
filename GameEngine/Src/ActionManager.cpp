@@ -75,7 +75,6 @@ bool ActionManager::isKeyMapped(Keyboard::Key key)
     if (this->previousState.find(key) == this->previousState.end() || this->currentState.find(key) == this->currentState.end())
 		return false;
 	return true;
-
 }
 
 std::vector<Keyboard::Key> ActionManager::getKeyPressed()
