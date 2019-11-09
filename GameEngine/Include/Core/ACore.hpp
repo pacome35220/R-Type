@@ -39,7 +39,6 @@ public:
     std::shared_ptr<CollisionManager> getPhysicManager() const override;
 
     AEntityPtr getEntityFromId(size_t id) override;
-    void onPlayerJoin(const sf::IpAddress &senderIP, unsigned short senderPort);
 
 protected:
     std::size_t frameRate;

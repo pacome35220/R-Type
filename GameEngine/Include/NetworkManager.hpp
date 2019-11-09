@@ -23,7 +23,7 @@ public:
     void setIpTarget(const std::string &ipTarget);
     void setPortTarget(unsigned short portTarget);
     const std::vector<Client> &getClients() const;
-    void addNewClient(const sf::IpAddress &ip, const unsigned short &port);
+    void addNewClient(const sf::IpAddress &ip, unsigned short port);
 
 public:
     void bindSocket(unsigned short port);

@@ -65,17 +65,6 @@ AEntityPtr ACore::getEntityFromId(size_t id) {
     return nullptr;
 }
 
-void ACore::onPlayerJoin(const sf::IpAddress &senderIp,
-                         unsigned short senderPort) {
-    sf::Vector2f pos(-90, 0);
-    // feedEntity(new Player(pos,
-    // (int)core.getNetworkManager()->getClientVector().size()));
-    for (const auto &value : networkManager->getClients())
-        if (value.ip == senderIp && value.port == senderPort)
-            return;
-    networkManager->addNewClient(senderIp, senderPort);
-}
-
 void ACore::updateEntities() {
     for (auto &entity : this->entities) {
         entity->update();

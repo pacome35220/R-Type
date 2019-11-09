@@ -26,10 +26,15 @@ const std::vector<Client> &NetworkManager::getClients() const {
     return this->clients;
 }
 
-void NetworkManager::addNewClient(const sf::IpAddress &ip, const unsigned short &port)
-{
+void NetworkManager::addNewClient(const sf::IpAddress &ip,
+                                  unsigned short port) {
     Client newClient;
 
+    for (const auto &value : this->getClients())
+        if (value.ip == ip && value.port == port)
+            throw Error("Client from " + ip.toString() + " on port " +
+                            std::to_string(port) + " is already playing",
+                        __FILE__, __func__, __LINE__);
     newClient.ip = ip;
     newClient.port = port;
     for (size_t i = 0; i < sf::Keyboard::KeyCount; i++)

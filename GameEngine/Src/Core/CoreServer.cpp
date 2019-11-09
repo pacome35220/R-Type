@@ -7,6 +7,9 @@
 
 #include <iostream>
 #include "Core/CoreServer.hpp"
+#include "Error.hpp"
+
+CoreServer::CoreServer() {}
 
 // void CoreServer::addEntity(AEntityPtr entity)
 // {
@@ -34,6 +37,15 @@ void CoreServer::run() {
 void CoreServer::renderEntities() {
     for (auto const &entity : this->entities)
         entity->render();
+}
+
+void CoreServer::onPlayerJoin(const sf::IpAddress &senderIp,
+                              unsigned short senderPort) {
+    sf::Vector2i newClientPosition(-90, 0);
+    std::size_t newClientID = this->networkManager->getClients().size();
+
+    // this->addEntity(std::make_unique<Player>(newClientPosition, newClientID));
+    networkManager->addNewClient(senderIp, senderPort);
 }
 
 void CoreServer::procDelectionQueue() {
