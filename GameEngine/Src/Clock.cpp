@@ -1,8 +1,8 @@
 /*
-** EPITECH PROJECT, 2018
-**  <------------>
+** EPITECH PROJECT, 2019
+** CPP_rtype_2019
 ** File description:
-**    <------->
+** Clock.cpp
 */
 
 #include "Clock.hpp"

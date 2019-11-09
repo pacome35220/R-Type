@@ -1,15 +1,16 @@
-/*
-** EPITECH PROJECT, 2018
-**  <------------>
-** File description:
-**    <------->
-*/
+/**
+ * @file      Clock.hpp
+ * @brief     This class is a wrapper for sf::Clock
+ */
 
 #pragma once
 
 #include <cstddef>
 #include <SFML/System/Clock.hpp>
 
+/**
+ * @class Clock "Include/Clock.hpp"
+ */
 class Clock {
 public:
     Clock();
