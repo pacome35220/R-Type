@@ -13,10 +13,8 @@ class CoreServer : public ACore {
 public:
     CoreServer();
     ~CoreServer() = default;
-    void feedEntity(AEntityPtr entity);
-    // void addEntity(AEntityPtr entity);
-    // void removeEntity(AEntityPtr entity);
-    void run();
+    void run() override;
+    void addEntity(AEntityPtr entity) override;
 
 private:
     void renderEntities() override;

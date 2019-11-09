@@ -22,9 +22,6 @@ public:
     virtual ~ACore() = default;
 
 public:
-    void addEntity(AEntityPtr entity);
-    void removeEntity(AEntityPtr entity);
-
     void
     setActionManager(std::shared_ptr<ActionManager> actionManager) override;
     void setCollisionManager(
@@ -53,6 +50,5 @@ protected:
 
 protected:
     void updateEntities() override;
-    // void streamEntityFeed();
     void procTopQueue();
 };

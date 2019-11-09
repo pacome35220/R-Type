@@ -23,15 +23,15 @@ CoreServer::CoreServer() {}
 //     // TODO send to clients
 // }
 
-void CoreServer::feedEntity(AEntityPtr entity) {
-    networkManager->execEntityAction(entity, network::PT_ENTITY_CREATION);
-    if (this->canFeed)
-        this->entities.push_back(entity);
-}
-
 void CoreServer::run() {
     std::cout << "hey Server !" << std::endl;
     // TOOD
+}
+
+void CoreServer::addEntity(AEntityPtr entity) {
+    networkManager->execEntityAction(entity, network::PT_ENTITY_CREATION);
+    if (this->canFeed)
+        this->entities.push_back(entity);
 }
 
 void CoreServer::renderEntities() {

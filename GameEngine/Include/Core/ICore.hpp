@@ -22,9 +22,7 @@ class CollisionManager;
 class ICore {
 public:
     virtual ~ICore() = default;
-    // virtual Vector2i getScreenSize() const = 0;
-    // virtual CollisionManager getCollisionManager() = 0;
-    virtual AEntityPtr getEntityFromId(size_t id) = 0;
+    virtual AEntityPtr getEntityFromId(std::size_t id) = 0;
     virtual void setActionManager(std::shared_ptr<ActionManager> actionManager) = 0;
     virtual void setCollisionManager(std::shared_ptr<CollisionManager> collisionManager) = 0;
     virtual void setNetworkManager(std::shared_ptr<NetworkManager> networkManager) = 0;
@@ -38,7 +36,7 @@ public:
     //virtual void setOnTop(int id) = 0;
 
 public:
-    // virtual void feedEntity(AEntityPtr entity) = 0;
+    virtual void addEntity(AEntityPtr entity) = 0;
     // virtual void addToDeletionQueue(AEntityPtr entity) = 0;
     // virtual void addDeletionQueueById(int id) = 0; //param id ?
     // virtual void authorizeFeed(bool auth) = 0;
@@ -52,7 +50,6 @@ public:
 private:
     virtual void updateEntities() = 0;
     virtual void renderEntities() = 0;
-    // virtual void streamEntityFeed() = 0;
     virtual void procTopQueue() = 0;
     virtual void procDelectionQueue() = 0;
 };

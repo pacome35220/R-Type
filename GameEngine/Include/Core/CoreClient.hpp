@@ -13,6 +13,7 @@ class CoreClient : public ACore {
 public:
     CoreClient(const std::string &windowTitle);
     void run() override;
+    void addEntity(AEntityPtr entity) override;
 
 private:
     void renderEntities() override;

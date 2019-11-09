@@ -9,14 +9,6 @@
 
 ACore::ACore() : frameRate(60) {}
 
-void ACore::addEntity(AEntityPtr entity) {
-    // entityMap[entity->getId()] = move(entity); // move ?
-}
-
-void ACore::removeEntity(AEntityPtr entity) {
-    // entityMap.erase(entity->getId());
-}
-
 /**
  * Setter
  */

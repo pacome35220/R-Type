@@ -34,16 +34,21 @@ void CoreClient::run() {
             this->renderEntities();
             this->procDelectionQueue();
             this->actionManager->flush();
-			this->networkManager->streamInput(this->actionManager);
-			bool tmp = this->canFeed;
-			this->canFeed = true;
-			this->networkManager->readSocket(*this);
-			this->canFeed = tmp;
-			lastTotal = currentTotal;
+            this->networkManager->streamInput(this->actionManager);
+            bool tmp = this->canFeed;
+            this->canFeed = true;
+            this->networkManager->readSocket(*this);
+            this->canFeed = tmp;
+            lastTotal = currentTotal;
         }
-		clock.tick();
-		mutex.unlock();
+        clock.tick();
+        mutex.unlock();
     }
+}
+
+void CoreClient::addEntity(AEntityPtr entity) {
+    if (this->canFeed)
+        this->entities.push_back(entity);
 }
 
 void CoreClient::handleWindowEvent() {
