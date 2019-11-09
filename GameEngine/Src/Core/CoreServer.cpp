@@ -35,3 +35,15 @@ void CoreServer::renderEntities() {
     for (auto const &entity : this->entities)
         entity->render();
 }
+
+void CoreServer::procDelectionQueue() {
+    for (const auto &entityToDelete : this->deletionQueue) {
+        this->networkManager->execEntityAction(entityToDelete,
+                                               network::PT_ENTITY_DESTRUCTION);
+        auto tmp = std::find(this->entities.begin(), this->entities.end(),
+                             entityToDelete);
+        if (tmp != this->entities.end())
+            this->entities.erase(tmp);
+    }
+    this->deletionQueue = std::vector<AEntityPtr>();
+}

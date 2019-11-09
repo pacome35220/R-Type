@@ -54,4 +54,5 @@ private:
     virtual void renderEntities() = 0;
     // virtual void streamEntityFeed() = 0;
     virtual void procTopQueue() = 0;
+    virtual void procDelectionQueue() = 0;
 };

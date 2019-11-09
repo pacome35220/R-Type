@@ -17,6 +17,7 @@ public:
 private:
     void renderEntities() override;
     void handleWindowEvent();
+    void procDelectionQueue() override;
 
 private:
     sf::RenderWindow window;

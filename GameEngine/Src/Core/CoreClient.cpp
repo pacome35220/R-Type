@@ -46,3 +46,13 @@ void CoreClient::renderEntities() {
         entity->render();
     this->window.display();
 }
+
+void CoreClient::procDelectionQueue() {
+    for (const auto &entityToDelete : this->deletionQueue) {
+        auto tmp = std::find(this->entities.begin(), this->entities.end(),
+                             entityToDelete);
+        if (tmp != this->entities.end())
+            this->entities.erase(tmp);
+    }
+    this->deletionQueue = std::vector<AEntityPtr>();
+}

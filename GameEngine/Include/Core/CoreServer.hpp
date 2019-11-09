@@ -22,4 +22,5 @@ public:
 
 private:
     void renderEntities() override;
+    void procDelectionQueue() override;
 };
