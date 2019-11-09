@@ -43,7 +43,7 @@ protected:
     sf::Vector2i screenSize;
     std::vector<AEntityPtr> entities;
     std::vector<AEntityPtr> deletionQueue;
-    std::vector<int> topQueue;
+    std::vector<std::size_t> topQueue;
     std::shared_ptr<ActionManager> actionManager;
     std::shared_ptr<AudioManager> audioManager;
     std::shared_ptr<CollisionManager> collisionManager;

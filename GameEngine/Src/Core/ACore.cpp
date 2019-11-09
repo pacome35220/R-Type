@@ -89,14 +89,14 @@ void ACore::updateEntities() {
 
 void ACore::procTopQueue() {
     for (const auto &value : this->topQueue) {
-        for (unsigned int j = 0; j < this->entities.size(); j++) {
-            if (this->entities[j]->getId() == value) {
-                auto tmp = this->entities[j];
-                this->entities.erase(this->entities.begin() + j);
+        for (std::size_t i = 0; i < this->entities.size(); i++) {
+            if (this->entities[i]->getId() == value) {
+                auto tmp = this->entities[i];
+                this->entities.erase(this->entities.begin() + i);
                 this->entities.push_back(tmp);
                 return;
             }
         }
     }
-    this->topQueue = std::vector<int>();
+    this->topQueue = std::vector<std::size_t>();
 }
