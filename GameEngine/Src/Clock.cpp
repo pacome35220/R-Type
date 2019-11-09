@@ -7,9 +7,8 @@
 
 #include "Clock.hpp"
 
-Clock::Clock()
-    : currentTime(0), lastTime(0), elapsedTime(0), totalTime(0), clock() {
-    tick();
+Clock::Clock() : currentTime(0), lastTime(0), elapsedTime(0), totalTime(0) {
+    this->tick();
 }
 
 void Clock::tick() {

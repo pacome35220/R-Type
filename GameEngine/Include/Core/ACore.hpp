@@ -42,7 +42,7 @@ public:
     void onPlayerJoin(const sf::IpAddress &senderIP, unsigned short senderPort);
 
 protected:
-    int frameRate;
+    std::size_t frameRate;
     bool canFeed;
     sf::Vector2i screenSize;
     std::vector<AEntityPtr> entities;
