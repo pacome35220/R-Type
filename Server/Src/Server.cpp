@@ -1,20 +1,17 @@
 /*
-** Server.cpp for Server in /Users/hadibereksi/Documents/Epitech/TEK3/CPP/CPP_rtype_2019/Server/Src
-**
-** Made by test
-** Login   <hadi-ilies.bereksi-reguig>
-**
-** Started on  Wed Nov 6 10:57:12 AM 2019 test
-** Last update Thu Nov 6 10:58:48 AM 2019 test
+** EPITECH PROJECT, 2019
+** CPP_rtype_2019
+** File description:
+** Server.cpp
 */
 
 #include <SFML/Network.hpp>
 #include <iostream>
+#include "Error.hpp"
 #include "Server.hpp"
 #include "Core/CoreServer.hpp"
 
-void Server::start(unsigned short port)
-{
+void Server::start(unsigned short port) {
     int idx = 0;
     sf::Packet packet;
     sf::UdpSocket socket;
@@ -23,27 +20,24 @@ void Server::start(unsigned short port)
     std::vector<sf::Thread *> threads;
 
     if (socket.bind(port) != sf::Socket::Done)
-        return;
+        throw Error("Bind fail", __FILE__, __func__, __LINE__);
     while (true) {
-        auto state = socket.receive(packet, sender, senderPort);
-        if (state == sf::Socket::Done) {
+        if (socket.receive(packet, sender, senderPort) == sf::Socket::Done) {
             if (idx % 4 == 0) {
                 port++;
                 auto *thread = new sf::Thread(Server::threadEntryPoint, port);
                 threads.push_back(thread);
                 thread->launch();
             }
-            auto *answer = new sf::Packet();
-            //*answer << network::PORT_REDIRECTION << port;
-            socket.send(*answer, sender, senderPort);
-            delete answer;
+            auto answer = sf::Packet();
+            answer << network::PT_PORT_REDIRECTION << port;
+            socket.send(answer, sender, senderPort);
             idx++;
         }
     }
 }
 
-void Server::entityFeeder(CoreServer &core)
-{
+void Server::entityFeeder(CoreServer &core) {
     sf::Vector2f pos(100, 0);
     auto monsterPos = sf::Vector2f(100, 0);
 
@@ -66,18 +60,16 @@ void Server::entityFeeder(CoreServer &core)
         // core.feedEntity(venerMonster); // done
     }
 
-// sf::Vector2f v(90, 0);
-// core.feedEntity(new BlackStar(v));
-// sf::Vector2f pos2(100, 0);
-// core.feedEntity(new Asteroid(pos2));
+    // sf::Vector2f v(90, 0);
+    // core.feedEntity(new BlackStar(v));
+    // sf::Vector2f pos2(100, 0);
+    // core.feedEntity(new Asteroid(pos2));
 }
 
-void Server::threadEntryPoint(unsigned short port)
-{
+void Server::threadEntryPoint(unsigned short port) {
     CoreServer core;
-    auto networkManager = core.getNetworkManager();
 
-    networkManager->bindSocket(port);
+    core.getNetworkManager()->bindSocket(port);
     Server::entityFeeder(core);
     core.run();
 }
