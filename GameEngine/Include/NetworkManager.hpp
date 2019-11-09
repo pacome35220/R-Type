@@ -30,7 +30,7 @@ public:
     void sendPacket(sf::Packet, sf::IpAddress ip, unsigned short port);
     void readSocket(ACore &core);
     void streamInput(ActionManager *actionManager);
-    bool isClientKeyPressed(std::size_t clientId, Keyboard::Key key);
+    bool isClientKeyPressed(std::size_t clientId, sf::Keyboard::Key key);
     void execEntityAction(const AEntityPtr &entity, network::PACKET_TYPE packetType);
 
 private:

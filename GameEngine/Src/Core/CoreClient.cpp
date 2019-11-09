@@ -10,9 +10,7 @@
 
 CoreClient::CoreClient(const std::string &windowTitle)
     : ACore(),
-      window(VideoMode::getDesktopMode(), windowTitle, Style::Default)
-// TODO add antialiasing ? (if rotate)
-{
+      window(sf::VideoMode::getDesktopMode(), windowTitle, sf::Style::Default) {
     this->networkManager = std::make_shared<NetworkManager>();
     this->actionManager = std::make_shared<ActionManager>();
 }
