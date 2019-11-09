@@ -111,7 +111,7 @@ void NetworkManager::readSocket(ACore &core) {
     }
 }
 
-void NetworkManager::streamInput(ActionManager *actionManager) {
+void NetworkManager::streamInput(std::shared_ptr<ActionManager> actionManager) {
     auto pressedKey = actionManager->getKeyPressed();
 
     for (const auto &keyCode : pressedKey) {
