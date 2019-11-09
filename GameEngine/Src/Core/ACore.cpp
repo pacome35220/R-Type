@@ -7,6 +7,8 @@
 
 #include "Core/ACore.hpp"
 
+ACore::ACore() : frameRate(60) {}
+
 void ACore::addEntity(AEntityPtr entity) {
     // entityMap[entity->getId()] = move(entity); // move ?
 }

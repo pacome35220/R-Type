@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include "Clock.hpp"
 #include "Core/CoreClient.hpp"
 
 CoreClient::CoreClient(const std::string &windowTitle)
@@ -16,12 +17,32 @@ CoreClient::CoreClient(const std::string &windowTitle)
 }
 
 void CoreClient::run() {
-    while (window.isOpen()) {
-        this->handleWindowEvent();
+    Clock clock;
+    size_t currentTotal = clock.getTotalMicroseconds();
+    size_t lastTotal = clock.getTotalMicroseconds();
+    static sf::Mutex mutex;
 
-        this->updateEntities();
-        this->renderEntities();
-        std::cout << "hey client !" << std::endl;
+    while (window.isOpen()) {
+        mutex.lock();
+        currentTotal = clock.getTotalMicroseconds();
+        if (currentTotal - lastTotal >= 1000000 / this->frameRate) {
+            clock.frame();
+            this->handleWindowEvent();
+            this->updateEntities();
+            this->procTopQueue();
+            // call function to handle collision
+            this->renderEntities();
+            this->procDelectionQueue();
+            this->actionManager->flush();
+			this->networkManager->streamInput(this->actionManager);
+			bool tmp = this->canFeed;
+			this->canFeed = true;
+			this->networkManager->readSocket(*this);
+			this->canFeed = tmp;
+			lastTotal = currentTotal;
+        }
+		clock.tick();
+		mutex.unlock();
     }
 }
 

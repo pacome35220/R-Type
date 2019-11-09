@@ -1,7 +1,8 @@
 /**
  * @file      ACore.hpp
  * @brief     This is the Abstract Core
- * @details   This Abstract Class will be the parent of the CoreServer and CoreClients classes.
+ * @details   This Abstract Class will be the parent of the CoreServer and
+ * CoreClients classes.
  * @details   It brings an abstraction for each of these classes
  */
 
@@ -17,22 +18,25 @@
 
 class ACore : public ICore {
 public:
-    ACore() {};
+    ACore();
     virtual ~ACore() = default;
 
 public:
     void addEntity(AEntityPtr entity);
     void removeEntity(AEntityPtr entity);
 
-    void setActionManager(std::shared_ptr<ActionManager> actionManager) override;
-    void setCollisionManager(std::shared_ptr<CollisionManager> collisionManager) override;
-    void setNetworkManager(std::shared_ptr<NetworkManager> networkManager) override;
+    void
+    setActionManager(std::shared_ptr<ActionManager> actionManager) override;
+    void setCollisionManager(
+        std::shared_ptr<CollisionManager> collisionManager) override;
+    void
+    setNetworkManager(std::shared_ptr<NetworkManager> networkManager) override;
     void setAudioManager(std::shared_ptr<AudioManager> audioManager) override;
 
     std::shared_ptr<AudioManager> getAudioManager() const override;
-	std::shared_ptr<ActionManager> getActionManager() const override;
-	std::shared_ptr<NetworkManager> getNetworkManager() const override;
-	std::shared_ptr<CollisionManager> getPhysicManager() const override;
+    std::shared_ptr<ActionManager> getActionManager() const override;
+    std::shared_ptr<NetworkManager> getNetworkManager() const override;
+    std::shared_ptr<CollisionManager> getPhysicManager() const override;
 
     AEntityPtr getEntityFromId(size_t id) override;
     void onPlayerJoin(const sf::IpAddress &senderIP, unsigned short senderPort);
