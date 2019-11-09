@@ -11,15 +11,14 @@
 /**
  * @class Id "Include/Id.hpp"
  */
-class Id
-{
+class Id {
 public:
     Id();
-    const size_t &getId() const;
+    const std::size_t &getId() const;
 
 protected:
-    const size_t id;
+    const std::size_t id;
 
 private:
-    static size_t idGen;
+    static std::size_t idGen;
 };

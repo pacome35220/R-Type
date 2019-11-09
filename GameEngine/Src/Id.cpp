@@ -7,13 +7,10 @@
 
 #include "Id.hpp"
 
-size_t Id::idGen = 0;
+std::size_t Id::idGen = 0;
 
-Id::Id() : id(idGen++)
-{
-}
+Id::Id() : id(idGen++) {}
 
-const size_t &Id::getId() const
-{
+const std::size_t &Id::getId() const {
     return id;
 }
