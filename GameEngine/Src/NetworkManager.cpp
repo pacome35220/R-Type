@@ -63,7 +63,7 @@ void NetworkManager::readSocket(ACore &core) {
     int entityID;
     int id;
 
-    this->resetClientKeyMap();
+    this->resetClientsKeyMap();
 
     auto state = this->socket.receive(packet, sender, senderPort);
     if (state == sf::Socket::NotReady)
@@ -128,7 +128,7 @@ void NetworkManager::streamInput(std::shared_ptr<ActionManager> actionManager) {
     }
 }
 
-void NetworkManager::resetClientKeyMap() {
+void NetworkManager::resetClientsKeyMap() {
     for (auto &client : this->clients)
         std::memset(client.keyMap, 0, sizeof(client.keyMap));
 }

@@ -34,7 +34,7 @@ public:
     void execEntityAction(const AEntityPtr &entity, network::PACKET_TYPE packetType);
 
 private:
-    void resetClientKeyMap();
+    void resetClientsKeyMap();
 
 private:
     std::vector<Client> clients;
