@@ -37,5 +37,4 @@ include(${COMMON_DIR}Common.cmake)
 add_executable(r-type_server ${SRC} ${INCLUDE})
 
 # specify which libraries to connect
-message("LIB = " ${CONAN_LIBS})
 target_link_libraries(r-type_server ${CONAN_LIBS})
