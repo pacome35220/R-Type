@@ -35,8 +35,6 @@ public:
 	virtual std::shared_ptr<NetworkManager> getNetworkManager() const = 0;
 	virtual std::shared_ptr<CollisionManager> getPhysicManager() const = 0;
 
-    virtual void onPlayerJoin(const sf::IpAddress &senderIP, const unsigned short &senderPort) = 0;
-
     //virtual void setOnTop(int id) = 0;
 
 public:
