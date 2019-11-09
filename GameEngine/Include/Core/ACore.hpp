@@ -36,7 +36,7 @@ public:
     std::shared_ptr<AudioManager> getAudioManager() const override;
     std::shared_ptr<ActionManager> getActionManager() const override;
     std::shared_ptr<NetworkManager> getNetworkManager() const override;
-    std::shared_ptr<CollisionManager> getPhysicManager() const override;
+    std::shared_ptr<CollisionManager> getCollisionManager() const override;
 
     AEntityPtr getEntityFromId(size_t id) override;
 

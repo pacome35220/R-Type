@@ -33,7 +33,7 @@ public:
     virtual std::shared_ptr<AudioManager> getAudioManager() const = 0;
 	virtual std::shared_ptr<ActionManager> getActionManager() const = 0;
 	virtual std::shared_ptr<NetworkManager> getNetworkManager() const = 0;
-	virtual std::shared_ptr<CollisionManager> getPhysicManager() const = 0;
+	virtual std::shared_ptr<CollisionManager> getCollisionManager() const = 0;
 
     //virtual void setOnTop(int id) = 0;
 

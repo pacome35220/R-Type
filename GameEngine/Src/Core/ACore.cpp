@@ -54,7 +54,7 @@ std::shared_ptr<NetworkManager> ACore::getNetworkManager() const {
     return this->networkManager;
 }
 
-std::shared_ptr<CollisionManager> ACore::getPhysicManager() const {
+std::shared_ptr<CollisionManager> ACore::getCollisionManager() const {
     return this->collisionManager;
 }
 
