@@ -9,7 +9,7 @@
 
 Monster::Monster(ACore *entryPoint, sf::Vector2f &position, std::string texturePath, size_t health,
                  float speed, float amplitude, float amplitudeSpeed) : AEntity(position, texturePath,
-                                                                               entryPoint)
+                                                                               entryPoint, "Monster")
 {
     //TODO
 }
