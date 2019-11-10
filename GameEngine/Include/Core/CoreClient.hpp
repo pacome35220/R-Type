@@ -13,13 +13,15 @@ class CoreClient : public ACore {
 public:
     CoreClient(const std::string &windowTitle);
     void run() override;
-    void addEntity(AEntityPtr entity) override;
+    void addEntity(AEntityPtr entity);
+    const sf::RenderWindow &getRenderWindow() const;
 
 private:
-    void renderEntities() override;
+    void renderEntities();
     void handleWindowEvent();
     void procDelectionQueue() override;
 
 private:
     sf::RenderWindow window;
+    // std::shared_ptr<sf::RenderWindow> window;
 };

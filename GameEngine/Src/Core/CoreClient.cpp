@@ -82,3 +82,7 @@ void CoreClient::procDelectionQueue() {
     }
     this->deletionQueue = std::vector<AEntityPtr>();
 }
+
+const sf::RenderWindow &CoreClient::getRenderWindow() const {
+    return this->window;
+}

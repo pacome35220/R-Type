@@ -14,6 +14,7 @@
 #include <SFML/System.hpp>
 #include "Id.hpp"
 #include "CollisionManager.hpp"
+// #include "Core/CoreClient.hpp"
 #include "PacketType.hpp"
 
 class ACore;
@@ -26,7 +27,7 @@ typedef std::shared_ptr<AEntity> AEntityPtr;
  */
 class AEntity : public Id {
 public:
-    AEntity(sf::Vector2f position, std::string texturePath, ACore *entryPoint);
+    AEntity(sf::Vector2f position, std::string texturePath, ACore *entryPoint, const std::string &_type);
     virtual ~AEntity() = default;
     const sf::Vector2f &getPosition() const;
     const sf::Sprite &getSprite() const;
@@ -45,11 +46,11 @@ public:
 
 private:
     sf::Vector2f position;
-    const std::string type;
-    float angle;
+    //float angle;
     size_t packetNumber;
 
 protected:
+    const std::string type;
     std::string texturePath;
     sf::Texture texture;
     sf::Sprite sprite;
