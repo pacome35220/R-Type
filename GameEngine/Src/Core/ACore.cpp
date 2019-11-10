@@ -17,8 +17,7 @@ void ACore::setActionManager(std::shared_ptr<ActionManager> actionManager) {
     this->actionManager = actionManager;
 }
 
-void ACore::setCollisionManager(
-    std::shared_ptr<CollisionManager> collisionManager) {
+void ACore::setCollisionManager(std::shared_ptr<CollisionManager> collisionManager) {
     this->collisionManager = collisionManager;
 }
 

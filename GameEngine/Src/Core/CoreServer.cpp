@@ -35,8 +35,8 @@ void CoreServer::addEntity(AEntityPtr entity) {
 }
 
 void CoreServer::renderEntities() {
-    for (auto const &entity : this->entities)
-        entity->render();
+    //for (auto const &entity : this->entities)
+    //    entity->render();
 }
 
 void CoreServer::onPlayerJoin(const sf::IpAddress &senderIp,

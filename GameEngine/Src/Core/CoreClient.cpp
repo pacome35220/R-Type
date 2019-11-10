@@ -69,7 +69,7 @@ void CoreClient::handleWindowEvent() {
 void CoreClient::renderEntities() {
     this->window.clear(sf::Color(0, 0, 0, 0));
     for (auto const &entity : this->entities)
-        entity->render();
+        entity->render(&this->window);
     this->window.display();
 }
 
