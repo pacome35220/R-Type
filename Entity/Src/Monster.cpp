@@ -76,7 +76,7 @@ sf::Packet Monster::decodeEntityPacket(network::PACKET_TYPE packetType)
     packet << packetType;
     if (packetType == network::PT_ENTITY_UPDATE)
         packet << (unsigned int) this->id;
-    packet << (unsigned int) this->monsterType << (unsigned int) this->id;
+    packet << this->monsterType << (unsigned int) this->id;
     packet << this->position.x << this->position.y << this->amplitude << this->speed << this->amplitudeSpeed << this->scale << this->originalY << this->counter;
     return packet;
 }

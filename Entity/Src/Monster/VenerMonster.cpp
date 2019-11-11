@@ -1,8 +1,12 @@
-/*
-** EPITECH PROJECT, 2019
-** CPP_rtype_2019
-** File description:
-** VenerMonster.cpp
-*/
+#include "Monster/VenerMonster.hpp"
 
-// #include "VenerMonster.hpp"
+#define HEALTH 60
+
+VenerMonster::VenerMonster(ACore *entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed)
+: Monster(entryPoint, position, "./Assets/Sprites/VenerMonster.png", HEALTH, speed, amplitude, amplitudeSpeed, monsterTypes::MT_ANGRY_MONSTER)
+{
+}
+
+VenerMonster::~VenerMonster()
+{
+}

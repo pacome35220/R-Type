@@ -1,8 +1,12 @@
-/*
-** EPITECH PROJECT, 2019
-** CPP_rtype_2019
-** File description:
-** DumbMonster.cpp
-*/
+#include "Monster/DumbMonster.hpp"
 
-//#include "DumbMonster.hpp"
+#define HEALTH 10
+
+DumbMonster::DumbMonster(ACore *entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed)
+: Monster(entryPoint, position, "./Assets/Sprites/DumbMonster.png", HEALTH, speed, amplitude, amplitudeSpeed, monsterTypes::MT_DUMB_MONSTER)
+{
+}
+
+DumbMonster::~DumbMonster()
+{
+}

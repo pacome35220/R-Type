@@ -7,7 +7,6 @@ ClassicMonster::ClassicMonster(ACore *entryPoint, sf::Vector2f &position, float 
 {
 }
 
-// ClassicMonster::~ClassicMonster()
-// {
-
-// }
+ClassicMonster::~ClassicMonster()
+{
+}

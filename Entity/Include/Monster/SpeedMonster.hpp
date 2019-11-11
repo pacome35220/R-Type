@@ -4,16 +4,15 @@
  */
 
 #pragma once
-
+#include "Monster.hpp"
 /**
  * @class SpeedMonster "Include/SpeedMonster.hpp"
  */
-class SpeedMonster
+class SpeedMonster : Monster
 {
 public:
-
-public:
-
+    SpeedMonster(ACore *entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
+    ~SpeedMonster();
 private:
 
 };
