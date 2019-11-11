@@ -47,8 +47,6 @@ protected:
     std::shared_ptr<AudioManager> audioManager;
     std::shared_ptr<CollisionManager> collisionManager;
     std::shared_ptr<NetworkManager> networkManager;
-
-protected:
     void updateEntities() override;
-    void procTopQueue();
+    void procTopQueue() override;
 };

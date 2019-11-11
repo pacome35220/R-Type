@@ -34,11 +34,6 @@ void CoreServer::addEntity(AEntityPtr entity) {
         this->entities.push_back(entity);
 }
 
-void CoreServer::renderEntities() {
-    //for (auto const &entity : this->entities)
-    //    entity->render();
-}
-
 void CoreServer::onPlayerJoin(const sf::IpAddress &senderIp,
                               unsigned short senderPort) {
     sf::Vector2i newClientPosition(-90, 0);

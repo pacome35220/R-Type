@@ -46,10 +46,7 @@ public:
     // virtual float absoluteToAbsoluteX(float x) = 0;
     // virtual float absoluteToAbsoluteY(float y) = 0;
     virtual void run() = 0;
-
-private:
-    virtual void updateEntities() = 0;
-    virtual void renderEntities() = 0;
-    virtual void procTopQueue() = 0;
     virtual void procDelectionQueue() = 0;
+    virtual void updateEntities() = 0;
+    virtual void procTopQueue() = 0;
 };
