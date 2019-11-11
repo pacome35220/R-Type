@@ -42,7 +42,7 @@ public:
 public:
     sf::Packet buildMyPacket(network::PACKET_TYPE packetType);
     void updateFromPacket(sf::Packet packet);
-    void render(sf::RenderWindow *window);
+    void render(sf::RenderWindow &window);
 
 protected:
     sf::Vector2f position;

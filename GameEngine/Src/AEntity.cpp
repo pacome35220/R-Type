@@ -78,13 +78,12 @@ void AEntity::updateFromPacket(sf::Packet packet)
  * Display this
  */
 
-void AEntity::render(sf::RenderWindow *window)
+void AEntity::render(sf::RenderWindow &window)
 {
     //sf::Vector2f spritePos = this->position;
 
 	// spritePos.x = this->position.x; //this->entryPoint->absoluteToRelativeX(this->position.x);
 	// spritePos.y = this->entryPoint->absoluteToRelativeY(this->position.y);
  	this->sprite.setPosition(this->position);
-    if (window != nullptr)
-        window->draw(this->sprite);
+    window.draw(this->sprite);
 }
