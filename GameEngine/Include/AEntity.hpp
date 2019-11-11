@@ -44,7 +44,7 @@ public:
     void updateFromPacket(sf::Packet packet);
     void render(sf::RenderWindow *window);
 
-private:
+protected:
     sf::Vector2f position;
     //float angle;
     size_t packetNumber;

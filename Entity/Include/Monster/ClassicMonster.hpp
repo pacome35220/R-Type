@@ -12,8 +12,8 @@
 class ClassicMonster : Monster
 {
 public:
-    //ClassicMonster(sf::Vector2f &pos, float speed, float amplitude, float amplitudeSpeed, float scale);
-    //~ClassicMonster();
+    ClassicMonster(ACore *entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
+    ~ClassicMonster();
 private:
 
 };

@@ -10,13 +10,25 @@
 #include "../../GameEngine/Include/AEntity.hpp"
 
 /**
+ * @enum define and refer to monster's types
+ *
+ */
+
+enum monsterTypes {
+    MT_CLASSIC_MONSTER,
+    MT_DUMB_MONSTER,
+    MT_SPEED_MONSTER,
+    MT_ANGRY_MONSTER,
+    MT_DOLLEY_MONSTER
+};
+
+/**
  * @class Monster "Include/Monster.hpp"
  */
 class Monster : public AEntity
 {
 public:
-    Monster(ACore *entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed,
-            float amplitude, float amplitudeSpeed);
+    Monster(ACore *entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, monsterTypes monsterType);
     ~Monster();
     float getCounter() const;
     void setCounter(float counter);
@@ -37,5 +49,6 @@ protected:
     float amplitude;
     float amplitudeSpeed;
     bool hasPowerUp;
+    monsterTypes monsterType;
     size_t health;
 };
