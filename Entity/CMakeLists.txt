@@ -37,6 +37,7 @@ set(INCLUDE
         ${INCDIR}Parallax.hpp
         ${INCDIR}Player.hpp
         ${INCDIR}PowerUp.hpp
+        ${INCDIR}EntityList.hpp
         ${INCDIR}${BULLETDIR}BlackStarBullet.hpp
         ${INCDIR}${BULLETDIR}MonsterBullet.hpp
         ${INCDIR}${BULLETDIR}PlayerBullet.hpp
