@@ -9,7 +9,7 @@ int main(int argc, char **argv)
     try {
         Server::start(std::atoi(argv[1]));
     }
-    catch (Error error) {
+    catch (const Error &error) {
         std::cerr << error.what() << std::endl;
         return EXIT_FAILURE;
     }
