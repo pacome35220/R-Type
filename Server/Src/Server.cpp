@@ -69,7 +69,7 @@ void Server::entityFeeder(CoreServer &core) {
 void Server::threadEntryPoint(unsigned short port) {
     CoreServer core;
 
-    core.getNetworkManager()->bindSocket(port);
+    core.getNetwork()->bindSocket(port);
     Server::entityFeeder(core);
     core.run();
 }
