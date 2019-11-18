@@ -7,27 +7,26 @@
 
 #include "AEntity.hpp"
 
-AEntity::AEntity(sf::Vector2f _position, std::string _texturePath, ACore *_entryPoint, const std::string &_type)
-    : position(_position), packetNumber(0), type(_type), texturePath(_texturePath), entryPoint( _entryPoint)
+AEntity::AEntity(sf::Vector2f _position, std::string _texturePath, ACore *_entryPoint,
+                 const std::string &_type) : position(_position), packetNumber(0), type(_type),
+                                             texturePath(_texturePath), entryPoint(_entryPoint)
 {
 }
-
 const sf::Vector2f &AEntity::getPosition() const
 {
     return position;
 }
+
 const sf::Sprite &AEntity::getSprite() const
 {
     return sprite;
 }
-const CollisionManager &AEntity::getCollisionManager() const
-{
-    return collisionManager;
-}
+
 void AEntity::setPosition(const sf::Vector2f &_position)
 {
     AEntity::position = _position;
 }
+
 void AEntity::setSprite(const sf::Sprite &_sprite)
 {
     AEntity::sprite = _sprite;

@@ -13,8 +13,6 @@
 #include <SFML/Network.hpp>
 #include <SFML/System.hpp>
 #include "Id.hpp"
-#include "CollisionManager.hpp"
-// #include "Core/CoreClient.hpp"
 #include "PacketType.hpp"
 
 class ACore;
@@ -31,7 +29,6 @@ public:
     virtual ~AEntity() = default;
     const sf::Vector2f &getPosition() const;
     const sf::Sprite &getSprite() const;
-    const CollisionManager &getCollisionManager() const;
     void setPosition(const sf::Vector2f &position);
     void setSprite(const sf::Sprite &sprite);
 
@@ -45,15 +42,11 @@ public:
     void render(sf::RenderWindow &window);
 
 protected:
-    sf::Vector2f position;
-    //float angle;
-    size_t packetNumber;
-
-protected:
     const std::string type;
     std::string texturePath;
     sf::Texture texture;
     sf::Sprite sprite;
-    CollisionManager collisionManager;
     ACore *entryPoint;
+    sf::Vector2f position;
+    size_t packetNumber;
 };
