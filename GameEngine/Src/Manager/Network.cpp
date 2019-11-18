@@ -145,7 +145,7 @@ void Manager::Network::execEntityAction(const AEntityPtr &entity, network::Packe
         this->socket.send(packet, client.ip, client.port);
 }
 
-EntityFactory NetworkManager::getEntityFactory() const
+EntityFactory Network::getEntityFactory() const
 {
     return this->entityFactory;
 }
