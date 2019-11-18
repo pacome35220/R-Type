@@ -60,5 +60,8 @@ target_link_libraries(GameEngine -l m)
 set(COMMON_DIR ../Common/)
 include(${COMMON_DIR}Common.cmake)
 
+set(ENTITY_DIR ../Entity/)
+include(${ENTITY_DIR}Entity.cmake)
+
 # Compiled Options
 target_compile_options(GameEngine PRIVATE -W -Wall -Wextra -pedantic)

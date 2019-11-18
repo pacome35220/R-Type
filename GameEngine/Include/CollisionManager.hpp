@@ -8,6 +8,7 @@
 #include <map>
 #include <list>
 #include <memory>
+#include "EntityList.hpp"
 
 class AEntity;
 
@@ -20,15 +21,15 @@ class CollisionManager {
 public:
     CollisionManager() = default;
     ~CollisionManager() = default;
-    bool getCollision(const std::string &type1, const std::string &type2) const;
-    void setCollision(const std::string &type1, const std::string &type2,
+    bool getCollision(EntityList entity1, EntityList entity2) const;
+    void setCollision(EntityList entity1, EntityList entity2,
                       const bool &status);
 
 private:
-    void processCollision(std::list<AEntityPtr> &entityList);
     bool rectCollision(AEntity &entity1, AEntity &entity2);
+    void processCollision(std::list<AEntityPtr> &entityList);
     bool pixelCollision(AEntity &entity1, AEntity &entity2);
 
 private:
-    std::map<std::string, std::map<std::string, bool>> collisionMatrix;
+    std::map<std::string, std::map<std::string, bool>> collisionMap;
 };
