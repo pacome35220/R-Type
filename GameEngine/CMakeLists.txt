@@ -13,6 +13,10 @@ set(INCDIR Include/)
 set(CORDIR Core/)
 set(MNTDIR Manager/)
 
+set(ENTITY_DIR ../Entity/)
+include(${ENTITY_DIR}Entity.cmake)
+
+
 set(SRC
         ${SRCDIR}EntityFactory.cpp
         ${SRCDIR}AEntity.cpp
@@ -45,7 +49,7 @@ set(INCLUDE
 
 # Includes directories
 include_directories(${INCDIR} ../Common/${INCDIR})
-include_directories(${INCDIR} ../Entity/${INCDIR})
+include_directories(../Entity/${INCDIR})
 
 # Conan libraries includes
 include(../build/conanbuildinfo.cmake)
@@ -61,9 +65,6 @@ target_link_libraries(GameEngine -l m)
 #common includes
 set(COMMON_DIR ../Common/)
 include(${COMMON_DIR}Common.cmake)
-
-set(ENTITY_DIR ../Entity/)
-include(${ENTITY_DIR}Entity.cmake)
 
 # Compiled Options
 target_compile_options(GameEngine PRIVATE -W -Wall -Wextra -pedantic)
