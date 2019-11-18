@@ -11,35 +11,36 @@ set(CMAKE_CXX_STANDARD 14)
 set(SRCDIR Src/)
 set(INCDIR Include/)
 set(CORDIR Core/)
+set(MNTDIR Manager/)
 
 set(SRC
-        ${SRCDIR}${CORDIR}ACore.cpp
-        ${SRCDIR}${CORDIR}CoreClient.cpp
-        ${SRCDIR}${CORDIR}CoreServer.cpp
-        ${SRCDIR}CollisionManager.cpp
         ${SRCDIR}EntityFactory.cpp
         ${SRCDIR}AEntity.cpp
         ${SRCDIR}Id.cpp
-        ${SRCDIR}ActionManager.cpp
-        ${SRCDIR}AudioManager.cpp
-        ${SRCDIR}NetworkManager.cpp
         ${SRCDIR}Clock.cpp
+        ${SRCDIR}${CORDIR}ACore.cpp
+        ${SRCDIR}${CORDIR}CoreClient.cpp
+        ${SRCDIR}${CORDIR}CoreServer.cpp
+        ${SRCDIR}${MNTDIR}CollisionManager.cpp
+        ${SRCDIR}${MNTDIR}ActionManager.cpp
+        ${SRCDIR}${MNTDIR}AudioManager.cpp
+        ${SRCDIR}${MNTDIR}NetworkManager.cpp
         )
 
 set(INCLUDE
+        ${INCDIR}EntityFactory.hpp
+        ${INCDIR}AEntity.hpp
+        ${INCDIR}Id.hpp
+        ${INCDIR}Clock.hpp
+        ${INCDIR}Client.hpp
         ${INCDIR}${CORDIR}ICore.hpp
         ${INCDIR}${CORDIR}ACore.hpp
         ${INCDIR}${CORDIR}CoreClient.hpp
         ${INCDIR}${CORDIR}CoreServer.hpp
-        ${INCDIR}CollisionManager.hpp
-        ${INCDIR}EntityFactory.hpp
-        ${INCDIR}AEntity.hpp
-        ${INCDIR}Id.hpp
-        ${INCDIR}ActionManager.hpp
-        ${INCDIR}AudioManager.hpp
-        ${INCDIR}Client.hpp
-        ${INCDIR}NetworkManager.hpp
-        ${INCDIR}Clock.hpp
+        ${INCDIR}${MNTDIR}CollisionManager.hpp
+        ${INCDIR}${MNTDIR}NetworkManager.hpp
+        ${INCDIR}${MNTDIR}ActionManager.hpp
+        ${INCDIR}${MNTDIR}AudioManager.hpp
         )
 
 # Includes directories

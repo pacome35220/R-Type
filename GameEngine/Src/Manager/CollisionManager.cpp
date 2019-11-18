@@ -6,7 +6,7 @@
 */
 
 #include <string>
-#include "CollisionManager.hpp"
+#include "Manager/CollisionManager.hpp"
 
 /**
  * Check if a collision is possible between \type1 and \type2
@@ -14,7 +14,7 @@
  * @param type2
  * @return True | False
  */
-bool CollisionManager::getCollision(EntityList entity1, EntityList entity2) const
+bool Manager::CollisionManager::getCollision(EntityList entity1, EntityList entity2) const
 {
     // Todo
 }
@@ -24,7 +24,7 @@ bool CollisionManager::getCollision(EntityList entity1, EntityList entity2) cons
  * @param type2
  * @return True | False
  */
-void CollisionManager::setCollision(EntityList entity1, EntityList entity2, const bool &status)
+void Manager::CollisionManager::setCollision(EntityList entity1, EntityList entity2, const bool &status)
 {
     // Todo
 }
@@ -34,7 +34,7 @@ void CollisionManager::setCollision(EntityList entity1, EntityList entity2, cons
  * @param type2
  * @return True | False
  */
-void CollisionManager::processCollision(std::list<AEntityPtr> &entityList)
+void Manager::CollisionManager::processCollision(std::list<AEntityPtr> &entityList)
 {
     (void) entityList;
     // TODO
@@ -45,7 +45,7 @@ void CollisionManager::processCollision(std::list<AEntityPtr> &entityList)
  * @param entity2
  * @return
  */
-bool CollisionManager::rectCollision(AEntity &entity1, AEntity &entity2)
+bool Manager::CollisionManager::rectCollision(AEntity &entity1, AEntity &entity2)
 {
     (void) entity1;
     (void) entity2;
@@ -58,7 +58,7 @@ bool CollisionManager::rectCollision(AEntity &entity1, AEntity &entity2)
  * @param entity2
  * @return
  */
-bool CollisionManager::pixelCollision(AEntity &entity1, AEntity &entity2)
+bool Manager::CollisionManager::pixelCollision(AEntity &entity1, AEntity &entity2)
 {
     (void) entity1;
     (void) entity2;
