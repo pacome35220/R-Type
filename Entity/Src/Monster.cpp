@@ -7,7 +7,7 @@
 
 #include "Monster.hpp"
 
-Monster::Monster(ACore *entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, monsterTypes monsterType) : AEntity(position, texturePath, entryPoint, "Monster"),
+Monster::Monster(ACore *entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, MonsterTypes monsterType) : AEntity(position, texturePath, entryPoint, EL_UNKNOWN),
 speed(speed), amplitude(amplitude), amplitudeSpeed(amplitudeSpeed), monsterType(monsterType), health(health)
 {
     //Todo

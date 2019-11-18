@@ -14,7 +14,7 @@
  *
  */
 
-enum monsterTypes {
+enum MonsterTypes {
     MT_CLASSIC_MONSTER,
     MT_DUMB_MONSTER,
     MT_SPEED_MONSTER,
@@ -28,7 +28,7 @@ enum monsterTypes {
 class Monster : public AEntity
 {
 public:
-    Monster(ACore *entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, monsterTypes monsterType);
+    Monster(ACore *entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, MonsterTypes monsterType);
     ~Monster();
     float getCounter() const;
     void setCounter(float counter);
@@ -49,6 +49,6 @@ protected:
     float amplitude;
     float amplitudeSpeed;
     bool hasPowerUp;
-    monsterTypes monsterType;
+    enum MonsterTypes monsterType;
     size_t health;
 };
