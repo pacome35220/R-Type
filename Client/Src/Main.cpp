@@ -11,6 +11,11 @@
 #include "Error.hpp"
 #include "Parallax.hpp"
 
+/**
+ * Entry point of the program
+ * @param ip
+ * @param port
+ */
 void runClient(const std::string &ip, unsigned short port) {
     CoreClient core("R-Type Client");
     // sf::Vector2f pos(0, 0);
@@ -25,6 +30,12 @@ void runClient(const std::string &ip, unsigned short port) {
     core.run();
 }
 
+/**
+ * Main client
+ * @param argc
+ * @param argv
+ * @return
+ */
 int main(int argc, char **argv) {
     if (argc < 3)
         return EXIT_FAILURE;
