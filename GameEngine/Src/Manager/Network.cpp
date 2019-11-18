@@ -90,7 +90,8 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_CREATION) {
             packet >> entityID;
-            this->entityFactory.buildEntity(entityID, core, packet);
+            this->entityFactory.buildEntity((enum EntityList)entityID, core,
+                                            packet);
         }
 
         if (networkCode == network::PT_ENTITY_UPDATE) {
@@ -147,7 +148,7 @@ void Manager::Network::execEntityAction(const AEntityPtr &entity,
     for (auto &client : this->clients)
         this->socket.send(packet, client.ip, client.port);
 }
-EntityFactory Manager::Network::getEntityFactory() const
-{
+
+const EntityFactory &Manager::Network::getEntityFactory() const {
     return this->entityFactory;
 }

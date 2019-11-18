@@ -16,38 +16,37 @@
 /**
  * @namespace Package to manage whole entities in the project
  */
-namespace Manager
-{
-    /**
-     * @class Network "Include/Network.hpp"
-    */
-    class Network
-    {
-    public:
-        Network();
-        ~Network() = default;
-        void setIpTarget(const std::string &ipTarget);
-        void setPortTarget(unsigned short portTarget);
-        const std::vector<Client> &getClients() const;
-        void addNewClient(const sf::IpAddress &ip, unsigned short port);
+namespace Manager {
+/**
+ * @class Network "Include/Network.hpp"
+ */
+class Network {
+public:
+    Network();
+    ~Network() = default;
+    void setIpTarget(const std::string &ipTarget);
+    void setPortTarget(unsigned short portTarget);
+    const std::vector<Client> &getClients() const;
+    void addNewClient(const sf::IpAddress &ip, unsigned short port);
 
-    public:
-        void bindSocket(unsigned short port);
-        void sendPacket(sf::Packet, sf::IpAddress ip, unsigned short port);
-        void readSocket(ACore &core);
-        void streamInput(std::shared_ptr<Action> action);
-        bool isClientKeyPressed(std::size_t clientId, sf::Keyboard::Key key);
-        void execEntityAction(const AEntityPtr &entity, network::PacketType packetType);
-        EntityFactory getEntityFactory() const;
+public:
+    void bindSocket(unsigned short port);
+    void sendPacket(sf::Packet, sf::IpAddress ip, unsigned short port);
+    void readSocket(ACore &core);
+    void streamInput(std::shared_ptr<Action> action);
+    bool isClientKeyPressed(std::size_t clientId, sf::Keyboard::Key key);
+    void execEntityAction(const AEntityPtr &entity,
+                          network::PacketType packetType);
+    const EntityFactory &getEntityFactory() const;
 
-    private:
-        void resetClientsKeyMap();
+private:
+    void resetClientsKeyMap();
 
-    private:
-        std::vector<Client> clients;
-        sf::UdpSocket socket;
-        std::string ipTarget;
-        unsigned short portTarget;
-        EntityFactory entityFactory;
-    };
-}
+private:
+    std::vector<Client> clients;
+    sf::UdpSocket socket;
+    std::string ipTarget;
+    unsigned short portTarget;
+    EntityFactory entityFactory;
+};
+} // namespace Manager
