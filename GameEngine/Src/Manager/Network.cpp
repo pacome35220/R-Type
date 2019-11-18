@@ -10,24 +10,24 @@
 #include "Error.hpp"
 #include "Manager/Network.hpp"
 
-Manager::Network::Network()
-{
+Manager::Network::Network() {
     this->socket.setBlocking(false);
 }
-void Manager::Network::setIpTarget(const std::string &ipTarget)
-{
+
+void Manager::Network::setIpTarget(const std::string &ipTarget) {
     this->ipTarget = ipTarget;
 }
-void Manager::Network::setPortTarget(unsigned short portTarget)
-{
+
+void Manager::Network::setPortTarget(unsigned short portTarget) {
     this->portTarget = portTarget;
 }
-const std::vector<Client> &Manager::Network::getClients() const
-{
+
+const std::vector<Client> &Manager::Network::getClients() const {
     return this->clients;
 }
-void Manager::Network::addNewClient(const sf::IpAddress &ip, unsigned short port)
-{
+
+void Manager::Network::addNewClient(const sf::IpAddress &ip,
+                                    unsigned short port) {
     Client newClient;
 
     for (const auto &value : this->getClients())
@@ -42,18 +42,18 @@ void Manager::Network::addNewClient(const sf::IpAddress &ip, unsigned short port
     this->clients.push_back(newClient);
 }
 
-void Manager::Network::bindSocket(unsigned short port)
-{
+void Manager::Network::bindSocket(unsigned short port) {
     if (this->socket.bind(port) != sf::Socket::Done)
         throw Error("Bind fail", __FILE__, __func__, __LINE__);
     std::cout << "Network is listening to port " << port << std::endl;
 }
-void Manager::Network::sendPacket(sf::Packet packet, sf::IpAddress ip, unsigned short port)
-{
+
+void Manager::Network::sendPacket(sf::Packet packet, sf::IpAddress ip,
+                                  unsigned short port) {
     this->socket.send(packet, ip, port);
 }
-void Manager::Network::readSocket(ACore &core)
-{
+
+void Manager::Network::readSocket(ACore &core) {
     // Receiver variable
     sf::Packet packet;
     sf::IpAddress sender;
@@ -99,23 +99,24 @@ void Manager::Network::readSocket(ACore &core)
 
             // If you miss the CREATION event, recreate it
 
-            // AEntity *target = core.getEntityFromId(id);
-            // if (target == nullptr) {
-            // 	core.feedEntity(_constructor[entityID](core, packet));
-            // } else {
-            //     target->updateFromPacket(packet);
-            // }
+            AEntityPtr target = core.getEntityFromId(id);
+            if (!target) {
+                core.feedEntity(this->entityFactory.buildEntity(
+                    (enum EntityList)entityID, core, packet));
+            } else {
+                target->updateFromPacket(packet);
+            }
         }
 
         if (networkCode == network::PT_ENTITY_DESTRUCTION) {
             packet >> id;
-            // core.addToDeletionQueueById(id);
+            core.addToDeletionQueue((enum EntityList) id);
         }
         state = this->socket.receive(packet, sender, senderPort);
     }
 }
-void Manager::Network::streamInput(std::shared_ptr<Action> actionManager)
-{
+
+void Manager::Network::streamInput(std::shared_ptr<Action> actionManager) {
     auto pressedKey = actionManager->getKeyPressed();
 
     for (const auto &keyCode : pressedKey) {
@@ -126,19 +127,21 @@ void Manager::Network::streamInput(std::shared_ptr<Action> actionManager)
         this->sendPacket(packet, this->ipTarget, this->portTarget);
     }
 }
-void Manager::Network::resetClientsKeyMap()
-{
+
+void Manager::Network::resetClientsKeyMap() {
     for (auto &client : this->clients)
         std::memset(client.keyMap, 0, sizeof(client.keyMap));
 }
-bool Manager::Network::isClientKeyPressed(std::size_t clientId, sf::Keyboard::Key key)
-{
+
+bool Manager::Network::isClientKeyPressed(std::size_t clientId,
+                                          sf::Keyboard::Key key) {
     if (clientId >= this->clients.size())
         return false;
     return this->clients[clientId].keyMap[key % sf::Keyboard::KeyCount] != 0;
 }
-void Manager::Network::execEntityAction(const AEntityPtr &entity, network::PacketType packetType)
-{
+
+void Manager::Network::execEntityAction(const AEntityPtr &entity,
+                                        network::PacketType packetType) {
     sf::Packet packet = entity->buildMyPacket(packetType);
 
     for (auto &client : this->clients)
