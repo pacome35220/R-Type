@@ -32,6 +32,7 @@ public:
     void streamInput(std::shared_ptr<ActionManager> actionManager);
     bool isClientKeyPressed(std::size_t clientId, sf::Keyboard::Key key);
     void execEntityAction(const AEntityPtr &entity, network::PacketType packetType);
+    EntityFactory getEntityFactory() const;
 
 private:
     void resetClientsKeyMap();
