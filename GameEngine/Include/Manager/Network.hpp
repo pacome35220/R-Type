@@ -11,7 +11,7 @@
 #include "Client.hpp"
 #include "EntityFactory.hpp"
 #include "PacketType.hpp"
-#include "ActionManager.hpp"
+#include "Action.hpp"
 
 /**
  * @namespace Package to manage whole entities in the project
@@ -21,11 +21,11 @@ namespace Manager
     /**
      * @class NetworkManager "Include/NetworkManager.hpp"
     */
-    class NetworkManager
+    class Network
     {
     public:
-        NetworkManager();
-        ~NetworkManager() = default;
+        Network();
+        ~Network() = default;
         void setIpTarget(const std::string &ipTarget);
         void setPortTarget(unsigned short portTarget);
         const std::vector<Client> &getClients() const;
@@ -35,7 +35,7 @@ namespace Manager
         void bindSocket(unsigned short port);
         void sendPacket(sf::Packet, sf::IpAddress ip, unsigned short port);
         void readSocket(ACore &core);
-        void streamInput(std::shared_ptr<ActionManager> actionManager);
+        void streamInput(std::shared_ptr<Action> actionManager);
         bool isClientKeyPressed(std::size_t clientId, sf::Keyboard::Key key);
         void execEntityAction(const AEntityPtr &entity, network::PacketType packetType);
 

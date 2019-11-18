@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2019
 ** CPP_rtype_2019
 ** File description:
-** CollisionManager.cpp
+** Collision.cpp
 */
 
 #include <string>
-#include "Manager/CollisionManager.hpp"
+#include "Manager/Collision.hpp"
 
 /**
  * Check if a collision is possible between \type1 and \type2
@@ -14,7 +14,7 @@
  * @param type2
  * @return True | False
  */
-bool Manager::CollisionManager::getCollision(EntityList entity1, EntityList entity2) const
+bool Manager::Collision::getCollision(EntityList entity1, EntityList entity2) const
 {
     // Todo
 }
@@ -24,7 +24,7 @@ bool Manager::CollisionManager::getCollision(EntityList entity1, EntityList enti
  * @param type2
  * @return True | False
  */
-void Manager::CollisionManager::setCollision(EntityList entity1, EntityList entity2, const bool &status)
+void Manager::Collision::setCollision(EntityList entity1, EntityList entity2, const bool &status)
 {
     // Todo
 }
@@ -34,7 +34,7 @@ void Manager::CollisionManager::setCollision(EntityList entity1, EntityList enti
  * @param type2
  * @return True | False
  */
-void Manager::CollisionManager::processCollision(std::list<AEntityPtr> &entityList)
+void Manager::Collision::processCollision(std::list<AEntityPtr> &entityList)
 {
     (void) entityList;
     // TODO
@@ -45,7 +45,7 @@ void Manager::CollisionManager::processCollision(std::list<AEntityPtr> &entityLi
  * @param entity2
  * @return
  */
-bool Manager::CollisionManager::rectCollision(AEntity &entity1, AEntity &entity2)
+bool Manager::Collision::rectCollision(AEntity &entity1, AEntity &entity2)
 {
     (void) entity1;
     (void) entity2;
@@ -58,7 +58,7 @@ bool Manager::CollisionManager::rectCollision(AEntity &entity1, AEntity &entity2
  * @param entity2
  * @return
  */
-bool Manager::CollisionManager::pixelCollision(AEntity &entity1, AEntity &entity2)
+bool Manager::Collision::pixelCollision(AEntity &entity1, AEntity &entity2)
 {
     (void) entity1;
     (void) entity2;

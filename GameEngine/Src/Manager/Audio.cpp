@@ -2,14 +2,14 @@
 ** EPITECH PROJECT, 2019
 ** CPP_rtype_2019
 ** File description:
-** AudioManager.cpp
+** Audio.cpp
 */
 
-#include "Manager/AudioManager.hpp"
+#include "Manager/Audio.hpp"
 
-Manager::AudioManager::AudioManager() : isPlaying(false)
+Manager::Audio::Audio() : isPlaying(false)
 {}
-bool Manager::AudioManager::playBackgroundMusic(const std::string &musicPath)
+bool Manager::Audio::playBackgroundMusic(const std::string &musicPath)
 {
     if (!this->isPlaying) {
         if (!this->backgroundMusic.openFromFile(musicPath))
@@ -19,14 +19,14 @@ bool Manager::AudioManager::playBackgroundMusic(const std::string &musicPath)
     }
     return this->isPlaying;
 }
-void Manager::AudioManager::stopBackgroundMusic()
+void Manager::Audio::stopBackgroundMusic()
 {
     if (this->isPlaying) {
         this->backgroundMusic.stop();
         this->isPlaying = false;
     }
 }
-bool Manager::AudioManager::addSound(const std::string &name, const std::string &path)
+bool Manager::Audio::addSound(const std::string &name, const std::string &path)
 {
     sf::SoundBuffer sound;
 
@@ -35,11 +35,11 @@ bool Manager::AudioManager::addSound(const std::string &name, const std::string 
     this->musics[name].setBuffer(sound);
     return true;
 }
-void Manager::AudioManager::playSound(const std::string &name)
+void Manager::Audio::playSound(const std::string &name)
 {
     this->musics[name].play();
 }
-void Manager::AudioManager::stopSound(const std::string &name)
+void Manager::Audio::stopSound(const std::string &name)
 {
     this->musics[name].stop();
 }

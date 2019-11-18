@@ -1,5 +1,5 @@
 /**
- * @file      CollisionManager.hpp
+ * @file      Collision.hpp
  * @brief     This class manages all the entity collisions
  */
 
@@ -23,13 +23,13 @@ typedef std::shared_ptr<AEntity> AEntityPtr;
 namespace Manager
 {
 /**
- * @class CollisionManager "Include/Collision.hpp"
+ * @class Collision "Include/Collision.hpp"
  */
-    class CollisionManager
+    class Collision
     {
     public:
-        CollisionManager() = default;
-        ~CollisionManager() = default;
+        Collision() = default;
+        ~Collision() = default;
         bool getCollision(EntityList entity1, EntityList entity2) const;
         void setCollision(EntityList entity1, EntityList entity2, const bool &status);
 

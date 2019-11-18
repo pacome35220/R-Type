@@ -1,5 +1,5 @@
 /**
- * @file      AudioManager.hpp
+ * @file      Audio.hpp
  * @brief     This class manages the music of the game
  */
 
@@ -14,13 +14,13 @@
 namespace Manager
 {
     /**
-     * @class AudioManager "Include/AudioManager.hpp"
+     * @class Audio "Include/Audio.hpp"
     */
-    class AudioManager
+    class Audio
     {
     public:
-        AudioManager();
-        ~AudioManager() = default;
+        Audio();
+        ~Audio() = default;
 
     public:
         void stopBackgroundMusic();

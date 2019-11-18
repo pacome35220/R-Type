@@ -1,5 +1,5 @@
 /**
- * @file      ActionManager.hpp
+ * @file      Action.hpp
  * @brief     This class manages the input of user's keyboard.
  */
 
@@ -15,13 +15,13 @@
 namespace Manager
 {
     /**
-     * @class ActionManager  "Include/ActionManager.hpp"
+     * @class Action  "Include/Action.hpp"
     */
-    class ActionManager
+    class Action
     {
     public:
-        ActionManager();
-        ~ActionManager() = default;
+        Action();
+        ~Action() = default;
         void setIsFocused(bool state);
 
     public:
