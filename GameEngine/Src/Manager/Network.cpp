@@ -41,6 +41,7 @@ void Manager::Network::addNewClient(const sf::IpAddress &ip, unsigned short port
         newClient.keyMap[i] = 0;
     this->clients.push_back(newClient);
 }
+
 void Manager::Network::bindSocket(unsigned short port)
 {
     if (this->socket.bind(port) != sf::Socket::Done)
@@ -89,8 +90,7 @@ void Manager::Network::readSocket(ACore &core)
 
         if (networkCode == network::PT_ENTITY_CREATION) {
             packet >> entityID;
-            core.addEntity(
-                this->entityFactory.buildEntity(entityID, core, packet));
+            this->entityFactory.buildEntity(entityID, core, packet);
         }
 
         if (networkCode == network::PT_ENTITY_UPDATE) {
@@ -144,8 +144,7 @@ void Manager::Network::execEntityAction(const AEntityPtr &entity, network::Packe
     for (auto &client : this->clients)
         this->socket.send(packet, client.ip, client.port);
 }
-
-EntityFactory Network::getEntityFactory() const
+EntityFactory Manager::Network::getEntityFactory() const
 {
     return this->entityFactory;
 }

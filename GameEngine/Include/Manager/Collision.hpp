@@ -41,4 +41,4 @@ namespace Manager
     private:
         std::map<EntityList, std::map<EntityList, bool>> collisionMap;
     };
-};
+}

@@ -25,28 +25,22 @@ CoreServer::CoreServer() {}
 
 void CoreServer::run() {
     std::cout << "hey Server !" << std::endl;
-    // TOOD
-}
-
-void CoreServer::addEntity(AEntityPtr entity) {
-    networkManager->execEntityAction(entity, network::PT_ENTITY_CREATION);
-    if (this->canFeed)
-        this->entities.push_back(entity);
+    // TODO
 }
 
 void CoreServer::onPlayerJoin(const sf::IpAddress &senderIp,
                               unsigned short senderPort) {
     sf::Vector2i newClientPosition(-90, 0);
-    std::size_t newClientID = this->networkManager->getClients().size();
+    std::size_t newClientID = this->network->getClients().size();
 
     // this->addEntity(std::make_unique<Player>(newClientPosition, newClientID));
-    networkManager->addNewClient(senderIp, senderPort);
+    network->addNewClient(senderIp, senderPort);
 }
 
 void CoreServer::procDelectionQueue() {
     for (const auto &entityToDelete : this->deletionQueue) {
-        this->networkManager->execEntityAction(entityToDelete,
-                                               network::PT_ENTITY_DESTRUCTION);
+        this->network->execEntityAction(entityToDelete,
+                                        network::PT_ENTITY_DESTRUCTION);
         auto tmp = std::find(this->entities.begin(), this->entities.end(),
                              entityToDelete);
         if (tmp != this->entities.end())

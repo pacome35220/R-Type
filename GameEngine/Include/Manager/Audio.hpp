@@ -34,5 +34,5 @@ namespace Manager
         sf::Music backgroundMusic;
         std::map<std::string, sf::Sound> musics;
     };
-};
+}
 

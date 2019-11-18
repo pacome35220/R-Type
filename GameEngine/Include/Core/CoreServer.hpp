@@ -14,8 +14,8 @@ public:
     CoreServer();
     ~CoreServer() = default;
     void run() override;
-    void addEntity(AEntityPtr entity) override;
     void procDelectionQueue() override;
+
 private:
     void onPlayerJoin(const sf::IpAddress &senderIP, unsigned short senderPort);
 };

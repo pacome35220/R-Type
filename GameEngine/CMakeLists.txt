@@ -45,6 +45,7 @@ set(INCLUDE
 
 # Includes directories
 include_directories(${INCDIR} ../Common/${INCDIR})
+include_directories(${INCDIR} ../Entity/${INCDIR})
 
 # Conan libraries includes
 include(../build/conanbuildinfo.cmake)

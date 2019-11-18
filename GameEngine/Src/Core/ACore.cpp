@@ -13,40 +13,42 @@ ACore::ACore() : frameRate(60) {}
  * Setter
  */
 
-void ACore::setActionManager(std::shared_ptr<ActionManager> actionManager) {
-    this->actionManager = actionManager;
+void ACore::setAction(std::shared_ptr<Manager::Action> action)
+{
+    this->action = action;
 }
-
-void ACore::setCollisionManager(std::shared_ptr<CollisionManager> collisionManager) {
-    this->collisionManager = collisionManager;
+void ACore::setCollision(std::shared_ptr<Manager::Collision> collision)
+{
+    this->collision = collision;
 }
-
-void ACore::setNetworkManager(std::shared_ptr<NetworkManager> networkManager) {
-    this->networkManager = networkManager;
+void ACore::setNetwork(std::shared_ptr<Manager::Network> network)
+{
+    this->network = network;
 }
-
-void ACore::setAudioManager(std::shared_ptr<AudioManager> audioManager) {
-    this->audioManager = audioManager;
+void ACore::setAudio(std::shared_ptr<Manager::Audio> audio)
+{
+    this->audio = audio;
 }
 
 /**
  * Getter
  */
 
-std::shared_ptr<AudioManager> ACore::getAudioManager() const {
-    return this->audioManager;
+std::shared_ptr<Manager::Audio> ACore::getAudio() const
+{
+    return this->audio;
 }
-
-std::shared_ptr<ActionManager> ACore::getActionManager() const {
-    return this->actionManager;
+std::shared_ptr<Manager::Action> ACore::getAction() const
+{
+    return this->action;
 }
-
-std::shared_ptr<NetworkManager> ACore::getNetworkManager() const {
-    return this->networkManager;
+std::shared_ptr<Manager::Network> ACore::getNetwork() const
+{
+    return this->network;
 }
-
-std::shared_ptr<CollisionManager> ACore::getCollisionManager() const {
-    return this->collisionManager;
+std::shared_ptr<Manager::Collision> ACore::getCollision() const
+{
+    return this->collision;
 }
 
 AEntityPtr ACore::getEntityFromId(size_t id) {

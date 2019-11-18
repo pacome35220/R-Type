@@ -7,14 +7,21 @@
 
 #pragma once
 
+#include <memory>
 class AEntity;
 
 typedef std::shared_ptr<AEntity> AEntityPtr;
 
-class AudioManager;
-class NetworkManager;
-class ActionManager;
-class CollisionManager;
+namespace Manager
+{
+    class Audio;
+
+    class Network;
+
+    class Action;
+
+    class Collision;
+}
 
 /**
  * @interface ICore ICore.hpp "Include/ICore.hpp"
@@ -23,15 +30,14 @@ class ICore {
 public:
     virtual ~ICore() = default;
     virtual AEntityPtr getEntityFromId(std::size_t id) = 0;
-    virtual void setActionManager(std::shared_ptr<ActionManager> actionManager) = 0;
-    virtual void setCollisionManager(std::shared_ptr<CollisionManager> collisionManager) = 0;
-    virtual void setNetworkManager(std::shared_ptr<NetworkManager> networkManager) = 0;
-    virtual void setAudioManager(std::shared_ptr<AudioManager> audioManager) = 0;
-
-    virtual std::shared_ptr<AudioManager> getAudioManager() const = 0;
-	virtual std::shared_ptr<ActionManager> getActionManager() const = 0;
-	virtual std::shared_ptr<NetworkManager> getNetworkManager() const = 0;
-	virtual std::shared_ptr<CollisionManager> getCollisionManager() const = 0;
+    virtual void setAction(std::shared_ptr<Manager::Action> action) = 0;
+    virtual void setCollision(std::shared_ptr<Manager::Collision> collision) = 0;
+    virtual void setNetwork(std::shared_ptr<Manager::Network> network) = 0;
+    virtual void setAudio(std::shared_ptr<Manager::Audio> audio) = 0;
+    virtual std::shared_ptr<Manager::Audio> getAudio() const = 0;
+    virtual std::shared_ptr<Manager::Action> getAction() const = 0;
+    virtual std::shared_ptr<Manager::Network> getNetwork() const = 0;
+    virtual std::shared_ptr<Manager::Collision> getCollision() const = 0;
 
 public:
     virtual void run() = 0;

@@ -42,5 +42,5 @@ namespace Manager
         std::map<sf::Keyboard::Key, bool> currentState;
         std::map<sf::Keyboard::Key, bool> previousState;
     };
-};
+}
 

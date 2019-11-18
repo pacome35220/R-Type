@@ -24,8 +24,8 @@ void runClient(const std::string &ip, unsigned short port) {
     // parallax->setId(-1);
     // core.addEntity(parallax);
     std::cout << ip << "mdr" << port << std::endl;
-    core.getNetworkManager()->setIpTarget(ip);
-    core.getNetworkManager()->setPortTarget(port);
+    core.getNetwork()->setIpTarget(ip);
+    core.getNetwork()->setPortTarget(port);
     // core.getAudioManager()->playBgm("./Assets/Audio/BackgroundMusic.ogg");
     core.run();
 }

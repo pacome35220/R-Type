@@ -9,33 +9,33 @@
 #pragma once
 
 #include <vector>
-//#include <SFML/Graphics.hpp> // ?
-#include "AEntity.hpp"
 #include "ICore.hpp"
-#include "ActionManager.hpp"
-#include "AudioManager.hpp"
-#include "NetworkManager.hpp"
+#include "AEntity.hpp"
+#include <Manager/Collision.hpp>
+#include "Manager/Action.hpp"
+#include "Manager/Audio.hpp"
+#include "Manager/Network.hpp"
 
-class ACore : public ICore {
+class ACore : public ICore
+{
 public:
     ACore();
     virtual ~ACore() = default;
 
 public:
-    void
-    setActionManager(std::shared_ptr<ActionManager> actionManager) override;
-    void setCollisionManager(
-        std::shared_ptr<CollisionManager> collisionManager) override;
-    void
-    setNetworkManager(std::shared_ptr<NetworkManager> networkManager) override;
-    void setAudioManager(std::shared_ptr<AudioManager> audioManager) override;
-
-    std::shared_ptr<AudioManager> getAudioManager() const override;
-    std::shared_ptr<ActionManager> getActionManager() const override;
-    std::shared_ptr<NetworkManager> getNetworkManager() const override;
-    std::shared_ptr<CollisionManager> getCollisionManager() const override;
-
+    void setAction(std::shared_ptr<Manager::Action> action) override;
+    void setCollision(std::shared_ptr<Manager::Collision> collision) override;
+    void setNetwork(std::shared_ptr<Manager::Network> network) override;
+    void setAudio(std::shared_ptr<Manager::Audio> audio) override;
+    std::shared_ptr<Manager::Audio> getAudio() const override;
+    std::shared_ptr<Manager::Action> getAction() const override;
+    std::shared_ptr<Manager::Network> getNetwork() const override;
+    std::shared_ptr<Manager::Collision> getCollision() const override;
     AEntityPtr getEntityFromId(size_t id) override;
+
+protected:
+    void updateEntities() override;
+    void procTopQueue() override;
 
 protected:
     std::size_t frameRate;
@@ -43,10 +43,8 @@ protected:
     std::vector<AEntityPtr> entities;
     std::vector<AEntityPtr> deletionQueue;
     std::vector<std::size_t> topQueue;
-    std::shared_ptr<ActionManager> actionManager;
-    std::shared_ptr<AudioManager> audioManager;
-    std::shared_ptr<CollisionManager> collisionManager;
-    std::shared_ptr<NetworkManager> networkManager;
-    void updateEntities() override;
-    void procTopQueue() override;
+    std::shared_ptr<Manager::Action> action;
+    std::shared_ptr<Manager::Audio> audio;
+    std::shared_ptr<Manager::Collision> collision;
+    std::shared_ptr<Manager::Network> network;
 };

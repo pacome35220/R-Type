@@ -12,8 +12,8 @@
 CoreClient::CoreClient(const std::string &windowTitle)
     : ACore(),
       window(sf::VideoMode::getDesktopMode(), windowTitle, sf::Style::Default) {
-    this->networkManager = std::make_shared<NetworkManager>();
-    this->actionManager = std::make_shared<ActionManager>();
+    this->network = std::make_shared<Manager::Network>();
+    this->action = std::make_shared<Manager::Action>();
 }
 
 void CoreClient::run() {
@@ -33,22 +33,17 @@ void CoreClient::run() {
             // call function to handle collision
             this->renderEntities();
             this->procDelectionQueue();
-            this->actionManager->flush();
-            this->networkManager->streamInput(this->actionManager);
+            this->action->flush();
+            this->network->streamInput(this->action);
             bool tmp = this->canFeed;
             this->canFeed = true;
-            this->networkManager->readSocket(*this);
+            this->network->readSocket(*this);
             this->canFeed = tmp;
             lastTotal = currentTotal;
         }
         clock.tick();
         mutex.unlock();
     }
-}
-
-void CoreClient::addEntity(AEntityPtr entity) {
-    if (this->canFeed)
-        this->entities.push_back(entity);
 }
 
 void CoreClient::handleWindowEvent() {
@@ -58,11 +53,11 @@ void CoreClient::handleWindowEvent() {
         if (event.type == sf::Event::Closed)
             this->window.close();
         if (event.type == sf::Event::GainedFocus)
-            this->actionManager->setIsFocused(true);
+            this->action->setIsFocused(true);
         if (event.type == sf::Event::LostFocus)
-            this->actionManager->setIsFocused(false);
+            this->action->setIsFocused(false);
     }
-    if (this->actionManager->isKeyReleased(sf::Keyboard::Escape))
+    if (this->action->isKeyReleased(sf::Keyboard::Escape))
         this->window.close();
 }
 

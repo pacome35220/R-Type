@@ -12,7 +12,7 @@ set(SRCDIR Src/)
 set(INCDIR Include/)
 
 set(SRC
-  ${SRCDIR}Main.cpp
+        Main.cpp
   )
 
 set(INCLUDE
