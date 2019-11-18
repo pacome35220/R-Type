@@ -27,8 +27,8 @@ void ActionManager::mapKey(sf::Keyboard::Key key) {
 /*
  *   Setters
  */
-void ActionManager::setIsFocused(const bool &isFocused) {
-    this->isFocused = isFocused;
+void ActionManager::setIsFocused(bool state) {
+    this->isFocused = state;
 }
 
 /*

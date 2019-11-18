@@ -16,7 +16,7 @@ class ActionManager {
 public:
     ActionManager();
     ~ActionManager() = default;
-    void setIsFocused(const bool &isFocused);
+    void setIsFocused(bool state);
 
 public:
     bool isKeyPressed(sf::Keyboard::Key key);
