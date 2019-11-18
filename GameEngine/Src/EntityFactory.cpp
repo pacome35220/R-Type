@@ -8,7 +8,14 @@
 #include "EntityFactory.hpp"
 #include "Error.hpp"
 
-void EntityFactory::feedFactory(
+EntityFactory::EntityFactory() = default;
+EntityFactory::~EntityFactory() = default;
+/**
+ * Add an entity to the factory
+ * @param entityID
+ * @param constructor
+ */
+void EntityFactory::addEntity(
     int entityID,
     const std::function<AEntityPtr(ACore &core, sf::Packet packet)>
         &constructor) {
@@ -18,9 +25,14 @@ void EntityFactory::feedFactory(
         throw Error(e.what(), __FILE__, __func__, __LINE__);
     }
 }
-
-AEntityPtr EntityFactory::buildEntity(int entityID, ACore &core,
-                                      sf::Packet packet) {
+/**
+ * Call the constructor of the chosen entity and create it
+ * @param entityID
+ * @param core
+ * @param packet
+ * @return The entity built
+ */
+AEntityPtr EntityFactory::buildEntity(int entityID, ACore &core, sf::Packet packet) {
     try {
         return this->entityList[entityID](core, packet);
     } catch (const std::exception &e) {

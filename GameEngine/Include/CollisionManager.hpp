@@ -31,5 +31,5 @@ private:
     bool pixelCollision(AEntity &entity1, AEntity &entity2);
 
 private:
-    std::map<std::string, std::map<std::string, bool>> collisionMap;
+    std::map<EntityList, std::map<EntityList, bool>> collisionMap;
 };

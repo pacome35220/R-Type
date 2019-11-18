@@ -33,18 +33,7 @@ public:
 	virtual std::shared_ptr<NetworkManager> getNetworkManager() const = 0;
 	virtual std::shared_ptr<CollisionManager> getCollisionManager() const = 0;
 
-    //virtual void setOnTop(int id) = 0;
-
 public:
-    virtual void addEntity(AEntityPtr entity) = 0;
-    // virtual void addToDeletionQueue(AEntityPtr entity) = 0;
-    // virtual void addDeletionQueueById(int id) = 0; //param id ?
-    // virtual void authorizeFeed(bool auth) = 0;
-    // virtual void authorizeRender(bool auth) = 0;
-    // virtual float absoluteToRelativeX(float x) = 0;
-    // virtual float absoluteToRelativeY(float y) = 0;
-    // virtual float absoluteToAbsoluteX(float x) = 0;
-    // virtual float absoluteToAbsoluteY(float y) = 0;
     virtual void run() = 0;
     virtual void procDelectionQueue() = 0;
     virtual void updateEntities() = 0;
