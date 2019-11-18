@@ -21,10 +21,10 @@ set(SRC
         ${SRCDIR}${CORDIR}ACore.cpp
         ${SRCDIR}${CORDIR}CoreClient.cpp
         ${SRCDIR}${CORDIR}CoreServer.cpp
-        ${SRCDIR}${MNTDIR}CollisionManager.cpp
-        ${SRCDIR}${MNTDIR}ActionManager.cpp
-        ${SRCDIR}${MNTDIR}AudioManager.cpp
-        ${SRCDIR}${MNTDIR}NetworkManager.cpp
+        ${SRCDIR}${MNTDIR}Collision.cpp
+        ${SRCDIR}${MNTDIR}Action.cpp
+        ${SRCDIR}${MNTDIR}Audio.cpp
+        ${SRCDIR}${MNTDIR}Network.cpp
         )
 
 set(INCLUDE
@@ -37,10 +37,10 @@ set(INCLUDE
         ${INCDIR}${CORDIR}ACore.hpp
         ${INCDIR}${CORDIR}CoreClient.hpp
         ${INCDIR}${CORDIR}CoreServer.hpp
-        ${INCDIR}${MNTDIR}CollisionManager.hpp
-        ${INCDIR}${MNTDIR}NetworkManager.hpp
-        ${INCDIR}${MNTDIR}ActionManager.hpp
-        ${INCDIR}${MNTDIR}AudioManager.hpp
+        ${INCDIR}${MNTDIR}Collision.hpp
+        ${INCDIR}${MNTDIR}Network.hpp
+        ${INCDIR}${MNTDIR}Action.hpp
+        ${INCDIR}${MNTDIR}Audio.hpp
         )
 
 # Includes directories

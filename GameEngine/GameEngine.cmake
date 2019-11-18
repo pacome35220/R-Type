@@ -7,10 +7,10 @@ include_directories(${GE_DIR}Include/)
 
 # Append common source file to SRC
 list(APPEND SRC
-        ${CMSRCDIR}${MNTDIR}CollisionManager.cpp
-        ${CMSRCDIR}${MNTDIR}ActionManager.cpp
-        ${CMSRCDIR}${MNTDIR}NetworkManager.cpp
-        ${CMSRCDIR}${MNTDIR}AudioManager.cpp
+        ${CMSRCDIR}${MNTDIR}Collision.cpp
+        ${CMSRCDIR}${MNTDIR}Action.cpp
+        ${CMSRCDIR}${MNTDIR}Network.cpp
+        ${CMSRCDIR}${MNTDIR}Audio.cpp
         ${CMSRCDIR}AEntity.cpp
         ${CMSRCDIR}EntityFactory.cpp
         ${CMSRCDIR}Id.cpp
@@ -22,10 +22,10 @@ list(APPEND SRC
 
 # Append common include file to INCLUDE
 list(APPEND INCLUDE
-        ${CMINCDIR}${MNTDIR}CollisionManager.hpp
-        ${CMINCDIR}${MNTDIR}ActionManager.hpp
-        ${CMINCDIR}${MNTDIR}NetworkManager.hpp
-        ${CMINCDIR}${MNTDIR}AudioManager.hpp
+        ${CMINCDIR}${MNTDIR}Collision.hpp
+        ${CMINCDIR}${MNTDIR}Action.hpp
+        ${CMINCDIR}${MNTDIR}Network.hpp
+        ${CMINCDIR}${MNTDIR}Audio.hpp
         ${CMINCDIR}AEntity.hpp
         ${CMINCDIR}EntityFactory.hpp
         ${CMINCDIR}Id.hpp
