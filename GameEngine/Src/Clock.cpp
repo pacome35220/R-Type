@@ -11,6 +11,9 @@ Clock::Clock() : currentTime(0), lastTime(0), elapsedTime(0), totalTime(0) {
     this->tick();
 }
 
+/**
+ * Update the time in the game
+ */
 void Clock::tick() {
     this->currentTime = this->clock.getElapsedTime().asMicroseconds();
     if (!this->lastTime)
@@ -20,6 +23,9 @@ void Clock::tick() {
     this->lastTime = this->currentTime;
 }
 
+/**
+ * Reset the clock after a tick
+ */
 void Clock::frame() {
     this->elapsedTime = 0;
 }
