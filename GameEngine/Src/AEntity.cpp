@@ -7,55 +7,52 @@
 
 #include "AEntity.hpp"
 
-AEntity::AEntity(sf::Vector2f _position, std::string _texturePath, ACore *_entryPoint,
-                 const std::string &_type) : position(_position), packetNumber(0), type(_type),
-                                             texturePath(_texturePath), entryPoint(_entryPoint)
-{
-}
-const sf::Vector2f &AEntity::getPosition() const
-{
+AEntity::AEntity(sf::Vector2f _position, std::string _texturePath,
+                 ACore *_entryPoint, enum EntityList _type)
+    : Id(), type(_type), texturePath(_texturePath), entryPoint(_entryPoint),
+      position(_position), packetNumber(0) {}
+
+const sf::Vector2f &AEntity::getPosition() const {
     return position;
 }
 
-const sf::Sprite &AEntity::getSprite() const
-{
+const sf::Sprite &AEntity::getSprite() const {
     return sprite;
 }
 
-void AEntity::setPosition(const sf::Vector2f &_position)
-{
-    AEntity::position = _position;
+void AEntity::setPosition(const sf::Vector2f &_position) {
+    this->position = _position;
 }
 
-void AEntity::setSprite(const sf::Sprite &_sprite)
-{
-    AEntity::sprite = _sprite;
+void AEntity::setSprite(const sf::Sprite &_sprite) {
+    this->sprite = _sprite;
 }
+
 /**
  * Build a packet from this attributes
  * @param _packetType
  * @return The packet built
  */
-sf::Packet AEntity::buildMyPacket(network::PacketType packetType)
-{
+sf::Packet AEntity::buildMyPacket(network::PacketType packetType) {
     sf::Packet packet;
 
-	packet << packetType;
+    packet << packetType;
     if (packetType == network::PT_ENTITY_UPDATE)
-        packet << (unsigned int) this->id;
-	packet << this->type << (unsigned int) this->id << this->texturePath << this->position.x << this->position.y; //<< _physicType;
+        packet << (unsigned int)this->id;
+    packet << this->type << (unsigned int)this->id << this->texturePath
+           << this->position.x << this->position.y; //<< _physicType;
     if (packetType == network::PT_ENTITY_UPDATE) {
-        packet << (unsigned int) this->packetNumber;
+        packet << (unsigned int)this->packetNumber;
         this->packetNumber++;
     }
     return packet;
 }
+
 /**
  * Update this with the \_packet
  * @param _packet
  */
-void AEntity::updateFromPacket(sf::Packet packet)
-{
+void AEntity::updateFromPacket(sf::Packet packet) {
     int id;
     std::string texturePath;
     float posX;
@@ -76,13 +73,7 @@ void AEntity::updateFromPacket(sf::Packet packet)
 /**
  * Display this
  */
-
-void AEntity::render(sf::RenderWindow &window)
-{
-    //sf::Vector2f spritePos = this->position;
-
-	// spritePos.x = this->position.x; //this->entryPoint->absoluteToRelativeX(this->position.x);
-	// spritePos.y = this->entryPoint->absoluteToRelativeY(this->position.y);
- 	this->sprite.setPosition(this->position);
+void AEntity::render(sf::RenderWindow &window) {
+    this->sprite.setPosition(this->position);
     window.draw(this->sprite);
 }
