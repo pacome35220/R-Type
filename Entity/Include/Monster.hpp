@@ -38,7 +38,7 @@ public:
 public:
     void updateMonster();
     void onCollision(AEntity *entity) override;
-    sf::Packet decodeEntityPacket(network::PACKET_TYPE packetType);
+    sf::Packet decodeEntityPacket(network::PacketType packetType);
     void updateEntityPacket(sf::Packet packet);
 
 protected:

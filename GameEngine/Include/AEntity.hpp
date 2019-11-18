@@ -37,7 +37,7 @@ public:
     virtual void update() = 0;
 
 public:
-    sf::Packet buildMyPacket(network::PACKET_TYPE packetType);
+    sf::Packet buildMyPacket(network::PacketType packetType);
     void updateFromPacket(sf::Packet packet);
     void render(sf::RenderWindow &window);
 

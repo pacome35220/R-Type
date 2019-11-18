@@ -71,7 +71,7 @@ void NetworkManager::readSocket(ACore &core) {
     while (state == sf::Socket::Done) {
 
         packet >> opCode;
-        auto networkCode = static_cast<enum network::PACKET_TYPE>(opCode);
+        auto networkCode = static_cast<enum network::PacketType>(opCode);
 
         if (networkCode == network::PT_PLAYER_JOIN &&
             this->clients.size() < 4) {
@@ -141,7 +141,7 @@ bool NetworkManager::isClientKeyPressed(std::size_t clientId,
 }
 
 void NetworkManager::execEntityAction(const AEntityPtr &entity,
-                                      network::PACKET_TYPE packetType) {
+                                      network::PacketType packetType) {
     sf::Packet packet = entity->buildMyPacket(packetType);
 
     for (auto &client : this->clients)

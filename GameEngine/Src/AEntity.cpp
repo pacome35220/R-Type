@@ -36,7 +36,7 @@ void AEntity::setSprite(const sf::Sprite &_sprite)
  * @param _packetType
  * @return The packet built
  */
-sf::Packet AEntity::buildMyPacket(network::PACKET_TYPE packetType)
+sf::Packet AEntity::buildMyPacket(network::PacketType packetType)
 {
     sf::Packet packet;
 

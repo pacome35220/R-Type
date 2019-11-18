@@ -10,7 +10,7 @@
  * @namespace network  "Include/PacketType.hpp"
  */
 namespace network {
-    enum PACKET_TYPE {
+    enum PacketType {
         PT_PORT_REDIRECTION,
         PT_PLAYER_JOIN,
         PT_ENTITY_CREATION,

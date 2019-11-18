@@ -69,7 +69,7 @@ void Monster::onCollision(AEntity *entity)
  * @param packetType
  * @return the
  */
-sf::Packet Monster::decodeEntityPacket(network::PACKET_TYPE packetType)
+sf::Packet Monster::decodeEntityPacket(network::PacketType packetType)
 {
     sf::Packet packet;
 
