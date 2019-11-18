@@ -9,6 +9,7 @@
  * @enum File "Include/EntityList.hpp"
  */
 enum EntityList {
+    EL_UNKNOWN = -1,
     EL_CLASSIC_MONSTER,
     EL_DUMB_MONSTER,
     EL_SPEED_MONSTER,
@@ -24,5 +25,6 @@ enum EntityList {
     EL_POWER_UP,
     EL_HEALTH_UP,
     EL_ASTEROID,
-    EL_PLAYER
+    EL_PLAYER,
+    EL_TOTAL_NUMBER
 };
