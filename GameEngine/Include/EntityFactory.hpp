@@ -13,15 +13,17 @@
 /**
  * @class EntityFactory "Include/EntityFactory.hpp"
  */
-class EntityFactory {
+class EntityFactory
+{
 public:
-    void
-    feedFactory(int entityID,
-                const std::function<AEntityPtr(ACore &core, sf::Packet packet)>
-                    &constructor);
+    EntityFactory();
+    ~EntityFactory();
+
+public:
+    void addEntity(int entityID,
+                   const std::function<AEntityPtr(ACore &core, sf::Packet packet)> &constructor);
     AEntityPtr buildEntity(int entityID, ACore &core, sf::Packet packet);
 
 private:
-    std::map<int, std::function<AEntityPtr(ACore &core, sf::Packet packet)>>
-        entityList;
+    std::map<int, std::function<AEntityPtr(ACore &core, sf::Packet packet)>> entityList;
 };

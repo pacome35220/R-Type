@@ -2,32 +2,32 @@
 ** EPITECH PROJECT, 2019
 ** CPP_rtype_2019
 ** File description:
-** NetworkManager.cpp
+** Network.cpp
 */
 
 #include <iostream>
 #include <cstring>
 #include "Error.hpp"
-#include "NetworkManager.hpp"
+#include "Manager/Network.hpp"
 
-NetworkManager::NetworkManager() {
+Manager::Network::Network()
+{
     this->socket.setBlocking(false);
 }
-
-void NetworkManager::setIpTarget(const std::string &ipTarget) {
+void Manager::Network::setIpTarget(const std::string &ipTarget)
+{
     this->ipTarget = ipTarget;
 }
-
-void NetworkManager::setPortTarget(unsigned short portTarget) {
+void Manager::Network::setPortTarget(unsigned short portTarget)
+{
     this->portTarget = portTarget;
 }
-
-const std::vector<Client> &NetworkManager::getClients() const {
+const std::vector<Client> &Manager::Network::getClients() const
+{
     return this->clients;
 }
-
-void NetworkManager::addNewClient(const sf::IpAddress &ip,
-                                  unsigned short port) {
+void Manager::Network::addNewClient(const sf::IpAddress &ip, unsigned short port)
+{
     Client newClient;
 
     for (const auto &value : this->getClients())
@@ -41,19 +41,18 @@ void NetworkManager::addNewClient(const sf::IpAddress &ip,
         newClient.keyMap[i] = 0;
     this->clients.push_back(newClient);
 }
-
-void NetworkManager::bindSocket(unsigned short port) {
+void Manager::Network::bindSocket(unsigned short port)
+{
     if (this->socket.bind(port) != sf::Socket::Done)
         throw Error("Bind fail", __FILE__, __func__, __LINE__);
-    std::cout << "NetworkManager is listening to port " << port << std::endl;
+    std::cout << "Network is listening to port " << port << std::endl;
 }
-
-void NetworkManager::sendPacket(sf::Packet packet, sf::IpAddress ip,
-                                unsigned short port) {
+void Manager::Network::sendPacket(sf::Packet packet, sf::IpAddress ip, unsigned short port)
+{
     this->socket.send(packet, ip, port);
 }
-
-void NetworkManager::readSocket(ACore &core) {
+void Manager::Network::readSocket(ACore &core)
+{
     // Receiver variable
     sf::Packet packet;
     sf::IpAddress sender;
@@ -115,8 +114,8 @@ void NetworkManager::readSocket(ACore &core) {
         state = this->socket.receive(packet, sender, senderPort);
     }
 }
-
-void NetworkManager::streamInput(std::shared_ptr<ActionManager> actionManager) {
+void Manager::Network::streamInput(std::shared_ptr<Action> actionManager)
+{
     auto pressedKey = actionManager->getKeyPressed();
 
     for (const auto &keyCode : pressedKey) {
@@ -127,21 +126,19 @@ void NetworkManager::streamInput(std::shared_ptr<ActionManager> actionManager) {
         this->sendPacket(packet, this->ipTarget, this->portTarget);
     }
 }
-
-void NetworkManager::resetClientsKeyMap() {
+void Manager::Network::resetClientsKeyMap()
+{
     for (auto &client : this->clients)
         std::memset(client.keyMap, 0, sizeof(client.keyMap));
 }
-
-bool NetworkManager::isClientKeyPressed(std::size_t clientId,
-                                        sf::Keyboard::Key key) {
+bool Manager::Network::isClientKeyPressed(std::size_t clientId, sf::Keyboard::Key key)
+{
     if (clientId >= this->clients.size())
         return false;
     return this->clients[clientId].keyMap[key % sf::Keyboard::KeyCount] != 0;
 }
-
-void NetworkManager::execEntityAction(const AEntityPtr &entity,
-                                      network::PacketType packetType) {
+void Manager::Network::execEntityAction(const AEntityPtr &entity, network::PacketType packetType)
+{
     sf::Packet packet = entity->buildMyPacket(packetType);
 
     for (auto &client : this->clients)
