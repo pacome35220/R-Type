@@ -6,11 +6,21 @@
 */
 
 #include "AEntity.hpp"
+#include "ACore.hpp"
+#include "Error.hpp"
 
 AEntity::AEntity(const sf::Vector2f &_position, const std::string &_texturePath,
                  ACore &_entryPoint, enum EntityID _type)
     : Id(), type(_type), texturePath(_texturePath), entryPoint(_entryPoint),
-      position(_position), packetNumber(0) {}
+      position(_position), packetNumber(0) {
+    if (!this->entryPoint.getResource()->addTexture(texturePath))
+        throw Error(texturePath + " doesn't exist", __FILE__, __func__,
+                    __LINE__);
+    this->texture = this->entryPoint.getResource()->getTexture(texturePath);
+    this->sprite.setTexture(this->texture);
+    this->sprite.setOrigin(this->texture.getSize().x / 2,
+                           this->texture.getSize().y / 2);
+}
 
 const sf::Vector2f &AEntity::getPosition() const {
     return position;
@@ -83,9 +93,24 @@ void AEntity::updateFromPacket(sf::Packet packet) {
 }
 
 /**
+ * Compute the correct coordinates according to the window
+ * @param window
+ */
+sf::Vector2f AEntity::absoluteToRelativePosition(sf::Vector2u window) {
+    sf::Vector2f vec;
+
+    vec.x = (window.x / 2.0f) +
+            (this->position.x / 100.0f) * (window.x - (window.x / 2.0f));
+    vec.y = (window.y / 2.0f) +
+            (this->position.y / 100.0f) * (window.y - (window.y / 2.0f));
+    return vec;
+}
+
+/**
  * Display this
  */
 void AEntity::render(sf::RenderWindow &window) {
-    this->sprite.setPosition(this->position);
+    this->sprite.setPosition(
+        this->absoluteToRelativePosition(window.getSize()));
     window.draw(this->sprite);
 }

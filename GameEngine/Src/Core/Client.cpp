@@ -5,16 +5,15 @@
 ** CoreClient.cpp
 */
 
-#include <iostream>
 #include "Core/Client.hpp"
 #include "Parallax.hpp"
 
 Core::Client::Client(const std::string &windowTitle)
-    : ACore(),
-      window(sf::VideoMode::getDesktopMode(), windowTitle, sf::Style::Default) {
+    : ACore(), window(sf::VideoMode::getDesktopMode(), windowTitle) {
     this->network = std::make_shared<Manager::Network>();
     this->action = std::make_shared<Manager::Action>();
     this->audio = std::make_shared<Manager::Audio>();
+    this->resource = std::make_shared<Manager::Resource>();
 
     this->feedEntity(std::make_shared<Parallax>(*this, sf::Vector2f(0, 0)));
 }

@@ -48,6 +48,9 @@ public:
     void updateFromPacket(sf::Packet packet);
     void render(sf::RenderWindow &window);
 
+private:
+    sf::Vector2f absoluteToRelativePosition(sf::Vector2u window);
+
 protected:
     enum EntityID type;
     std::string texturePath;
