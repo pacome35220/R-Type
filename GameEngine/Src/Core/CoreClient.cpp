@@ -13,6 +13,7 @@ CoreClient::CoreClient(const std::string &windowTitle)
       window(sf::VideoMode::getDesktopMode(), windowTitle, sf::Style::Default) {
     this->network = std::make_shared<Manager::Network>();
     this->action = std::make_shared<Manager::Action>();
+    this->audio = std::make_shared<Manager::Audio>();
 }
 
 void CoreClient::run() {
