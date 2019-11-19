@@ -5,4 +5,17 @@
 ** Player.cpp
 */
 
-//#include "Bullet/Player.hpp"
+#include <cmath>
+#include "Bullet/Player.hpp"
+
+Bullet::Player::Player(const sf::Vector2f &position, ACore &entryPoint,
+                       float _amplitude)
+    : ABullet(position, "./Assets/Sprites/PlayerBullet.png", entryPoint,
+              EL_PLAYER_BULLET, _amplitude, M_PI_2) {}
+
+void Bullet::Player::updateBullet() {
+    this->counter += 0.2;
+    this->position.x += 4;
+    this->position.y =
+        this->originalY + cos(this->counter) * 10 * this->amplitude;
+}

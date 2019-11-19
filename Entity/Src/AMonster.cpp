@@ -45,7 +45,7 @@ void AMonster::updateMonster() {
 
     if (std::rand() % 100 < 2) {
         this->entryPoint.feedEntity(std::make_shared<Bullet::Monster>(
-            this->position, this->entryPoint));
+            this->position, this->entryPoint, 1, 0));
         this->entryPoint.getAudio()->playSound(
             "./Assets/Audio/PlayerLaser.ogg");
     }

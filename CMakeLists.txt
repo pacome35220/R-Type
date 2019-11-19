@@ -13,13 +13,7 @@ endif (NOT WIN32)
 include_directories(Common/)
 
 include_directories(GameEngine/Include/)
-include_directories(GameEngine/Include/Core)
-include_directories(GameEngine/Include/Manager)
-
 include_directories(Entity/Include/)
-include_directories(Entity/Include/Bullet/)
-include_directories(Entity/Include/Monster/)
-
 include_directories(Common/Include/)
 
 include(GameEngine/GameEngine.cmake)
@@ -43,6 +37,6 @@ add_executable(r-type_server
         )
 
 if (NOT WIN32)
-    target_link_libraries(r-type_server ${CONAN_LIBS})
-    target_link_libraries(r-type_client ${CONAN_LIBS})
+    target_link_libraries(r-type_server ${CONAN_LIBS} -lm)
+    target_link_libraries(r-type_client ${CONAN_LIBS} -lm)
 endif (NOT WIN32)

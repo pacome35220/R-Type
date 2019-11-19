@@ -5,21 +5,22 @@
 
 #pragma once
 
+#include "ABullet.hpp"
+
 /**
  * @namespace Package to get all types of bullets
  */
-namespace Bullet
-{
+namespace Bullet {
 /**
  * @class DeathStar "Include/DeathStar.hpp"
  */
-    class DeathStar
-    {
-    public:
+class DeathStar : public ABullet {
+public:
+    DeathStar(const sf::Vector2f &position, ACore &entryPoint, float amplitude,
+              int count);
+    ~DeathStar() = default;
 
-    public:
+    void updateBullet() override;
+};
 
-    private:
-
-    };
-}
+} // namespace Bullet

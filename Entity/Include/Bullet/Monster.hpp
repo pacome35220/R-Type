@@ -16,7 +16,8 @@ namespace Bullet {
  */
 class Monster : public ABullet {
 public:
-    Monster(const sf::Vector2f &position, ACore &entryPoint);
+    Monster(const sf::Vector2f &position, ACore &entryPoint, float amplitude,
+            int count);
     ~Monster() = default;
 
     void updateBullet() override;

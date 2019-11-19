@@ -15,7 +15,8 @@
 class ABullet : public AEntity {
 public:
     ABullet(const sf::Vector2f &position, const std::string &texturePath,
-            ACore &entryPoint, enum EntityID type);
+            ACore &entryPoint, enum EntityID type, float amplitude,
+            float counter);
 
 public:
     void update() override;
@@ -23,4 +24,7 @@ public:
     void onCollision(AEntityPtr entity) override;
 
 protected:
+    float amplitude;
+    float counter;
+    float originalY;
 };
