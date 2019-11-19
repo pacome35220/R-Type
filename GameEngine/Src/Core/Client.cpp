@@ -6,10 +6,10 @@
 */
 
 #include <iostream>
-#include "Core/CoreClient.hpp"
+#include "Core/Client.hpp"
 #include "Parallax.hpp"
 
-CoreClient::CoreClient(const std::string &windowTitle)
+Core::Client::Client(const std::string &windowTitle)
     : ACore(),
       window(sf::VideoMode::getDesktopMode(), windowTitle, sf::Style::Default) {
     this->network = std::make_shared<Manager::Network>();
@@ -23,7 +23,7 @@ CoreClient::CoreClient(const std::string &windowTitle)
 
 }
 
-void CoreClient::run() {
+void Core::Client::run() {
     sf::Clock clock;
     size_t currentTotal = clock.getElapsedTime().asMicroseconds();
     size_t lastTotal = clock.getElapsedTime().asMicroseconds();
@@ -52,7 +52,7 @@ void CoreClient::run() {
     }
 }
 
-void CoreClient::handleWindowEvent() {
+void Core::Client::handleWindowEvent() {
     sf::Event event;
 
     while (this->window.pollEvent(event)) {
@@ -67,14 +67,14 @@ void CoreClient::handleWindowEvent() {
         this->window.close();
 }
 
-void CoreClient::renderEntities() {
+void Core::Client::renderEntities() {
     this->window.clear(sf::Color(0, 0, 0, 0));
     for (auto const &entity : this->entities)
         entity->render(this->window);
     this->window.display();
 }
 
-void CoreClient::procDelectionQueue() {
+void Core::Client::procDelectionQueue() {
     for (const auto &entityToDelete : this->deletionQueue) {
         auto tmp = std::find(this->entities.begin(), this->entities.end(),
                              entityToDelete);
@@ -84,6 +84,6 @@ void CoreClient::procDelectionQueue() {
     this->deletionQueue = std::vector<AEntityPtr>();
 }
 
-const sf::RenderWindow &CoreClient::getRenderWindow() const {
+const sf::RenderWindow &Core::Client::getRenderWindow() const {
     return this->window;
 }

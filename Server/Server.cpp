@@ -7,9 +7,9 @@
 
 #include <SFML/Network.hpp>
 #include <iostream>
-#include "Error.hpp"
 #include "Server.hpp"
-#include "Core/CoreServer.hpp"
+#include "Core/Server.hpp"
+#include "../Common/Error.hpp"
 
 /**
  * Server entry point.
@@ -48,7 +48,7 @@ void Server::start(unsigned short port) {
  * Feel free to add new enemies at the begenning to increase level.
  * @param core
  */
-void Server::entityFeeder(CoreServer &core) {
+void Server::entityFeeder(Core::Server &core) {
     sf::Vector2f pos(100, 0);
     auto monsterPos = sf::Vector2f(100, 0);
 
@@ -83,7 +83,7 @@ void Server::entityFeeder(CoreServer &core) {
  * @param port
  */
 void Server::threadEntryPoint(unsigned short port) {
-    CoreServer core;
+    Core::Server core;
 
     core.getNetwork()->bindSocket(port);
     Server::entityFeeder(core);

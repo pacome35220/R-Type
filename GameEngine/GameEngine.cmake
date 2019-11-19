@@ -11,6 +11,6 @@ list(APPEND SRC
         GameEngine/Src/EntityFactory.cpp
         GameEngine/Src/Id.cpp
         GameEngine/Src/Core/ACore.cpp
-        GameEngine/Src/Core/CoreServer.cpp
-        GameEngine/Src/Core/CoreClient.cpp
+        GameEngine/Src/Core/Server.cpp
+        GameEngine/Src/Core/Client.cpp
 )

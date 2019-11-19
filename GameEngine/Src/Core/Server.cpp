@@ -6,11 +6,10 @@
 */
 
 #include <iostream>
-#include "Core/CoreServer.hpp"
-#include "Error.hpp"
+#include "Core/Server.hpp"
 #include "Player.hpp"
 
-CoreServer::CoreServer() {}
+Core::Server::Server() {}
 
 // void CoreServer::addEntity(AEntityPtr entity)
 // {
@@ -24,12 +23,12 @@ CoreServer::CoreServer() {}
 //     // TODO send to clients
 // }
 
-void CoreServer::run() {
+void Core::Server::run() {
     std::cout << "hey Server !" << std::endl;
     // TODO
 }
 
-void CoreServer::procDelectionQueue() {
+void Core::Server::procDelectionQueue() {
     for (const auto &entityToDelete : this->deletionQueue) {
         this->network->execEntityAction(entityToDelete,
                                         network::PT_ENTITY_DESTRUCTION);

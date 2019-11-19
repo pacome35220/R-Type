@@ -7,10 +7,10 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "Core/CoreClient.hpp"
-#include "Error.hpp"
+#include "Core/Client.hpp"
 #include "Parallax.hpp"
 #include "Player.hpp"
+#include "../Common/Error.hpp"
 
 /**
  * Entry point of the program
@@ -19,7 +19,7 @@
  */
 void runClient(const std::string &ip, unsigned short port) {
     sf::Packet packet;
-    CoreClient core("R-Type Client");
+    Core::Client core("R-Type Client");
 
     std::cout << ip << "mdr" << port << std::endl;
     core.getNetwork()->setIpTarget(ip);

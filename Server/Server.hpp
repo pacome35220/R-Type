@@ -8,11 +8,11 @@
 
 #include <vector>
 #include <SFML/Network.hpp>
-#include "Core/CoreServer.hpp"
+#include "Core/Server.hpp"
 
 namespace Server
 {
     void start(unsigned short port);
-    void entityFeeder(CoreServer &core);
+    void entityFeeder(Core::Server &core);
     void threadEntryPoint(unsigned short port);
 }
