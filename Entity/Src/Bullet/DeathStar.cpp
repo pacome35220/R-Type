@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** CPP_rtype_2019
 ** File description:
-** BlackStar.cpp
+** DeathStar.cpp
 */
 
-//#include "Bullet/BlackStar.hpp"
+//#include "Bullet/DeathStar.hpp"

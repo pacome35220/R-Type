@@ -1,5 +1,5 @@
 /**
- * @file      BlackStar.hpp
+ * @file      DeathStar.hpp
  * @brief     Description
  */
 
@@ -11,9 +11,9 @@
 namespace Bullet
 {
 /**
- * @class BlackStar "Include/BlackStar.hpp"
+ * @class DeathStar "Include/DeathStar.hpp"
  */
-    class BlackStar
+    class DeathStar
     {
     public:
 
