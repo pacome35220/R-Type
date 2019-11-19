@@ -8,14 +8,17 @@ if (NOT WIN32)
 	conan_basic_setup()
 endif(NOT WIN32)
 
+# Include folders
+include_directories(Client/Include/)
+include_directories(GameEngine/Include/)
+include_directories(Entity/Include/)
+include_directories(Common/Include/)
+
+include(GameEngine/GameEngine.cmake)
 include(Common/Common.cmake)
 include(Entity/Entity.cmake)
-include(GameEngine/GameEngine.cmake)
 
 # Client
-
-include_directories(Client/Include/)
-
 add_executable(r-type_client
     ${SRC}
     Client/Main.cpp
