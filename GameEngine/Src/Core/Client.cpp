@@ -16,11 +16,7 @@ Core::Client::Client(const std::string &windowTitle)
     this->action = std::make_shared<Manager::Action>();
     this->audio = std::make_shared<Manager::Audio>();
 
-    // sf::Vector2f pos(0, 0);
-    // auto parallax = new Parallax(pos);
-    // parallax->setId(-1);
-    // this->feedEntity(parallax);
-
+    this->feedEntity(std::make_shared<Parallax>(*this, sf::Vector2f(0, 0)));
 }
 
 void Core::Client::run() {

@@ -21,7 +21,7 @@ enum EntityID {
     EL_MONSTER_BULLET,
     EL_PLAYER_BULLET,
 
-    EL_PARALAX,
+    EL_PARALLAX,
 
     EL_POWER_UP,
     EL_HEALTH_UP,
