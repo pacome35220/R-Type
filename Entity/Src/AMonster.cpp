@@ -55,11 +55,12 @@ void AMonster::updateMonster() {
  * @param entity
  */
 void AMonster::onCollision(AEntityPtr entity) {
-    // if (sprite.getEntityType() == PLAYERBULLET_ID) {
-    //    this->health--;
-    //    this->entryPoint.addToDeletionQueue(sprite);
-    //}
+    if (entity->getEntityType() == EL_PLAYER_BULLET) {
+       this->health--;
+       this->entryPoint.addToDeletionQueue(entity);
+    }
 }
+
 /**
  * Create an \packet with this
  * @param packetType
