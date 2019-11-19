@@ -26,7 +26,8 @@ void runClient(const std::string &ip, unsigned short port) {
     std::cout << ip << "mdr" << port << std::endl;
     core.getNetwork()->setIpTarget(ip);
     core.getNetwork()->setPortTarget(port);
-    // core.getAudioManager()->playBgm("./Assets/Audio/BackgroundMusic.ogg");
+    // core.getNetwork()->getEntityFactory().addEntity(EL_PLAYER, Entity::mdr);
+    core.getAudio()->playBackgroundMusic("./Assets/Audio/BackgroundMusic.ogg");
     core.run();
 }
 
