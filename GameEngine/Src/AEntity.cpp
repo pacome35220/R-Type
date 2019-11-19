@@ -9,14 +9,13 @@
 #include "ACore.hpp"
 #include "Error.hpp"
 
-AEntity::AEntity(const sf::Vector2f &_position, const std::string &_texturePath,
-                 ACore &_entryPoint, enum EntityID _type)
-    : Id(), type(_type), texturePath(_texturePath), entryPoint(_entryPoint),
-      position(_position), packetNumber(0), health(100), streamTimer(0) {
-    if (!this->entryPoint.getResource()->addTexture(texturePath))
-        throw Error(texturePath + " doesn't exist", __FILE__, __func__,
-                    __LINE__);
-    this->texture = this->entryPoint.getResource()->getTexture(texturePath);
+AEntity::AEntity(const sf::Vector2f &_position, ACore &_entryPoint,
+                 enum EntityID _type)
+    : Id(), type(_type), entryPoint(_entryPoint), position(_position),
+      packetNumber(0), health(100), streamTimer(0) {
+    if (!this->entryPoint.getResource()->loadTexture(_type))
+        throw Error(std::to_string(_type) + " doesn't exist", __FILE__, __func__, __LINE__);
+    this->texture = this->entryPoint.getResource()->getTexture(_type);
     this->sprite.setTexture(this->texture);
     this->sprite.setOrigin(this->texture.getSize().x / 2,
                            this->texture.getSize().y / 2);
@@ -49,7 +48,8 @@ sf::Packet AEntity::buildMyPacket(network::PacketType packetType) {
     packet << packetType;
     if (packetType == network::PT_ENTITY_UPDATE)
         packet << (unsigned int)this->id;
-    packet << this->type << (unsigned int)this->id << this->texturePath
+    packet << this->type << (unsigned int)this->id
+           << this->entryPoint.getResource()->getTexturePath(this->type)
            << this->position.x << this->position.y; //<< _physicType;
     if (packetType == network::PT_ENTITY_UPDATE) {
         packet << (unsigned int)this->packetNumber;

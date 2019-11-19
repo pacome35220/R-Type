@@ -29,6 +29,10 @@ enum EntityID {
     EL_HEALTH_UP,
 
     EL_PLAYER,
+    EL_PLAYER1,
+    EL_PLAYER2,
+    EL_PLAYER3,
+    EL_PLAYER4,
 
     EL_TOTAL_NUMBER
 };

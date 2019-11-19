@@ -7,10 +7,9 @@
 
 #include "ABullet.hpp"
 
-ABullet::ABullet(const sf::Vector2f &position, const std::string &texturePath,
-                 ACore &entryPoint, enum EntityID type, float amplitude,
-                 float counter)
-    : AEntity(position, texturePath, entryPoint, type) {
+ABullet::ABullet(const sf::Vector2f &position, ACore &entryPoint,
+                 enum EntityID type, float amplitude, float counter)
+    : AEntity(position, entryPoint, type) {
     this->amplitude = amplitude;
     this->counter = counter;
     this->originalY = position.y;

@@ -9,10 +9,7 @@
 #include "Bullet/Player.hpp"
 
 Player::Player(ACore &core, sf::Vector2f pos, int _playerNbr)
-    : AEntity(pos,
-              "./Assets/Sprites/Player" + std::to_string(_playerNbr % 4 + 1) +
-                  ".png",
-              core, EL_PLAYER),
+    : AEntity(pos, core, (enum EntityID)(EL_PLAYER + _playerNbr % 4 + 1)),
       playerNbr(_playerNbr) {}
 
 AEntityPtr Player::createPlayerFromPacket(ACore &core, sf::Packet packet) {

@@ -10,5 +10,4 @@
 #define HEALTH 10
 
 Monster::Dumb::Dumb(ACore &entryPoint, const sf::Vector2f &position)
-    : AMonster(position, "./Assets/Sprites/Monster/Dumb.png", entryPoint,
-               EL_DUMB_MONSTER) {}
+    : AMonster(position, entryPoint, EL_DUMB_MONSTER) {}

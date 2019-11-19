@@ -22,11 +22,14 @@ void runClient(const std::string &ip, unsigned short port) {
     Core::Client core("R-Type Client");
 
     std::cout << ip << "mdr" << port << std::endl;
+
+    core.getResource()->feedTextureFactory(EL_PARALLAX, "./Assets/Sprites/starfieldBlue.png");
     core.getNetwork()->setIpTarget(ip);
     core.getNetwork()->setPortTarget(port);
     core.getNetwork()->getEntityFactory().addEntity(EL_PLAYER, Player::createPlayerFromPacket);
     core.getAudio()->playBackgroundMusic("./Assets/Audio/BackgroundMusic.ogg");
 
+    core.feedEntity(std::make_shared<Parallax>(core, sf::Vector2f(0, 0)));
     packet << "Coucou Dolley"; // initialize connection with fake data : Server.cpp:25
     core.getNetwork()->sendPacket(packet, ip, port);
 

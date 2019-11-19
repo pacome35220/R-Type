@@ -8,9 +8,9 @@
 #include "AMonster.hpp"
 #include "Bullet/Monster.hpp"
 
-AMonster::AMonster(const sf::Vector2f &position, const std::string &texturePath,
+AMonster::AMonster(const sf::Vector2f &position,
                    ACore &entryPoint, enum EntityID type)
-    : AEntity(position, texturePath, entryPoint, type), speed(1),
+    : AEntity(position, entryPoint, type), speed(1),
       amplitude(1.4), amplitudeSpeed(3.6) {
     // Todo
 }
