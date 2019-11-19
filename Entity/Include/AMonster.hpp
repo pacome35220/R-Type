@@ -49,5 +49,4 @@ protected:
     float amplitudeSpeed;
     bool hasPowerUp;
     enum MonsterTypes monsterType;
-    size_t health;
 };

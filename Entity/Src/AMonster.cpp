@@ -11,7 +11,7 @@
 AMonster::AMonster(const sf::Vector2f &position, const std::string &texturePath,
                    ACore &entryPoint, enum EntityID type)
     : AEntity(position, texturePath, entryPoint, type), speed(1),
-      amplitude(1.4), amplitudeSpeed(3.6), health(100) {
+      amplitude(1.4), amplitudeSpeed(3.6) {
     // Todo
 }
 

@@ -12,7 +12,7 @@
 AEntity::AEntity(const sf::Vector2f &_position, const std::string &_texturePath,
                  ACore &_entryPoint, enum EntityID _type)
     : Id(), type(_type), texturePath(_texturePath), entryPoint(_entryPoint),
-      position(_position), packetNumber(0) {
+      position(_position), packetNumber(0), health(100), streamTimer(0) {
     if (!this->entryPoint.getResource()->addTexture(texturePath))
         throw Error(texturePath + " doesn't exist", __FILE__, __func__,
                     __LINE__);

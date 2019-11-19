@@ -56,5 +56,7 @@ protected:
     sf::Vector2f position;
     size_t packetNumber;
 
+    int health;
+
     int streamTimer;
 };
