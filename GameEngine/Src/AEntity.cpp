@@ -34,6 +34,10 @@ int AEntity::getStreamTimer() {
     return this->streamTimer;
 }
 
+enum EntityID AEntity::getEntityType() {
+    return this->type;
+}
+
 /**
  * Build a packet from this attributes
  * @param _packetType

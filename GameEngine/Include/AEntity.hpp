@@ -37,6 +37,7 @@ public:
     void incStreamTimer();
     void resetStreamTimer();
     int getStreamTimer();
+    enum EntityID getEntityType();
 
 public:
     sf::Packet buildMyPacket(network::PacketType packetType);
