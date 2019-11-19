@@ -22,22 +22,6 @@ AEntity::AEntity(const sf::Vector2f &_position, const std::string &_texturePath,
                            this->texture.getSize().y / 2);
 }
 
-const sf::Vector2f &AEntity::getPosition() const {
-    return position;
-}
-
-const sf::Sprite &AEntity::getSprite() const {
-    return sprite;
-}
-
-void AEntity::setPosition(const sf::Vector2f &_position) {
-    this->position = _position;
-}
-
-void AEntity::setSprite(const sf::Sprite &_sprite) {
-    this->sprite = _sprite;
-}
-
 void AEntity::incStreamTimer() {
     this->streamTimer++;
 }

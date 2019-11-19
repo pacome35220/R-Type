@@ -30,11 +30,6 @@ public:
             ACore &entryPoint, enum EntityID type);
     virtual ~AEntity() = default;
 
-    const sf::Vector2f &getPosition() const;
-    const sf::Sprite &getSprite() const;
-    void setPosition(const sf::Vector2f &position);
-    void setSprite(const sf::Sprite &sprite);
-
 public:
     virtual void onCollision(AEntity *entity) = 0;
     virtual void update() = 0;
