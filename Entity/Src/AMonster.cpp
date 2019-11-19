@@ -47,9 +47,8 @@ void AMonster::updateMonster()
     this->position.y = this->originalY; // + cos(this->counter) * 10 * this->amplitude; maths lib
 
     if (std::rand() % 100 < 2) {
-    	//auto bullet = new MonsterBullet(this->position);
-    	//this->entryPoint.feedEntity(bullet);
-    	//this->entryPoint.getAudioManager()->playSound("./Assets/Audio/PlayerLaser.ogg");
+    	this->entryPoint.feedEntity(new Bullet::Monster(this->position));
+    	this->entryPoint.getAudio()->playSound("./Assets/Audio/PlayerLaser.ogg");
     }
 
 }
