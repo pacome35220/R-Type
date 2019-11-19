@@ -21,7 +21,6 @@ set(SRC
         ${SRCDIR}EntityFactory.cpp
         ${SRCDIR}AEntity.cpp
         ${SRCDIR}Id.cpp
-        ${SRCDIR}Clock.cpp
         ${SRCDIR}${CORDIR}ACore.cpp
         ${SRCDIR}${CORDIR}CoreClient.cpp
         ${SRCDIR}${CORDIR}CoreServer.cpp
@@ -35,7 +34,6 @@ set(INCLUDE
         ${INCDIR}EntityFactory.hpp
         ${INCDIR}AEntity.hpp
         ${INCDIR}Id.hpp
-        ${INCDIR}Clock.hpp
         ${INCDIR}Client.hpp
         ${INCDIR}${CORDIR}ICore.hpp
         ${INCDIR}${CORDIR}ACore.hpp

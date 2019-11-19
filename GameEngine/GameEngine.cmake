@@ -17,7 +17,6 @@ list(APPEND SRC
         ${CMSRCDIR}Core/ACore.cpp
         ${CMSRCDIR}Core/CoreServer.cpp
         ${CMSRCDIR}Core/CoreClient.cpp
-        ${CMSRCDIR}Clock.cpp
         )
 
 # Append common include file to INCLUDE
@@ -32,5 +31,4 @@ list(APPEND INCLUDE
         ${CMINCDIR}Core/ACore.hpp
         ${CMINCDIR}Core/CoreServer.hpp
         ${CMINCDIR}Core/CoreClient.hpp
-        ${CMINCDIR}Clock.hpp
         )

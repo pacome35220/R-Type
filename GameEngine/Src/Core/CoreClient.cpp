@@ -6,7 +6,6 @@
 */
 
 #include <iostream>
-#include "Clock.hpp"
 #include "Core/CoreClient.hpp"
 
 CoreClient::CoreClient(const std::string &windowTitle)
@@ -17,16 +16,16 @@ CoreClient::CoreClient(const std::string &windowTitle)
 }
 
 void CoreClient::run() {
-    Clock clock;
-    size_t currentTotal = clock.getTotalMicroseconds();
-    size_t lastTotal = clock.getTotalMicroseconds();
+    sf::Clock clock;
+    size_t currentTotal = clock.getElapsedTime().asMicroseconds();
+    size_t lastTotal = clock.getElapsedTime().asMicroseconds();
     static sf::Mutex mutex;
 
     while (window.isOpen()) {
         mutex.lock();
-        currentTotal = clock.getTotalMicroseconds();
+        currentTotal = clock.getElapsedTime().asMicroseconds();
         if (currentTotal - lastTotal >= 1000000 / this->frameRate) {
-            clock.frame();
+            clock.restart();
             this->handleWindowEvent();
             this->updateEntities();
             this->procTopQueue();
@@ -41,7 +40,6 @@ void CoreClient::run() {
             this->canFeed = tmp;
             lastTotal = currentTotal;
         }
-        clock.tick();
         mutex.unlock();
     }
 }
