@@ -6,12 +6,14 @@
 */
 
 #include "Player.hpp"
+#include "Bullet/Player.hpp"
 
-Player::Player(ACore &core, sf::Vector2f pos, int playerNbr)
+Player::Player(ACore &core, sf::Vector2f pos, int _playerNbr)
     : AEntity(pos,
-              "./Assets/Sprites/Player" + std::to_string(playerNbr % 4 + 1) +
+              "./Assets/Sprites/Player" + std::to_string(_playerNbr % 4 + 1) +
                   ".png",
-              core, EL_PLAYER) {}
+              core, EL_PLAYER),
+      playerNbr(_playerNbr) {}
 
 AEntityPtr Player::createPlayerFromPacket(ACore &core, sf::Packet packet) {
     int id;
@@ -27,6 +29,77 @@ AEntityPtr Player::createPlayerFromPacket(ACore &core, sf::Packet packet) {
     return player;
 }
 
-void Player::onCollision(AEntityPtr entity) {}
+void Player::onCollision(AEntityPtr entity) {
+    switch (entity->getEntityType()) {
+    case EL_MONSTER_BULLET:
+        this->health--;
+        this->entryPoint.addToDeletionQueue(entity);
+        break;
+    case EL_CLASSIC_MONSTER:
+        this->health -= 10;
+        this->entryPoint.addToDeletionQueue(entity);
+        break;
+    case EL_DEATH_STAR:
+    case EL_ASTEROID:
+        // you dead lol
+        // mdr t un ouf toi
+        this->health = -100000;
+    case EL_POWER_UP:
+        this->level++;
+        this->entryPoint.addToDeletionQueue(entity);
+    case EL_HEALTH_UP:
+        this->health += 20;
+        this->entryPoint.addToDeletionQueue(entity);
+    default:
+        break;
+    }
+}
 
-void Player::update() {}
+/**
+ * handleInput move the player depending on input.
+ * When Space is pressed and depending on the level, the player is able to shot
+ * bullet in multiple direction
+ */
+void Player::handleInput() {
+    auto network = this->entryPoint.getNetwork();
+
+    if (network->isClientKeyPressed(this->playerNbr, sf::Keyboard::Up))
+        this->position.y -= 2;
+    if (network->isClientKeyPressed(this->playerNbr, sf::Keyboard::Down))
+        this->position.y += 2;
+    if (network->isClientKeyPressed(this->playerNbr, sf::Keyboard::Right))
+        this->position.x += 1;
+    if (network->isClientKeyPressed(this->playerNbr, sf::Keyboard::Left))
+        this->position.x -= 1;
+
+    if (network->isClientKeyPressed(this->playerNbr, sf::Keyboard::Space)) {
+        if (this->level == 0)
+            this->entryPoint.feedEntity(std::make_shared<Bullet::Player>(
+                this->position, this->entryPoint, 0));
+        else if (this->level == 1)
+            for (int i = -1; i <= 1; i++)
+                this->entryPoint.feedEntity(std::make_shared<Bullet::Player>(
+                    this->position, this->entryPoint, i));
+        else {
+            this->entryPoint.feedEntity(std::make_shared<Bullet::Player>(
+                this->position, this->entryPoint, 0));
+            for (int i = -2; i <= 2; i++)
+                this->entryPoint.feedEntity(std::make_shared<Bullet::Player>(
+                    this->position, this->entryPoint, i));
+        }
+    }
+}
+
+void Player::update() {
+    this->handleInput();
+    if (this->position.x < -100 + 6)
+        this->position.x = -100 + 6;
+    if (this->position.y < -100 + 9.5)
+        this->position.y = -100 + 9.5f;
+    if (this->position.x > 100 - 6)
+        this->position.x = 100 - 6;
+    if (this->position.y > 100 - 9.5)
+        this->position.y = 100 - 9.5f;
+    if (this->health < 0)
+        this->entryPoint.addToDeletionQueue(this->getId());
+}
