@@ -8,7 +8,7 @@
 #include "ABullet.hpp"
 #include <utility>
 
-ABullet::ABullet(ACore &entryPoint, enum EntityList type, sf::Vector2f &position,
+ABullet::ABullet(ACore &entryPoint, enum EntityID type, sf::Vector2f &position,
                  std::string texturePath) : AEntity(position, std::move(texturePath), entryPoint, type)
 {
     this->type = type;

@@ -8,7 +8,7 @@
 /**
  * @enum File "Include/EntityList.hpp"
  */
-enum EntityList {
+enum EntityID {
     EL_UNKNOWN = -1,
     EL_CLASSIC_MONSTER,
     EL_DUMB_MONSTER,

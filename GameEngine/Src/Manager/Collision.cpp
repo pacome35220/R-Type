@@ -14,7 +14,7 @@
  * @param type2
  * @return True | False
  */
-bool Manager::Collision::getCollision(EntityList entity1, EntityList entity2) const
+bool Manager::Collision::getCollision(EntityID entity1, EntityID entity2) const
 {
     // Todo
 }
@@ -24,7 +24,7 @@ bool Manager::Collision::getCollision(EntityList entity1, EntityList entity2) co
  * @param type2
  * @return True | False
  */
-void Manager::Collision::setCollision(EntityList entity1, EntityList entity2, const bool &status)
+void Manager::Collision::setCollision(EntityID entity1, EntityID entity2, const bool &status)
 {
     // Todo
 }

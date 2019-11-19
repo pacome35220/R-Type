@@ -8,7 +8,7 @@
 #pragma once
 
 #include <memory>
-#include "EntityList.hpp"
+#include "EntityID.hpp"
 
 class AEntity;
 typedef std::shared_ptr<AEntity> AEntityPtr;
@@ -47,5 +47,5 @@ public:
     virtual void procTopQueue() = 0;
 	virtual void feedEntity(AEntityPtr entity) = 0;
     virtual void addToDeletionQueue(AEntityPtr entity) = 0;
-    virtual void addToDeletionQueue(enum EntityList entityId) = 0;
+    virtual void addToDeletionQueue(enum EntityID entityId) = 0;
 };

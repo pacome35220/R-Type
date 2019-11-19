@@ -15,7 +15,7 @@
 class ABullet : AEntity
 {
 public:
-    ABullet(ACore &entryPoint, enum EntityList type, sf::Vector2f &position, std::string texturePath);
+    ABullet(ACore &entryPoint, enum EntityID type, sf::Vector2f &position, std::string texturePath);
     ~ABullet() override;
 
 public:

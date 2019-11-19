@@ -19,13 +19,13 @@ public:
     ~EntityFactory() = default;
 
     void addEntity(
-        enum EntityList entityID,
+        enum EntityID entityID,
         std::function<AEntityPtr(ACore &core, sf::Packet packet)> constructor);
-    AEntityPtr buildEntity(enum EntityList entityID, ACore &core,
+    AEntityPtr buildEntity(enum EntityID entityID, ACore &core,
                            sf::Packet packet);
 
 private:
-    std::map<enum EntityList,
+    std::map<enum EntityID,
              std::function<AEntityPtr(ACore &core, sf::Packet packet)>>
         entityList;
 };

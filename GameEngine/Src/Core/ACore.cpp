@@ -95,6 +95,6 @@ void ACore::addToDeletionQueue(AEntityPtr entity) {
 	this->deletionQueue.push_back(entity);
 }
 
-void ACore::addToDeletionQueue(enum EntityList entityId) {
+void ACore::addToDeletionQueue(enum EntityID entityId) {
     this->addToDeletionQueue(this->getEntityFromId(entityId));
 }

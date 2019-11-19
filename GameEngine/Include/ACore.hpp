@@ -37,7 +37,7 @@ public:
     void procTopQueue() override;
     void feedEntity(AEntityPtr entity) override;
     void addToDeletionQueue(AEntityPtr entity) override;
-    void addToDeletionQueue(enum EntityList entityId) override;
+    void addToDeletionQueue(enum EntityID entityId) override;
 
 protected:
     std::size_t frameRate;

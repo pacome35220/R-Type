@@ -14,7 +14,7 @@
  * @param constructor
  */
 void EntityFactory::addEntity(
-    enum EntityList entityID,
+    enum EntityID entityID,
     std::function<AEntityPtr(ACore &core, sf::Packet packet)> constructor) {
     try {
         this->entityList[entityID] = constructor;
@@ -30,7 +30,7 @@ void EntityFactory::addEntity(
  * @param packet
  * @return The entity built
  */
-AEntityPtr EntityFactory::buildEntity(enum EntityList entityID, ACore &core,
+AEntityPtr EntityFactory::buildEntity(enum EntityID entityID, ACore &core,
                                       sf::Packet packet) {
     try {
         return this->entityList[entityID](core, packet);

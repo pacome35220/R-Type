@@ -116,7 +116,7 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_CREATION) {
             packet >> entityID;
-            this->entityFactory.buildEntity((enum EntityList)entityID, core,
+            this->entityFactory.buildEntity((enum EntityID)entityID, core,
                                             packet);
         }
 
@@ -129,7 +129,7 @@ void Manager::Network::readSocket(ACore &core) {
             AEntityPtr target = core.getEntityFromId(id);
             if (!target) {
                 core.feedEntity(this->entityFactory.buildEntity(
-                    (enum EntityList)entityID, core, packet));
+                        (enum EntityID)entityID, core, packet));
             } else {
                 target->updateFromPacket(packet);
             }
@@ -137,7 +137,7 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_DESTRUCTION) {
             packet >> id;
-            core.addToDeletionQueue((enum EntityList)id);
+            core.addToDeletionQueue((enum EntityID)id);
         }
         state = this->socket.receive(packet, sender, senderPort);
     }

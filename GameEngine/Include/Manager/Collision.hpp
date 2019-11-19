@@ -8,7 +8,7 @@
 #include <map>
 #include <list>
 #include <memory>
-#include "EntityList.hpp"
+#include "EntityID.hpp"
 
 class AEntity;
 
@@ -30,8 +30,8 @@ namespace Manager
     public:
         Collision() = default;
         ~Collision() = default;
-        bool getCollision(EntityList entity1, EntityList entity2) const;
-        void setCollision(EntityList entity1, EntityList entity2, const bool &status);
+        bool getCollision(EntityID entity1, EntityID entity2) const;
+        void setCollision(EntityID entity1, EntityID entity2, const bool &status);
 
     private:
         bool rectCollision(AEntity &entity1, AEntity &entity2);
@@ -39,6 +39,6 @@ namespace Manager
         bool pixelCollision(AEntity &entity1, AEntity &entity2);
 
     private:
-        std::map<EntityList, std::map<EntityList, bool>> collisionMap;
+        std::map<EntityID, std::map<EntityID, bool>> collisionMap;
     };
 }
