@@ -5,4 +5,10 @@
 ** Monster.cpp
 */
 
-//#include "Bullet/Monster.hpp"
+#include "Bullet/Monster.hpp"
+
+Bullet::Monster::Monster(const sf::Vector2f &position, ACore &entryPoint)
+    : ABullet(position, "./Assets/Sprites/MonstersBullet.png", entryPoint,
+              EL_MONSTER_BULLET) {}
+
+void Bullet::Monster::updateBullet() {}

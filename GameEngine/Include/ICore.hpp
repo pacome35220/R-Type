@@ -13,15 +13,12 @@
 class AEntity;
 typedef std::shared_ptr<AEntity> AEntityPtr;
 
-namespace Manager
-{
-    class Audio;
-
-    class Network;
-
-    class Action;
-
-    class Collision;
+namespace Manager {
+class Audio;
+class Network;
+class Action;
+class Collision;
+class Resource;
 }
 
 /**
@@ -35,10 +32,12 @@ public:
     virtual void setCollision(std::shared_ptr<Manager::Collision> collision) = 0;
     virtual void setNetwork(std::shared_ptr<Manager::Network> network) = 0;
     virtual void setAudio(std::shared_ptr<Manager::Audio> audio) = 0;
+    virtual void setResource(std::shared_ptr<Manager::Resource> resource) = 0;
     virtual std::shared_ptr<Manager::Audio> getAudio() const = 0;
     virtual std::shared_ptr<Manager::Action> getAction() const = 0;
     virtual std::shared_ptr<Manager::Network> getNetwork() const = 0;
     virtual std::shared_ptr<Manager::Collision> getCollision() const = 0;
+    virtual std::shared_ptr<Manager::Resource> getResource() const = 0;
 
 public:
     virtual void run() = 0;

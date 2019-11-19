@@ -7,13 +7,6 @@
 
 #include "Manager/Resource.hpp"
 
-Manager::Resource Manager::Resource::resourceInstance;
-
-Manager::Resource &Manager::Resource::getInstance()
-{
-    return resourceInstance;
-}
-
 sf::Texture *Manager::Resource::getTexture(std::string &texturePath)
 {
     return textureMap.find(texturePath) == textureMap.end() ? createTexture(texturePath)
@@ -28,4 +21,3 @@ sf::Texture *Manager::Resource::createTexture(const std::string &texturePath)
     this->textureMap[texturePath] = newTexture;
     return newTexture;
 }
-

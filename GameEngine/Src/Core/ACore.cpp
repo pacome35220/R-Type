@@ -13,42 +13,48 @@ ACore::ACore() : frameRate(60) {}
  * Setter
  */
 
-void ACore::setAction(std::shared_ptr<Manager::Action> action)
-{
+void ACore::setAction(std::shared_ptr<Manager::Action> action) {
     this->action = action;
 }
-void ACore::setCollision(std::shared_ptr<Manager::Collision> collision)
-{
+
+void ACore::setCollision(std::shared_ptr<Manager::Collision> collision) {
     this->collision = collision;
 }
-void ACore::setNetwork(std::shared_ptr<Manager::Network> network)
-{
+
+void ACore::setNetwork(std::shared_ptr<Manager::Network> network) {
     this->network = network;
 }
-void ACore::setAudio(std::shared_ptr<Manager::Audio> audio)
-{
+
+void ACore::setAudio(std::shared_ptr<Manager::Audio> audio) {
     this->audio = audio;
+}
+
+void ACore::setResource(std::shared_ptr<Manager::Resource> resource) {
+    this->resource = resource;
 }
 
 /**
  * Getter
  */
 
-std::shared_ptr<Manager::Audio> ACore::getAudio() const
-{
+std::shared_ptr<Manager::Audio> ACore::getAudio() const {
     return this->audio;
 }
-std::shared_ptr<Manager::Action> ACore::getAction() const
-{
+
+std::shared_ptr<Manager::Action> ACore::getAction() const {
     return this->action;
 }
-std::shared_ptr<Manager::Network> ACore::getNetwork() const
-{
+
+std::shared_ptr<Manager::Network> ACore::getNetwork() const {
     return this->network;
 }
-std::shared_ptr<Manager::Collision> ACore::getCollision() const
-{
+
+std::shared_ptr<Manager::Collision> ACore::getCollision() const {
     return this->collision;
+}
+
+std::shared_ptr<Manager::Resource> ACore::getResource() const {
+    return this->resource;
 }
 
 AEntityPtr ACore::getEntityFromId(size_t id) {
@@ -61,13 +67,11 @@ AEntityPtr ACore::getEntityFromId(size_t id) {
 void ACore::updateEntities() {
     for (auto &entity : this->entities) {
         entity->update();
-        // if (entity->getStreamTimer() >= 15) {
-        // 	entity->resetStreamTimer();
-        // 	this->networkManager->execEntityAction(entity,
-        // network::PT_ENTITY_UPDATE);
-        // }
-        // else
-        // 	entity->incStreamTimer();
+        if (entity->getStreamTimer() >= 15) {
+            entity->resetStreamTimer();
+            this->network->execEntityAction(entity, network::PT_ENTITY_UPDATE);
+        } else
+            entity->incStreamTimer();
     }
 }
 
@@ -92,7 +96,7 @@ void ACore::feedEntity(AEntityPtr entity) {
 }
 
 void ACore::addToDeletionQueue(AEntityPtr entity) {
-	this->deletionQueue.push_back(entity);
+    this->deletionQueue.push_back(entity);
 }
 
 void ACore::addToDeletionQueue(enum EntityID entityId) {

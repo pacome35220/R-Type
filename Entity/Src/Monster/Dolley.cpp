@@ -9,11 +9,6 @@
 
 #define HEALTH 150
 
-Monster::Dolley::Dolley(ACore &entryPoint, sf::Vector2f &position, float speed, float amplitude,
-                        float amplitudeSpeed) : AMonster(entryPoint, position, "./Assets/Sprites/Dolley.png", HEALTH, speed, amplitude, amplitudeSpeed, MonsterTypes::MT_DOLLEY_MONSTER)
-{
-
-}
-
-Monster::Dolley::~Dolley() = default;
-
+Monster::Dolley::Dolley(ACore &entryPoint, const sf::Vector2f &position)
+    : AMonster(position, "./Assets/Sprites/Monster/Dolley.png", entryPoint,
+               EL_DOLLEY_MONSTER) {}

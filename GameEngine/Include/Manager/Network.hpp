@@ -29,7 +29,6 @@ public:
     const std::vector<Client> &getClients() const;
     EntityFactory &getEntityFactory();
 
-
 public:
     void onPlayerJoin(ACore &core, const sf::IpAddress &senderIp,
                       unsigned short senderPort);

@@ -26,3 +26,7 @@ AEntityPtr Player::createPlayerFromPacket(ACore &core, sf::Packet packet) {
     // player->id = id;
     return player;
 }
+
+void Player::onCollision(AEntity *entity) {}
+
+void Player::update() {}

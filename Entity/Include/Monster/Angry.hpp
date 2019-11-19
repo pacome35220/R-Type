@@ -4,24 +4,18 @@
  */
 
 #pragma once
-#include "AMonster.hpp"
 
+#include "AMonster.hpp"
 
 /**
  * @namespace Package to get all types of monster
  */
-namespace Monster
-{
+namespace Monster {
 /**
  * @class Angry "Include/Angry.hpp"
  */
-    class Angry : AMonster
-    {
-    public:
-        Angry(ACore &entryPoint, sf::Vector2f &position, float speed, float amplitude,
-              float amplitudeSpeed);
-        ~Angry() override;
-
-    private:
-    };
-}
+class Angry : public AMonster {
+public:
+    Angry(ACore &entryPoint, const sf::Vector2f &position);
+};
+} // namespace Monster

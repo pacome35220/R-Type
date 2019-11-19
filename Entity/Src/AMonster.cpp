@@ -6,32 +6,29 @@
 */
 
 #include "AMonster.hpp"
+#include "Bullet/Monster.hpp"
 
-AMonster::AMonster(ACore &entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, MonsterTypes monsterType) : AEntity(position, texturePath, entryPoint, EL_UNKNOWN),
-                                                                                                                                                                                      speed(speed), amplitude(amplitude), amplitudeSpeed(amplitudeSpeed), monsterType(monsterType), health(health)
-{
-    //Todo
+AMonster::AMonster(const sf::Vector2f &position, const std::string &texturePath,
+                   ACore &entryPoint, enum EntityID type)
+    : AEntity(position, texturePath, entryPoint, type), speed(1),
+      amplitude(1.4), amplitudeSpeed(3.6), health(100) {
+    // Todo
 }
 
-AMonster::~AMonster()
-{
-    //TODO
+AMonster::~AMonster() {
+    // TODO
 }
 
-float AMonster::getCounter() const
-{
+float AMonster::getCounter() const {
     return counter;
 }
-void AMonster::setCounter(float _counter)
-{
+void AMonster::setCounter(float _counter) {
     counter = _counter;
 }
-float AMonster::getOriginalY() const
-{
+float AMonster::getOriginalY() const {
     return originalY;
 }
-void AMonster::setOriginalY(float _originalY)
-{
+void AMonster::setOriginalY(float _originalY) {
     originalY = _originalY;
 }
 
@@ -39,27 +36,27 @@ void AMonster::setOriginalY(float _originalY)
  *  Check if the is alive
  */
 
-void AMonster::updateMonster()
-{
+void AMonster::updateMonster() {
     this->counter += this->amplitudeSpeed;
 
     this->position.x -= this->speed;
-    this->position.y = this->originalY; // + cos(this->counter) * 10 * this->amplitude; maths lib
+    this->position.y = this->originalY; // + cos(this->counter) * 10 *
+                                        // this->amplitude; maths lib
 
     if (std::rand() % 100 < 2) {
-    	this->entryPoint.feedEntity(new Bullet::Monster(this->position));
-    	this->entryPoint.getAudio()->playSound("./Assets/Audio/PlayerLaser.ogg");
+        this->entryPoint.feedEntity(std::make_shared<Bullet::Monster>(
+            this->position, this->entryPoint));
+        this->entryPoint.getAudio()->playSound(
+            "./Assets/Audio/PlayerLaser.ogg");
     }
-
 }
 /**
  * Check and process the collision between this and \entity
  * @param entity
  */
-void AMonster::onCollision(AEntity *entity)
-{
-    //if (sprite.getEntityType() == PLAYERBULLET_ID) {
-	//    this->health--;
+void AMonster::onCollision(AEntity *entity) {
+    // if (sprite.getEntityType() == PLAYERBULLET_ID) {
+    //    this->health--;
     //    this->entryPoint.addToDeletionQueue(sprite);
     //}
 }
@@ -68,20 +65,20 @@ void AMonster::onCollision(AEntity *entity)
  * @param packetType
  * @return the
  */
-sf::Packet AMonster::decodeEntityPacket(network::PacketType packetType)
-{
+sf::Packet AMonster::decodeEntityPacket(network::PacketType packetType) {
     sf::Packet packet;
 
     packet << packetType;
     if (packetType == network::PT_ENTITY_UPDATE)
-        packet << (unsigned int) this->id;
-    packet << this->monsterType << (unsigned int) this->id;
-    packet << this->position.x << this->position.y << this->amplitude << this->speed << this->amplitudeSpeed << this->scale << this->originalY << this->counter;
+        packet << (unsigned int)this->id;
+    packet << this->monsterType << (unsigned int)this->id;
+    packet << this->position.x << this->position.y << this->amplitude
+           << this->speed << this->amplitudeSpeed << this->scale
+           << this->originalY << this->counter;
     return packet;
 }
 
-void AMonster::updateEntityPacket(sf::Packet packet)
-{
+void AMonster::updateEntityPacket(sf::Packet packet) {
     int id;
     float posX;
     float posY;

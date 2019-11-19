@@ -4,23 +4,18 @@
  */
 
 #pragma once
+
 #include "AMonster.hpp"
 
 /**
  * @namespace Package to get all types of monster
  */
-namespace Monster
-{
+namespace Monster {
 /**
  * @class Speed "Include/Speed.hpp"
  */
-    class Speed : AMonster
-    {
-    public:
-        Speed(ACore &entryPoint, sf::Vector2f &position, float speed, float amplitude,
-              float amplitudeSpeed);
-        ~Speed() override;
-    private:
-
-    };
-}
+class Speed : public AMonster {
+public:
+    Speed(ACore &entryPoint, const sf::Vector2f &position);
+};
+} // namespace Monster

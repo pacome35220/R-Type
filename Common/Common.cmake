@@ -1,7 +1,5 @@
-# Includes common directories
-include_directories(Common/)
+set(COMMON_DIR Common/)
 
-# Append common source file to SRC
 list(APPEND SRC
-  Common/Error.cpp
+  ${COMMON_DIR}Error.cpp
 )

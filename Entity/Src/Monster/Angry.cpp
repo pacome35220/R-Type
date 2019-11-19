@@ -9,10 +9,6 @@
 
 #define HEALTH 60
 
-Monster::Angry::Angry(ACore &entryPoint, sf::Vector2f &position, float speed, float amplitude,
-                      float amplitudeSpeed) : AMonster(entryPoint, position, "./Assets/Sprites/Monster/Angry.png", HEALTH, speed, amplitude, amplitudeSpeed, MonsterTypes::MT_SPEED_MONSTER)
-{
-
-}
-
-Monster::Angry::~Angry() = default;
+Monster::Angry::Angry(ACore &entryPoint, const sf::Vector2f &position)
+    : AMonster(position, "./Assets/Sprites/Monster/Angry.png", entryPoint,
+               EL_ANGRY_MONSTER) {}

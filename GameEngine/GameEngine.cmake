@@ -1,18 +1,18 @@
-# Includes common directories
-include_directories(GameEngine/Include/)
+set(GAME_ENGINE_DIR GameEngine/Src/)
+set(CORE_DIR ${GAME_ENGINE_DIR}Core/)
+set(MANAGER_DIR ${GAME_ENGINE_DIR}Manager/)
 
-# Append common source file to SRC
 list(APPEND SRC
-        GameEngine/Src/Manager/Collision.cpp
-        GameEngine/Src/Manager/Action.cpp
-        GameEngine/Src/Manager/Network.cpp
-        GameEngine/Src/Manager/Audio.cpp
-        GameEngine/Src/Manager/Resource.cpp
-        GameEngine/Src/AEntity.cpp
-        GameEngine/Src/EntityFactory.cpp
-        GameEngine/Src/Id.cpp
-        GameEngine/Src/Core/ACore.cpp
-        GameEngine/Src/Core/Server.cpp
-        GameEngine/Src/Core/Client.cpp
-        GameEngine/Include/Manager/Resource.cpp
+        ${GAME_ENGINE_DIR}AEntity.cpp
+        ${GAME_ENGINE_DIR}EntityFactory.cpp
+        ${GAME_ENGINE_DIR}Id.cpp
+
+        ${CORE_DIR}ACore.cpp
+        ${CORE_DIR}Client.cpp
+        ${CORE_DIR}Server.cpp
+
+        ${MANAGER_DIR}Audio.cpp
+        ${MANAGER_DIR}Action.cpp
+        ${MANAGER_DIR}Collision.cpp
+        ${MANAGER_DIR}Network.cpp
 )

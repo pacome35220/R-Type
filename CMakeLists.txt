@@ -9,14 +9,25 @@ if (NOT WIN32)
 endif (NOT WIN32)
 
 # Include folders
-include_directories(Client/Include/)
+
+include_directories(Common/)
+
 include_directories(GameEngine/Include/)
+include_directories(GameEngine/Include/Core)
+include_directories(GameEngine/Include/Manager)
+
 include_directories(Entity/Include/)
+include_directories(Entity/Include/Bullet/)
+include_directories(Entity/Include/Monster/)
+
 include_directories(Common/Include/)
 
 include(GameEngine/GameEngine.cmake)
 include(Common/Common.cmake)
 include(Entity/Entity.cmake)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+set(CMAKE_CXX_COMPILER clang++)
 
 # Client
 add_executable(r-type_client
@@ -25,9 +36,6 @@ add_executable(r-type_client
         )
 
 # Server
-
-include_directories(Server/Include/)
-
 add_executable(r-type_server
         ${SRC}
         Server/Main.cpp

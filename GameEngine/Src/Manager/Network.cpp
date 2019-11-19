@@ -43,7 +43,8 @@ void Manager::Network::onPlayerJoin(ACore &core, const sf::IpAddress &senderIp,
     sf::Vector2f newClientPosition(-90, 0);
     std::size_t playerNbr = this->clients.size();
 
-    core.feedEntity(std::make_shared<Player>(core, newClientPosition, playerNbr));
+    core.feedEntity(
+        std::make_shared<Player>(core, newClientPosition, playerNbr));
     this->addNewClient(senderIp, senderPort);
 }
 

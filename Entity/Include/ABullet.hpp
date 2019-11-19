@@ -1,4 +1,4 @@
- /**
+/**
  * @file      ABullet.hpp
  * @brief     Abstract class of Bullet.
  * @details   It will be inherited by all types of bullets
@@ -12,17 +12,15 @@
 /**
  * @class ABullet "Include/ABullet.hpp"
  */
-class ABullet : AEntity
-{
+class ABullet : public AEntity {
 public:
-    ABullet(ACore &entryPoint, enum EntityID type, sf::Vector2f &position, std::string texturePath);
-    ~ABullet() override;
+    ABullet(const sf::Vector2f &position, const std::string &texturePath,
+            ACore &entryPoint, enum EntityID type);
 
 public:
     void update() override;
-    virtual void increaseStreamTimer() = 0;
     virtual void updateBullet() = 0;
+    void onCollision(AEntity *entity) override;
 
 protected:
-
 };

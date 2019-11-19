@@ -15,6 +15,7 @@
 #include "Manager/Action.hpp"
 #include "Manager/Audio.hpp"
 #include "Manager/Network.hpp"
+#include "Manager/Resource.hpp"
 
 class ACore : public ICore
 {
@@ -27,10 +28,12 @@ public:
     void setCollision(std::shared_ptr<Manager::Collision> collision) override;
     void setNetwork(std::shared_ptr<Manager::Network> network) override;
     void setAudio(std::shared_ptr<Manager::Audio> audio) override;
+    void setResource(std::shared_ptr<Manager::Resource> resource) override;
     std::shared_ptr<Manager::Audio> getAudio() const override;
     std::shared_ptr<Manager::Action> getAction() const override;
     std::shared_ptr<Manager::Network> getNetwork() const override;
     std::shared_ptr<Manager::Collision> getCollision() const override;
+    std::shared_ptr<Manager::Resource> getResource() const override;
     AEntityPtr getEntityFromId(size_t id) override;
 
     void updateEntities() override;
@@ -49,4 +52,5 @@ protected:
     std::shared_ptr<Manager::Audio> audio;
     std::shared_ptr<Manager::Collision> collision;
     std::shared_ptr<Manager::Network> network;
+    std::shared_ptr<Manager::Resource> resource;
 };

@@ -10,18 +10,15 @@
  * @namespace Package to get all types of bullets
  */
 
-namespace Bullet
-{
+namespace Bullet {
 /**
  * @class Monster "Include/Monster.hpp"
  */
-    class Monster : ABullet
-    {
-    public:
+class Monster : public ABullet {
+public:
+    Monster(const sf::Vector2f &position, ACore &entryPoint);
+    ~Monster() = default;
 
-    public:
-
-    private:
-
-    };
-}
+    void updateBullet() override;
+};
+} // namespace Bullet
