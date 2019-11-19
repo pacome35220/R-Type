@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "Core/CoreClient.hpp"
+#include "Parallax.hpp"
 
 CoreClient::CoreClient(const std::string &windowTitle)
     : ACore(),
@@ -14,6 +15,12 @@ CoreClient::CoreClient(const std::string &windowTitle)
     this->network = std::make_shared<Manager::Network>();
     this->action = std::make_shared<Manager::Action>();
     this->audio = std::make_shared<Manager::Audio>();
+
+    // sf::Vector2f pos(0, 0);
+    // auto parallax = new Parallax(pos);
+    // parallax->setId(-1);
+    // this->feedEntity(parallax);
+
 }
 
 void CoreClient::run() {

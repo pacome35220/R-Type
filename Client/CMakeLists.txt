@@ -32,8 +32,10 @@ conan_basic_setup()
 #Common includes
 set(GE_DIR ../GameEngine/)
 set(COMMON_DIR ../Common/)
+set(ENTITY_DIR ../Entity/)
 include(${GE_DIR}GameEngine.cmake)
 include(${COMMON_DIR}Common.cmake)
+include(${ENTITY_DIR}Entity.cmake)
 
 # Compiled files
 add_executable(r-type_client ${SRC} ${INCLUDE})

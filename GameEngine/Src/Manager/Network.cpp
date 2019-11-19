@@ -9,6 +9,7 @@
 #include <cstring>
 #include "Error.hpp"
 #include "Manager/Network.hpp"
+#include "Player.hpp"
 
 Manager::Network::Network() {
     this->socket.setBlocking(false);
@@ -26,6 +27,32 @@ const std::vector<Client> &Manager::Network::getClients() const {
     return this->clients;
 }
 
+EntityFactory &Manager::Network::getEntityFactory() {
+    return this->entityFactory;
+}
+
+/**
+ * onPlayerJoin generate Player entity at the default position
+ * and add it in the list
+ * @param core
+ * @param senderIp
+ * @param senderPort
+ */
+void Manager::Network::onPlayerJoin(ACore &core, const sf::IpAddress &senderIp,
+                                    unsigned short senderPort) {
+    sf::Vector2f newClientPosition(-90, 0);
+    std::size_t playerNbr = this->clients.size();
+
+    core.feedEntity(std::make_shared<Player>(core, newClientPosition, playerNbr));
+    this->addNewClient(senderIp, senderPort);
+}
+
+/**
+ * addNewClient check if the player isn't already playing and put a
+ * well-initialize Client in the list
+ * @param ip
+ * @param port
+ */
 void Manager::Network::addNewClient(const sf::IpAddress &ip,
                                     unsigned short port) {
     Client newClient;
@@ -75,8 +102,7 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_PLAYER_JOIN &&
             this->clients.size() < 4) {
-            // if (_playerJoinCallback)
-            // _playerJoinCallback(core, sender, senderPort);
+            this->onPlayerJoin(core, sender, senderPort);
             std::cout << "Someone joined with " << sender << ":" << senderPort
                       << std::endl;
         }
@@ -111,7 +137,7 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_DESTRUCTION) {
             packet >> id;
-            core.addToDeletionQueue((enum EntityList) id);
+            core.addToDeletionQueue((enum EntityList)id);
         }
         state = this->socket.receive(packet, sender, senderPort);
     }
@@ -147,8 +173,4 @@ void Manager::Network::execEntityAction(const AEntityPtr &entity,
 
     for (auto &client : this->clients)
         this->socket.send(packet, client.ip, client.port);
-}
-
-const EntityFactory &Manager::Network::getEntityFactory() const {
-    return this->entityFactory;
 }

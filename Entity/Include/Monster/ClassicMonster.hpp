@@ -9,10 +9,10 @@
 /**
  * @class ClassicMonster "Include/ClassicMonster.hpp"
  */
-class ClassicMonster : Monster
+class ClassicMonster : public Monster
 {
 public:
-    ClassicMonster(ACore *entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
+    ClassicMonster(ACore &entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
     ~ClassicMonster();
 private:
 

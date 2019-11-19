@@ -28,7 +28,7 @@ enum MonsterTypes {
 class Monster : public AEntity
 {
 public:
-    Monster(ACore *entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, MonsterTypes monsterType);
+    Monster(ACore &entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, MonsterTypes monsterType);
     ~Monster();
     float getCounter() const;
     void setCounter(float counter);

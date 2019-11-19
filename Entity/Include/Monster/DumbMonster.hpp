@@ -11,7 +11,7 @@
 class DumbMonster : Monster
 {
 public:
-    DumbMonster(ACore *entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
+    DumbMonster(ACore &entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
     ~DumbMonster();
 private:
 

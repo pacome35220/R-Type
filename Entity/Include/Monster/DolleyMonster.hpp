@@ -11,7 +11,7 @@
 class DolleyMonster : Monster
 {
 public:
-    DolleyMonster(ACore *entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
+    DolleyMonster(ACore &entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
     ~DolleyMonster();
 private:
 };

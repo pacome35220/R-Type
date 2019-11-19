@@ -11,7 +11,7 @@
 class VenerMonster : Monster
 {
 public:
-    VenerMonster(ACore *entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
+    VenerMonster(ACore &entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
     ~VenerMonster();
 private:
 };

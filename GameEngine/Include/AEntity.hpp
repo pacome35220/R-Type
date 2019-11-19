@@ -26,7 +26,7 @@ typedef std::shared_ptr<AEntity> AEntityPtr;
  */
 class AEntity : public Id {
 public:
-    AEntity(sf::Vector2f position, std::string texturePath, ACore *entryPoint,
+    AEntity(sf::Vector2f position, std::string texturePath, ACore &entryPoint,
             enum EntityList _type);
     virtual ~AEntity() = default;
     const sf::Vector2f &getPosition() const;
@@ -48,7 +48,7 @@ protected:
     std::string texturePath;
     sf::Texture texture;
     sf::Sprite sprite;
-    ACore *entryPoint;
+    ACore &entryPoint;
     sf::Vector2f position;
     size_t packetNumber;
 };

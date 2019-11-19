@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Core/CoreServer.hpp"
 #include "Error.hpp"
+#include "Player.hpp"
 
 CoreServer::CoreServer() {}
 
@@ -26,15 +27,6 @@ CoreServer::CoreServer() {}
 void CoreServer::run() {
     std::cout << "hey Server !" << std::endl;
     // TODO
-}
-
-void CoreServer::onPlayerJoin(const sf::IpAddress &senderIp,
-                              unsigned short senderPort) {
-    sf::Vector2i newClientPosition(-90, 0);
-    std::size_t newClientID = this->network->getClients().size();
-
-    // this->addEntity(std::make_unique<Player>(newClientPosition, newClientID));
-    network->addNewClient(senderIp, senderPort);
 }
 
 void CoreServer::procDelectionQueue() {

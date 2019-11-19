@@ -10,6 +10,7 @@
 #include "Core/CoreClient.hpp"
 #include "Error.hpp"
 #include "Parallax.hpp"
+#include "Player.hpp"
 
 /**
  * Entry point of the program
@@ -17,17 +18,18 @@
  * @param port
  */
 void runClient(const std::string &ip, unsigned short port) {
+    sf::Packet packet;
     CoreClient core("R-Type Client");
-    // sf::Vector2f pos(0, 0);
-    // sf::Packet packet;
-    // auto parallax = new Parallax(pos);
-    // parallax->setId(-1);
-    // core.addEntity(parallax);
+
     std::cout << ip << "mdr" << port << std::endl;
     core.getNetwork()->setIpTarget(ip);
     core.getNetwork()->setPortTarget(port);
-    // core.getNetwork()->getEntityFactory().addEntity(EL_PLAYER, Entity::mdr);
+    core.getNetwork()->getEntityFactory().addEntity(EL_PLAYER, Player::createPlayerFromPacket);
     core.getAudio()->playBackgroundMusic("./Assets/Audio/BackgroundMusic.ogg");
+
+    packet << "Coucou Dolley"; // initialize connection with fake data : Server.cpp:25
+    core.getNetwork()->sendPacket(packet, ip, port);
+
     core.run();
 }
 

@@ -5,15 +5,17 @@
 
 #pragma once
 
+#include "AEntity.hpp"
+
 /**
  * @class Player "Include/Player.hpp"
  */
-class Player
-{
+class Player : public AEntity {
 public:
+    Player(ACore &core, sf::Vector2f pos, int playerNbr);
+    ~Player() = default;
 
-public:
-
-private:
-
+    static AEntityPtr createPlayerFromPacket(ACore &core, sf::Packet packet);
+    void onCollision(AEntity *entity) override {};
+    void update() override {};
 };

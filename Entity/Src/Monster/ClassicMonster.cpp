@@ -2,7 +2,7 @@
 
 #define HEALTH 25
 
-ClassicMonster::ClassicMonster(ACore *entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed)
+ClassicMonster::ClassicMonster(ACore &entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed)
 : Monster(entryPoint, position, "./Assets/Sprites/ClassicMonster.png", HEALTH, speed, amplitude, amplitudeSpeed, MonsterTypes::MT_CLASSIC_MONSTER)
 {
 }

@@ -11,7 +11,7 @@
 class SpeedMonster : Monster
 {
 public:
-    SpeedMonster(ACore *entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
+    SpeedMonster(ACore &entryPoint, sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed);
     ~SpeedMonster();
 private:
 

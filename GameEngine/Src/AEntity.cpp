@@ -8,7 +8,7 @@
 #include "AEntity.hpp"
 
 AEntity::AEntity(sf::Vector2f _position, std::string _texturePath,
-                 ACore *_entryPoint, enum EntityList _type)
+                 ACore &_entryPoint, enum EntityList _type)
     : Id(), type(_type), texturePath(_texturePath), entryPoint(_entryPoint),
       position(_position), packetNumber(0) {}
 
