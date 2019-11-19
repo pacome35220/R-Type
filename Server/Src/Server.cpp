@@ -11,6 +11,12 @@
 #include "Server.hpp"
 #include "Core/CoreServer.hpp"
 
+/**
+ * Server entry point.
+ * This server is the lobby (like in Fornite) binded on \port
+ * All game rooms will be bind from \port + x
+ * @param port
+ */
 void Server::start(unsigned short port) {
     int idx = 0;
     sf::Packet packet;
@@ -37,6 +43,11 @@ void Server::start(unsigned short port) {
     }
 }
 
+/**
+ * entityFeeder generate random enemies in the game.
+ * Feel free to add new enemies at the begenning to increase level.
+ * @param core
+ */
 void Server::entityFeeder(CoreServer &core) {
     sf::Vector2f pos(100, 0);
     auto monsterPos = sf::Vector2f(100, 0);
@@ -66,6 +77,11 @@ void Server::entityFeeder(CoreServer &core) {
     // core.feedEntity(new Asteroid(pos2));
 }
 
+/**
+ * threadEntryPoint is executed in a thread representing a room.
+ * The room is a new server binded on \port
+ * @param port
+ */
 void Server::threadEntryPoint(unsigned short port) {
     CoreServer core;
 
