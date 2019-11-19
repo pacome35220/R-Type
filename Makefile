@@ -5,13 +5,8 @@
 ## Makefile
 ##
 
-SERVER_DIR      =       Server/
-CLIENT_DIR      =       Client/
-GAME_ENGINE_DIR =       GameEngine/
-
 BUILD_DIR       =       build/
-LIB_DIR         =       lib/
-BIN_DIR			=       bin/
+BIN_DIR		=       bin/
 
 DOC_DIR         =       Doc/html
 
@@ -22,29 +17,7 @@ all:	fclean
 		cmake . -G "Unix Makefiles" -B $(BUILD_DIR)
 		cmake --build $(BUILD_DIR)
 		mkdir -p $(BIN_DIR)
-		mv $(BUILD_DIR)$(CLIENT_DIR)$(BIN_DIR)* $(BIN_DIR)
-		mv $(BUILD_DIR)$(SERVER_DIR)$(BIN_DIR)* $(BIN_DIR)
-
-client:	fclean
-		conan install . --build=missing --install-folder $(BUILD_DIR)
-		cmake $(CLIENT_DIR) -G "Unix Makefiles" -B $(BUILD_DIR)
-		cmake --build $(BUILD_DIR)
-		mkdir -p $(BIN_DIR)
 		mv $(BUILD_DIR)$(BIN_DIR)* $(BIN_DIR)
-
-server:	fclean
-		conan install . --build=missing --install-folder $(BUILD_DIR)
-		cmake $(SERVER_DIR) -G "Unix Makefiles" -B $(BUILD_DIR)
-		cmake --build $(BUILD_DIR)
-		mkdir -p $(BIN_DIR)
-		mv $(BUILD_DIR)$(BIN_DIR)* $(BIN_DIR)
-
-game_engine: fclean
-		conan install . --build=missing --install-folder $(BUILD_DIR)
-		cmake $(GAME_ENGINE_DIR) -G "Unix Makefiles" -B $(BUILD_DIR)
-		cmake --build $(BUILD_DIR)
-		mkdir -p $(BIN_DIR)
-		mv $(BUILD_DIR)$(LIB_DIR)* $(BIN_DIR)
 
 doc:
 		@doxygen $(DOXYFILE)
