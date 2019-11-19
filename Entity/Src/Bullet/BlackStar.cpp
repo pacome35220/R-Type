@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** CPP_rtype_2019
 ** File description:
-** MonsterBullet.cpp
+** BlackStar.cpp
 */
 
-//#include "MonsterBullet.hpp"
+//#include "Bullet/BlackStar.hpp"
