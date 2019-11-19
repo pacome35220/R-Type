@@ -7,7 +7,6 @@
 #pragma once
 
 #include <map>
-#include <list>
 #include <SFML/Graphics/Texture.hpp>
 
 /**
@@ -22,9 +21,10 @@ public:
     Resource() = default;
     ~Resource() = default;
 
-    sf::Texture *createTexture(const std::string &texturePath);
+    bool addTexture(const std::string &texturePath);
+    sf::Texture &getTexture(const std::string &texturePath);
 
 private:
-    std::map<std::string, sf::Texture *> textureMap;
+    std::map<std::string, sf::Texture> textureMap;
 };
 }; // namespace Manager

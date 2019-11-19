@@ -15,4 +15,5 @@ list(APPEND SRC
         ${MANAGER_DIR}Action.cpp
         ${MANAGER_DIR}Collision.cpp
         ${MANAGER_DIR}Network.cpp
+        ${MANAGER_DIR}Resource.cpp
 )

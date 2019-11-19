@@ -7,17 +7,11 @@
 
 #include "Manager/Resource.hpp"
 
-sf::Texture *Manager::Resource::getTexture(std::string &texturePath)
-{
-    return textureMap.find(texturePath) == textureMap.end() ? createTexture(texturePath)
-                                                            : textureMap.find(texturePath)->second;
+bool Manager::Resource::addTexture(const std::string &texturePath) {
+    this->textureMap[texturePath] = sf::Texture();
+    return this->textureMap[texturePath].loadFromFile(texturePath);
 }
 
-sf::Texture *Manager::Resource::createTexture(const std::string &texturePath)
-{
-    auto *newTexture = new sf::Texture();
-
-    newTexture->loadFromFile(texturePath);
-    this->textureMap[texturePath] = newTexture;
-    return newTexture;
+sf::Texture &Manager::Resource::getTexture(const std::string &texturePath) {
+    return this->textureMap[texturePath];
 }
