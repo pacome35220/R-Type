@@ -6,20 +6,17 @@
 */
 
 #include "ABullet.hpp"
-#include <utility>
 
-ABullet::ABullet(ACore &entryPoint, enum EntityID type, sf::Vector2f &position,
-                 std::string texturePath) : AEntity(position, std::move(texturePath), entryPoint, type)
-{
-    this->type = type;
-}
+ABullet::ABullet(const sf::Vector2f &position, const std::string &texturePath,
+                 ACore &entryPoint, enum EntityID type)
+    : AEntity(position, texturePath, entryPoint, type) {}
 
-ABullet::~ABullet() = default;
-
-void ABullet::update()
-{
-    if (position.x < -110 || position.x > 110 || position.y < -130 || position.y > 130) {
+void ABullet::update() {
+    if (position.x < -110 || position.x > 110 || position.y < -130 ||
+        position.y > 130) {
         this->entryPoint.addToDeletionQueue(this->type);
     }
     this->updateBullet();
 }
+
+void ABullet::onCollision(AEntity *entity){};

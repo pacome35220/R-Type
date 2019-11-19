@@ -7,7 +7,7 @@
 
 #include "AEntity.hpp"
 
-AEntity::AEntity(sf::Vector2f _position, std::string _texturePath,
+AEntity::AEntity(const sf::Vector2f &_position, const std::string &_texturePath,
                  ACore &_entryPoint, enum EntityID _type)
     : Id(), type(_type), texturePath(_texturePath), entryPoint(_entryPoint),
       position(_position), packetNumber(0) {}
@@ -26,6 +26,18 @@ void AEntity::setPosition(const sf::Vector2f &_position) {
 
 void AEntity::setSprite(const sf::Sprite &_sprite) {
     this->sprite = _sprite;
+}
+
+void AEntity::incStreamTimer() {
+    this->streamTimer++;
+}
+
+void AEntity::resetStreamTimer() {
+    this->streamTimer = 0;
+}
+
+int AEntity::getStreamTimer() {
+    return this->streamTimer;
 }
 
 /**

@@ -6,8 +6,7 @@
 
 #pragma once
 
-//TODO good import
-#include "../../GameEngine/Include/AEntity.hpp"
+#include "ACore.hpp"
 
 /**
  * @enum define and refer to monster's types
@@ -25,11 +24,10 @@ enum MonsterTypes {
 /**
  * @class Monster "Include/Monster.hpp"
  */
-class AMonster : public AEntity
-{
+class AMonster : public AEntity {
 public:
-    AMonster();
-    AMonster(ACore &entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, MonsterTypes monsterType);
+    AMonster(const sf::Vector2f &position, const std::string &texturePath,
+             ACore &entryPoint, enum EntityID type);
     ~AMonster();
     float getCounter() const;
     void setCounter(float counter);
@@ -38,7 +36,7 @@ public:
 
 public:
     void updateMonster();
-    void onCollision(AEntity *entity) override;
+    void onCollision(AEntity *entity);
     sf::Packet decodeEntityPacket(network::PacketType packetType);
     void updateEntityPacket(sf::Packet packet);
 

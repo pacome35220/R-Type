@@ -61,13 +61,11 @@ AEntityPtr ACore::getEntityFromId(size_t id) {
 void ACore::updateEntities() {
     for (auto &entity : this->entities) {
         entity->update();
-        // if (entity->getStreamTimer() >= 15) {
-        // 	entity->resetStreamTimer();
-        // 	this->networkManager->execEntityAction(entity,
-        // network::PT_ENTITY_UPDATE);
-        // }
-        // else
-        // 	entity->incStreamTimer();
+        if (entity->getStreamTimer() >= 15) {
+            entity->resetStreamTimer();
+            this->network->execEntityAction(entity, network::PT_ENTITY_UPDATE);
+        } else
+            entity->incStreamTimer();
     }
 }
 

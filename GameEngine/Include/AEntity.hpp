@@ -26,9 +26,10 @@ typedef std::shared_ptr<AEntity> AEntityPtr;
  */
 class AEntity : public Id {
 public:
-    AEntity(sf::Vector2f position, std::string texturePath, ACore &entryPoint,
-            enum EntityID _type);
+    AEntity(const sf::Vector2f &position, const std::string &texturePath,
+            ACore &entryPoint, enum EntityID type);
     virtual ~AEntity() = default;
+
     const sf::Vector2f &getPosition() const;
     const sf::Sprite &getSprite() const;
     void setPosition(const sf::Vector2f &position);
@@ -37,6 +38,10 @@ public:
 public:
     virtual void onCollision(AEntity *entity) = 0;
     virtual void update() = 0;
+
+    void incStreamTimer();
+    void resetStreamTimer();
+    int getStreamTimer();
 
 public:
     sf::Packet buildMyPacket(network::PacketType packetType);
@@ -51,4 +56,6 @@ protected:
     ACore &entryPoint;
     sf::Vector2f position;
     size_t packetNumber;
+
+    int streamTimer;
 };
