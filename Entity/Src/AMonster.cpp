@@ -5,32 +5,32 @@
 ** Monster.cpp
 */
 
-#include "Monster.hpp"
+#include "AMonster.hpp"
 
-Monster::Monster(ACore &entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, MonsterTypes monsterType) : AEntity(position, texturePath, entryPoint, EL_UNKNOWN),
-speed(speed), amplitude(amplitude), amplitudeSpeed(amplitudeSpeed), monsterType(monsterType), health(health)
+AMonster::AMonster(ACore &entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, MonsterTypes monsterType) : AEntity(position, texturePath, entryPoint, EL_UNKNOWN),
+                                                                                                                                                                                      speed(speed), amplitude(amplitude), amplitudeSpeed(amplitudeSpeed), monsterType(monsterType), health(health)
 {
     //Todo
 }
 
-Monster::~Monster()
+AMonster::~AMonster()
 {
     //TODO
 }
 
-float Monster::getCounter() const
+float AMonster::getCounter() const
 {
     return counter;
 }
-void Monster::setCounter(float _counter)
+void AMonster::setCounter(float _counter)
 {
     counter = _counter;
 }
-float Monster::getOriginalY() const
+float AMonster::getOriginalY() const
 {
     return originalY;
 }
-void Monster::setOriginalY(float _originalY)
+void AMonster::setOriginalY(float _originalY)
 {
     originalY = _originalY;
 }
@@ -39,7 +39,7 @@ void Monster::setOriginalY(float _originalY)
  *  Check if the is alive
  */
 
-void Monster::updateMonster()
+void AMonster::updateMonster()
 {
     this->counter += this->amplitudeSpeed;
 
@@ -57,7 +57,7 @@ void Monster::updateMonster()
  * Check and process the collision between this and \entity
  * @param entity
  */
-void Monster::onCollision(AEntity *entity)
+void AMonster::onCollision(AEntity *entity)
 {
     //if (sprite.getEntityType() == PLAYERBULLET_ID) {
 	//    this->health--;
@@ -69,7 +69,7 @@ void Monster::onCollision(AEntity *entity)
  * @param packetType
  * @return the
  */
-sf::Packet Monster::decodeEntityPacket(network::PacketType packetType)
+sf::Packet AMonster::decodeEntityPacket(network::PacketType packetType)
 {
     sf::Packet packet;
 
@@ -81,7 +81,7 @@ sf::Packet Monster::decodeEntityPacket(network::PacketType packetType)
     return packet;
 }
 
-void Monster::updateEntityPacket(sf::Packet packet)
+void AMonster::updateEntityPacket(sf::Packet packet)
 {
     int id;
     float posX;

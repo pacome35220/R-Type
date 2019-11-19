@@ -25,11 +25,12 @@ enum MonsterTypes {
 /**
  * @class Monster "Include/Monster.hpp"
  */
-class Monster : public AEntity
+class AMonster : public AEntity
 {
 public:
-    Monster(ACore &entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, MonsterTypes monsterType);
-    ~Monster();
+    AMonster();
+    AMonster(ACore &entryPoint, sf::Vector2f &position, std::string texturePath, size_t health, float speed, float amplitude, float amplitudeSpeed, MonsterTypes monsterType);
+    ~AMonster();
     float getCounter() const;
     void setCounter(float counter);
     float getOriginalY() const;
