@@ -19,4 +19,4 @@ void ABullet::update() {
     this->updateBullet();
 }
 
-void ABullet::onCollision(AEntity *entity){};
+void ABullet::onCollision(AEntityPtr entity){};

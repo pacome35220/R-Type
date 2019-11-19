@@ -31,7 +31,7 @@ public:
     virtual ~AEntity() = default;
 
 public:
-    virtual void onCollision(AEntity *entity) = 0;
+    virtual void onCollision(AEntityPtr entity) = 0;
     virtual void update() = 0;
 
     void incStreamTimer();

@@ -36,7 +36,7 @@ public:
 
 public:
     void updateMonster();
-    void onCollision(AEntity *entity);
+    void onCollision(AEntityPtr entity);
     sf::Packet decodeEntityPacket(network::PacketType packetType);
     void updateEntityPacket(sf::Packet packet);
 

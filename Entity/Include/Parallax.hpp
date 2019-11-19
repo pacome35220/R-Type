@@ -16,7 +16,7 @@ public:
     ~Parallax() = default;
 
     static AEntityPtr createParallaxFromPacket(ACore &core, sf::Packet packet);
-    void onCollision(AEntity *entity) override;
+    void onCollision(AEntityPtr entity) override;
     void update() override;
 
 private:

@@ -17,7 +17,7 @@ AEntityPtr Parallax::createParallaxFromPacket(ACore &core, sf::Packet packet) {
     return std::make_shared<Parallax>(core, pos);
 }
 
-void Parallax::onCollision(AEntity *entity) {
+void Parallax::onCollision(AEntityPtr entity) {
     (void)entity;
 }
 

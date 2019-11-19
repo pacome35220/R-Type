@@ -54,7 +54,7 @@ void AMonster::updateMonster() {
  * Check and process the collision between this and \entity
  * @param entity
  */
-void AMonster::onCollision(AEntity *entity) {
+void AMonster::onCollision(AEntityPtr entity) {
     // if (sprite.getEntityType() == PLAYERBULLET_ID) {
     //    this->health--;
     //    this->entryPoint.addToDeletionQueue(sprite);

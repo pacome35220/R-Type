@@ -20,7 +20,7 @@ public:
 public:
     void update() override;
     virtual void updateBullet() = 0;
-    void onCollision(AEntity *entity) override;
+    void onCollision(AEntityPtr entity) override;
 
 protected:
 };
