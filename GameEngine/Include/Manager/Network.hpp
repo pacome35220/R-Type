@@ -7,7 +7,7 @@
 
 #include <vector>
 #include <SFML/Network/UdpSocket.hpp>
-#include "Core/ACore.hpp"
+#include "ACore.hpp"
 #include "Client.hpp"
 #include "EntityFactory.hpp"
 #include "PacketType.hpp"

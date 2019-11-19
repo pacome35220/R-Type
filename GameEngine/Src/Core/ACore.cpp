@@ -5,7 +5,7 @@
 ** ACore.cpp
 */
 
-#include "Core/ACore.hpp"
+#include "ACore.hpp"
 
 ACore::ACore() : frameRate(60) {}
 
