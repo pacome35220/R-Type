@@ -21,6 +21,6 @@ public:
 
 private:
     sf::Clock clock;
-	std::size_t lastTotal;
-	std::size_t currentTotal;
+    std::size_t lastTotal;
+    std::size_t currentTotal;
 };
