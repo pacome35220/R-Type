@@ -84,3 +84,17 @@ void ACore::procTopQueue() {
     }
     this->topQueue = std::vector<std::size_t>();
 }
+
+void ACore::feedEntity(AEntityPtr entity) {
+    this->entities.push_back(entity);
+    this->network->execEntityAction(entity,
+                                    network::PacketType::PT_ENTITY_CREATION);
+}
+
+void ACore::addToDeletionQueue(AEntityPtr entity) {
+	this->deletionQueue.push_back(entity);
+}
+
+void ACore::addToDeletionQueue(enum EntityList entityId) {
+    this->addToDeletionQueue(this->getEntityFromId(entityId));
+}

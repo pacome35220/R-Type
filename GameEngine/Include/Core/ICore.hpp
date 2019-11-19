@@ -8,8 +8,9 @@
 #pragma once
 
 #include <memory>
-class AEntity;
+#include "EntityList.hpp"
 
+class AEntity;
 typedef std::shared_ptr<AEntity> AEntityPtr;
 
 namespace Manager
@@ -44,4 +45,7 @@ public:
     virtual void procDelectionQueue() = 0;
     virtual void updateEntities() = 0;
     virtual void procTopQueue() = 0;
+	virtual void feedEntity(AEntityPtr entity) = 0;
+    virtual void addToDeletionQueue(AEntityPtr entity) = 0;
+    virtual void addToDeletionQueue(enum EntityList entityId) = 0;
 };

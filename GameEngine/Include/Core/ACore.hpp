@@ -33,9 +33,11 @@ public:
     std::shared_ptr<Manager::Collision> getCollision() const override;
     AEntityPtr getEntityFromId(size_t id) override;
 
-protected:
     void updateEntities() override;
     void procTopQueue() override;
+    void feedEntity(AEntityPtr entity) override;
+    void addToDeletionQueue(AEntityPtr entity) override;
+    void addToDeletionQueue(enum EntityList entityId) override;
 
 protected:
     std::size_t frameRate;
