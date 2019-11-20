@@ -15,7 +15,7 @@
 class DeathStar : public AEntity {
 public:
     DeathStar(const sf::Vector2f &position, ACore &entryPoint, int health = 1600, int counter = 0);
-    ~DeathStar();
+    ~DeathStar() = default;
 
 public:
     void update() override;
