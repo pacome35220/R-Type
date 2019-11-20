@@ -45,7 +45,6 @@ public:
 
 protected:
     std::size_t frameRate;
-    bool canFeed;
     std::vector<AEntityPtr> entities;
     std::vector<AEntityPtr> deletionQueue;
     std::vector<std::size_t> topQueue;

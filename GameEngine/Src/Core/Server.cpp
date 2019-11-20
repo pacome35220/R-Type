@@ -38,12 +38,10 @@ void Core::Server::run()
             this->updateEntities();
             this->procTopQueue();
             this->procDeletionQueue();
+            // call function to handle collision
             this->action->flush();
             this->network->streamInput(this->action);
-            bool tmp = this->canFeed;
-            this->canFeed = true;
             this->network->readSocket(*this);
-            this->canFeed = tmp;
             lastTotal = currentTotal;
 		}
 		mutex.unlock();

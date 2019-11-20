@@ -35,10 +35,7 @@ void Core::Client::run() {
             this->procDeletionQueue();
             this->action->flush();
             this->network->streamInput(this->action);
-            bool tmp = this->canFeed;
-            this->canFeed = true;
             this->network->readSocket(*this);
-            this->canFeed = tmp;
             lastTotal = currentTotal;
         }
         mutex.unlock();
