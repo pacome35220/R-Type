@@ -39,7 +39,6 @@ sf::Packet DeathStar::buildMyAsAPacket(network::PacketType packetType) {
     return AEntity::buildMyAsAPacket(packetType);
 }
 
-/
 void DeathStar::increaseStreamTimer() {
     streamTimer += 15;
 }

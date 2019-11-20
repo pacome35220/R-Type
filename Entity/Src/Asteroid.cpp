@@ -37,8 +37,8 @@ void Asteroid::update() {
     if (this->health < 0) {
         this->position.x = 110;
         this->position.y = rand() % 50 - 100;
-        this->entryPoint.feedEntity(std::make_shared<Asteroid>(position, rand() % 7 + 1));
-        this->entryPoint.addToDeletionQueue(this->getId());
+        this->entryPoint.feedEntity(std::make_shared<Asteroid>(entryPoint, position));
+        this->entryPoint.addToDeletionQueue(getId());
     }
 }
 
