@@ -37,7 +37,7 @@ void Core::Server::run()
             clock.restart();
             this->updateEntities();
             this->procTopQueue();
-            this->procDelectionQueue();
+            this->procDeletionQueue();
             this->action->flush();
             this->network->streamInput(this->action);
             bool tmp = this->canFeed;
