@@ -18,13 +18,13 @@ DeathStar::DeathStar(const sf::Vector2f &position, ACore &entryPoint, int health
 
 void DeathStar::update() {
     if (health < 0)
-        death();
+        onDeath();
 
     if (this->position.x < -130)
         restoreDeathStar();
 
     this->position.x -= 0.1;
-    fire();
+    shot();
 }
 
 void DeathStar::onCollision(AEntityPtr entity) {
@@ -39,11 +39,12 @@ sf::Packet DeathStar::buildMyAsAPacket(network::PacketType packetType) {
     return AEntity::buildMyAsAPacket(packetType);
 }
 
+/
 void DeathStar::increaseStreamTimer() {
     streamTimer += 15;
 }
 
-void DeathStar::death() {
+void DeathStar::onDeath() {
     sf::Vector2f spawn(160, std::rand() % 100 - 50);
 
     entryPoint.addToDeletionQueue(getEntityType());
@@ -52,7 +53,7 @@ void DeathStar::death() {
     entryPoint.feedEntity(std::make_shared<Monster::Dolley>(entryPoint, position));
 }
 
-void DeathStar::fire() {
+void DeathStar::shot() {
     sf::Vector2f spawn(this->position);
 
     if (counter < 20) {

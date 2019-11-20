@@ -24,8 +24,8 @@ public:
     void increaseStreamTimer() override;
 
 private:
-    void death();
-    void fire();
+    void onDeath();
+    void shot();
     void restoreDeathStar();
 
 private:
