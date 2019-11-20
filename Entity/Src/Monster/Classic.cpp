@@ -10,4 +10,4 @@
 #define HEALTH 25
 
 Monster::Classic::Classic(ACore &entryPoint, const sf::Vector2f &position)
-    : AMonster(position, entryPoint, EL_CLASSIC_MONSTER) {}
+    : AMonster(position, entryPoint, EI_CLASSIC_MONSTER) {}

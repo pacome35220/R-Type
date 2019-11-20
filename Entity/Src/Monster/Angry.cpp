@@ -10,4 +10,4 @@
 #define HEALTH 60
 
 Monster::Angry::Angry(ACore &entryPoint, const sf::Vector2f &position)
-    : AMonster(position, entryPoint, EL_ANGRY_MONSTER) {}
+    : AMonster(position, entryPoint, EI_ANGRY_MONSTER) {}

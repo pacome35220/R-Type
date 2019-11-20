@@ -10,7 +10,7 @@
 
 Bullet::Player::Player(const sf::Vector2f &position, ACore &entryPoint,
                        float _amplitude)
-    : ABullet(position, entryPoint, EL_PLAYER_BULLET, _amplitude, M_PI_2) {}
+    : ABullet(position, entryPoint, EI_PLAYER_BULLET, _amplitude, M_PI_2) {}
 
 void Bullet::Player::updateBullet() {
     this->counter += 0.2;

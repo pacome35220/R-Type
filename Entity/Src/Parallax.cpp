@@ -8,7 +8,7 @@
 #include "Parallax.hpp"
 
 Parallax::Parallax(ACore &core, sf::Vector2f pos)
-    : AEntity(pos, core, EL_PARALLAX) {}
+    : AEntity(pos, core, EI_PARALLAX) {}
 
 AEntityPtr Parallax::createParallaxFromPacket(ACore &core, sf::Packet packet) {
     sf::Vector2f pos;

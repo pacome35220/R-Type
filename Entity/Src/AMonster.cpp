@@ -55,7 +55,7 @@ void AMonster::updateMonster() {
  * @param entity
  */
 void AMonster::onCollision(AEntityPtr entity) {
-    if (entity->getEntityType() == EL_PLAYER_BULLET) {
+    if (entity->getEntityType() == EI_PLAYER_BULLET) {
        this->health--;
        this->entryPoint.addToDeletionQueue(entity);
     }

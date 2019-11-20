@@ -23,10 +23,10 @@ void runClient(const std::string &ip, unsigned short port) {
 
     std::cout << ip << "mdr" << port << std::endl;
 
-    core.getResource()->feedTextureFactory(EL_PARALLAX, "./Assets/Sprites/starfieldBlue.png");
+    core.getResource()->feedTextureFactory(EI_PARALLAX, "./Assets/Sprites/starfieldBlue.png");
     core.getNetwork()->setIpTarget(ip);
     core.getNetwork()->setPortTarget(port);
-    core.getNetwork()->getEntityFactory().addEntity(EL_PLAYER, Player::createPlayerFromPacket);
+    core.getNetwork()->getEntityFactory().addEntity(EI_PLAYER, Player::createPlayerFromPacket);
     core.getAudio()->playBackgroundMusic("./Assets/Audio/BackgroundMusic.ogg");
 
     core.feedEntity(std::make_shared<Parallax>(core, sf::Vector2f(0, 0)));

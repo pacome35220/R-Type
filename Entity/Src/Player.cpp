@@ -9,7 +9,7 @@
 #include "Bullet/Player.hpp"
 
 Player::Player(ACore &core, sf::Vector2f pos, int _playerNbr)
-    : AEntity(pos, core, (enum EntityID)(EL_PLAYER + _playerNbr % 4 + 1)),
+    : AEntity(pos, core, (enum EntityID)(EI_PLAYER + _playerNbr % 4 + 1)),
       playerNbr(_playerNbr) {}
 
 AEntityPtr Player::createPlayerFromPacket(ACore &core, sf::Packet packet) {
@@ -28,23 +28,23 @@ AEntityPtr Player::createPlayerFromPacket(ACore &core, sf::Packet packet) {
 
 void Player::onCollision(AEntityPtr entity) {
     switch (entity->getEntityType()) {
-    case EL_MONSTER_BULLET:
+    case EI_MONSTER_BULLET:
         this->health--;
         this->entryPoint.addToDeletionQueue(entity);
         break;
-    case EL_CLASSIC_MONSTER:
+    case EI_CLASSIC_MONSTER:
         this->health -= 10;
         this->entryPoint.addToDeletionQueue(entity);
         break;
-    case EL_DEATH_STAR:
-    case EL_ASTEROID:
+    case EI_DEATH_STAR:
+    case EI_ASTEROID:
         // you dead lol
         // mdr t un ouf toi
         this->health = -100000;
-    case EL_POWER_UP:
+    case EI_POWER_UP:
         this->level++;
         this->entryPoint.addToDeletionQueue(entity);
-    case EL_HEALTH_UP:
+    case EI_HEALTH_UP:
         this->health += 20;
         this->entryPoint.addToDeletionQueue(entity);
     default:

@@ -7,19 +7,7 @@
 #pragma once
 
 #include "ACore.hpp"
-
-/**
- * @enum define and refer to monster's types
- *
- */
-
-enum MonsterTypes {
-    MT_CLASSIC_MONSTER,
-    MT_DUMB_MONSTER,
-    MT_SPEED_MONSTER,
-    MT_ANGRY_MONSTER,
-    MT_DOLLEY_MONSTER
-};
+#include "MonsterID.hpp"
 
 /**
  * @class Monster "Include/Monster.hpp"
@@ -31,8 +19,6 @@ public:
     ~AMonster();
     float getCounter() const;
     void setCounter(float counter);
-    float getOriginalY() const;
-    void setOriginalY(float originalY);
 
 public:
     void updateMonster();
@@ -42,11 +28,10 @@ public:
 
 protected:
     float counter;
-    float originalY;
     float speed;
     float scale;
     float amplitude;
     float amplitudeSpeed;
     bool hasPowerUp;
-    enum MonsterTypes monsterType;
+    enum MonsterID monsterType;
 };

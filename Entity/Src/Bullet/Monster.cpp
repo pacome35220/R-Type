@@ -9,7 +9,7 @@
 
 Bullet::Monster::Monster(const sf::Vector2f &position, ACore &entryPoint,
                          float _amplitude, int _count)
-    : ABullet(position, entryPoint, EL_MONSTER_BULLET, _amplitude, _count) {}
+    : ABullet(position, entryPoint, EI_MONSTER_BULLET, _amplitude, _count) {}
 
 void Bullet::Monster::updateBullet() {
     this->counter += 0.2;

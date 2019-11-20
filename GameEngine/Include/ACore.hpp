@@ -1,8 +1,8 @@
 /**
  * @file      ACore.hpp
  * @brief     This is the Abstract Core
- * @details   This Abstract Class will be the parent of the CoreServer and
- * CoreClients classes.
+ * @details   This Abstract Class will be the parent of the Server and
+ *            Clients classes.
  * @details   It brings an abstraction for each of these classes
  */
 
@@ -17,7 +17,7 @@
 #include "Manager/Network.hpp"
 #include "Manager/Resource.hpp"
 
-class ACore : public ICore
+class ACore : ICore
 {
 public:
     ACore();

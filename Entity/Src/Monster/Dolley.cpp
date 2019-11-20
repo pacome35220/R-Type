@@ -10,4 +10,4 @@
 #define HEALTH 150
 
 Monster::Dolley::Dolley(ACore &entryPoint, const sf::Vector2f &position)
-    : AMonster(position, entryPoint, EL_DOLLEY_MONSTER) {}
+    : AMonster(position, entryPoint, EI_DOLLEY_MONSTER) {}
