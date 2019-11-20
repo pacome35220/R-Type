@@ -8,10 +8,8 @@
 #include "AMonster.hpp"
 #include "Bullet/Monster.hpp"
 
-AMonster::AMonster(const sf::Vector2f &position,
-                   ACore &entryPoint, enum EntityID type)
-    : AEntity(position, entryPoint, type), speed(1),
-      amplitude(1.4), amplitudeSpeed(3.6) {
+AMonster::AMonster(const sf::Vector2f &position, ACore &entryPoint, enum EntityID type, float speed, float amplitude, float amplitudeSpeed, float scale)
+    : AEntity(position, entryPoint, type), speed(speed), amplitude(amplitude), amplitudeSpeed(amplitudeSpeed), scale(scale) {
     // Todo
 }
 
@@ -51,6 +49,25 @@ void AMonster::updateMonster() {
             "./Assets/Audio/PlayerLaser.ogg");
     }
 }
+
+void AMonster::update()
+{
+	this->counter += this->amplitudeSpeed;
+
+	this->position.x -= this->speed;
+	this->position.y = this->originalY; //+ cos(this->counter) * 10 * this->amplitude;
+
+	if (std::rand() % 1000 < 5) {
+		auto bullet = std::make_shared<Bullet::Monster>(this->position, this->entryPoint, this->amplitude, this->counter);
+		entryPoint.feedEntity(bullet);
+	}
+	if (this->position.x < -110 || this->position.x > 110 || this->position.y < -130 || this->position.y > 130) {
+		this->position.x = 109;
+		this->position.y = this->originalY;
+	}
+	this->updateMonster();
+}
+
 /**
  * Check and process the collision between this and \entity
  * @param entity

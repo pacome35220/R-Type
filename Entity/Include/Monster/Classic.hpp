@@ -16,6 +16,6 @@ namespace Monster {
  */
 class Classic : public AMonster {
 public:
-    Classic(ACore &entryPoint, const sf::Vector2f &position);
+    Classic(ACore &entryPoint, const sf::Vector2f &position, float speed, float amplitude, float amplitudeSpeed, float scale);
 };
 } // namespace Monster

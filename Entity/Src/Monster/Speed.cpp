@@ -9,5 +9,5 @@
 
 #define HEALTH 5
 
-Monster::Speed::Speed(ACore &entryPoint, const sf::Vector2f &position)
-    : AMonster(position, entryPoint, EI_SPEED_MONSTER) {}
+Monster::Speed::Speed(ACore &entryPoint, const sf::Vector2f &position, float scale)
+    : AMonster(position, entryPoint, EI_SPEED_MONSTER, 1, 5, 0.03, scale) {}

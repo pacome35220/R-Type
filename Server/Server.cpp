@@ -9,6 +9,11 @@
 #include <iostream>
 #include "Server.hpp"
 #include "Core/Server.hpp"
+#include "Monster/Classic.hpp"
+#include "Monster/Angry.hpp"
+#include "Monster/Dolley.hpp"
+#include "Monster/Dumb.hpp"
+#include "Monster/Speed.hpp"
 #include "../Common/Error.hpp"
 
 /**
@@ -57,24 +62,17 @@ void Server::entityFeeder(Core::Server &core) {
         float speed = (float)(std::rand() % 200) / 100;
         float amplitude = (float)(std::rand() % 1000) / 100;
         float amplitudeSpeed = (float)(std::rand() % 5) / 100;
-        // auto monster = new ClassicMonster(monsterPos,
-        //                                 speed,
-        //                                 amplitude,
-        //                                 amplitudeSpeed, 4);
 
-        // auto dumbMonster = new DumbMonster(randomPos, 4);
-        // auto speedMonster = new SpeedMonster(randomPos, 4);
-        // auto venerMonster = new VenerMonster(randomPos, 4);
-        // core.feedEntity(monster);
-        // core.feedEntity(dumbMonster);
-        // core.feedEntity(speedMonster);
-        // core.feedEntity(venerMonster); // done
+        core.feedEntity(std::make_shared<Monster::Classic>(core, monsterPos, speed, amplitude, amplitudeSpeed, 4));
+        core.feedEntity(std::make_shared<Monster::Dumb>(core, randomPos, 4));
+        core.feedEntity(std::make_shared<Monster::Speed>(core, randomPos, 4));
+        core.feedEntity(std::make_shared<Monster::Angry>(core, randomPos, 4));
     }
 
-    // sf::Vector2f v(90, 0);
-    // core.feedEntity(new BlackStar(v));
-    // sf::Vector2f pos2(100, 0);
-    // core.feedEntity(new Asteroid(pos2));
+    //sf::Vector2f v(90, 0);
+    //core.feedEntity(new BlackStar(v));
+    //sf::Vector2f pos2(100, 0);
+   // core.feedEntity(new Asteroid(pos2));
 }
 
 /**

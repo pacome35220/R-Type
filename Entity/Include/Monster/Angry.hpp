@@ -16,6 +16,6 @@ namespace Monster {
  */
 class Angry : public AMonster {
 public:
-    Angry(ACore &entryPoint, const sf::Vector2f &position);
+    Angry(ACore &entryPoint, const sf::Vector2f &position, float scale);
 };
 } // namespace Monster

@@ -14,13 +14,13 @@
  */
 class AMonster : public AEntity {
 public:
-    AMonster(const sf::Vector2f &position,
-             ACore &entryPoint, enum EntityID type);
+    AMonster(const sf::Vector2f &position, ACore &entryPoint, enum EntityID type, float speed, float amplitude, float amplitudeSpeed, float scale);
     ~AMonster();
     float getCounter() const;
     void setCounter(float counter);
     float getOriginalY() const;
     void setOriginalY(float originalY);
+    void update();
 
 public:
     void updateMonster();
@@ -32,9 +32,9 @@ protected:
     float counter;
     float originalY;
     float speed;
-    float scale;
     float amplitude;
     float amplitudeSpeed;
+    float scale;
     bool hasPowerUp;
     enum MonsterID monsterType;
 };

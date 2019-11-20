@@ -16,6 +16,6 @@ namespace Monster {
  */
 class Speed : public AMonster {
 public:
-    Speed(ACore &entryPoint, const sf::Vector2f &position);
+    Speed(ACore &entryPoint, const sf::Vector2f &position, float scale);
 };
 } // namespace Monster

@@ -16,6 +16,6 @@ namespace Monster {
  */
 class Dumb : public AMonster {
 public:
-    Dumb(ACore &entryPoint, const sf::Vector2f &position);
+    Dumb(ACore &entryPoint, const sf::Vector2f &position, float scale);
 };
 } // namespace Monster

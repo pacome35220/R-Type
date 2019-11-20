@@ -9,5 +9,5 @@
 
 #define HEALTH 60
 
-Monster::Angry::Angry(ACore &entryPoint, const sf::Vector2f &position)
-    : AMonster(position, entryPoint, EI_ANGRY_MONSTER) {}
+Monster::Angry::Angry(ACore &entryPoint, const sf::Vector2f &position, float scale)
+    : AMonster(position, entryPoint, EI_ANGRY_MONSTER,  0.1, 0.2, 0.01, scale) {}

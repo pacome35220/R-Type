@@ -9,5 +9,5 @@
 
 #define HEALTH 10
 
-Monster::Dumb::Dumb(ACore &entryPoint, const sf::Vector2f &position)
-    : AMonster(position, entryPoint, EI_DUMB_MONSTER) {}
+Monster::Dumb::Dumb(ACore &entryPoint, const sf::Vector2f &position, float scale) //TODO check if scale really useful
+    : AMonster(position, entryPoint, EI_DUMB_MONSTER, 0.3, 1, 0.01, scale) {}
