@@ -23,9 +23,32 @@ Core::Server::Server() {}
 //     // TODO send to clients
 // }
 
-void Core::Server::run() {
-    std::cout << "hey Server !" << std::endl;
-    // TODO
+void Core::Server::run()
+{
+    sf::Clock clock;
+    size_t currentTotal = clock.getElapsedTime().asMicroseconds();
+    size_t lastTotal = clock.getElapsedTime().asMicroseconds();
+    static sf::Mutex mutex;
+
+    while(true) {
+		mutex.lock();
+        currentTotal = clock.getElapsedTime().asMicroseconds();
+        if (currentTotal - lastTotal >= 1000000 / this->frameRate) {
+            clock.restart();
+            this->updateEntities();
+            this->procTopQueue();
+            this->procDelectionQueue();
+            this->action->flush();
+            this->network->streamInput(this->action);
+            bool tmp = this->canFeed;
+            this->canFeed = true;
+            this->network->readSocket(*this);
+            this->canFeed = tmp;
+            lastTotal = currentTotal;
+		}
+		mutex.unlock();
+        this->network->endOfStream();
+	}
 }
 
 void Core::Server::procDeletionQueue() {

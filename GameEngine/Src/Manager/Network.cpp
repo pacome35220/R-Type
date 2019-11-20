@@ -175,3 +175,12 @@ void Manager::Network::execEntityAction(AEntityPtr entity,
     for (auto &client : this->clients)
         this->socket.send(packet, client.ip, client.port);
 }
+
+void Manager::Network::endOfStream()
+{
+    sf::Packet packet;
+
+    packet << network::PT_STREAM_END;
+    for (Client &it: this->clients)
+		this->socket.send(packet, it.ip, it.port);
+}
