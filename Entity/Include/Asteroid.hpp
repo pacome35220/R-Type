@@ -5,11 +5,12 @@
 
 #pragma once
 
+#include <AEntity.hpp>
+
 /**
  * @class Asteroid "Include/Asteroid.hpp"
  */
-class Asteroid
-{
+class Asteroid : public AEntity {
 public:
 
 public:

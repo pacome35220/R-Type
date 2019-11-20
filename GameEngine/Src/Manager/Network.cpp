@@ -168,9 +168,9 @@ bool Manager::Network::isClientKeyPressed(std::size_t clientId,
     return this->clients[clientId].keyMap[key % sf::Keyboard::KeyCount] != 0;
 }
 
-void Manager::Network::execEntityAction(const AEntityPtr &entity,
+void Manager::Network::execEntityAction(AEntityPtr entity,
                                         network::PacketType packetType) {
-    sf::Packet packet = entity->buildMyPacket(packetType);
+    sf::Packet packet = entity->buildMyAsAPacket(packetType);
 
     for (auto &client : this->clients)
         this->socket.send(packet, client.ip, client.port);

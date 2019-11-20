@@ -21,7 +21,7 @@ namespace Core {
         Client(const std::string &windowTitle);
         void run() override;
         const sf::RenderWindow &getRenderWindow() const;
-        void procDelectionQueue() override;
+        void procDeletionQueue() override;
 
     private:
         void renderEntities();

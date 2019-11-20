@@ -42,7 +42,7 @@ enum EntityID AEntity::getEntityType() {
  * @param _packetType
  * @return The packet built
  */
-sf::Packet AEntity::buildMyPacket(network::PacketType packetType) {
+sf::Packet AEntity::buildMyAsAPacket(network::PacketType packetType) {
     sf::Packet packet;
 
     packet << packetType;

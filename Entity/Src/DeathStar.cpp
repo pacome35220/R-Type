@@ -40,9 +40,9 @@ void DeathStar::onCollision(AEntityPtr entity)
     }
 }
 
-sf::Packet DeathStar::buildMyPacket(network::PacketType packetType)
+sf::Packet DeathStar::buildMyAsAPacket(network::PacketType packetType)
 {
-    return AEntity::buildMyPacket(packetType);
+    return AEntity::buildMyAsAPacket(packetType);
 }
 
 void DeathStar::increaseStreamTimer()

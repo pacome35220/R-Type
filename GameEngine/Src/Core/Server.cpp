@@ -28,7 +28,7 @@ void Core::Server::run() {
     // TODO
 }
 
-void Core::Server::procDelectionQueue() {
+void Core::Server::procDeletionQueue() {
     for (const auto &entityToDelete : this->deletionQueue) {
         this->network->execEntityAction(entityToDelete,
                                         network::PT_ENTITY_DESTRUCTION);

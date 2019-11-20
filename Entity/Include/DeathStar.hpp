@@ -20,7 +20,7 @@ public:
 public:
     void update() override;
     void onCollision(AEntityPtr entity) override;
-    sf::Packet buildMyPacket(network::PacketType packetType) override;
+    sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
     void increaseStreamTimer() override;
 
 private:

@@ -39,7 +39,7 @@ public:
     enum EntityID getEntityType();
 
 public:
-    virtual sf::Packet buildMyPacket(network::PacketType packetType);
+    virtual sf::Packet buildMyAsAPacket(network::PacketType packetType);
     void updateFromPacket(sf::Packet packet);
     void render(sf::RenderWindow &window);
 

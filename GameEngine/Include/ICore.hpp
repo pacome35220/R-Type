@@ -24,7 +24,7 @@ public:
 public:
     virtual AEntityPtr getEntityFromId(std::size_t id) = 0;
     virtual void run() = 0;
-    virtual void procDelectionQueue() = 0;
+    virtual void procDeletionQueue() = 0;
     virtual void updateEntities() = 0;
     virtual void procTopQueue() = 0;
     virtual void feedEntity(AEntityPtr entity) = 0;

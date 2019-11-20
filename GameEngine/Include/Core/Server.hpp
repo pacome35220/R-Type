@@ -23,7 +23,7 @@ namespace Core
         Server();
         ~Server() = default;
         void run() override;
-        void procDelectionQueue() override;
+        void procDeletionQueue() override;
         void onPlayerJoin(const sf::IpAddress &senderIP, unsigned short senderPort);
     };
 }

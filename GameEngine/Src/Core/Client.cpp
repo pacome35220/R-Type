@@ -32,7 +32,7 @@ void Core::Client::run() {
             this->procTopQueue();
             // call function to handle collision
             this->renderEntities();
-            this->procDelectionQueue();
+            this->procDeletionQueue();
             this->action->flush();
             this->network->streamInput(this->action);
             bool tmp = this->canFeed;
@@ -67,7 +67,7 @@ void Core::Client::renderEntities() {
     this->window.display();
 }
 
-void Core::Client::procDelectionQueue() {
+void Core::Client::procDeletionQueue() {
     for (const auto &entityToDelete : this->deletionQueue) {
         auto tmp = std::find(this->entities.begin(), this->entities.end(),
                              entityToDelete);
