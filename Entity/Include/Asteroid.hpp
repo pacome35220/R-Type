@@ -13,14 +13,14 @@
  */
 class Asteroid : public AEntity {
 public:
-    Asteroid(ACore &core, sf::Vector2f &position);
+    Asteroid(sf::Vector2f position, ACore &core);
     ~Asteroid() = default;
 
 public:
     static AEntityPtr createPlayerFromPacket(ACore &core, sf::Packet packet);
     void onCollision(AEntityPtr entity) override;
     void update() override;
-    void increaseStreamTimer();
+    void increaseStreamTimer() override;
 
 private:
     sf::Vector2f originalPos;

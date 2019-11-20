@@ -14,6 +14,8 @@
 #include "Monster/Dolley.hpp"
 #include "Monster/Dumb.hpp"
 #include "Monster/Speed.hpp"
+#include "Asteroid.hpp"
+#include "DeathStar.hpp"
 #include "../Common/Error.hpp"
 
 /**
@@ -69,10 +71,8 @@ void Server::entityFeeder(Core::Server &core) {
         core.feedEntity(std::make_shared<Monster::Angry>(core, randomPos, 4));
     }
 
-    //sf::Vector2f v(90, 0);
-    //core.feedEntity(new BlackStar(v));
-    //sf::Vector2f pos2(100, 0);
-   // core.feedEntity(new Asteroid(pos2));
+    core.feedEntity(std::make_shared<DeathStar>(sf::Vector2f(90, 0), core));
+    core.feedEntity(std::make_shared<Asteroid>(sf::Vector2f(100, 0), core));
 }
 
 /**

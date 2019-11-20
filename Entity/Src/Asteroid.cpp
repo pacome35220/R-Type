@@ -8,7 +8,7 @@
 #include <cmath>
 #include "Asteroid.hpp"
 
-Asteroid::Asteroid(ACore &core, sf::Vector2f &position) : AEntity(position, core,
+Asteroid::Asteroid(sf::Vector2f position, ACore &core) : AEntity(position, core,
         (enum EntityID)(EI_ASTEROID + rand() % 8 + 1)) {
 
 }
@@ -37,7 +37,7 @@ void Asteroid::update() {
     if (this->health < 0) {
         this->position.x = 110;
         this->position.y = rand() % 50 - 100;
-        this->entryPoint.feedEntity(std::make_shared<Asteroid>(entryPoint, position));
+        this->entryPoint.feedEntity(std::make_shared<Asteroid>(position, entryPoint));
         this->entryPoint.addToDeletionQueue(getId());
     }
 }
