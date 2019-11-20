@@ -25,11 +25,12 @@ float AMonster::getCounter() const {
 void AMonster::setCounter(float _counter) {
     counter = _counter;
 }
+
 float AMonster::getOriginalY() const {
     return originalY;
 }
-void AMonster::setOriginalY(float _originalY) {
-    originalY = _originalY;
+void AMonster::setOriginalY(float originalY) {
+    this->originalY = originalY;
 }
 
 /**

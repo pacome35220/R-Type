@@ -19,6 +19,8 @@ public:
     ~AMonster();
     float getCounter() const;
     void setCounter(float counter);
+    float getOriginalY() const;
+    void setOriginalY(float originalY);
 
 public:
     void updateMonster();
@@ -28,6 +30,7 @@ public:
 
 protected:
     float counter;
+    float originalY;
     float speed;
     float scale;
     float amplitude;
