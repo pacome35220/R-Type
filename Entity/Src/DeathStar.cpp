@@ -34,7 +34,7 @@ void DeathStar::update()
 
 void DeathStar::onCollision(AEntityPtr entity)
 {
-    if (getEntityType() == EntityID::EI_DEATH_STAR) {
+    if (entity->getEntityType() == EntityID::EI_DEATH_STAR) {
         health--;
         entryPoint.addToDeletionQueue(getId());
     }
