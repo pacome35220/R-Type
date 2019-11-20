@@ -17,6 +17,14 @@
 #include "Manager/Network.hpp"
 #include "Manager/Resource.hpp"
 
+namespace Manager {
+    class Audio;
+    class Network;
+    class Action;
+    class Collision;
+    class Resource;
+}
+
 class ACore : public ICore
 {
 public:
@@ -24,18 +32,12 @@ public:
     virtual ~ACore() = default;
 
 public:
-    void setAction(std::shared_ptr<Manager::Action> action) override;
-    void setCollision(std::shared_ptr<Manager::Collision> collision) override;
-    void setNetwork(std::shared_ptr<Manager::Network> network) override;
-    void setAudio(std::shared_ptr<Manager::Audio> audio) override;
-    void setResource(std::shared_ptr<Manager::Resource> resource) override;
-    std::shared_ptr<Manager::Audio> getAudio() const override;
-    std::shared_ptr<Manager::Action> getAction() const override;
-    std::shared_ptr<Manager::Network> getNetwork() const override;
-    std::shared_ptr<Manager::Collision> getCollision() const override;
-    std::shared_ptr<Manager::Resource> getResource() const override;
+    std::shared_ptr<Manager::Audio> getAudio() const;
+    std::shared_ptr<Manager::Network> getNetwork() const;
+    std::shared_ptr<Manager::Resource> getResource() const;
     AEntityPtr getEntityFromId(size_t id) override;
 
+public:
     void updateEntities() override;
     void procTopQueue() override;
     void feedEntity(AEntityPtr entity) override;

@@ -7,50 +7,15 @@
 
 #include "ACore.hpp"
 
-ACore::ACore() : frameRate(60) {}
-
-/**
- * Setter
- */
-
-void ACore::setAction(std::shared_ptr<Manager::Action> action) {
-    this->action = action;
+ACore::ACore(): frameRate(60) {
 }
-
-void ACore::setCollision(std::shared_ptr<Manager::Collision> collision) {
-    this->collision = collision;
-}
-
-void ACore::setNetwork(std::shared_ptr<Manager::Network> network) {
-    this->network = network;
-}
-
-void ACore::setAudio(std::shared_ptr<Manager::Audio> audio) {
-    this->audio = audio;
-}
-
-void ACore::setResource(std::shared_ptr<Manager::Resource> resource) {
-    this->resource = resource;
-}
-
-/**
- * Getter
- */
 
 std::shared_ptr<Manager::Audio> ACore::getAudio() const {
     return this->audio;
 }
 
-std::shared_ptr<Manager::Action> ACore::getAction() const {
-    return this->action;
-}
-
 std::shared_ptr<Manager::Network> ACore::getNetwork() const {
     return this->network;
-}
-
-std::shared_ptr<Manager::Collision> ACore::getCollision() const {
-    return this->collision;
 }
 
 std::shared_ptr<Manager::Resource> ACore::getResource() const {
@@ -77,7 +42,7 @@ void ACore::updateEntities() {
 
 void ACore::procTopQueue() {
     for (const auto &value : this->topQueue) {
-        for (std::size_t i = 0; i < this->entities.size(); i++) {
+        for (std::size_t i = 0 ; i < this->entities.size() ; i++) {
             if (this->entities[i]->getId() == value) {
                 auto tmp = this->entities[i];
                 this->entities.erase(this->entities.begin() + i);
@@ -91,8 +56,7 @@ void ACore::procTopQueue() {
 
 void ACore::feedEntity(AEntityPtr entity) {
     this->entities.push_back(entity);
-    this->network->execEntityAction(entity,
-                                    network::PacketType::PT_ENTITY_CREATION);
+    this->network->execEntityAction(entity, network::PacketType::PT_ENTITY_CREATION);
 }
 
 void ACore::addToDeletionQueue(AEntityPtr entity) {
