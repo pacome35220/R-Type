@@ -38,7 +38,7 @@ namespace Manager
         void streamInput(std::shared_ptr<Action> action);
         bool isClientKeyPressed(std::size_t clientId, sf::Keyboard::Key key);
         void execEntityAction(AEntityPtr entity, network::PacketType packetType);
-
+        void endOfStream();
     private:
         void addNewClient(const sf::IpAddress &ip, unsigned short port);
         void resetClientsKeyMap();
