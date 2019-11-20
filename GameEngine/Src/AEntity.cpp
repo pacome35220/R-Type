@@ -21,7 +21,7 @@ AEntity::AEntity(const sf::Vector2f &_position, ACore &_entryPoint,
                            this->texture.getSize().y / 2);
 }
 
-void AEntity::incStreamTimer() {
+void AEntity::increaseStreamTimer() {
     this->streamTimer++;
 }
 

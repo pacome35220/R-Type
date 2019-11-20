@@ -34,7 +34,6 @@ void AMonster::setOriginalY(float originalY) {
 /**
  *  Check if the is alive
  */
-
 void AMonster::updateMonster() {
     this->counter += this->amplitudeSpeed;
 

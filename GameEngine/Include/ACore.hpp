@@ -17,7 +17,7 @@
 #include "Manager/Network.hpp"
 #include "Manager/Resource.hpp"
 
-class ACore : ICore
+class ACore : public ICore
 {
 public:
     ACore();

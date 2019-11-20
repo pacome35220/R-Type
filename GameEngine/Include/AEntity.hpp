@@ -17,6 +17,7 @@
 #include "PacketType.hpp"
 
 class ACore;
+
 class AEntity;
 
 typedef std::shared_ptr<AEntity> AEntityPtr;
@@ -24,23 +25,21 @@ typedef std::shared_ptr<AEntity> AEntityPtr;
 /**
  * @class AEntity "Include/AEntity.hpp"
  */
-class AEntity : public Id {
+class AEntity: public Id {
 public:
-    AEntity(const sf::Vector2f &position, ACore &entryPoint,
-            enum EntityID type);
+    AEntity(const sf::Vector2f &position, ACore &entryPoint, enum EntityID type);
     virtual ~AEntity() = default;
 
 public:
     virtual void onCollision(AEntityPtr entity) = 0;
     virtual void update() = 0;
-
-    void incStreamTimer();
+    virtual void increaseStreamTimer();
     void resetStreamTimer();
     int getStreamTimer();
     enum EntityID getEntityType();
 
 public:
-    sf::Packet buildMyPacket(network::PacketType packetType);
+    virtual sf::Packet buildMyPacket(network::PacketType packetType);
     void updateFromPacket(sf::Packet packet);
     void render(sf::RenderWindow &window);
 
@@ -54,8 +53,6 @@ protected:
     ACore &entryPoint;
     sf::Vector2f position;
     size_t packetNumber;
-
     int health;
-
     int streamTimer;
 };

@@ -71,7 +71,7 @@ void ACore::updateEntities() {
             entity->resetStreamTimer();
             this->network->execEntityAction(entity, network::PT_ENTITY_UPDATE);
         } else
-            entity->incStreamTimer();
+            entity->increaseStreamTimer();
     }
 }
 

@@ -6,3 +6,21 @@
 */
 
 #include "PowerUp.hpp"
+
+PowerUp::PowerUp(ACore &core, sf::Vector2f &position) : AEntity(position, core, EntityID::EI_POWER_UP) {
+
+}
+
+PowerUp::~PowerUp() = default;
+
+void PowerUp::onCollision(AEntityPtr entity)
+{
+    if (getEntityType() == EntityID::EI_DEATH_STAR) {
+        health--;
+        entryPoint.addToDeletionQueue(EntityID::EI_DEATH_STAR);
+    }
+}
+
+void PowerUp::update() {
+    position.x -= 0.1;
+}

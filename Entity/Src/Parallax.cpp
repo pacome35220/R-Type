@@ -7,8 +7,8 @@
 
 #include "Parallax.hpp"
 
-Parallax::Parallax(ACore &core, sf::Vector2f pos)
-    : AEntity(pos, core, EI_PARALLAX) {}
+Parallax::Parallax(ACore &core, sf::Vector2f pos): AEntity(pos, core, EI_PARALLAX) {
+}
 
 AEntityPtr Parallax::createParallaxFromPacket(ACore &core, sf::Packet packet) {
     sf::Vector2f pos;
@@ -18,14 +18,14 @@ AEntityPtr Parallax::createParallaxFromPacket(ACore &core, sf::Packet packet) {
 }
 
 void Parallax::onCollision(AEntityPtr entity) {
-    (void)entity;
+    (void) entity;
 }
 
 void Parallax::update() {
     this->currentTotal = this->clock.getElapsedTime().asMicroseconds();
-    if (this->currentTotal - this->lastTotal >= 1000000 / 60) {
+    if(this->currentTotal - this->lastTotal >= 1000000 / 60) {
         this->clock.restart();
-        if (this->position.x <= -200)
+        if(this->position.x <= -200)
             this->position.x += 200;
         else
             this->position.x -= 0.5;
