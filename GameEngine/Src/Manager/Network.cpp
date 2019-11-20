@@ -38,13 +38,12 @@ EntityFactory &Manager::Network::getEntityFactory() {
  * @param senderIp
  * @param senderPort
  */
-void Manager::Network::onPlayerJoin(ACore &core, const sf::IpAddress &senderIp,
-                                    unsigned short senderPort) {
+void
+Manager::Network::onPlayerJoin(ACore &core, const sf::IpAddress &senderIp, unsigned short senderPort) {
     sf::Vector2f newClientPosition(-90, 0);
     std::size_t playerNbr = this->clients.size();
 
-    core.feedEntity(
-        std::make_shared<Player>(core, newClientPosition, playerNbr));
+    core.feedEntity(std::make_shared<Player>(core, newClientPosition, playerNbr));
     this->addNewClient(senderIp, senderPort);
 }
 
@@ -54,18 +53,16 @@ void Manager::Network::onPlayerJoin(ACore &core, const sf::IpAddress &senderIp,
  * @param ip
  * @param port
  */
-void Manager::Network::addNewClient(const sf::IpAddress &ip,
-                                    unsigned short port) {
+void Manager::Network::addNewClient(const sf::IpAddress &ip, unsigned short port) {
     Client newClient;
 
     for (const auto &value : this->getClients())
         if (value.ip == ip && value.port == port)
-            throw Error("Client from " + ip.toString() + " on port " +
-                            std::to_string(port) + " is already playing",
-                        __FILE__, __func__, __LINE__);
+            throw Error("Client from " + ip.toString() + " on port " + std::to_string(port)
+                        + " is already playing", __FILE__, __func__, __LINE__);
     newClient.ip = ip;
     newClient.port = port;
-    for (size_t i = 0; i < sf::Keyboard::KeyCount; i++)
+    for (size_t i = 0 ; i < sf::Keyboard::KeyCount ; i++)
         newClient.keyMap[i] = 0;
     this->clients.push_back(newClient);
 }
@@ -76,8 +73,7 @@ void Manager::Network::bindSocket(unsigned short port) {
     std::cout << "Network is listening to port " << port << std::endl;
 }
 
-void Manager::Network::sendPacket(sf::Packet packet, sf::IpAddress ip,
-                                  unsigned short port) {
+void Manager::Network::sendPacket(sf::Packet packet, sf::IpAddress ip, unsigned short port) {
     this->socket.send(packet, ip, port);
 }
 
@@ -86,7 +82,6 @@ void Manager::Network::readSocket(ACore &core) {
     sf::Packet packet;
     sf::IpAddress sender;
     unsigned short senderPort;
-
     int opCode;
     int entityID;
     int id;
@@ -101,11 +96,9 @@ void Manager::Network::readSocket(ACore &core) {
         packet >> opCode;
         auto networkCode = static_cast<enum network::PacketType>(opCode);
 
-        if (networkCode == network::PT_PLAYER_JOIN &&
-            this->clients.size() < 4) {
+        if (networkCode == network::PT_PLAYER_JOIN && this->clients.size() < 4) {
             this->onPlayerJoin(core, sender, senderPort);
-            std::cout << "Someone joined with " << sender << ":" << senderPort
-                      << std::endl;
+            std::cout << "Someone joined with " << sender << ":" << senderPort << std::endl;
         }
 
         if (networkCode == network::PT_PORT_REDIRECTION) {
@@ -117,8 +110,7 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_CREATION) {
             packet >> entityID;
-            this->entityFactory.buildEntity((enum EntityID)entityID, core,
-                                            packet);
+            this->entityFactory.buildEntity((enum EntityID) entityID, core, packet);
         }
 
         if (networkCode == network::PT_ENTITY_UPDATE) {
@@ -129,8 +121,7 @@ void Manager::Network::readSocket(ACore &core) {
 
             AEntityPtr target = core.getEntityFromId(id);
             if (!target) {
-                core.feedEntity(this->entityFactory.buildEntity(
-                        (enum EntityID)entityID, core, packet));
+                core.feedEntity(this->entityFactory.buildEntity((enum EntityID) entityID, core, packet));
             } else {
                 target->updateFromPacket(packet);
             }
@@ -138,7 +129,7 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_DESTRUCTION) {
             packet >> id;
-            core.addToDeletionQueue((enum EntityID)id);
+            core.addToDeletionQueue((enum EntityID) id);
         }
         state = this->socket.receive(packet, sender, senderPort);
     }
@@ -161,15 +152,13 @@ void Manager::Network::resetClientsKeyMap() {
         std::memset(client.keyMap, 0, sizeof(client.keyMap));
 }
 
-bool Manager::Network::isClientKeyPressed(std::size_t clientId,
-                                          sf::Keyboard::Key key) {
+bool Manager::Network::isClientKeyPressed(std::size_t clientId, sf::Keyboard::Key key) {
     if (clientId >= this->clients.size())
         return false;
     return this->clients[clientId].keyMap[key % sf::Keyboard::KeyCount] != 0;
 }
 
-void Manager::Network::execEntityAction(AEntityPtr entity,
-                                        network::PacketType packetType) {
+void Manager::Network::execEntityAction(AEntityPtr entity, network::PacketType packetType) {
     sf::Packet packet = entity->buildMyAsAPacket(packetType);
 
     for (auto &client : this->clients)

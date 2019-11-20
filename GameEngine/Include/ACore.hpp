@@ -30,7 +30,6 @@ class ACore : public ICore
 public:
     ACore();
     virtual ~ACore() = default;
-
 public:
     std::shared_ptr<Manager::Audio> getAudio() const;
     std::shared_ptr<Manager::Network> getNetwork() const;
