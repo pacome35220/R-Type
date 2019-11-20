@@ -47,8 +47,8 @@ void Core::Server::run()
             lastTotal = currentTotal;
 		}
 		mutex.unlock();
-        this->network->endOfStream();
 	}
+    this->network->endOfStream();
 }
 
 void Core::Server::procDeletionQueue() {
