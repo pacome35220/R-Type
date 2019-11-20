@@ -30,7 +30,7 @@ void Core::Server::run()
     size_t lastTotal = clock.getElapsedTime().asMicroseconds();
     static sf::Mutex mutex;
 
-    while(true) {
+    while (true) {
 		mutex.lock();
         currentTotal = clock.getElapsedTime().asMicroseconds();
         if (currentTotal - lastTotal >= 1000000 / this->frameRate) {
