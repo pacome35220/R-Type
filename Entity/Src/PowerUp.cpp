@@ -17,7 +17,7 @@ void PowerUp::onCollision(AEntityPtr entity)
 {
     if (getEntityType() == EntityID::EI_DEATH_STAR) {
         health--;
-        entryPoint.addToDeletionQueue(EntityID::EI_DEATH_STAR);
+        entryPoint.addToDeletionQueue(getId());
     }
 }
 
