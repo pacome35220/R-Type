@@ -26,21 +26,15 @@ namespace Manager
 
     public:
         bool isKeyPressed(sf::Keyboard::Key key);
-        bool isKeyReleased(sf::Keyboard::Key key);
-        bool isKeyDown(sf::Keyboard::Key key);
-        bool isKeyUp(sf::Keyboard::Key key);
-        bool isKeyMapped(sf::Keyboard::Key key);
+        void updateKeyPressed();
         std::vector<sf::Keyboard::Key> getKeyPressed();
-        void flush();
 
     private:
+        bool isKeyMapped(sf::Keyboard::Key key);
         void mapKey(sf::Keyboard::Key key);
 
     private:
         bool isFocused;
-        int internalKeyMap[sf::Keyboard::KeyCount];
         std::map<sf::Keyboard::Key, bool> currentState;
-        std::map<sf::Keyboard::Key, bool> previousState;
     };
 }
-

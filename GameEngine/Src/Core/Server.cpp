@@ -27,7 +27,6 @@ void Core::Server::run()
             this->procTopQueue();
             this->procDeletionQueue();
             // call function to handle collision
-            this->action->flush();
             this->network->streamInput(this->action);
             this->network->readSocket(*this);
             lastTotal = currentTotal;

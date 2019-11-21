@@ -33,7 +33,7 @@ void Core::Client::run() {
             // call function to handle collision
             this->renderEntities();
             this->procDeletionQueue();
-            this->action->flush();
+            this->action->updateKeyPressed();
             this->network->streamInput(this->action);
             this->network->readSocket(*this);
             lastTotal = currentTotal;
@@ -53,7 +53,7 @@ void Core::Client::handleWindowEvent() {
         if (event.type == sf::Event::LostFocus)
             this->action->setIsFocused(false);
     }
-    if (this->action->isKeyReleased(sf::Keyboard::Escape))
+    if (this->action->isKeyPressed(sf::Keyboard::Escape))
         this->window.close();
 }
 

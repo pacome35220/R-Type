@@ -7,66 +7,38 @@
 
 #include "Manager/Action.hpp"
 
-/*
- *   Constructors // Destructor
- */
-Manager::Action::Action(): isFocused(true), internalKeyMap(), currentState(), previousState() {
-    mapKey(sf::Keyboard::Up);
-    mapKey(sf::Keyboard::Left);
-    mapKey(sf::Keyboard::Down);
-    mapKey(sf::Keyboard::Right);
-    mapKey(sf::Keyboard::W);
+Manager::Action::Action() : isFocused(true) {
+    this->mapKey(sf::Keyboard::Up);
+    this->mapKey(sf::Keyboard::Left);
+    this->mapKey(sf::Keyboard::Down);
+    this->mapKey(sf::Keyboard::Right);
+    this->mapKey(sf::Keyboard::W);
+    this->mapKey(sf::Keyboard::Escape);
 }
 
-void Manager::Action::mapKey(sf::Keyboard::Key key) {
-    this->previousState[key] = false;
-    this->currentState[key] = false;
-}
-
-/*
- *   Setters
- */
 void Manager::Action::setIsFocused(bool state) {
     this->isFocused = state;
 }
 
-/*
- *   Methods
- */
-bool Manager::Action::isKeyPressed(sf::Keyboard::Key key) {
-    if (!this->isKeyMapped(key))
-        this->mapKey(key);
-    return (!this->previousState[key] && this->currentState[key]);
-}
-
-bool Manager::Action::isKeyReleased(sf::Keyboard::Key key) {
-    if (!this->isKeyMapped(key))
-        this->mapKey(key);
-    return (this->previousState[key] && !this->currentState[key]);
-}
-
-bool Manager::Action::isKeyDown(sf::Keyboard::Key key) {
-    if (!this->isKeyMapped(key))
-        this->mapKey(key);
-    return this->currentState[key];
-}
-
-bool Manager::Action::isKeyUp(sf::Keyboard::Key key) {
-    if (!this->isKeyMapped(key))
-        this->mapKey(key);
-    return !this->currentState[key];
+void Manager::Action::mapKey(sf::Keyboard::Key key) {
+    this->currentState[key] = false;
 }
 
 bool Manager::Action::isKeyMapped(sf::Keyboard::Key key) {
-    return !(this->previousState.find(key) == this->previousState.end()
-             || this->currentState.find(key) == this->currentState.end());
+    return this->currentState.find(key) != this->currentState.end();
+}
+
+bool Manager::Action::isKeyPressed(sf::Keyboard::Key key) {
+    if (!this->isKeyMapped(key))
+        this->mapKey(key);
+    return this->currentState[key];
 }
 
 std::vector<sf::Keyboard::Key> Manager::Action::getKeyPressed() {
     std::vector<sf::Keyboard::Key> pressedKey;
 
     for (const auto &key : this->currentState)
-        if (this->isKeyPressed(key.first) || this->isKeyDown(key.first))
+        if (this->isKeyPressed(key.first))
             pressedKey.push_back(key.first);
     return pressedKey;
 }
@@ -74,13 +46,9 @@ std::vector<sf::Keyboard::Key> Manager::Action::getKeyPressed() {
 /**
  * Flush all keys
  */
-void Manager::Action::flush() {
+void Manager::Action::updateKeyPressed() {
     if (!this->isFocused)
         return;
-    for (const auto &it : this->currentState) {
-        this->previousState[it.first] = this->currentState[it.first];
+    for (const auto &it : this->currentState)
         this->currentState[it.first] = sf::Keyboard::isKeyPressed(it.first);
-        if (this->currentState[it.first])
-            this->internalKeyMap[it.first] = 1;
-    }
 }
