@@ -11,18 +11,6 @@
 
 Core::Server::Server() {}
 
-// void CoreServer::addEntity(AEntityPtr entity)
-// {
-//     ACore::addEntity(move(entity));
-//     // TODO send to clients
-// }
-
-// void CoreServer::removeEntity(AEntityPtr entity)
-// {
-//     ACore::removeEntity(move(entity));
-//     // TODO send to clients
-// }
-
 void Core::Server::run()
 {
     sf::Clock clock;
