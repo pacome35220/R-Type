@@ -29,6 +29,11 @@ AEntityPtr ACore::getEntityFromId(std::size_t id) {
     return nullptr;
 }
 
+/**
+ * updateEntities call `update` method of each entities.
+ * When streamTime reach 15, updateEntities send to each clients
+ * the new entity with PT_ENTITY_UPDATE event.
+ */
 void ACore::updateEntities() {
     for (auto &entity : this->entities) {
         entity->update();
