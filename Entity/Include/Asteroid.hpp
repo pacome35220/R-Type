@@ -17,7 +17,7 @@ public:
     ~Asteroid() = default;
 
 public:
-    static AEntityPtr createPlayerFromPacket(ACore &core, sf::Packet packet);
+    static AEntityPtr createAsteroidFromPacket(ACore &core, sf::Packet packet);
     void onCollision(AEntityPtr entity) override;
     void update() override;
     void increaseStreamTimer() override;

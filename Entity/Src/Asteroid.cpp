@@ -13,7 +13,7 @@ Asteroid::Asteroid(sf::Vector2f position, ACore &core) : AEntity(position, core,
 
 }
 
-AEntityPtr Asteroid::createPlayerFromPacket(ACore &core, sf::Packet packet) {
+AEntityPtr Asteroid::createAsteroidFromPacket(ACore &core, sf::Packet packet) {
     //TODO
 }
 
