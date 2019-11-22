@@ -47,7 +47,7 @@ void ACore::updateEntities() {
 
 void ACore::procTopQueue() {
     for (const auto &value : this->topQueue) {
-        for (std::size_t i = 0 ; i < this->entities.size() ; i++) {
+        for (std::size_t i = 0; i < this->entities.size(); i++) {
             if (this->entities[i]->getId() == value) {
                 auto tmp = this->entities[i];
                 this->entities.erase(this->entities.begin() + i);
