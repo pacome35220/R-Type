@@ -1,6 +1,7 @@
 set(GAME_ENGINE_DIR GameEngine/Src/)
 set(CORE_DIR ${GAME_ENGINE_DIR}Core/)
 set(MANAGER_DIR ${GAME_ENGINE_DIR}Manager/)
+set(ENTITY_DIR ${GAME_ENGINE_DIR}/Entity/)
 
 list(APPEND SRC
         ${GAME_ENGINE_DIR}AEntity.cpp
@@ -16,4 +17,7 @@ list(APPEND SRC
         ${MANAGER_DIR}Collision.cpp
         ${MANAGER_DIR}Network.cpp
         ${MANAGER_DIR}Resource.cpp
+
+        ${ENTITY_DIR}Client.cpp
+        ${ENTITY_DIR}Server.cpp
 )

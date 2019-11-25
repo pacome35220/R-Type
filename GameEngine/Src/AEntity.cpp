@@ -13,12 +13,6 @@ AEntity::AEntity(const sf::Vector2f &_position, ACore &_entryPoint,
                  enum EntityID _type)
     : Id(), type(_type), entryPoint(_entryPoint), position(_position),
       packetNumber(0), health(100), streamTimer(0) {
-    if (!this->entryPoint.getResource()->loadTexture(_type))
-        throw Error(std::to_string(_type) + " doesn't exist", __FILE__, __func__, __LINE__);
-    this->texture = this->entryPoint.getResource()->getTexture(_type);
-    this->sprite.setTexture(this->texture);
-    this->sprite.setOrigin(this->texture.getSize().x / 2,
-                           this->texture.getSize().y / 2);
 }
 
 void AEntity::increaseStreamTimer() {

@@ -17,7 +17,6 @@
 #include "PacketType.hpp"
 
 class ACore;
-
 class AEntity;
 
 typedef std::shared_ptr<AEntity> AEntityPtr;
