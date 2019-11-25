@@ -6,8 +6,8 @@ list(APPEND SRC
         ${GAME_ENGINE_DIR}AEntity.cpp
         ${GAME_ENGINE_DIR}EntityFactory.cpp
         ${GAME_ENGINE_DIR}Id.cpp
-
-        ${CORE_DIR}ACore.cpp
+        ${GAME_ENGINE_DIR}ACore.cpp
+        
         ${CORE_DIR}Client.cpp
         ${CORE_DIR}Server.cpp
 
