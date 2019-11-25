@@ -12,14 +12,17 @@
 
 class Error : public std::exception {
 public:
-    Error(const std::string &_message, const std::string &_file,
+    Error(const std::string &_what, const std::string &_file,
           const std::string &_function, const size_t &_line);
 
 public:
-    const char *what() const throw();
+    const char *what() const throw() override;
+    const char *where();
 
 private:
-    const std::string message;
+    const std::string _what;
+    std::string _where;
+
     const std::string file;
     const std::string function;
     const size_t line;

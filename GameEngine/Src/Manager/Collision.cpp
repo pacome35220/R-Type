@@ -16,7 +16,7 @@
  */
 bool Manager::Collision::getCollision(EntityID entity1, EntityID entity2) const
 {
-    // Todo
+    return this->collisionMap.at(entity1).at(entity2);
 }
 /**
  * Set a collision between \type1 and \type2
@@ -24,9 +24,10 @@ bool Manager::Collision::getCollision(EntityID entity1, EntityID entity2) const
  * @param type2
  * @return True | False
  */
+
 void Manager::Collision::setCollision(EntityID entity1, EntityID entity2, const bool &status)
 {
-    // Todo
+    this->collisionMap[entity1][entity2] = status;
 }
 /**
  * Operate the collision with entities in the lust \entityList
