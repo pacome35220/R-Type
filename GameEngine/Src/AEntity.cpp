@@ -21,6 +21,14 @@ AEntity::AEntity(const sf::Vector2f &_position, ACore &_entryPoint,
                            this->texture.getSize().y / 2);
 }
 
+sf::Texture &AEntity::getTexture() {
+    return texture;
+}
+
+sf::Sprite &AEntity::getSprite() {
+    return sprite;
+}
+
 void AEntity::increaseStreamTimer() {
     this->streamTimer++;
 }

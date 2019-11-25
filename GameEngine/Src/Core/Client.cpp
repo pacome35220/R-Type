@@ -5,6 +5,7 @@
 ** CoreClient.cpp
 */
 
+#include <Error.hpp>
 #include "Core/Client.hpp"
 #include "Parallax.hpp"
 
@@ -14,6 +15,10 @@ Core::Client::Client(const std::string &windowTitle)
     this->action = std::make_shared<Manager::Action>();
     this->audio = std::make_shared<Manager::Audio>();
     this->resource = std::make_shared<Manager::Resource>();
+}
+
+const sf::RenderWindow &Core::Client::getRenderWindow() const {
+    return this->window;
 }
 
 void Core::Client::run() {
@@ -42,6 +47,33 @@ void Core::Client::run() {
     }
 }
 
+void Core::Client::procDeletionQueue() {
+    for (const auto &entityToDelete : this->deletionQueue) {
+        auto tmp = std::find(this->entities.begin(), this->entities.end(),
+                             entityToDelete);
+        if (tmp != this->entities.end())
+            this->entities.erase(tmp);
+    }
+    this->deletionQueue = std::vector<AEntityPtr>();
+}
+
+void Core::Client::feedEntity(AEntityPtr entity) {
+    this->entities.push_back(entity);
+    if (!this->getResource()->loadTexture(entity->getEntityType()))
+        throw Error(std::to_string(entity->getEntityType()) + " doesn't exist", __FILE__, __func__, __LINE__);
+    entity->getTexture() = this->getResource()->getTexture(entity->getEntityType());
+    entity->getSprite().setTexture(entity->getTexture());
+    entity->getSprite().setOrigin(entity->getTexture().getSize().x / 2,
+                           entity->getTexture().getSize().y / 2);
+}
+
+void Core::Client::renderEntities() {
+    this->window.clear(sf::Color(0, 0, 0, 0));
+    for (auto const &entity : this->entities)
+        entity->render(this->window);
+    this->window.display();
+}
+
 void Core::Client::handleWindowEvent() {
     sf::Event event;
 
@@ -55,25 +87,4 @@ void Core::Client::handleWindowEvent() {
     }
     if (this->action->isKeyPressed(sf::Keyboard::Escape))
         this->window.close();
-}
-
-void Core::Client::renderEntities() {
-    this->window.clear(sf::Color(0, 0, 0, 0));
-    for (auto const &entity : this->entities)
-        entity->render(this->window);
-    this->window.display();
-}
-
-void Core::Client::procDeletionQueue() {
-    for (const auto &entityToDelete : this->deletionQueue) {
-        auto tmp = std::find(this->entities.begin(), this->entities.end(),
-                             entityToDelete);
-        if (tmp != this->entities.end())
-            this->entities.erase(tmp);
-    }
-    this->deletionQueue = std::vector<AEntityPtr>();
-}
-
-const sf::RenderWindow &Core::Client::getRenderWindow() const {
-    return this->window;
 }

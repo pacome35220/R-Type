@@ -49,3 +49,10 @@ void Core::Server::procDeletionQueue() {
     }
     this->deletionQueue = std::vector<AEntityPtr>();
 }
+
+void Core::Server::feedEntity(AEntityPtr entity) {
+    this->entities.push_back(entity);
+    this->network->execEntityAction(entity, network::PacketType::PT_ENTITY_CREATION);
+}
+
+
