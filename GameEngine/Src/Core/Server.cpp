@@ -9,7 +9,10 @@
 #include "Core/Server.hpp"
 #include "Player.hpp"
 
-Core::Server::Server() {}
+Core::Server::Server() {
+    this->network = std::make_shared<Manager::Network>();
+    this->resource = std::make_shared<Manager::Resource>();
+}
 
 void Core::Server::run()
 {
@@ -27,7 +30,6 @@ void Core::Server::run()
             this->procTopQueue();
             this->procDeletionQueue();
             // call function to handle collision
-            this->network->streamInput(this->action);
             this->network->readSocket(*this);
             lastTotal = currentTotal;
 		}
