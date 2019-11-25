@@ -81,9 +81,15 @@ void Server::entityFeeder(Core::Server &core) {
  * @param port
  */
 void Server::threadEntryPoint(unsigned short port) {
-    Core::Server core;
+    try {
+        Core::Server core;
 
-    core.getNetwork()->bindSocket(port);
-    Server::entityFeeder(core);
-    core.run();
+        core.getNetwork()->bindSocket(port);
+        Server::entityFeeder(core);
+        core.run();
+    }
+    catch (const Error &error) {
+        std::cout << error.what() << std::endl;
+        exit(1);
+    }
 }
