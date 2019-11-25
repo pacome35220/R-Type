@@ -51,7 +51,6 @@ sf::Packet AEntity::buildMyAsAPacket(network::PacketType packetType) {
     if (packetType == network::PT_ENTITY_UPDATE)
         packet << (unsigned int)this->id;
     packet << this->type << (unsigned int)this->id
-           << this->entryPoint.getResource()->getTexturePath(this->type)
            << this->position.x << this->position.y; //<< _physicType;
     if (packetType == network::PT_ENTITY_UPDATE) {
         packet << (unsigned int)this->packetNumber;

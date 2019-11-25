@@ -31,9 +31,7 @@ public:
     ACore();
     virtual ~ACore() = default;
 public:
-    std::shared_ptr<Manager::Audio> getAudio() const;
     std::shared_ptr<Manager::Network> getNetwork() const;
-    std::shared_ptr<Manager::Resource> getResource() const;
     AEntityPtr getEntityFromId(size_t id) override;
 
 public:
@@ -47,9 +45,6 @@ protected:
     std::vector<AEntityPtr> entities;
     std::vector<AEntityPtr> deletionQueue;
     std::vector<std::size_t> topQueue;
-    std::shared_ptr<Manager::Action> action;
-    std::shared_ptr<Manager::Audio> audio;
     std::shared_ptr<Manager::Collision> collision;
     std::shared_ptr<Manager::Network> network;
-    std::shared_ptr<Manager::Resource> resource;
 };

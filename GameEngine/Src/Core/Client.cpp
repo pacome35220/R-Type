@@ -11,7 +11,6 @@
 
 Core::Client::Client(const std::string &windowTitle)
     : ACore(), window(sf::VideoMode::getDesktopMode(), windowTitle) {
-    this->network = std::make_shared<Manager::Network>();
     this->action = std::make_shared<Manager::Action>();
     this->audio = std::make_shared<Manager::Audio>();
     this->resource = std::make_shared<Manager::Resource>();
@@ -19,6 +18,14 @@ Core::Client::Client(const std::string &windowTitle)
 
 const sf::RenderWindow &Core::Client::getRenderWindow() const {
     return this->window;
+}
+
+std::shared_ptr<Manager::Audio> Core::Client::getAudio() const {
+    return this->audio;
+}
+
+std::shared_ptr<Manager::Resource> Core::Client::getResource() const {
+    return this->resource;
 }
 
 void Core::Client::run() {

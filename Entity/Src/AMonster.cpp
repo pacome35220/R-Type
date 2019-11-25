@@ -7,6 +7,7 @@
 
 #include "AMonster.hpp"
 #include "Bullet/Monster.hpp"
+#include "Core/Client.hpp"
 
 AMonster::AMonster(const sf::Vector2f &position, ACore &entryPoint, enum EntityID type, float speed, float amplitude, float amplitudeSpeed, float scale)
     : AEntity(position, entryPoint, type), speed(speed), amplitude(amplitude), amplitudeSpeed(amplitudeSpeed), scale(scale) {
@@ -44,7 +45,7 @@ void AMonster::updateMonster() {
     if (std::rand() % 100 < 2) {
         this->entryPoint.feedEntity(std::make_shared<Bullet::Monster>(
             this->position, this->entryPoint, 1, 0));
-        this->entryPoint.getAudio()->playSound(
+        ((Core::Client &)this->entryPoint).getAudio()->playSound(
             "./Assets/Audio/PlayerLaser.ogg");
     }
 }

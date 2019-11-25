@@ -9,10 +9,7 @@
 #include "Core/Server.hpp"
 #include "Player.hpp"
 
-Core::Server::Server() {
-    this->network = std::make_shared<Manager::Network>();
-    this->resource = std::make_shared<Manager::Resource>();
-}
+Core::Server::Server() {}
 
 void Core::Server::run()
 {

@@ -8,18 +8,11 @@
 #include "ACore.hpp"
 
 ACore::ACore(): frameRate(60) {
-}
-
-std::shared_ptr<Manager::Audio> ACore::getAudio() const {
-    return this->audio;
+    this->network = std::make_shared<Manager::Network>();
 }
 
 std::shared_ptr<Manager::Network> ACore::getNetwork() const {
     return this->network;
-}
-
-std::shared_ptr<Manager::Resource> ACore::getResource() const {
-    return this->resource;
 }
 
 AEntityPtr ACore::getEntityFromId(std::size_t id) {

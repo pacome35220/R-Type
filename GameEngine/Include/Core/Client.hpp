@@ -19,7 +19,10 @@ namespace Core {
     class Client : public ACore {
     public:
         Client(const std::string &windowTitle);
+
         const sf::RenderWindow &getRenderWindow() const;
+        std::shared_ptr<Manager::Audio> getAudio() const;
+        std::shared_ptr<Manager::Resource> getResource() const;
 
     public:
         void run() override;
@@ -32,6 +35,8 @@ namespace Core {
 
     private:
         sf::RenderWindow window;
+        std::shared_ptr<Manager::Action> action;
+        std::shared_ptr<Manager::Audio> audio;
+        std::shared_ptr<Manager::Resource> resource;
     };
 }
-
