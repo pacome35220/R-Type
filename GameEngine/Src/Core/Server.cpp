@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** for_norme
+** CPP_rtype_2019
 ** File description:
-** CoreServer.cpp
+** Server.cpp
 */
 
 #include <iostream>
@@ -48,4 +48,15 @@ void Core::Server::procDeletionQueue() {
             this->entities.erase(tmp);
     }
     this->deletionQueue = std::vector<AEntityPtr>();
+<<<<<<< HEAD
 }
+=======
+}
+
+void Core::Server::feedEntity(AEntityPtr entity) {
+    this->entities.push_back(entity);
+    this->network->execEntityAction(entity, network::PacketType::PT_ENTITY_CREATION);
+}
+
+
+>>>>>>> 3e2803d4edc219fb4422809ea6715a4c415ba05b

@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** for_norme
+** CPP_rtype_2019
 ** File description:
-** Core.hpp
+** Server.hpp
 */
 
 #pragma once
@@ -22,8 +22,11 @@ namespace Core
     public:
         Server();
         ~Server() = default;
+
+    public:
         void run() override;
         void procDeletionQueue() override;
         void onPlayerJoin(const sf::IpAddress &senderIP, unsigned short senderPort);
+        void feedEntity(AEntityPtr entity) override;
     };
 }

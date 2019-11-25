@@ -28,6 +28,8 @@ class AEntity: public Id {
 public:
     AEntity(const sf::Vector2f &position, ACore &entryPoint, enum EntityID type);
     virtual ~AEntity() = default;
+    sf::Texture &getTexture();
+    sf::Sprite &getSprite();
 
 public:
     virtual void onCollision(AEntityPtr entity) = 0;

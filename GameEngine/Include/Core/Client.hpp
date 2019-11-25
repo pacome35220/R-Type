@@ -19,14 +19,16 @@ namespace Core {
     class Client : public ACore {
     public:
         Client(const std::string &windowTitle);
-        void run() override;
         const sf::RenderWindow &getRenderWindow() const;
+
+    public:
+        void run() override;
         void procDeletionQueue() override;
+        void feedEntity(AEntityPtr entity) override;
 
     private:
         void renderEntities();
         void handleWindowEvent();
-
 
     private:
         sf::RenderWindow window;

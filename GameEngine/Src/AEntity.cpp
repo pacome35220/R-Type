@@ -15,6 +15,14 @@ AEntity::AEntity(const sf::Vector2f &_position, ACore &_entryPoint,
       packetNumber(0), health(100), streamTimer(0) {
 }
 
+sf::Texture &AEntity::getTexture() {
+    return texture;
+}
+
+sf::Sprite &AEntity::getSprite() {
+    return sprite;
+}
+
 void AEntity::increaseStreamTimer() {
     this->streamTimer++;
 }
