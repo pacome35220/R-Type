@@ -9,6 +9,7 @@
 
 Parallax::Parallax(ACore &core, sf::Vector2f pos): AEntity(pos, core, EI_PARALLAX) {
     this->lastTotal = 0;
+    this->id = -1; // MDRRRRRRRRR
 }
 
 AEntityPtr Parallax::createParallaxFromPacket(ACore &core, sf::Packet packet) {

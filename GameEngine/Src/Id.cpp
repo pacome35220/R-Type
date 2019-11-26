@@ -11,6 +11,6 @@ std::size_t Id::idGen = 0;
 
 Id::Id() : id(idGen++) {}
 
-const std::size_t &Id::getId() const {
+std::size_t Id::getId() const {
     return id;
 }

@@ -14,10 +14,10 @@
 class Id {
 public:
     Id();
-    const std::size_t &getId() const;
+    std::size_t getId() const;
 
 protected:
-    const std::size_t id;
+    std::size_t id;
 
 private:
     static std::size_t idGen;
