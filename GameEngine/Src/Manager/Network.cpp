@@ -12,7 +12,6 @@
 #include "Player.hpp"
 
 Manager::Network::Network() {
-    this->socket.setBlocking(false);
 }
 
 void Manager::Network::setIpTarget(const std::string &ipTarget) {
@@ -21,6 +20,11 @@ void Manager::Network::setIpTarget(const std::string &ipTarget) {
 
 void Manager::Network::setPortTarget(unsigned short portTarget) {
     this->portTarget = portTarget;
+}
+
+void Manager::Network::setSocket(std::shared_ptr<sf::UdpSocket> _socket) {
+    this->socket = _socket;
+    this->socket->setBlocking(false);
 }
 
 const std::vector<Client> &Manager::Network::getClients() const {
@@ -68,13 +72,13 @@ void Manager::Network::addNewClient(const sf::IpAddress &ip, unsigned short port
 }
 
 void Manager::Network::bindSocket(unsigned short port) {
-    if (this->socket.bind(port) != sf::Socket::Done)
+    if (this->socket->bind(port) != sf::Socket::Done)
         throw Error("Bind fail", __FILE__, __func__, __LINE__);
     std::cout << "Network is listening to port " << port << std::endl;
 }
 
 void Manager::Network::sendPacket(sf::Packet packet, sf::IpAddress ip, unsigned short port) {
-    this->socket.send(packet, ip, port);
+    this->socket->send(packet, ip, port);
 }
 
 void Manager::Network::readSocket(ACore &core) {
@@ -88,7 +92,7 @@ void Manager::Network::readSocket(ACore &core) {
 
     this->resetClientsKeyMap();
 
-    auto state = this->socket.receive(packet, sender, senderPort);
+    auto state = this->socket->receive(packet, sender, senderPort);
     if (state == sf::Socket::NotReady)
         return;
     while (state == sf::Socket::Done) {
@@ -131,7 +135,7 @@ void Manager::Network::readSocket(ACore &core) {
             packet >> id;
             core.addToDeletionQueue((enum EntityID) id);
         }
-        state = this->socket.receive(packet, sender, senderPort);
+        state = this->socket->receive(packet, sender, senderPort);
     }
 }
 
@@ -162,7 +166,7 @@ void Manager::Network::execEntityAction(AEntityPtr entity, network::PacketType p
     sf::Packet packet = entity->buildMyAsAPacket(packetType);
 
     for (auto &client : this->clients)
-        this->socket.send(packet, client.ip, client.port);
+        this->socket->send(packet, client.ip, client.port);
 }
 
 void Manager::Network::endOfStream()
@@ -171,5 +175,5 @@ void Manager::Network::endOfStream()
 
     packet << network::PT_STREAM_END;
     for (Client &it: this->clients)
-		this->socket.send(packet, it.ip, it.port);
+		this->socket->send(packet, it.ip, it.port);
 }

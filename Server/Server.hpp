@@ -14,5 +14,5 @@ namespace Server
 {
     void start(unsigned short port);
     void entityFeeder(Core::Server &core);
-    void threadEntryPoint(unsigned short port);
+    void threadEntryPoint(std::shared_ptr<sf::UdpSocket> socket);
 }

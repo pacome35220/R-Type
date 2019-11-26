@@ -34,17 +34,23 @@ void Server::start(unsigned short port) {
 
     if (socket.bind(port) != sf::Socket::Done)
         throw Error("Bind fail", __FILE__, __func__, __LINE__);
+    std::cout << "Lobby on port: " << port << std::endl;
     while (true) {
         if (socket.receive(packet, sender, senderPort) == sf::Socket::Done) {
             if (idx % 4 == 0) {
-                port++;
-                auto *thread = new sf::Thread(Server::threadEntryPoint, port);
+                std::shared_ptr<sf::UdpSocket> newSocket = std::make_shared<sf::UdpSocket>();
+
+                if (newSocket->bind(0) != sf::Socket::Done)
+                    throw Error("Bind fail", __FILE__, __func__, __LINE__);
+
+                auto answer = sf::Packet();
+                answer << network::PT_PORT_REDIRECTION << newSocket->getLocalPort();
+                socket.send(answer, sender, senderPort);
+
+                auto *thread = new sf::Thread(Server::threadEntryPoint, newSocket);
                 threads.push_back(thread);
                 thread->launch();
             }
-            auto answer = sf::Packet();
-            answer << network::PT_PORT_REDIRECTION << port;
-            socket.send(answer, sender, senderPort);
             idx++;
         }
     }
@@ -80,12 +86,14 @@ void Server::entityFeeder(Core::Server &core) {
  * The room is a new server binded on \port
  * @param port
  */
-void Server::threadEntryPoint(unsigned short port) {
+void Server::threadEntryPoint(std::shared_ptr<sf::UdpSocket> socket) {
+    std::cout << "New room on port: " << socket->getLocalPort() << std::endl;
+
     try {
         Core::Server core;
 
-        core.getNetwork()->bindSocket(port);
-        Server::entityFeeder(core);
+        core.getNetwork()->setSocket(socket);
+        // Server::entityFeeder(core);
         core.run();
     }
     catch (const Error &error) {
