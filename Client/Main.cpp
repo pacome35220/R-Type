@@ -23,6 +23,8 @@ void runClient(const std::string &ip, unsigned short port) {
 
     std::cout << ip << "mdr" << port << std::endl;
 
+    core.getNetwork()->setSocket(std::make_shared<sf::UdpSocket>());
+
     core.getResource()->feedTextureFactory(EI_PARALLAX, "./Assets/Sprites/starfieldBlue.png");
     core.getNetwork()->setIpTarget(ip);
     core.getNetwork()->setPortTarget(port);

@@ -25,6 +25,8 @@ namespace Manager
     public:
         Network();
         ~Network() = default;
+
+        void setSocket(std::shared_ptr<sf::UdpSocket>);
         void setIpTarget(const std::string &ipTarget);
         void setPortTarget(unsigned short portTarget);
         const std::vector<Client> &getClients() const;
@@ -45,7 +47,7 @@ namespace Manager
 
     private:
         std::vector<Client> clients;
-        sf::UdpSocket socket;
+        std::shared_ptr<sf::UdpSocket> socket;
         std::string ipTarget;
         unsigned short portTarget;
         EntityFactory entityFactory;
