@@ -5,6 +5,7 @@
 ** Action.cpp
 */
 
+#include <iostream>
 #include "Manager/Action.hpp"
 
 Manager::Action::Action() : isFocused(true) {
@@ -49,6 +50,11 @@ std::vector<sf::Keyboard::Key> Manager::Action::getKeyPressed() {
 void Manager::Action::updateKeyPressed() {
     if (!this->isFocused)
         return;
-    for (const auto &it : this->currentState)
+    std::cout << "Action::updateKeyPressed" << std::endl;
+    for (const auto &it : this->currentState) {
         this->currentState[it.first] = sf::Keyboard::isKeyPressed(it.first);
+        std::cout << "\t" << "key: " << it.first << " ";
+        std::cout << (it.second ? "pressed" : "not pressed") << std::endl;
+    }
+    std::cout << std::endl;
 }

@@ -74,6 +74,7 @@ void Player::onCollision(AEntityPtr entity) {
  * bullet in multiple direction
  */
 void Player::handleInput() {
+    std::cout << "Player::handleInput" << std::endl;
     auto network = this->entryPoint.getNetwork();
 
     if (network->isClientKeyPressed(this->playerNbr, sf::Keyboard::Up))
@@ -104,6 +105,7 @@ void Player::handleInput() {
 }
 
 void Player::update() {
+    std::cout << "Player::update" << std::endl;
     this->handleInput();
     if (this->position.x < -100 + 6)
         this->position.x = -100 + 6;
