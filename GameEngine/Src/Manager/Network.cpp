@@ -152,6 +152,21 @@ void Manager::Network::readSocket(ACore &core) {
 
             core.addToDeletionQueue((enum EntityID)id);
         }
+                // We received an input from a client.
+        if (networkCode == network::PT_INPUT) {
+            int key;
+
+            packet >> key;
+            for (auto &it: this->clients) {
+                if (sender == it.ip && senderPort == it.port && key < sf::Keyboard::KeyCount) {
+                    it.keyMap[key]++;
+                }
+            }
+        }
+        // Stream end, process should stop, although exit is the lazy way.
+        if (networkCode == network::PT_STREAM_END)
+            exit(0);
+
         state = this->socket->receive(packet, sender, senderPort);
     }
 }
