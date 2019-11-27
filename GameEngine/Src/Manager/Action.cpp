@@ -51,8 +51,8 @@ void Manager::Action::updateKeyPressed() {
     if (!this->isFocused)
         return;
     std::cout << "Action::updateKeyPressed" << std::endl;
-    for (const auto &it : this->currentState) {
-        this->currentState[it.first] = sf::Keyboard::isKeyPressed(it.first);
+    for (auto &it : this->currentState) {
+        it.second = sf::Keyboard::isKeyPressed(it.first);
         std::cout << "\t" << "key: " << it.first << " ";
         std::cout << (it.second ? "pressed" : "not pressed") << std::endl;
     }

@@ -159,13 +159,16 @@ void Manager::Network::readSocket(ACore &core) {
 void Manager::Network::streamInput(std::shared_ptr<Action> actionManager) {
     auto pressedKey = actionManager->getKeyPressed();
 
+    std::cout << "Network::streamInput" << std::endl;
     for (const auto &keyCode : pressedKey) {
         sf::Packet packet;
 
         packet << network::PT_INPUT;
         packet << keyCode;
+        std::cout << "\t" << "key: " << keyCode << std::endl;
         this->sendPacket(packet, this->ipTarget, this->portTarget);
     }
+    std::cout << std::endl;
 }
 
 void Manager::Network::resetClientsKeyMap() {
