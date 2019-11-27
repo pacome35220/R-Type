@@ -7,6 +7,7 @@
 
 #include <Monster/Dolley.hpp>
 #include <Bullet/DeathStar.hpp>
+#include <iostream>
 #include "DeathStar.hpp"
 #include "PowerUp.hpp"
 
@@ -25,6 +26,28 @@ void DeathStar::update() {
 
     this->position.x -= 0.1;
     shot();
+}
+
+AEntityPtr DeathStar::createDeathStarFromPacket(ACore &core, sf::Packet packet)
+{
+    sf::Vector2f pos;
+    int health;
+    int counter;
+    sf::Uint64 id;
+
+    packet >> id >> pos.x >> pos.y >> health >> counter;
+
+    std::cout << "DeathStar::createDeathStarFromPacket " << std::endl <<
+    "\t" << "id: " << id << std::endl <<
+    "\t" << "pos.x: " << pos.x << std::endl <<
+    "\t" << "pos.y: " << pos.y << std::endl <<
+    "\t" << "health: " << health << std::endl <<
+    "\t" << "counter: " << counter << std::endl;
+
+    auto tmp = std::make_shared<DeathStar>(pos, core, health, counter);
+
+    tmp->setId(id);
+    return tmp;
 }
 
 void DeathStar::onCollision(AEntityPtr entity) {

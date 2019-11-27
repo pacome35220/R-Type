@@ -21,7 +21,6 @@ public:
     void onCollision(AEntityPtr entity) override;
     void update() override;
     void increaseStreamTimer() override;
-
 private:
     sf::Vector2f originalPos;
     sf::Vector2f target;

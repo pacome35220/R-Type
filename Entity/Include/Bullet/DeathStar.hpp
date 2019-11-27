@@ -19,7 +19,6 @@ public:
     DeathStar(const sf::Vector2f &position, ACore &entryPoint, float amplitude = 1,
               int counter = 0);
     ~DeathStar() = default;
-
     void updateBullet() override;
 };
 

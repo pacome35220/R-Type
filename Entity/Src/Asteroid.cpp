@@ -6,6 +6,7 @@
 */
 
 #include <cmath>
+#include <iostream>
 #include "Asteroid.hpp"
 
 Asteroid::Asteroid(sf::Vector2f position, ACore &core) : AEntity(position, core,
@@ -14,7 +15,20 @@ Asteroid::Asteroid(sf::Vector2f position, ACore &core) : AEntity(position, core,
 }
 
 AEntityPtr Asteroid::createAsteroidFromPacket(ACore &core, sf::Packet packet) {
-    //TODO
+    sf::Vector2f pos;
+    sf::Uint64 id;
+
+    packet >> id >> pos.x >> pos.y;
+
+    std::cout << "Asteroid::createAsteroidFromPacket " << std::endl <<
+    "\t" << "id: " << id << std::endl <<
+    "\t" << "pos.x: " << pos.x << std::endl <<
+    "\t" << "pos.y: " << pos.y << std::endl;
+
+    auto tmp = std::make_shared<Asteroid>(pos, core);
+
+    tmp->setId(id);
+    return tmp;
 }
 
 void Asteroid::onCollision(AEntityPtr entity) {

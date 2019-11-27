@@ -22,6 +22,7 @@ public:
     void onCollision(AEntityPtr entity) override;
     sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
     void increaseStreamTimer() override;
+    static AEntityPtr createDeathStarFromPacket(ACore &core, sf::Packet packet);
 
 private:
     void onDeath();
