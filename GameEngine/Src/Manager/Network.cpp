@@ -72,12 +72,6 @@ void Manager::Network::addNewClient(const sf::IpAddress &ip, unsigned short port
     this->clients.push_back(newClient);
 }
 
-void Manager::Network::bindSocket(unsigned short port) {
-    if (this->socket->bind(port) != sf::Socket::Done)
-        throw Error("Bind fail", __FILE__, __func__, __LINE__);
-    std::cout << "Network is listening to port " << port << std::endl;
-}
-
 void Manager::Network::sendPacket(sf::Packet packet, sf::IpAddress ip, unsigned short port) {
     this->socket->send(packet, ip, port);
 }

@@ -34,7 +34,6 @@ namespace Manager
 
     public:
         void onPlayerJoin(ACore &core, const sf::IpAddress &senderIp, unsigned short senderPort);
-        void bindSocket(unsigned short port);
         void sendPacket(sf::Packet, sf::IpAddress ip, unsigned short port);
         void readSocket(ACore &core);
         void streamInput(std::shared_ptr<Action> action);
