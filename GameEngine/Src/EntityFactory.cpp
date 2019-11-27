@@ -5,6 +5,7 @@
 ** EntityFactory.cpp
 */
 
+#include <iostream>
 #include "EntityFactory.hpp"
 #include "Error.hpp"
 
@@ -33,6 +34,7 @@ void EntityFactory::addEntity(
 AEntityPtr EntityFactory::buildEntity(enum EntityID entityID, ACore &core,
                                       sf::Packet packet) {
     try {
+        std::cout << "EntityFactory::buildEntity: entityID: " << entityID << std::endl;
         return this->entityList[entityID](core, packet);
     } catch (const std::exception &e) {
         throw Error(e.what(), __FILE__, __func__, __LINE__);

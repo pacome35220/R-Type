@@ -5,6 +5,7 @@
 ** AEntity.cpp
 */
 
+#include <iostream>
 #include "AEntity.hpp"
 #include "ACore.hpp"
 #include "Error.hpp"
@@ -12,8 +13,7 @@
 AEntity::AEntity(const sf::Vector2f &_position, ACore &_entryPoint,
                  enum EntityID _type)
     : Id(), type(_type), entryPoint(_entryPoint), position(_position),
-      packetNumber(0), health(100), streamTimer(0) {
-}
+      packetNumber(0), health(100), streamTimer(0) {}
 
 sf::Texture &AEntity::getTexture() {
     return texture;
@@ -45,17 +45,23 @@ enum EntityID AEntity::getEntityType() {
  * @return The packet built
  */
 sf::Packet AEntity::buildMyAsAPacket(network::PacketType packetType) {
+    std::cout << "AEntity::buildMyAsAPacket " << this->type << " " << this->id
+              << std::endl;
     sf::Packet packet;
 
     packet << packetType;
-    if (packetType == network::PT_ENTITY_UPDATE)
-        packet << (unsigned int)this->id;
-    packet << this->type << (unsigned int)this->id
-           << this->position.x << this->position.y; //<< _physicType;
-    if (packetType == network::PT_ENTITY_UPDATE) {
-        packet << (unsigned int)this->packetNumber;
-        this->packetNumber++;
-    }
+    packet << this->type;
+    packet << (sf::Uint64)this->id;
+    packet << this->position.x;
+    packet << this->position.y;
+
+    std::cout << "AEntity::buildMyAsAPacket " << std::endl <<
+    "\t" << "packetType: " << packetType << std::endl <<
+    "\t" << "this->type: " << this->type << std::endl <<
+    "\t" << "this->id: " << this->id << std::endl <<
+    "\t" << "this->position.x: " << this->position.x << std::endl <<
+    "\t" << "this->position.y: " << this->position.y << std::endl;
+
     return packet;
 }
 
@@ -64,21 +70,14 @@ sf::Packet AEntity::buildMyAsAPacket(network::PacketType packetType) {
  * @param _packet
  */
 void AEntity::updateFromPacket(sf::Packet packet) {
-    int id;
-    std::string texturePath;
-    float posX;
-    float posY;
-    unsigned int packetNbr;
+    std::cout << "AEntity::updateFromPacket" << std::endl;
 
-    packet >> id;
-    packet >> texturePath;
-    packet >> posX;
-    packet >> posY;
-    packet >> packetNbr;
+    sf::Vector2f pos;
 
-    this->position.x = posX;
-    this->position.y = posY;
-    this->packetNumber = packetNbr;
+    packet >> pos.x;
+    packet >> pos.y;
+
+    this->position = pos;
 }
 
 /**

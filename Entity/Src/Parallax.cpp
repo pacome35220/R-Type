@@ -25,12 +25,12 @@ void Parallax::onCollision(AEntityPtr entity) {
 
 void Parallax::update() {
     this->currentTotal = this->clock.getElapsedTime().asMicroseconds();
-    if(this->currentTotal - this->lastTotal >= 1000000 / 60) {
+    if (this->currentTotal - this->lastTotal >= 1000000 / 60) {
         this->clock.restart();
-        if(this->position.x <= -200)
-            this->position.x += 200;
+        if (this->position.x <= -200)
+            this->position.x = 0;
         else
-            this->position.x -= 0.5;
+            this->position.x -= 1;
         this->lastTotal = this->currentTotal;
     }
 }

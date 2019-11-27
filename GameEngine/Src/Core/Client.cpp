@@ -5,8 +5,9 @@
 ** CoreClient.cpp
 */
 
-#include <Error.hpp>
+#include <iostream>
 #include "Core/Client.hpp"
+#include "Error.hpp"
 #include "Parallax.hpp"
 
 Core::Client::Client(const std::string &windowTitle)
@@ -65,6 +66,8 @@ void Core::Client::procDeletionQueue() {
 }
 
 void Core::Client::feedEntity(AEntityPtr entity) {
+    std::cout << "Client::feedEntity " << entity->getEntityType() << std::endl;
+
     this->entities.push_back(entity);
     if (!this->getResource()->loadTexture(entity->getEntityType()))
         throw Error(std::to_string(entity->getEntityType()) + " doesn't exist", __FILE__, __func__, __LINE__);

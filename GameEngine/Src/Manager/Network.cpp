@@ -44,11 +44,12 @@ EntityFactory &Manager::Network::getEntityFactory() {
  */
 void
 Manager::Network::onPlayerJoin(ACore &core, const sf::IpAddress &senderIp, unsigned short senderPort) {
+    std::cout << "Network::onPlayerJoin" << std::endl;
     sf::Vector2f newClientPosition(-90, 0);
     std::size_t playerNbr = this->clients.size();
 
-    core.feedEntity(std::make_shared<Player>(core, newClientPosition, playerNbr));
     this->addNewClient(senderIp, senderPort);
+    core.feedEntity(std::make_shared<Player>(core, newClientPosition, playerNbr));
 }
 
 /**
@@ -100,13 +101,18 @@ void Manager::Network::readSocket(ACore &core) {
         packet >> opCode;
         auto networkCode = static_cast<enum network::PacketType>(opCode);
 
-        if (networkCode == network::PT_PLAYER_JOIN && this->clients.size() < 4) {
+        if (networkCode == network::PT_PLAYER_JOIN &&
+            this->clients.size() < 4) {
+            std::cout << "RECEIVE PLAYER_JOIN: " << sender << ":" << senderPort
+                      << std::endl;
             this->onPlayerJoin(core, sender, senderPort);
-            std::cout << "Someone joined with " << sender << ":" << senderPort << std::endl;
         }
 
         if (networkCode == network::PT_PORT_REDIRECTION) {
             packet >> this->portTarget;
+            std::cout << "RECEIVE PORT_REDIRECTION: " << this->portTarget
+                      << std::endl;
+
             sf::Packet answer;
             answer << network::PT_PLAYER_JOIN;
             this->sendPacket(answer, sender, this->portTarget);
@@ -114,18 +120,26 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_CREATION) {
             packet >> entityID;
-            this->entityFactory.buildEntity((enum EntityID) entityID, core, packet);
+
+            std::cout << "RECEIVE ENTITY_CREATION: " << entityID << std::endl;
+            core.feedEntity(this->entityFactory.buildEntity(
+                (enum EntityID)entityID, core, packet));
         }
 
         if (networkCode == network::PT_ENTITY_UPDATE) {
-            packet >> id;
             packet >> entityID;
+            packet >> id;
+
+            std::cout << "RECEIVE ENTITY_UPDATE: " << std::endl <<
+            "\t" << "entityID: " << entityID << std::endl <<
+            "\t" << "id: " << id << std::endl;
 
             // If you miss the CREATION event, recreate it
 
             AEntityPtr target = core.getEntityFromId(id);
+            std::cout << "core.getEntityFromId: " << target << std::endl;
             if (!target) {
-                core.feedEntity(this->entityFactory.buildEntity((enum EntityID) entityID, core, packet));
+                core.feedEntity(this->entityFactory.buildEntity((enum EntityID)entityID, core, packet));
             } else {
                 target->updateFromPacket(packet);
             }
@@ -133,7 +147,10 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_DESTRUCTION) {
             packet >> id;
-            core.addToDeletionQueue((enum EntityID) id);
+
+            std::cout << "RECEIVE ENTITY_DESTRUCTION: " << id << std::endl;
+
+            core.addToDeletionQueue((enum EntityID)id);
         }
         state = this->socket->receive(packet, sender, senderPort);
     }
@@ -163,6 +180,8 @@ bool Manager::Network::isClientKeyPressed(std::size_t clientId, sf::Keyboard::Ke
 }
 
 void Manager::Network::execEntityAction(AEntityPtr entity, network::PacketType packetType) {
+    std::cout << "Network::execEntityAction entity: " << entity->getEntityType()
+              << " ; packetType " << packetType << std::endl;
     sf::Packet packet = entity->buildMyAsAPacket(packetType);
 
     for (auto &client : this->clients)
