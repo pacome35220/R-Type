@@ -93,7 +93,7 @@ void Server::threadEntryPoint(std::shared_ptr<sf::UdpSocket> socket) {
         Core::Server core;
 
         core.getNetwork()->setSocket(socket);
-        // Server::entityFeeder(core);
+        Server::entityFeeder(core);
         core.run();
     }
     catch (const Error &error) {
