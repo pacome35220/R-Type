@@ -24,7 +24,7 @@ AEntityPtr AMonster::createMonsterFromPacket(ACore &core, sf::Packet packet) {
     float amplitudeSpeed;
     float scale;
 
-    packet >> id >> pos.x >> pos.y >> entity >> speed >> amplitude >> amplitudeSpeed >> scale;
+    packet >> entity >> id >> pos.x >> pos.y >> speed >> amplitude >> amplitudeSpeed >> scale;
 
     std::cout << "Player::createMonsterFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<

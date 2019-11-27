@@ -17,8 +17,9 @@ Asteroid::Asteroid(sf::Vector2f position, ACore &core) : AEntity(position, core,
 AEntityPtr Asteroid::createAsteroidFromPacket(ACore &core, sf::Packet packet) {
     sf::Vector2f pos;
     sf::Uint64 id;
+    int entity;
 
-    packet >> id >> pos.x >> pos.y;
+    packet >> entity >> id >> pos.x >> pos.y;
 
     std::cout << "Asteroid::createAsteroidFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<
