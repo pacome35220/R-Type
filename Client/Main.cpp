@@ -38,6 +38,19 @@ void runClient(const std::string &ip, unsigned short port) {
     core.getNetwork()->getEntityFactory().addEntity(EI_PLAYER3, Player::createPlayerFromPacket);
     core.getNetwork()->getEntityFactory().addEntity(EI_PLAYER4, Player::createPlayerFromPacket);
 
+    core.getAudio()->playBackgroundMusic("./Assets/Audio/BackgroundMusic.ogg");
+
+    core.getResource()->feedTextureFactory(EI_PARALLAX, "./Assets/Sprites/starfieldBlue.png");
+    core.getResource()->feedTextureFactory(EI_PLAYER1, "./Assets/Sprites/Player1.png");
+    core.getResource()->feedTextureFactory(EI_PLAYER2, "./Assets/Sprites/Player2.png");
+    core.getResource()->feedTextureFactory(EI_PLAYER3, "./Assets/Sprites/Player3.png");
+    core.getResource()->feedTextureFactory(EI_PLAYER4, "./Assets/Sprites/Player4.png");
+
+    core.getNetwork()->getEntityFactory().addEntity(EI_PLAYER1, Player::createPlayerFromPacket);
+    core.getNetwork()->getEntityFactory().addEntity(EI_PLAYER2, Player::createPlayerFromPacket);
+    core.getNetwork()->getEntityFactory().addEntity(EI_PLAYER3, Player::createPlayerFromPacket);
+    core.getNetwork()->getEntityFactory().addEntity(EI_PLAYER4, Player::createPlayerFromPacket);
+
     // core.getAudio()->playBackgroundMusic("./Assets/Audio/BackgroundMusic.ogg");
 
     core.feedEntity(std::make_shared<Parallax>(core, sf::Vector2f(0, 0)));

@@ -55,6 +55,14 @@ void Core::Client::run() {
     }
 }
 
+/**
+ * updateEntities call `update` method of each entities.
+ */
+void Core::Client::updateEntities() {
+    for (auto &entity : this->entities)
+        entity->update();
+}
+
 void Core::Client::procDeletionQueue() {
     for (const auto &entityToDelete : this->deletionQueue) {
         auto tmp = std::find(this->entities.begin(), this->entities.end(),

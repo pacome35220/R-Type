@@ -26,6 +26,7 @@ namespace Core {
 
     public:
         void run() override;
+        void updateEntities() override;
         void procDeletionQueue() override;
         void feedEntity(AEntityPtr entity) override;
 
