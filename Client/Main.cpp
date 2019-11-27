@@ -10,7 +10,56 @@
 #include "Core/Client.hpp"
 #include "Parallax.hpp"
 #include "Player.hpp"
-#include "../Common/Error.hpp"
+#include "Error.hpp"
+
+/**
+ * @brief Feed the factory with all the texture
+ * @param core
+ */
+void feedTextureFactory(std::shared_ptr<Manager::Resource> resource) {
+    resource->feedTextureFactory(EI_PARALLAX, "./Assets/Sprites/starfieldBlue.png");
+    resource->feedTextureFactory(EI_PLAYER1, "./Assets/Sprites/Player1.png");
+    resource->feedTextureFactory(EI_PLAYER2, "./Assets/Sprites/Player2.png");
+    resource->feedTextureFactory(EI_PLAYER3, "./Assets/Sprites/Player3.png");
+    resource->feedTextureFactory(EI_PLAYER4, "./Assets/Sprites/Player4.png");
+
+    resource->feedTextureFactory(EI_ASTEROID1, "./Assets/Sprites/Asteroid1.png");
+    resource->feedTextureFactory(EI_ASTEROID2, "./Assets/Sprites/Asteroid2.png");
+    resource->feedTextureFactory(EI_ASTEROID3, "./Assets/Sprites/Asteroid3.png");
+    resource->feedTextureFactory(EI_ASTEROID4, "./Assets/Sprites/Asteroid4.png");
+    resource->feedTextureFactory(EI_ASTEROID5, "./Assets/Sprites/Asteroid5.png");
+    resource->feedTextureFactory(EI_ASTEROID6, "./Assets/Sprites/Asteroid6.png");
+    resource->feedTextureFactory(EI_ASTEROID7, "./Assets/Sprites/Asteroid7.png");
+    resource->feedTextureFactory(EI_ASTEROID8, "./Assets/Sprites/Asteroid8.png");
+
+    resource->feedTextureFactory(EI_POWER_UP, "./Assets/Sprites/PowerUp.png");
+
+    resource->feedTextureFactory(EI_PLAYER_BULLET, "./Assets/Sprites/PlayerBullet.png");
+    resource->feedTextureFactory(EI_DEATH_STAR_BULLET, "./Assets/Sprites/BlackStarBullet.png");
+    resource->feedTextureFactory(EI_MONSTER_BULLET, "./Assets/Sprites/MonsterBullet.png");
+
+    resource->feedTextureFactory(EI_DEATH_STAR, "./Assets/Sprites/BlackStar.png");
+    resource->feedTextureFactory(EI_ANGRY_MONSTER, "./Assets/Sprites/Monster/Angry.png");
+    resource->feedTextureFactory(EI_CLASSIC_MONSTER, "./Assets/Sprites/Monster/Classic.png");
+    resource->feedTextureFactory(EI_DOLLEY_MONSTER, "./Assets/Sprites/Monster/Dolley.png");
+    resource->feedTextureFactory(EI_DUMB_MONSTER, "./Assets/Sprites/Monster/Dumb.png");
+    resource->feedTextureFactory(EI_SPEED_MONSTER, "./Assets/Sprites/Monster/Speed.png");
+
+    resource->feedTextureFactory(EI_HEALTH_UP, "./Assets/Sprites/Monster/HealthUp.png");
+
+    resource->feedTextureFactory(EI_SPEED_MONSTER, "./Assets/Sprites/Monster/Speed.png");
+}
+
+/**
+ * @brief Feed the player factory
+ * @param sharedPtr
+ */
+void feedPlayerFactory(std::shared_ptr<Manager::Network> network) {
+    network->getEntityFactory().addEntity(EI_PLAYER1, Player::createPlayerFromPacket);
+    network->getEntityFactory().addEntity(EI_PLAYER2, Player::createPlayerFromPacket);
+    network->getEntityFactory().addEntity(EI_PLAYER3, Player::createPlayerFromPacket);
+    network->getEntityFactory().addEntity(EI_PLAYER4, Player::createPlayerFromPacket);
+}
 
 /**
  * Entry point of the program
@@ -27,16 +76,8 @@ void runClient(const std::string &ip, unsigned short port) {
     core.getNetwork()->setIpTarget(ip);
     core.getNetwork()->setPortTarget(port);
 
-    core.getResource()->feedTextureFactory(EI_PARALLAX, "./Assets/Sprites/starfieldBlue.png");
-    core.getResource()->feedTextureFactory(EI_PLAYER1, "./Assets/Sprites/Player1.png");
-    core.getResource()->feedTextureFactory(EI_PLAYER2, "./Assets/Sprites/Player2.png");
-    core.getResource()->feedTextureFactory(EI_PLAYER3, "./Assets/Sprites/Player3.png");
-    core.getResource()->feedTextureFactory(EI_PLAYER4, "./Assets/Sprites/Player4.png");
-
-    core.getNetwork()->getEntityFactory().addEntity(EI_PLAYER1, Player::createPlayerFromPacket);
-    core.getNetwork()->getEntityFactory().addEntity(EI_PLAYER2, Player::createPlayerFromPacket);
-    core.getNetwork()->getEntityFactory().addEntity(EI_PLAYER3, Player::createPlayerFromPacket);
-    core.getNetwork()->getEntityFactory().addEntity(EI_PLAYER4, Player::createPlayerFromPacket);
+    feedTextureFactory(core.getResource());
+    feedPlayerFactory(core.getNetwork());
 
     core.getAudio()->playBackgroundMusic("./Assets/Audio/BackgroundMusic.ogg");
 
