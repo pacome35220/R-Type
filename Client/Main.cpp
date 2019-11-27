@@ -7,10 +7,26 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+
 #include "Core/Client.hpp"
-#include "Parallax.hpp"
-#include "Player.hpp"
 #include "Error.hpp"
+
+#include "Asteroid.hpp"
+#include "DeathStar.hpp"
+
+#include "Monster/Classic.hpp"
+#include "Monster/Dumb.hpp"
+#include "Monster/Speed.hpp"
+#include "Monster/Angry.hpp"
+#include "Monster/Dolley.hpp"
+
+#include "Bullet/DeathStar.hpp"
+#include "Bullet/Monster.hpp"
+#include "Bullet/Player.hpp"
+
+#include "Parallax.hpp"
+
+#include "Player.hpp"
 
 /**
  * @brief Feed the factory with all the texture
@@ -51,10 +67,23 @@ void feedTextureFactory(std::shared_ptr<Manager::Resource> resource) {
 }
 
 /**
- * @brief Feed the player factory
+ * @brief Feed EntityFactory
  * @param sharedPtr
  */
-void feedPlayerFactory(std::shared_ptr<Manager::Network> network) {
+void feedEntityFactory(std::shared_ptr<Manager::Network> network) {
+    // network->getEntityFactory().addEntity(EI_CLASSIC_MONSTER, AMonster::create);
+
+    network->getEntityFactory().addEntity(EI_ASTEROID1, Asteroid::createAsteroidFromPacket);
+    network->getEntityFactory().addEntity(EI_ASTEROID2, Asteroid::createAsteroidFromPacket);
+    network->getEntityFactory().addEntity(EI_ASTEROID3, Asteroid::createAsteroidFromPacket);
+    network->getEntityFactory().addEntity(EI_ASTEROID4, Asteroid::createAsteroidFromPacket);
+    network->getEntityFactory().addEntity(EI_ASTEROID5, Asteroid::createAsteroidFromPacket);
+    network->getEntityFactory().addEntity(EI_ASTEROID6, Asteroid::createAsteroidFromPacket);
+    network->getEntityFactory().addEntity(EI_ASTEROID7, Asteroid::createAsteroidFromPacket);
+    network->getEntityFactory().addEntity(EI_ASTEROID8, Asteroid::createAsteroidFromPacket);
+
+    // network->getEntityFactory().addEntity(EI_DEATH_STAR, DeathStar::createDeathStarFromPacket);
+
     network->getEntityFactory().addEntity(EI_PLAYER1, Player::createPlayerFromPacket);
     network->getEntityFactory().addEntity(EI_PLAYER2, Player::createPlayerFromPacket);
     network->getEntityFactory().addEntity(EI_PLAYER3, Player::createPlayerFromPacket);
@@ -77,7 +106,7 @@ void runClient(const std::string &ip, unsigned short port) {
     core.getNetwork()->setPortTarget(port);
 
     feedTextureFactory(core.getResource());
-    feedPlayerFactory(core.getNetwork());
+    feedEntityFactory(core.getNetwork());
 
     core.getAudio()->playBackgroundMusic("./Assets/Audio/BackgroundMusic.ogg");
 
