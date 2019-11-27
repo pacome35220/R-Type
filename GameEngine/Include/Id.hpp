@@ -15,6 +15,7 @@ class Id {
 public:
     Id();
     std::size_t getId() const;
+    void setId(size_t id);
 
 protected:
     std::size_t id;

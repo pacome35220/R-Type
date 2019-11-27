@@ -14,3 +14,7 @@ Id::Id() : id(idGen++) {}
 std::size_t Id::getId() const {
     return id;
 }
+
+void Id::setId(size_t _id) {
+    this->id = _id;
+}
