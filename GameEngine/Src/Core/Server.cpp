@@ -48,6 +48,7 @@ void Core::Server::procDeletionQueue() {
 }
 
 void Core::Server::feedEntity(AEntityPtr entity) {
+    std::cout << "Server::feedEntity " << entity->getEntityType() << std::endl;
     this->entities.push_back(entity);
     this->network->execEntityAction(entity, network::PacketType::PT_ENTITY_CREATION);
 }

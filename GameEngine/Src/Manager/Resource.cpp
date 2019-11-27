@@ -23,6 +23,7 @@ void Manager::Resource::feedTextureFactory(enum EntityID id,
  * loads the texture by the previously stored path.
  */
 bool Manager::Resource::loadTexture(enum EntityID id) {
+    std::cout << "Resource::loadTexture: id: " << id << std::endl;
     this->textureMap[id] = sf::Texture();
     return this->textureMap[id].loadFromFile(this->textureFactory[id]);
 }

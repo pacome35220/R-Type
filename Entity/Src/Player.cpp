@@ -5,6 +5,7 @@
 ** Player.cpp
 */
 
+#include <iostream>
 #include "Player.hpp"
 #include "Bullet/Player.hpp"
 
@@ -13,17 +14,32 @@ Player::Player(ACore &core, sf::Vector2f pos, int _playerNbr)
       playerNbr(_playerNbr) {}
 
 AEntityPtr Player::createPlayerFromPacket(ACore &core, sf::Packet packet) {
-    int id;
-    int playerNbr;
     sf::Vector2f pos;
-    std::string textPath;
+    int playerNbr;
+    sf::Uint64 id;
 
-    packet >> id >> textPath >> pos.x >> pos.y >> playerNbr;
+    packet >> id >> pos.x >> pos.y >> playerNbr;
 
-    AEntityPtr player = std::make_shared<Player>(core, pos, playerNbr);
+    std::cout << "Player::createPlayerFromPacket " << std::endl <<
+    "\t" << "id: " << id << std::endl <<
+    "\t" << "pos.x: " << pos.x << std::endl <<
+    "\t" << "pos.y: " << pos.y << std::endl <<
+    "\t" << "playerNbr: " << playerNbr << std::endl;
 
-    // player->id = id;
-    return player;
+    auto tmp = std::make_shared<Player>(core, pos, playerNbr);
+
+    tmp->setId(id);
+    return tmp;
+}
+
+sf::Packet Player::buildMyAsAPacket(network::PacketType packetType) {
+    sf::Packet packet = AEntity::buildMyAsAPacket(packetType);
+
+    packet << this->playerNbr;
+    std::cout << "Player::buildMyAsAPacket" << std::endl <<
+    "\t" << "this->playerNbr: " << this->playerNbr << std::endl;
+
+    return packet;
 }
 
 void Player::onCollision(AEntityPtr entity) {

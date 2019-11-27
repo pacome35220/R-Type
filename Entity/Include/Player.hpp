@@ -17,6 +17,7 @@ public:
     ~Player() = default;
 
     static AEntityPtr createPlayerFromPacket(ACore &core, sf::Packet packet);
+    sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
     void onCollision(AEntityPtr entity) override;
     void update() override;
 
