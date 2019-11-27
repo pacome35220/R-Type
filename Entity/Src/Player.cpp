@@ -17,8 +17,9 @@ AEntityPtr Player::createPlayerFromPacket(ACore &core, sf::Packet packet) {
     sf::Vector2f pos;
     int playerNbr;
     sf::Uint64 id;
+    int entity;
 
-    packet >> id >> pos.x >> pos.y >> playerNbr;
+    packet >> entity >> id >> pos.x >> pos.y >> playerNbr;
 
     std::cout << "Player::createPlayerFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<

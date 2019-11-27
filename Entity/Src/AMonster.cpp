@@ -5,6 +5,7 @@
 ** Monster.cpp
 */
 
+#include <iostream>
 #include "AMonster.hpp"
 #include "Bullet/Monster.hpp"
 #include "Core/Client.hpp"
@@ -13,6 +14,34 @@ AMonster::AMonster(const sf::Vector2f &position, ACore &entryPoint, enum EntityI
     : AEntity(position, entryPoint, type), speed(speed), amplitude(amplitude), amplitudeSpeed(amplitudeSpeed), scale(scale) {
     // Todo
 }
+
+AEntityPtr AMonster::createMonsterFromPacket(ACore &core, sf::Packet packet) {
+    sf::Vector2f pos;
+    sf::Uint64 id;
+    int entity;
+    float speed;
+    float amplitude;
+    float amplitudeSpeed;
+    float scale;
+
+    packet >> id >> pos.x >> pos.y >> entity >> speed >> amplitude >> amplitudeSpeed >> scale;
+
+    std::cout << "Player::createMonsterFromPacket " << std::endl <<
+    "\t" << "id: " << id << std::endl <<
+    "\t" << "pos.x: " << pos.x << std::endl <<
+    "\t" << "pos.y: " << pos.y << std::endl <<
+    "\t" << "entity: " << entity << std::endl <<
+    "\t" << "speed: " << speed << std::endl <<
+    "\t" << "amplitude: " << amplitude << std::endl <<
+    "\t" << "amplitudeSpeed: " << amplitudeSpeed << std::endl <<
+    "\t" << "scale: " << scale << std::endl;
+
+    auto tmp = std::make_shared<AMonster>(pos, core, (EntityID) entity, speed, amplitude, amplitudeSpeed, scale);
+
+    tmp->setId(id);
+    return tmp;
+}
+
 
 AMonster::~AMonster() {
     // TODO
@@ -67,6 +96,16 @@ void AMonster::update()
 	}
 	this->updateMonster();
 }
+
+// sf::Packet Player::buildMyAsAPacket(network::PacketType packetType) {
+//     sf::Packet packet = AEntity::buildMyAsAPacket(packetType);
+
+//     packet << this->playerNbr;
+//     std::cout << "Player::buildMyAsAPacket" << std::endl <<
+//     "\t" << "this->playerNbr: " << this->playerNbr << std::endl;
+
+//     return packet;
+// }
 
 /**
  * Check and process the collision between this and \entity

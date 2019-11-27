@@ -23,6 +23,7 @@ public:
     void update();
 
 public:
+    static AEntityPtr createMonsterFromPacket(ACore &core, sf::Packet packet);
     void updateMonster();
     void onCollision(AEntityPtr entity);
     sf::Packet decodeEntityPacket(network::PacketType packetType);

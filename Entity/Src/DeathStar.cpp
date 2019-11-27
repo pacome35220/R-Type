@@ -34,8 +34,8 @@ AEntityPtr DeathStar::createDeathStarFromPacket(ACore &core, sf::Packet packet)
     int health;
     int counter;
     sf::Uint64 id;
-
-    packet >> id >> pos.x >> pos.y >> health >> counter;
+    int entity;
+    packet >> entity >> id >> pos.x >> pos.y >> health >> counter;
 
     std::cout << "DeathStar::createDeathStarFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<
@@ -58,8 +58,15 @@ void DeathStar::onCollision(AEntityPtr entity) {
 }
 
 sf::Packet DeathStar::buildMyAsAPacket(network::PacketType packetType) {
-    //TODO
-    return AEntity::buildMyAsAPacket(packetType);
+    sf::Packet packet = AEntity::buildMyAsAPacket(packetType);
+
+    packet << this->health;
+    packet << this->counter;
+    std::cout << "DeathStar::buildMyAsAPacket" << std::endl <<
+    "\t" << "this->health: " << this->health << std::endl <<
+    "\t" << "this->counter: " << this->counter << std::endl;
+
+    return packet;
 }
 
 void DeathStar::increaseStreamTimer() {
