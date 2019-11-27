@@ -35,6 +35,22 @@ void Core::Server::run()
     this->network->endOfStream();
 }
 
+/**
+ * updateEntities call `update` method of each entities.
+ * When streamTime reach 15, updateEntities send to each clients
+ * the new entity with PT_ENTITY_UPDATE event.
+ */
+void Core::Server::updateEntities() {
+    for (auto &entity : this->entities) {
+        entity->update();
+        if (entity->getStreamTimer() >= 15) {
+            entity->resetStreamTimer();
+            this->network->execEntityAction(entity, network::PT_ENTITY_UPDATE);
+        } else
+            entity->increaseStreamTimer();
+    }
+}
+
 void Core::Server::procDeletionQueue() {
     for (const auto &entityToDelete : this->deletionQueue) {
         this->network->execEntityAction(entityToDelete,

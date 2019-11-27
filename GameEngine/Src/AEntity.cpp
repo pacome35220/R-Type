@@ -45,8 +45,6 @@ enum EntityID AEntity::getEntityType() {
  * @return The packet built
  */
 sf::Packet AEntity::buildMyAsAPacket(network::PacketType packetType) {
-    std::cout << "AEntity::buildMyAsAPacket " << this->type << " " << this->id
-              << std::endl;
     sf::Packet packet;
 
     packet << packetType;
@@ -70,14 +68,12 @@ sf::Packet AEntity::buildMyAsAPacket(network::PacketType packetType) {
  * @param _packet
  */
 void AEntity::updateFromPacket(sf::Packet packet) {
-    std::cout << "AEntity::updateFromPacket" << std::endl;
+    packet >> this->position.x;
+    packet >> this->position.y;
 
-    sf::Vector2f pos;
-
-    packet >> pos.x;
-    packet >> pos.y;
-
-    this->position = pos;
+    std::cout << "AEntity::updateFromPacket" << std::endl <<
+    "\t" << "this->position.x: " << this->position.x << std::endl <<
+    "\t" << "this->position.y: " << this->position.y << std::endl;
 }
 
 /**

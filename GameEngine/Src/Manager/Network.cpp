@@ -89,7 +89,7 @@ void Manager::Network::readSocket(ACore &core) {
     unsigned short senderPort;
     int opCode;
     int entityID;
-    int id;
+    sf::Uint64 id;
 
     this->resetClientsKeyMap();
 

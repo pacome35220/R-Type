@@ -25,6 +25,7 @@ namespace Core
 
     public:
         void run() override;
+        void updateEntities() override;
         void procDeletionQueue() override;
         void onPlayerJoin(const sf::IpAddress &senderIP, unsigned short senderPort);
         void feedEntity(AEntityPtr entity) override;
