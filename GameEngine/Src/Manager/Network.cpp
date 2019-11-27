@@ -114,6 +114,7 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_CREATION) {
             packet >> entityID;
+            packet << entityID;
 
             std::cout << "RECEIVE ENTITY_CREATION: " << entityID << std::endl;
             core.feedEntity(this->entityFactory.buildEntity(
