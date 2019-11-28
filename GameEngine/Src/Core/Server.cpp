@@ -41,13 +41,13 @@ void Core::Server::run()
  * the new entity with PT_ENTITY_UPDATE event.
  */
 void Core::Server::updateEntities() {
-    for (auto &entity : this->entities) {
-        entity->update();
-        if (entity->getStreamTimer() >= 15) {
-            entity->resetStreamTimer();
-            this->network->execEntityAction(entity, network::PT_ENTITY_UPDATE);
+    for (std::size_t i = 0; i < this->entities.size(); i++) {
+        this->entities[i]->update(); // this call change this->entities.size() so foreach is impossible
+        if (this->entities[i]->getStreamTimer() >= 15) {
+            this->entities[i]->resetStreamTimer();
+            this->network->execEntityAction(this->entities[i], network::PT_ENTITY_UPDATE);
         } else
-            entity->increaseStreamTimer();
+            this->entities[i]->increaseStreamTimer();
     }
 }
 

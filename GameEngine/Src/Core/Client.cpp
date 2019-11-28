@@ -59,8 +59,8 @@ void Core::Client::run() {
  * updateEntities call `update` method of each entities.
  */
 void Core::Client::updateEntities() {
-    for (auto &entity : this->entities)
-        entity->update();
+    for (std::size_t i = 0; i < this->entities.size(); i++)
+        this->entities[i]->update();
 }
 
 void Core::Client::procDeletionQueue() {
