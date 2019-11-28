@@ -121,7 +121,7 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_UPDATE) {
             packet >> entityID;
-            id = bswap_64((*((size_t *)packet.getData() + 1)));
+            id = bswap_64(*((size_t *)packet.getData() + 1));
 
             std::cout << "RECEIVE ENTITY_UPDATE: " << std::endl <<
             "\t" << "entityID: " << entityID << std::endl <<
@@ -140,6 +140,7 @@ void Manager::Network::readSocket(ACore &core) {
         }
 
         if (networkCode == network::PT_ENTITY_DESTRUCTION) {
+            packet >> entityID;
             packet >> id;
 
             std::cout << "RECEIVE ENTITY_DESTRUCTION: " << id << std::endl;
