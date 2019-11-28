@@ -7,7 +7,6 @@
 #pragma once
 
 #include "ACore.hpp"
-#include "MonsterID.hpp"
 
 /**
  * @class Monster "Include/Monster.hpp"
@@ -15,19 +14,13 @@
 class AMonster : public AEntity {
 public:
     AMonster(const sf::Vector2f &position, ACore &entryPoint, enum EntityID type, float speed, float amplitude, float amplitudeSpeed, float scale);
-    ~AMonster();
-    float getCounter() const;
-    void setCounter(float counter);
-    float getOriginalY() const;
-    void setOriginalY(float originalY);
-    void update() override;
 
 public:
+    void update() override;
     static AEntityPtr createMonsterFromPacket(ACore &core, sf::Packet packet);
     void updateMonster();
     void onCollision(AEntityPtr entity) override;
     sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
-    void updateEntityPacket(sf::Packet packet);
 
 protected:
     float counter;
@@ -36,6 +29,4 @@ protected:
     float amplitude;
     float amplitudeSpeed;
     float scale;
-    bool hasPowerUp;
-    enum MonsterID monsterType;
 };

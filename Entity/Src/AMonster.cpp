@@ -26,7 +26,7 @@ AEntityPtr AMonster::createMonsterFromPacket(ACore &core, sf::Packet packet) {
 
     packet >> id >> pos.x >> pos.y >> speed >> amplitude >> amplitudeSpeed >> scale >> entity;
 
-    std::cout << "Player::createMonsterFromPacket " << std::endl <<
+    std::cout << "AMonster::createMonsterFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<
     "\t" << "pos.x: " << pos.x << std::endl <<
     "\t" << "pos.y: " << pos.y << std::endl <<
@@ -41,25 +41,6 @@ AEntityPtr AMonster::createMonsterFromPacket(ACore &core, sf::Packet packet) {
 
     tmp->setId(id);
     return tmp;
-}
-
-
-AMonster::~AMonster() {
-    // TODO
-}
-
-float AMonster::getCounter() const {
-    return counter;
-}
-void AMonster::setCounter(float _counter) {
-    counter = _counter;
-}
-
-float AMonster::getOriginalY() const {
-    return originalY;
-}
-void AMonster::setOriginalY(float originalY) {
-    this->originalY = originalY;
 }
 
 /**
@@ -87,10 +68,8 @@ void AMonster::update()
 	this->position.x -= this->speed;
 	this->position.y = this->originalY; //+ cos(this->counter) * 10 * this->amplitude;
 
-	if (std::rand() % 1000 < 5) {
-		auto bullet = std::make_shared<Bullet::Monster>(this->position, this->entryPoint, this->amplitude, this->counter);
-		entryPoint.feedEntity(bullet);
-	}
+	if (std::rand() % 1000 < 5)
+		entryPoint.feedEntity(std::make_shared<Bullet::Monster>(this->position, this->entryPoint, this->amplitude, this->counter));
 	if (this->position.x < -110 || this->position.x > 110 || this->position.y < -130 || this->position.y > 130) {
 		this->position.x = 109;
 		this->position.y = this->originalY;
@@ -125,16 +104,4 @@ void AMonster::onCollision(AEntityPtr entity) {
        this->health--;
        this->entryPoint.addToDeletionQueue(entity);
     }
-}
-
-void AMonster::updateEntityPacket(sf::Packet packet) {
-    int id;
-    float posX;
-    float posY;
-
-    packet >> id;
-    packet >> posX;
-    packet >> posY;
-    this->position.x = posX;
-    this->position.y = posY;
 }
