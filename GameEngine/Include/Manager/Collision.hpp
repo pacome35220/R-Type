@@ -33,12 +33,12 @@ namespace Manager
         ~Collision() = default;
         // bool getCollision(EntityID entity1, EntityID entity2) const;
         // void setCollision(EntityID entity1, EntityID entity2, const bool &status);
-        bool entityCollision(AEntityPtr entity1, AEntityPtr entity2);
-        void processCollision(std::list<AEntityPtr> entityList1, std::list<AEntityPtr> entityList2);
         void detectCollision(std::vector<AEntityPtr> &entityList);
 
 
     private:
+        void processCollision(std::list<AEntityPtr> &entityList1, std::list<AEntityPtr> &entityList2);
+        bool entityCollision(const AEntityPtr &entity1, const AEntityPtr &entity2);
         // bool rectCollision(AEntity &entity1, AEntity &entity2);
         // void processCollision(std::list<AEntityPtr> &entityList);
         // bool pixelCollision(AEntity &entity1, AEntity &entity2);

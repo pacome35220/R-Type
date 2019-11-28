@@ -9,7 +9,7 @@
 #include "Manager/Collision.hpp"
 
 
-bool Manager::Collision::entityCollision(AEntityPtr entity1, AEntityPtr entity2)
+bool Manager::Collision::entityCollision(const AEntityPtr &entity1, const AEntityPtr &entity2)
 {
     sf::FloatRect colliderRect = entity1->getSprite().getGlobalBounds();
     sf::FloatRect otherRect = entity2->getSprite().getGlobalBounds();
@@ -20,7 +20,7 @@ bool Manager::Collision::entityCollision(AEntityPtr entity1, AEntityPtr entity2)
            colliderRect.contains(otherRect.left + otherRect.width, otherRect.top + otherRect.height);
 }
 
-void Manager::Collision::processCollision(std::list<AEntityPtr> entityList1, std::list<AEntityPtr> entityList2)
+void Manager::Collision::processCollision(std::list<AEntityPtr> &entityList1, std::list<AEntityPtr> &entityList2)
 {
     for (auto const &current: entityList1) {
         for (auto const &other: entityList2) {
