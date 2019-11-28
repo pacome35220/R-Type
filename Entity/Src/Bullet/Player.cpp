@@ -6,6 +6,7 @@
 */
 
 #include <cmath>
+#include <iostream>
 #include "Bullet/Player.hpp"
 
 Bullet::Player::Player(const sf::Vector2f &position, ACore &entryPoint,
@@ -17,4 +18,24 @@ void Bullet::Player::updateBullet() {
     this->position.x += 4;
     this->position.y =
         this->originalY + cos(this->counter) * 10 * this->amplitude;
+}
+
+
+AEntityPtr Bullet::Player::createPlayerFromPacket(ACore &core, sf::Packet packet)
+{
+    sf::Vector2f pos;
+    float amplitude;
+    sf::Uint64 id;
+    int entity;
+
+    packet >> id >> pos.x >> pos.y >> amplitude >> entity;
+    std::cout << "Player::createPlayerFromPacket " << std::endl <<
+    "\t" << "id: " << id << std::endl <<
+    "\t" << "pos.x: " << pos.x << std::endl <<
+    "\t" << "pos.y: " << pos.y << std::endl <<
+    "\t" << "amplitude: " << amplitude << std::endl;
+    auto tmp = std::make_shared<Player>(pos, core, amplitude);
+
+    tmp->setId(id);
+    return tmp;
 }

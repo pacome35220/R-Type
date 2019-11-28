@@ -5,7 +5,6 @@
 ** Network.cpp
 */
 
-#include <byteswap.h>
 #include <iostream>
 #include <cstring>
 #include "Error.hpp"
@@ -43,8 +42,7 @@ EntityFactory &Manager::Network::getEntityFactory() {
  * @param senderIp
  * @param senderPort
  */
-void
-Manager::Network::onPlayerJoin(ACore &core, const sf::IpAddress &senderIp, unsigned short senderPort) {
+void Manager::Network::onPlayerJoin(ACore &core, const sf::IpAddress &senderIp, unsigned short senderPort) {
     std::cout << "Network::onPlayerJoin" << std::endl;
     sf::Vector2f newClientPosition(-90, 0);
     std::size_t playerNbr = this->clients.size();
@@ -123,7 +121,7 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_UPDATE) {
             packet >> entityID;
-            id = bswap_64(*((size_t *)packet.getData() + 1));
+            id = bswap_64((*((size_t *)packet.getData() + 1)));
 
             std::cout << "RECEIVE ENTITY_UPDATE: " << std::endl <<
             "\t" << "entityID: " << entityID << std::endl <<

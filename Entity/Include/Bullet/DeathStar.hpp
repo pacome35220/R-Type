@@ -20,6 +20,7 @@ public:
               int counter = 0);
     ~DeathStar() = default;
     void updateBullet() override;
+    static AEntityPtr createDeathStarFromPacket(ACore &core, sf::Packet packet);
 };
 
 } // namespace Bullet

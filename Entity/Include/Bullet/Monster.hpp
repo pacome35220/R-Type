@@ -19,7 +19,7 @@ public:
     Monster(const sf::Vector2f &position, ACore &entryPoint, float amplitude,
             int count);
     ~Monster() = default;
-
+    AEntityPtr createMonsterFromPacket(ACore &core, sf::Packet packet);
     void updateBullet() override;
 };
 } // namespace Bullet

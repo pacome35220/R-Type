@@ -21,8 +21,6 @@ public:
     void update() override;
     virtual void updateBullet() = 0;
     void onCollision(AEntityPtr entity) override;
-    static AEntityPtr createABulletFromPacket(ACore &core, sf::Packet packet);
-
 
 protected:
     float amplitude;

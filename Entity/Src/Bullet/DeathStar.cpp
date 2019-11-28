@@ -5,6 +5,7 @@
 ** DeathStar.cpp
 */
 
+#include <iostream>
 #include "Bullet/DeathStar.hpp"
 
 Bullet::DeathStar::DeathStar(const sf::Vector2f &position, ACore &entryPoint,
@@ -13,4 +14,26 @@ Bullet::DeathStar::DeathStar(const sf::Vector2f &position, ACore &entryPoint,
 
 void Bullet::DeathStar::updateBullet() {
     this->position.y += this->amplitude * 2.5;
+}
+
+AEntityPtr Bullet::DeathStar::createDeathStarFromPacket(ACore &core, sf::Packet packet)
+{
+    sf::Vector2f pos;
+    float amplitude;
+    int counter;
+    sf::Uint64 id;
+    int entity;
+
+    packet >> id >> pos.x >> pos.y >> amplitude >> counter  >> entity;
+    std::cout << "DeathStar::createDeathStarFromPacket " << std::endl <<
+    "\t" << "id: " << id << std::endl <<
+    "\t" << "pos.x: " << pos.x << std::endl <<
+    "\t" << "pos.y: " << pos.y << std::endl <<
+    "\t" << "amplitude: " << amplitude << std::endl <<
+    "\t" << "counter: " << counter << std::endl;
+
+    auto tmp = std::make_shared<DeathStar>(pos, core, amplitude, counter);
+
+    tmp->setId(id);
+    return tmp;
 }
