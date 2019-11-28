@@ -31,6 +31,7 @@ void Server::start(unsigned short port) {
     sf::IpAddress sender;
     unsigned short senderPort;
     std::vector<sf::Thread *> threads;
+    std::shared_ptr<sf::UdpSocket> roomSocket;
 
     if (socket.bind(port) != sf::Socket::Done)
         throw Error("Bind fail", __FILE__, __func__, __LINE__);
@@ -38,19 +39,19 @@ void Server::start(unsigned short port) {
     while (true) {
         if (socket.receive(packet, sender, senderPort) == sf::Socket::Done) {
             if (idx % 4 == 0) {
-                std::shared_ptr<sf::UdpSocket> newSocket = std::make_shared<sf::UdpSocket>();
-
-                if (newSocket->bind(0) != sf::Socket::Done)
+                roomSocket = std::make_shared<sf::UdpSocket>();
+                if (roomSocket->bind(0) != sf::Socket::Done)
                     throw Error("Bind fail", __FILE__, __func__, __LINE__);
 
-                auto answer = sf::Packet();
-                answer << network::PT_PORT_REDIRECTION << newSocket->getLocalPort();
-                socket.send(answer, sender, senderPort);
-
-                auto *thread = new sf::Thread(Server::threadEntryPoint, newSocket);
+                auto *thread = new sf::Thread(Server::threadEntryPoint, roomSocket);
                 threads.push_back(thread);
                 thread->launch();
             }
+
+            auto answer = sf::Packet();
+            answer << network::PT_PORT_REDIRECTION << roomSocket->getLocalPort();
+            socket.send(answer, sender, senderPort);
+
             idx++;
         }
     }
