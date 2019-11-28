@@ -69,7 +69,13 @@ void feedTextureFactory(std::shared_ptr<Manager::Resource> resource) {
  * @param sharedPtr
  */
 void feedEntityFactory(std::shared_ptr<Manager::Network> network) {
-    // network->getEntityFactory().addEntity(EI_CLASSIC_MONSTER, AMonster::create);
+    network->getEntityFactory().addEntity(EI_CLASSIC_MONSTER,   AMonster::createMonsterFromPacket);
+    network->getEntityFactory().addEntity(EI_DUMB_MONSTER,      AMonster::createMonsterFromPacket);
+    network->getEntityFactory().addEntity(EI_SPEED_MONSTER,     AMonster::createMonsterFromPacket);
+    network->getEntityFactory().addEntity(EI_ANGRY_MONSTER,     AMonster::createMonsterFromPacket);
+    network->getEntityFactory().addEntity(EI_DOLLEY_MONSTER,    AMonster::createMonsterFromPacket);
+
+    network->getEntityFactory().addEntity(EI_DEATH_STAR, DeathStar::createDeathStarFromPacket);
 
     network->getEntityFactory().addEntity(EI_ASTEROID1, Asteroid::createAsteroidFromPacket);
     network->getEntityFactory().addEntity(EI_ASTEROID2, Asteroid::createAsteroidFromPacket);
@@ -79,7 +85,11 @@ void feedEntityFactory(std::shared_ptr<Manager::Network> network) {
     network->getEntityFactory().addEntity(EI_ASTEROID6, Asteroid::createAsteroidFromPacket);
     network->getEntityFactory().addEntity(EI_ASTEROID7, Asteroid::createAsteroidFromPacket);
 
-    network->getEntityFactory().addEntity(EI_DEATH_STAR, DeathStar::createDeathStarFromPacket);
+    network->getEntityFactory().addEntity(EI_DEATH_STAR_BULLET, Bullet::DeathStar::createDeathStarFromPacket);
+    network->getEntityFactory().addEntity(EI_MONSTER_BULLET,    Bullet::Monster::createMonsterFromPacket);
+    network->getEntityFactory().addEntity(EI_PLAYER_BULLET,     Bullet::Player::createPlayerFromPacket);
+
+
 
     network->getEntityFactory().addEntity(EI_PLAYER1, Player::createPlayerFromPacket);
     network->getEntityFactory().addEntity(EI_PLAYER2, Player::createPlayerFromPacket);
