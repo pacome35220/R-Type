@@ -5,6 +5,7 @@
 ** Network.cpp
 */
 
+#include <byteswap.h>
 #include <iostream>
 #include <cstring>
 #include "Error.hpp"
@@ -114,7 +115,6 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_CREATION) {
             packet >> entityID;
-            packet << entityID;
 
             std::cout << "RECEIVE ENTITY_CREATION: " << entityID << std::endl;
             core.feedEntity(this->entityFactory.buildEntity(
@@ -123,7 +123,7 @@ void Manager::Network::readSocket(ACore &core) {
 
         if (networkCode == network::PT_ENTITY_UPDATE) {
             packet >> entityID;
-            packet >> id;
+            id = bswap_64(*((size_t *)packet.getData() + 1));
 
             std::cout << "RECEIVE ENTITY_UPDATE: " << std::endl <<
             "\t" << "entityID: " << entityID << std::endl <<
@@ -132,8 +132,9 @@ void Manager::Network::readSocket(ACore &core) {
             // If you miss the CREATION event, recreate it
 
             AEntityPtr target = core.getEntityFromId(id);
-            std::cout << "core.getEntityFromId: " << target << std::endl;
             if (!target) {
+                std::cout << "id: " << id << " not found so recreate it" << std::endl;
+                // exit(42);
                 core.feedEntity(this->entityFactory.buildEntity((enum EntityID)entityID, core, packet));
             } else {
                 target->updateFromPacket(packet);
@@ -145,7 +146,7 @@ void Manager::Network::readSocket(ACore &core) {
 
             std::cout << "RECEIVE ENTITY_DESTRUCTION: " << id << std::endl;
 
-            core.addToDeletionQueue((enum EntityID)id);
+            core.addToDeletionQueue(id);
         }
                 // We received an input from a client.
         if (networkCode == network::PT_INPUT) {
@@ -169,6 +170,8 @@ void Manager::Network::readSocket(ACore &core) {
 void Manager::Network::streamInput(std::shared_ptr<Action> actionManager) {
     auto pressedKey = actionManager->getKeyPressed();
 
+    if (!pressedKey.size())
+        return;
     std::cout << "Network::streamInput" << std::endl;
     for (const auto &keyCode : pressedKey) {
         sf::Packet packet;
@@ -178,7 +181,6 @@ void Manager::Network::streamInput(std::shared_ptr<Action> actionManager) {
         std::cout << "\t" << "key: " << keyCode << std::endl;
         this->sendPacket(packet, this->ipTarget, this->portTarget);
     }
-    std::cout << std::endl;
 }
 
 void Manager::Network::resetClientsKeyMap() {

@@ -24,19 +24,20 @@ AEntityPtr AMonster::createMonsterFromPacket(ACore &core, sf::Packet packet) {
     float amplitudeSpeed;
     float scale;
 
-    packet >> entity >> id >> pos.x >> pos.y >> speed >> amplitude >> amplitudeSpeed >> scale;
+    packet >> id >> pos.x >> pos.y >> speed >> amplitude >> amplitudeSpeed >> scale >> entity;
 
     std::cout << "Player::createMonsterFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<
     "\t" << "pos.x: " << pos.x << std::endl <<
     "\t" << "pos.y: " << pos.y << std::endl <<
-    "\t" << "entity: " << entity << std::endl <<
     "\t" << "speed: " << speed << std::endl <<
     "\t" << "amplitude: " << amplitude << std::endl <<
     "\t" << "amplitudeSpeed: " << amplitudeSpeed << std::endl <<
-    "\t" << "scale: " << scale << std::endl;
+    "\t" << "scale: " << scale << std::endl <<
+    "\t" << "entity: " << entity << std::endl;
 
-    auto tmp = std::make_shared<AMonster>(pos, core, (EntityID) entity, speed, amplitude, amplitudeSpeed, scale);
+    auto tmp = std::make_shared<AMonster>(pos, core, (enum EntityID)entity,
+        speed, amplitude, amplitudeSpeed, scale);
 
     tmp->setId(id);
     return tmp;
@@ -97,15 +98,23 @@ void AMonster::update()
 	this->updateMonster();
 }
 
-// sf::Packet Player::buildMyAsAPacket(network::PacketType packetType) {
-//     sf::Packet packet = AEntity::buildMyAsAPacket(packetType);
+sf::Packet AMonster::buildMyAsAPacket(network::PacketType packetType) {
+    sf::Packet packet = AEntity::buildMyAsAPacket(packetType);
 
-//     packet << this->playerNbr;
-//     std::cout << "Player::buildMyAsAPacket" << std::endl <<
-//     "\t" << "this->playerNbr: " << this->playerNbr << std::endl;
+    packet << this->speed;
+    packet << this->amplitude;
+    packet << this->amplitudeSpeed;
+    packet << this->scale;
+    packet << this->type;
+    std::cout << "AMonster::buildMyAsAPacket" << std::endl <<
+    "\t" << "this->speed: " << this->speed << std::endl <<
+    "\t" << "this->amplitude: " << this->amplitude << std::endl <<
+    "\t" << "this->amplitudeSpeed: " << this->amplitudeSpeed << std::endl <<
+    "\t" << "this->scale: " << this->scale << std::endl <<
+    "\t" << "this->type: " << this->type << std::endl;
 
-//     return packet;
-// }
+    return packet;
+}
 
 /**
  * Check and process the collision between this and \entity
@@ -116,24 +125,6 @@ void AMonster::onCollision(AEntityPtr entity) {
        this->health--;
        this->entryPoint.addToDeletionQueue(entity);
     }
-}
-
-/**
- * Create an \packet with this
- * @param packetType
- * @return the
- */
-sf::Packet AMonster::decodeEntityPacket(network::PacketType packetType) {
-    sf::Packet packet;
-
-    packet << packetType;
-    if (packetType == network::PT_ENTITY_UPDATE)
-        packet << (unsigned int)this->id;
-    packet << this->monsterType << (unsigned int)this->id;
-    packet << this->position.x << this->position.y << this->amplitude
-           << this->speed << this->amplitudeSpeed << this->scale
-           << this->originalY << this->counter;
-    return packet;
 }
 
 void AMonster::updateEntityPacket(sf::Packet packet) {

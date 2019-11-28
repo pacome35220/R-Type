@@ -20,13 +20,13 @@ public:
     void setCounter(float counter);
     float getOriginalY() const;
     void setOriginalY(float originalY);
-    void update();
+    void update() override;
 
 public:
     static AEntityPtr createMonsterFromPacket(ACore &core, sf::Packet packet);
     void updateMonster();
-    void onCollision(AEntityPtr entity);
-    sf::Packet decodeEntityPacket(network::PacketType packetType);
+    void onCollision(AEntityPtr entity) override;
+    sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
     void updateEntityPacket(sf::Packet packet);
 
 protected:

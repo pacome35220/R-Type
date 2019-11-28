@@ -10,16 +10,16 @@
 #include "Asteroid.hpp"
 
 Asteroid::Asteroid(sf::Vector2f position, ACore &core) : AEntity(position, core,
-        (enum EntityID)(EI_ASTEROID + rand() % 8 + 1)) {
-
+        (enum EntityID)(EI_ASTEROID + rand() % 7 + 1)) {
+    this->target.x = -90;
+    this->target.y = rand() % 150 - 75;
 }
 
 AEntityPtr Asteroid::createAsteroidFromPacket(ACore &core, sf::Packet packet) {
     sf::Vector2f pos;
     sf::Uint64 id;
-    int entity;
 
-    packet >> entity >> id >> pos.x >> pos.y;
+    packet >> id >> pos.x >> pos.y;
 
     std::cout << "Asteroid::createAsteroidFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<
@@ -41,8 +41,8 @@ void Asteroid::onCollision(AEntityPtr entity) {
 
 void Asteroid::update() {
     this->position.x -= 1;
-    double deltaY = originalPos.y + target.y;
-    double deltaX = originalPos.x + target.x;
+	double deltaY = sqrt(this->originalPos.y * this->originalPos.y) + sqrt(this->target.y * this->target.y);
+	double deltaX = sqrt(this->originalPos.x * this->originalPos.x) + sqrt(this->target.x * this->target.x);
     this->position.y += (deltaY / deltaX);
 
     if (this->position.x < -110) {

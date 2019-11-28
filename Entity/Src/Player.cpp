@@ -17,9 +17,8 @@ AEntityPtr Player::createPlayerFromPacket(ACore &core, sf::Packet packet) {
     sf::Vector2f pos;
     int playerNbr;
     sf::Uint64 id;
-    int entityID;
 
-    packet >> id >> pos.x >> pos.y >> playerNbr >> /* mdrrr */ entityID /* énorme blague */;
+    packet >> id >> pos.x >> pos.y >> playerNbr;
 
     std::cout << "Player::createPlayerFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<
@@ -75,7 +74,6 @@ void Player::onCollision(AEntityPtr entity) {
  * bullet in multiple direction
  */
 void Player::handleInput() {
-    std::cout << "Player::handleInput" << std::endl;
     auto network = this->entryPoint.getNetwork();
 
     if (network->isClientKeyPressed(this->playerNbr, sf::Keyboard::Up))
@@ -106,7 +104,6 @@ void Player::handleInput() {
 }
 
 void Player::update() {
-    std::cout << "Player::update" << std::endl;
     this->handleInput();
     if (this->position.x < -100 + 6)
         this->position.x = -100 + 6;

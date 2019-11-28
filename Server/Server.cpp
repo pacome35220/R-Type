@@ -62,20 +62,19 @@ void Server::start(unsigned short port) {
  * @param core
  */
 void Server::entityFeeder(Core::Server &core) {
-    sf::Vector2f pos(100, 0);
-    auto monsterPos = sf::Vector2f(100, 0);
+    // auto monsterPos = sf::Vector2f(100, 0);
 
-    for (size_t i = 0; i < 2; i++) {
-        sf::Vector2f randomPos(100, (std::rand() % 200) - 100);
-        float speed = (float)(std::rand() % 200) / 100;
-        float amplitude = (float)(std::rand() % 1000) / 100;
-        float amplitudeSpeed = (float)(std::rand() % 5) / 100;
+    // for (size_t i = 0; i < 2; i++) {
+    //     sf::Vector2f randomPos(100, (std::rand() % 200) - 100);
+    //     float speed = (float)(std::rand() % 200) / 100;
+    //     float amplitude = (float)(std::rand() % 1000) / 100;
+    //     float amplitudeSpeed = (float)(std::rand() % 5) / 100;
 
-        core.feedEntity(std::make_shared<Monster::Classic>(core, monsterPos, speed, amplitude, amplitudeSpeed, 4));
-        core.feedEntity(std::make_shared<Monster::Dumb>(core, randomPos, 4));
-        core.feedEntity(std::make_shared<Monster::Speed>(core, randomPos, 4));
-        core.feedEntity(std::make_shared<Monster::Angry>(core, randomPos, 4));
-    }
+    //     core.feedEntity(std::make_shared<Monster::Classic>(core, monsterPos, speed, amplitude, amplitudeSpeed, 4));
+    //     core.feedEntity(std::make_shared<Monster::Dumb>(core, randomPos, 4));
+    //     core.feedEntity(std::make_shared<Monster::Speed>(core, randomPos, 4));
+    //     core.feedEntity(std::make_shared<Monster::Angry>(core, randomPos, 4));
+    // }
 
     core.feedEntity(std::make_shared<DeathStar>(sf::Vector2f(90, 0), core));
     core.feedEntity(std::make_shared<Asteroid>(sf::Vector2f(100, 0), core));

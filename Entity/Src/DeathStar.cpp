@@ -25,7 +25,7 @@ void DeathStar::update() {
         restoreDeathStar();
 
     this->position.x -= 0.1;
-    shot();
+    // shot();
 }
 
 AEntityPtr DeathStar::createDeathStarFromPacket(ACore &core, sf::Packet packet)
@@ -34,8 +34,8 @@ AEntityPtr DeathStar::createDeathStarFromPacket(ACore &core, sf::Packet packet)
     int health;
     int counter;
     sf::Uint64 id;
-    int entity;
-    packet >> entity >> id >> pos.x >> pos.y >> health >> counter;
+
+    packet >> id >> pos.x >> pos.y >> health >> counter;
 
     std::cout << "DeathStar::createDeathStarFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<
