@@ -54,6 +54,13 @@ void Player::onCollision(AEntityPtr entity) {
         break;
     case EI_DEATH_STAR:
     case EI_ASTEROID:
+    case EI_ASTEROID1:
+    case EI_ASTEROID2:
+    case EI_ASTEROID3:
+    case EI_ASTEROID4:
+    case EI_ASTEROID5:
+    case EI_ASTEROID6:
+    case EI_ASTEROID7:
         // you dead lol
         // mdr t un ouf toi
         this->health = -100000;
