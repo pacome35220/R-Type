@@ -44,6 +44,7 @@ void Core::Client::run() {
             this->updateEntities();
             this->procTopQueue();
             // call function to handle collision
+            this->collision->detectCollision(this->entities);
             this->renderEntities();
             this->procDeletionQueue();
             this->action->updateKeyPressed();
