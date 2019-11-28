@@ -21,6 +21,7 @@ public:
     ~DeathStar() = default;
     void updateBullet() override;
     static AEntityPtr createDeathStarFromPacket(ACore &core, sf::Packet packet);
+    sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
 };
 
 } // namespace Bullet

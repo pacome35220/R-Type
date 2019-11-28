@@ -41,8 +41,8 @@ void Asteroid::onCollision(AEntityPtr entity) {
 
 void Asteroid::update() {
     this->position.x -= 1;
-	double deltaY = sqrt(this->originalPos.y * this->originalPos.y) + sqrt(this->target.y * this->target.y);
-	double deltaX = sqrt(this->originalPos.x * this->originalPos.x) + sqrt(this->target.x * this->target.x);
+	double deltaX = std::abs(this->originalPos.x + this->target.x);
+	double deltaY = std::abs(this->originalPos.y + this->target.y);
     this->position.y += (deltaY / deltaX);
 
     if (this->position.x < -110) {

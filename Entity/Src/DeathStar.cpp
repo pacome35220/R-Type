@@ -25,7 +25,7 @@ void DeathStar::update() {
         restoreDeathStar();
 
     this->position.x -= 0.1;
-    // shot();
+    shot();
 }
 
 AEntityPtr DeathStar::createDeathStarFromPacket(ACore &core, sf::Packet packet)
@@ -85,7 +85,7 @@ void DeathStar::onDeath() {
 void DeathStar::shot() {
     sf::Vector2f spawn(this->position);
 
-    if (counter < 20) {
+    if (counter < 10) {
         spawn.x += std::rand() % 7 - 7;
         entryPoint.feedEntity(std::make_shared<Bullet::DeathStar>(spawn, entryPoint));
         entryPoint.feedEntity(std::make_shared<Bullet::DeathStar>(spawn, entryPoint, -1));
