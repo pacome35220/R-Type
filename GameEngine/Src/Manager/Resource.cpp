@@ -24,6 +24,8 @@ void Manager::Resource::feedTextureFactory(enum EntityID id,
  */
 bool Manager::Resource::loadTexture(enum EntityID id) {
     std::cout << "Resource::loadTexture: id: " << id << std::endl;
+    if (this->textureMap.find(id) != this->textureMap.end())
+        return true;
     this->textureMap[id] = sf::Texture();
     return this->textureMap[id].loadFromFile(this->textureFactory[id]);
 }
