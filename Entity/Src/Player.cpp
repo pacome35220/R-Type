@@ -11,7 +11,9 @@
 
 Player::Player(ACore &core, sf::Vector2f pos, int _playerNbr)
     : AEntity(pos, core, (enum EntityID)(EI_PLAYER + _playerNbr % 4 + 1)),
-      playerNbr(_playerNbr) {}
+      playerNbr(_playerNbr) {
+    this->level = 0;
+}
 
 AEntityPtr Player::createPlayerFromPacket(ACore &core, sf::Packet packet) {
     sf::Vector2f pos;
