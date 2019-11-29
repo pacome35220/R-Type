@@ -7,14 +7,10 @@
 
 #include "PowerUp.hpp"
 
-PowerUp::PowerUp(ACore &core, sf::Vector2f &position) : AEntity(position, core, EntityID::EI_POWER_UP) {
+PowerUp::PowerUp(ACore &core, const sf::Vector2f &position)
+    : AEntity(position, core, EntityID::EI_POWER_UP) {}
 
-}
-
-PowerUp::~PowerUp() = default;
-
-void PowerUp::onCollision(AEntityPtr entity)
-{
+void PowerUp::onCollision(AEntityPtr entity) {
     if (entity->getEntityType() == EntityID::EI_DEATH_STAR) {
         health--;
         entryPoint.addToDeletionQueue(getId());

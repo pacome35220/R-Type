@@ -6,13 +6,27 @@
 */
 
 #include <iostream>
+#include <cmath>
 #include "AMonster.hpp"
 #include "Bullet/Monster.hpp"
 #include "Core/Client.hpp"
 
-AMonster::AMonster(const sf::Vector2f &position, ACore &entryPoint, enum EntityID type, float speed, float amplitude, float amplitudeSpeed, float scale)
-    : AEntity(position, entryPoint, type), speed(speed), amplitude(amplitude), amplitudeSpeed(amplitudeSpeed), scale(scale) {
-    // Todo
+AMonster::AMonster(const sf::Vector2f &position, ACore &entryPoint,
+                   enum EntityID type, float _speed, float _amplitude,
+                   float _amplitudeSpeed, float _scale)
+    : AEntity(position, entryPoint, type) {
+    this->originalY = position.y;
+    this->scale = _scale;
+    this->counter = 0;
+
+    // this->speed = _speed;
+    // this->amplitude = _amplitude;
+    // this->amplitudeSpeed = _amplitudeSpeed;
+    this->speed = (_speed < 0.1) ? 0.1 : (_speed > 1) ? 1 : _speed;
+    this->amplitude = (_amplitude < 0.2) ? 0.2 : (_amplitude > 10) ? 10 : _amplitude;
+    this->amplitudeSpeed = (_amplitudeSpeed < 0.01) ? 0.01 : (_amplitudeSpeed > 0.05) ? 0.05 : _amplitudeSpeed;
+
+    this->getSprite().setScale(this->scale, this->scale);
 }
 
 AEntityPtr AMonster::createMonsterFromPacket(ACore &core, sf::Packet packet) {
@@ -43,27 +57,12 @@ AEntityPtr AMonster::createMonsterFromPacket(ACore &core, sf::Packet packet) {
     return tmp;
 }
 
-/**
- *  Check if the is alive
- */
-void AMonster::updateMonster() {
-    this->counter += this->amplitudeSpeed;
-
-    this->position.x -= this->speed;
-    this->position.y = this->originalY; // + cos(this->counter) * 10 *
-                                        // this->amplitude; maths lib
-
-    if (std::rand() % 100 < 20)
-        this->entryPoint.feedEntity(std::make_shared<Bullet::Monster>(
-            this->position, this->entryPoint, 1, 0));
-}
-
 void AMonster::update()
 {
 	this->counter += this->amplitudeSpeed;
 
 	this->position.x -= this->speed;
-	this->position.y = this->originalY; //+ cos(this->counter) * 10 * this->amplitude;
+	this->position.y = this->originalY + std::cos(this->counter) * 10 * this->amplitude;
 
 	if (std::rand() % 1000 < 5)
 		entryPoint.feedEntity(std::make_shared<Bullet::Monster>(this->position, this->entryPoint, this->amplitude, this->counter));
@@ -73,6 +72,8 @@ void AMonster::update()
 	}
 	this->updateMonster();
 }
+
+void AMonster::updateMonster() {}
 
 sf::Packet AMonster::buildMyAsAPacket(network::PacketType packetType) {
     sf::Packet packet = AEntity::buildMyAsAPacket(packetType);

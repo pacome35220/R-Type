@@ -18,7 +18,7 @@ public:
 public:
     void update() override;
     static AEntityPtr createMonsterFromPacket(ACore &core, sf::Packet packet);
-    void updateMonster();
+    virtual void updateMonster();
     void onCollision(AEntityPtr entity) override;
     sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
 

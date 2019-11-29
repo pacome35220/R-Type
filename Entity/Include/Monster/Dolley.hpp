@@ -17,5 +17,7 @@ namespace Monster {
 class Dolley : public AMonster {
 public:
     Dolley(ACore &entryPoint, const sf::Vector2f &position);
+
+    void updateMonster() override;
 };
 } // namespace Monster
