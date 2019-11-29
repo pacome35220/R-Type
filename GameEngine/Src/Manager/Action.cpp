@@ -13,7 +13,7 @@ Manager::Action::Action() : isFocused(true) {
     this->mapKey(sf::Keyboard::Left);
     this->mapKey(sf::Keyboard::Down);
     this->mapKey(sf::Keyboard::Right);
-    this->mapKey(sf::Keyboard::W);
+    this->mapKey(sf::Keyboard::Space);
     this->mapKey(sf::Keyboard::Escape);
 }
 
