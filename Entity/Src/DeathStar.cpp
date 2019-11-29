@@ -51,9 +51,9 @@ AEntityPtr DeathStar::createDeathStarFromPacket(ACore &core, sf::Packet packet)
 }
 
 void DeathStar::onCollision(AEntityPtr entity) {
-    if (entity->getEntityType() == EntityID::EI_DEATH_STAR) {
+    if (entity->getEntityType() == EntityID::EI_PLAYER_BULLET) {
         health--;
-        entryPoint.addToDeletionQueue(getId());
+        entryPoint.addToDeletionQueue(entity);
     }
 }
 
@@ -76,7 +76,7 @@ void DeathStar::increaseStreamTimer() {
 void DeathStar::onDeath() {
     sf::Vector2f spawn(160, std::rand() % 100 - 50);
 
-    entryPoint.addToDeletionQueue(getEntityType());
+    entryPoint.addToDeletionQueue(this->getId());
     entryPoint.feedEntity(std::make_shared<DeathStar>(spawn, entryPoint));
     entryPoint.feedEntity(std::make_shared<PowerUp>(entryPoint, position));
     entryPoint.feedEntity(std::make_shared<Monster::Dolley>(entryPoint, position));
