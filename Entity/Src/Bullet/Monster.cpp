@@ -9,8 +9,8 @@
 #include "Bullet/Monster.hpp"
 
 Bullet::Monster::Monster(const sf::Vector2f &position, ACore &entryPoint,
-                         float _amplitude, int _count)
-    : ABullet(position, entryPoint, EI_MONSTER_BULLET, _amplitude, _count) {}
+                         float _amplitude, int _counter)
+    : ABullet(position, entryPoint, EI_MONSTER_BULLET, _amplitude, _counter) {}
 
 void Bullet::Monster::updateBullet() {
     this->counter += 0.2;
@@ -24,10 +24,9 @@ AEntityPtr Bullet::Monster::createMonsterFromPacket(ACore &core, sf::Packet pack
     float amplitude;
     int counter;
     sf::Uint64 id;
-    int entity;
 
-    packet >> entity >> id >> pos.x >> pos.y >> amplitude >> counter;
-    std::cout << "Monster::createMonsterFromPacket " << std::endl <<
+    packet >> id >> pos.x >> pos.y >> amplitude >> counter;
+    std::cout << "Bullet::Monster::createMonsterFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<
     "\t" << "pos.x: " << pos.x << std::endl <<
     "\t" << "pos.y: " << pos.y << std::endl <<

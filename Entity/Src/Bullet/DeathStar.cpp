@@ -9,8 +9,8 @@
 #include "Bullet/DeathStar.hpp"
 
 Bullet::DeathStar::DeathStar(const sf::Vector2f &position, ACore &entryPoint,
-                             float _amplitude, int _count)
-    : ABullet(position, entryPoint, EI_DEATH_STAR_BULLET, _amplitude, _count) {}
+                             float _amplitude, int _counter)
+    : ABullet(position, entryPoint, EI_DEATH_STAR_BULLET, _amplitude, _counter) {}
 
 void Bullet::DeathStar::updateBullet() {
     this->position.y += this->amplitude * 2.5;
@@ -22,9 +22,8 @@ AEntityPtr Bullet::DeathStar::createDeathStarFromPacket(ACore &core, sf::Packet 
     float amplitude;
     int counter;
     sf::Uint64 id;
-    int entity;
 
-    packet >> id >> pos.x >> pos.y >> amplitude >> counter  >> entity;
+    packet >> id >> pos.x >> pos.y >> amplitude >> counter;
     std::cout << "Bullet::DeathStar::createDeathStarFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<
     "\t" << "pos.x: " << pos.x << std::endl <<

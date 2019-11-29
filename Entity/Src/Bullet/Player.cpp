@@ -26,9 +26,8 @@ AEntityPtr Bullet::Player::createPlayerFromPacket(ACore &core, sf::Packet packet
     sf::Vector2f pos;
     float amplitude;
     sf::Uint64 id;
-    int entity;
 
-    packet >> id >> pos.x >> pos.y >> amplitude >> entity;
+    packet >> id >> pos.x >> pos.y >> amplitude;
     std::cout << "Player::createPlayerFromPacket " << std::endl <<
     "\t" << "id: " << id << std::endl <<
     "\t" << "pos.x: " << pos.x << std::endl <<
