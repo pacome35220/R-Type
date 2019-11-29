@@ -21,6 +21,7 @@ public:
     void update() override;
     virtual void updateBullet() = 0;
     void onCollision(AEntityPtr entity) override;
+    sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
 
 protected:
     float amplitude;

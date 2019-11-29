@@ -27,3 +27,15 @@ void ABullet::update() {
 void ABullet::onCollision(AEntityPtr entity) {
     (void)entity;
 }
+
+sf::Packet ABullet::buildMyAsAPacket(network::PacketType packetType) {
+    sf::Packet packet = AEntity::buildMyAsAPacket(packetType);
+
+    packet << this->amplitude;
+    packet << this->counter;
+    std::cout << "ABullet::buildMyAsAPacket" << std::endl <<
+    "\t" << "this->amplitude: " << this->amplitude << std::endl <<
+    "\t" << "this->counter: " << this->counter << std::endl;
+
+    return packet;
+}

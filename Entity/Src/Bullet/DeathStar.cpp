@@ -37,15 +37,3 @@ AEntityPtr Bullet::DeathStar::createDeathStarFromPacket(ACore &core, sf::Packet 
     tmp->setId(id);
     return tmp;
 }
-
-sf::Packet Bullet::DeathStar::buildMyAsAPacket(network::PacketType packetType) {
-    sf::Packet packet = AEntity::buildMyAsAPacket(packetType);
-
-    packet << this->amplitude;
-    packet << this->counter;
-    std::cout << "Bullet::DeathStar::buildMyAsAPacket" << std::endl <<
-    "\t" << "this->amplitude: " << this->amplitude << std::endl <<
-    "\t" << "this->counter: " << this->counter << std::endl;
-
-    return packet;
-}
