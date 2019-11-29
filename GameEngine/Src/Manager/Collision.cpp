@@ -5,7 +5,7 @@
 ** Collision.cpp
 */
 
-#include <string>
+#include <iostream>
 #include "Manager/Collision.hpp"
 
 
@@ -27,6 +27,7 @@ void Manager::Collision::processCollision(std::list<AEntityPtr> &entityList1, st
             if (current->getId() == other->getId())
                 continue;
             if (this->entityCollision(current, other) || this->entityCollision(other, current)) {
+                std::cout << "Collision match : " << current->getEntityType() << " - " << other->getEntityType() << std::endl;
                 current->onCollision(other);
                 other->onCollision(current);
             }
@@ -39,12 +40,16 @@ void Manager::Collision::detectCollision(std::vector<AEntityPtr> &entityList)
     std::list<AEntityPtr> collider;
     // std::vector<ISprite *> lazy;
 
+    if (entityList.size() < 2)
+        return;
     for (auto &entity: entityList) {
         // if (sprites[i]->getPhysicType() == PT_LAZY)
         //     lazy.push_back(sprites[i]);
         // if (sprites[i]->getPhysicType() == PT_COLLIDER)
+        if (entity->getEntityType() != EI_PARALLAX)
             collider.push_back(entity);
     }
+    std::cout << "Collision::detectCollision between " << collider.size() << " entities" << std::endl;
     this->processCollision(collider, collider);
     // this->processCollision(core, collider, lazy);
 
