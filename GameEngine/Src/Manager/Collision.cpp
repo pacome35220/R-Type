@@ -40,7 +40,7 @@ void Manager::Collision::detectCollision(std::vector<AEntityPtr> &entityList)
     std::list<AEntityPtr> collider;
     // std::vector<ISprite *> lazy;
 
-    if (entityList.size() < 2)
+    if (entityList.size() < 3)
         return;
     for (auto &entity: entityList) {
         // if (sprites[i]->getPhysicType() == PT_LAZY)
