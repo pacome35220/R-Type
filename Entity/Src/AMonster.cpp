@@ -53,12 +53,9 @@ void AMonster::updateMonster() {
     this->position.y = this->originalY; // + cos(this->counter) * 10 *
                                         // this->amplitude; maths lib
 
-    if (std::rand() % 100 < 2) {
+    if (std::rand() % 100 < 20)
         this->entryPoint.feedEntity(std::make_shared<Bullet::Monster>(
             this->position, this->entryPoint, 1, 0));
-        ((Core::Client &)this->entryPoint).getAudio()->playSound(
-            "./Assets/Audio/PlayerLaser.ogg");
-    }
 }
 
 void AMonster::update()
