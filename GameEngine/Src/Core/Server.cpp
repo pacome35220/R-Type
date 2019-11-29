@@ -51,13 +51,15 @@ void Core::Server::updateEntities() {
 }
 
 void Core::Server::procDeletionQueue() {
-    for (const auto &entityToDelete : this->deletionQueue) {
-        this->network->execEntityAction(entityToDelete,
-                                        network::PT_ENTITY_DESTRUCTION);
+    for (std::size_t i = 0; i < this->deletionQueue.size(); i++) {
+    // for (const auto &entityToDelete : this->deletionQueue) {
         auto tmp = std::find(this->entities.begin(), this->entities.end(),
-                             entityToDelete);
-        if (tmp != this->entities.end())
+                             this->deletionQueue[i]);
+        if (tmp != this->entities.end()) {
+            this->network->execEntityAction(this->deletionQueue[i],
+                                            network::PT_ENTITY_DESTRUCTION);
             this->entities.erase(tmp);
+        }
     }
     this->deletionQueue = std::vector<AEntityPtr>();
 }

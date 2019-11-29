@@ -11,13 +11,6 @@
 #include "ACore.hpp"
 #include "EntityID.hpp"
 
-class AEntity;
-
-/**
- * @typedef Entity pointer to construct the entity
- */
-typedef std::shared_ptr<AEntity> AEntityPtr;
-
 /**
  * @namespace Package to manage whole entities in the project
  */
@@ -31,19 +24,11 @@ namespace Manager
     public:
         Collision() = default;
         ~Collision() = default;
-        // bool getCollision(EntityID entity1, EntityID entity2) const;
-        // void setCollision(EntityID entity1, EntityID entity2, const bool &status);
-        void detectCollision(std::vector<AEntityPtr> &entityList);
 
+        void detectCollision(const std::vector<AEntityPtr> &entityList);
 
     private:
         void processCollision(std::list<AEntityPtr> &entityList1, std::list<AEntityPtr> &entityList2);
         bool entityCollision(const AEntityPtr &entity1, const AEntityPtr &entity2);
-        // bool rectCollision(AEntity &entity1, AEntity &entity2);
-        // void processCollision(std::list<AEntityPtr> &entityList);
-        // bool pixelCollision(AEntity &entity1, AEntity &entity2);
-
-    private:
-        // std::map<EntityID, std::map<EntityID, bool>> collisionMap;
     };
 }

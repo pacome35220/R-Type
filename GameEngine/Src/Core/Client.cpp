@@ -44,8 +44,8 @@ void Core::Client::run() {
             this->updateEntities();
             this->procTopQueue();
             // call function to handle collision
-            this->collision->detectCollision(this->entities);
             this->renderEntities();
+            this->collision->detectCollision(this->entities);
             this->procDeletionQueue();
             this->action->updateKeyPressed();
             this->network->streamInput(this->action);
@@ -68,8 +68,16 @@ void Core::Client::procDeletionQueue() {
     for (const auto &entityToDelete : this->deletionQueue) {
         auto tmp = std::find(this->entities.begin(), this->entities.end(),
                              entityToDelete);
-        if (tmp != this->entities.end())
+        if (tmp != this->entities.end()) {
+            sf::Packet packet;
+
+            packet << network::PT_ENTITY_DESTRUCTION;
+            packet << entityToDelete->getEntityType();
+            packet << (sf::Uint64)entityToDelete->getId();
+            this->network->sendPacket(packet, this->network->ipTarget,
+                                      this->network->portTarget);
             this->entities.erase(tmp);
+        }
     }
     this->deletionQueue = std::vector<AEntityPtr>();
 }
