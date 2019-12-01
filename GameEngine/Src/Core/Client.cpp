@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2019
-** for_norme
+** CPP_rtype_2019
 ** File description:
-** CoreClient.cpp
+** Core/Client.cpp
 */
 
 #include <iostream>
@@ -11,7 +11,7 @@
 #include "Parallax.hpp"
 
 Core::Client::Client(const std::string &windowTitle)
-    : ACore(), window(sf::VideoMode::getDesktopMode(), windowTitle) {
+        : ACore(), window(sf::VideoMode::getDesktopMode(), windowTitle) {
     this->action = std::make_shared<Manager::Action>();
     this->audio = std::make_shared<Manager::Audio>();
     this->resource = std::make_shared<Manager::Resource>();
@@ -21,11 +21,11 @@ const sf::RenderWindow &Core::Client::getRenderWindow() const {
     return this->window;
 }
 
-std::shared_ptr<Manager::Audio> Core::Client::getAudio() const {
+std::shared_ptr <Manager::Audio> Core::Client::getAudio() const {
     return this->audio;
 }
 
-std::shared_ptr<Manager::Resource> Core::Client::getResource() const {
+std::shared_ptr <Manager::Resource> Core::Client::getResource() const {
     return this->resource;
 }
 
@@ -57,10 +57,10 @@ void Core::Client::run() {
 }
 
 /**
- * updateEntities call `update` method of each entities.
+ * @brief updateEntities call `update` method of each entities.
  */
 void Core::Client::updateEntities() {
-    for (std::size_t i = 0; i < this->entities.size(); i++)
+    for (std::size_t i = 0 ; i < this->entities.size() ; i++)
         this->entities[i]->update();
 }
 
@@ -73,7 +73,7 @@ void Core::Client::procDeletionQueue() {
 
             packet << network::PT_ENTITY_DESTRUCTION;
             packet << entityToDelete->getEntityType();
-            packet << (sf::Uint64)entityToDelete->getId();
+            packet << (sf::Uint64) entityToDelete->getId();
             this->network->sendPacket(packet, this->network->ipTarget,
                                       this->network->portTarget);
             this->entities.erase(tmp);
@@ -82,16 +82,23 @@ void Core::Client::procDeletionQueue() {
     this->deletionQueue = std::vector<AEntityPtr>();
 }
 
+/**
+ * @brief Create an entity with a texture and insert it in the entities vector
+ * @details Actually, we need a texture in the client side
+ * @param entity
+ */
 void Core::Client::feedEntity(AEntityPtr entity) {
     std::cout << "Client::feedEntity " << entity->getEntityType() << std::endl;
 
     this->entities.push_back(entity);
     if (!this->getResource()->loadTexture(entity->getEntityType()))
-        throw Error(std::to_string(entity->getEntityType()) + " doesn't exist", __FILE__, __func__, __LINE__);
-    entity->getTexture() = this->getResource()->getTexture(entity->getEntityType());
+        throw Error(std::to_string(entity->getEntityType()) + " doesn't exist",
+                    __FILE__, __func__, __LINE__);
+    entity->getTexture() = this->getResource()->getTexture(
+            entity->getEntityType());
     entity->getSprite().setTexture(entity->getTexture());
     entity->getSprite().setOrigin(entity->getTexture().getSize().x / 2,
-                           entity->getTexture().getSize().y / 2);
+                                  entity->getTexture().getSize().y / 2);
 }
 
 void Core::Client::renderEntities() {

@@ -1,9 +1,7 @@
-/*
-** EPITECH PROJECT, 2019
-** for_norme
-** File description:
-** Client.hpp
-*/
+/**
+ * @file      Client.hpp
+ * @brief     This class manages all the Client side core methods
+ */
 
 #pragma once
 
@@ -14,15 +12,14 @@
  */
 namespace Core {
     /**
- * @class Client "Include/Core/Client.hpp"
- */
-    class Client : public ACore {
+     * @class Client "Include/Core/Client.hpp"
+    */
+    class Client: public ACore {
     public:
         Client(const std::string &windowTitle);
-
         const sf::RenderWindow &getRenderWindow() const;
-        std::shared_ptr<Manager::Audio> getAudio() const;
-        std::shared_ptr<Manager::Resource> getResource() const;
+        std::shared_ptr <Manager::Audio> getAudio() const;
+        std::shared_ptr <Manager::Resource> getResource() const;
 
     public:
         void run() override;
@@ -36,8 +33,8 @@ namespace Core {
 
     private:
         sf::RenderWindow window;
-        std::shared_ptr<Manager::Action> action;
-        std::shared_ptr<Manager::Audio> audio;
-        std::shared_ptr<Manager::Resource> resource;
+        std::shared_ptr <Manager::Action> action;
+        std::shared_ptr <Manager::Audio> audio;
+        std::shared_ptr <Manager::Resource> resource;
     };
 }
