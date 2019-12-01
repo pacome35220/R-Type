@@ -14,8 +14,8 @@
  */
 namespace Manager {
     /**
-     * @class File "Include/Manager/Resource.hpp"
-     * @brief Resource is used get and create the textures
+     * @class Resource "Include/Manager/Resource.hpp"
+     * @brief Resource manages the texture creation
      * @details Resource works like a factory, the textureFactory create
      * the texture linked with the entityID and the textureFactory creates the
      * texture with the path

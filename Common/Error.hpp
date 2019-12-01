@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** for_norme
+** CPP_rtype_2019
 ** File description:
 ** Error.hpp
 */
@@ -10,6 +10,10 @@
 #include <string>
 #include <exception>
 
+/**
+ * @class Error
+ * @brief This class is used to have a efficient error management
+ */
 class Error : public std::exception {
 public:
     Error(const std::string &_what, const std::string &_file,
