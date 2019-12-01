@@ -1,7 +1,5 @@
 /**
- * @file      server.hpp
- * @brief     This is the Server namespace
- * @details   This namespace will provide all server's method.
+ * @file      Server.hpp
  */
 
 #pragma once
@@ -10,9 +8,13 @@
 #include <SFML/Network.hpp>
 #include "Core/Server.hpp"
 
-namespace Server
-{
+/**
+ * @namespace Server
+ * @brief Server methods
+ * @details This namespace will provide all server's method.
+ */
+namespace Server {
     void start(unsigned short port);
     void entityFeeder(Core::Server &core);
-    void threadEntryPoint(std::shared_ptr<sf::UdpSocket> socket);
+    void threadEntryPoint(std::shared_ptr <sf::UdpSocket> socket);
 }
