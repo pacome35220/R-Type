@@ -12,7 +12,7 @@
 namespace Monster {
     /**
      * @class Angry "Include/Monster/Angry.hpp"
-     * @brief This is the Angry Monster
+     * @brief This is the angry Monster
      * @details He's really angry against your, care about it
      */
     class Angry: public AMonster {

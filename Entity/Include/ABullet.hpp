@@ -1,7 +1,5 @@
 /**
  * @file      ABullet.hpp
- * @brief     Abstract class of Bullet.
- * @details   It will be inherited by all types of bullets
  */
 
 #pragma once
@@ -11,6 +9,8 @@
 
 /**
  * @class ABullet "Include/ABullet.hpp"
+ * @brief This is the abstract class of Bullet.
+ * @details It will be inherited by all types of bullets (Bullet package)
  */
 class ABullet: public AEntity {
 public:
