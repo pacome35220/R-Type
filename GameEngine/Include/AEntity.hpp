@@ -54,7 +54,6 @@ protected:
     sf::Sprite sprite;
     ACore &entryPoint;
     sf::Vector2f position;
-    size_t packetNumber;
     int health;
     int streamTimer;
 };

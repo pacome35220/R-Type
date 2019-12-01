@@ -8,13 +8,11 @@
 #include <iostream>
 #include "AEntity.hpp"
 #include "ACore.hpp"
-#include "Error.hpp"
 
 AEntity::AEntity(const sf::Vector2f &_position, ACore &_entryPoint,
                  enum EntityID _type)
-        : Id(), type(_type), entryPoint(_entryPoint), position(_position),
-          packetNumber(0), health(100), streamTimer(0) {
-}
+    : Id(), type(_type), entryPoint(_entryPoint), position(_position),
+      health(100), streamTimer(0) {}
 
 sf::Texture &AEntity::getTexture() {
     return texture;
@@ -50,8 +48,7 @@ sf::Packet AEntity::buildMyAsAPacket(network::PacketType packetType) {
 
     packet << packetType;
     packet << this->type;
-    packet << (sf::Uint64)
-    this->id;
+    packet << (sf::Uint64)this->id;
     packet << this->position.x;
     packet << this->position.y;
 
