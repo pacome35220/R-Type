@@ -11,13 +11,11 @@
 /**
  * @namespace Package to manage whole entities in the project
  */
-namespace Manager
-{
+namespace Manager {
     /**
      * @class Audio "Include/Audio.hpp"
     */
-    class Audio
-    {
+    class Audio {
     public:
         Audio();
         ~Audio() = default;
@@ -32,7 +30,7 @@ namespace Manager
     private:
         bool isPlaying;
         sf::Music backgroundMusic;
-        std::map<std::string, sf::Sound> musics;
+        std::map <std::string, sf::Sound> musics;
     };
 }
 
