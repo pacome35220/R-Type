@@ -42,7 +42,6 @@ void Core::Client::run() {
             clock.restart();
             this->handleWindowEvent();
             this->updateEntities();
-            this->procTopQueue();
             // call function to handle collision
             this->renderEntities();
             this->collision->detectCollision(this->entities);

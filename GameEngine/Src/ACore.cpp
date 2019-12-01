@@ -22,20 +22,6 @@ AEntityPtr ACore::getEntityFromId(std::size_t id) {
     return nullptr;
 }
 
-void ACore::procTopQueue() {
-    for (const auto &value : this->topQueue) {
-        for (std::size_t i = 0; i < this->entities.size(); i++) {
-            if (this->entities[i]->getId() == value) {
-                auto tmp = this->entities[i];
-                this->entities.erase(this->entities.begin() + i);
-                this->entities.push_back(tmp);
-                return;
-            }
-        }
-    }
-    this->topQueue = std::vector<std::size_t>();
-}
-
 void ACore::addToDeletionQueue(AEntityPtr entity) {
     this->deletionQueue.push_back(entity);
 }

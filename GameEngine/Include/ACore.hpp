@@ -38,7 +38,6 @@ public:
     AEntityPtr getEntityFromId(size_t id) override;
 
 public:
-    void procTopQueue() override;
     void addToDeletionQueue(AEntityPtr entity) override;
     void addToDeletionQueue(std::size_t id) override;
 

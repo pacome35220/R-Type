@@ -23,7 +23,6 @@ void Core::Server::run() {
         if (currentTotal - lastTotal >= 1000000 / this->frameRate) {
             clock.restart();
             this->updateEntities();
-            this->procTopQueue();
             this->procDeletionQueue();
             this->network->readSocket(*this);
             lastTotal = currentTotal;

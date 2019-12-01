@@ -26,7 +26,6 @@ public:
     virtual void run() = 0;
     virtual void procDeletionQueue() = 0;
     virtual void updateEntities() = 0;
-    virtual void procTopQueue() = 0;
     virtual void feedEntity(AEntityPtr entity) = 0;
     virtual void addToDeletionQueue(AEntityPtr entity) = 0;
     virtual void addToDeletionQueue(std::size_t id) = 0;
