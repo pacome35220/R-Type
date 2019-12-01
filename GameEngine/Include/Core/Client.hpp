@@ -1,6 +1,5 @@
 /**
  * @file      Client.hpp
- * @brief     This class manages all the Client side core methods
  */
 
 #pragma once
@@ -8,11 +7,13 @@
 #include "ACore.hpp"
 
 /**
- * @namespace Core package
+ * @namespace Core
+ * @brief To manage the entity on client or server side
  */
 namespace Core {
     /**
      * @class Client "Include/Core/Client.hpp"
+     * @brief This class manages all the client side ACore methods
     */
     class Client: public ACore {
     public:
