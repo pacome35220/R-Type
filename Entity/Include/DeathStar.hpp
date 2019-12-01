@@ -1,8 +1,6 @@
 /**
  * @file      DeathStar.hpp
- * @brief     This is the big boss of the game
- * @details   When this entity is killed, she dropped lots of monster and one power up
- */
+*/
 
 #pragma once
 
@@ -11,6 +9,9 @@
 
 /**
  * @class DeathStar "Include/DeathStar.hpp"
+ * @brief This is the deathStar AEntity
+ * @details When this entity is killed, she dropped lots of monster and 1
+ * power up
  */
 class DeathStar : public AEntity {
 public:
