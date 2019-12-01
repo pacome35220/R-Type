@@ -1,6 +1,5 @@
 /**
  * @file      Client.hpp
- * @brief     This is the implementation of each client in the server
  */
 
 #pragma once
@@ -10,6 +9,7 @@
 
 /**
  * @struct Client "Include/Client.hpp"
+ * @brief This is the implementation of each client in the server
  */
 struct Client {
     sf::IpAddress ip;
