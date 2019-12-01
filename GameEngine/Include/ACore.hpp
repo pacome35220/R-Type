@@ -25,13 +25,12 @@ namespace Manager {
     class Resource;
 }
 
-class ACore : public ICore
-{
+class ACore: public ICore {
 public:
     ACore();
     virtual ~ACore() = default;
 public:
-    std::shared_ptr<Manager::Network> getNetwork() const;
+    std::shared_ptr <Manager::Network> getNetwork() const;
     AEntityPtr getEntityFromId(size_t id) override;
 
 public:
@@ -41,9 +40,9 @@ public:
 
 protected:
     std::size_t frameRate;
-    std::vector<AEntityPtr> entities;
-    std::vector<AEntityPtr> deletionQueue;
-    std::vector<std::size_t> topQueue;
-    std::shared_ptr<Manager::Collision> collision;
-    std::shared_ptr<Manager::Network> network;
+    std::vector <AEntityPtr> entities;
+    std::vector <AEntityPtr> deletionQueue;
+    std::vector <std::size_t> topQueue;
+    std::shared_ptr <Manager::Collision> collision;
+    std::shared_ptr <Manager::Network> network;
 };
