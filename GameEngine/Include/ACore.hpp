@@ -1,9 +1,5 @@
 /**
  * @file      ACore.hpp
- * @brief     This is the Abstract Core
- * @details   This Abstract Class will be the parent of the Server and
- *            Clients classes.
- * @details   It brings an abstraction for each of these classes
  */
 
 #pragma once
@@ -25,6 +21,14 @@ namespace Manager {
     class Resource;
 }
 
+/**
+ * @class ACore "Include/ACore.hpp"
+ * @brief     This is the abstract class of Core
+ * @details   It will be inherited by core client and core server class (Core
+ * package)
+ * @details   It brings an abstraction for each of these classes because
+ * client side won't exactly have the same methods than server side core
+ */
 class ACore: public ICore {
 public:
     ACore();
