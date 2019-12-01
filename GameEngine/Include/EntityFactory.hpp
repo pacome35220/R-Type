@@ -18,6 +18,7 @@ public:
     EntityFactory() = default;
     ~EntityFactory() = default;
 
+public:
     void addEntity(
         enum EntityID entityID,
         std::function<AEntityPtr(ACore &core, sf::Packet packet)> constructor);
