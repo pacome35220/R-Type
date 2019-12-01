@@ -34,27 +34,27 @@ AEntityPtr Asteroid::createAsteroidFromPacket(ACore &core, sf::Packet packet) {
 
 void Asteroid::onCollision(AEntityPtr entity) {
     if (entity->getEntityType() == EI_PLAYER_BULLET) {
-        this->health--;
-        entryPoint.addToDeletionQueue(getId());
+        this->health -= 10;
+        entryPoint.addToDeletionQueue(entity);
     }
 }
 
 void Asteroid::update() {
-    this->position.x -= 1;
 	double deltaX = std::abs(this->originalPos.x + this->target.x);
 	double deltaY = std::abs(this->originalPos.y + this->target.y);
-    this->position.y += (deltaY / deltaX);
 
+    this->position.x -= 1;
+    this->position.y += (deltaY / deltaX);
     if (this->position.x < -110) {
         this->position.x = 110;
         this->position.y = rand() % 50 - 100;
     }
     if (this->health < 0) {
-        this->position.x = 110;
-        this->position.y = rand() % 50 - 100;
-        this->entryPoint.feedEntity(std::make_shared<Asteroid>(position, entryPoint));
-        this->entryPoint.addToDeletionQueue(getId());
+        this->entryPoint.addToDeletionQueue(this->getId());
+        this->entryPoint.feedEntity(std::make_shared<Asteroid>(sf::Vector2f(100, 0), entryPoint));
     }
+    if (rand() % 1000 == 5)
+        this->entryPoint.feedEntity(std::make_shared<Asteroid>(sf::Vector2f(100, 0), entryPoint));
 }
 
 void Asteroid::increaseStreamTimer() {
