@@ -1,6 +1,5 @@
 /**
  * @file      DeathStar.hpp
- * @brief     DeathStar bullet
  */
 
 #pragma once
@@ -8,11 +7,13 @@
 #include "ABullet.hpp"
 
 /**
- * @namespace Package to get all types of bullets
+ * @namespace Bullet To get all types of bullets
  */
 namespace Bullet {
     /**
      * @class DeathStar "Include/Bullet/DeathStar.hpp"
+     * @brief This is the deathStar Bullet
+     * @details Care, it is more powerful than a superlaser
      */
     class DeathStar: public ABullet {
     public:
@@ -25,4 +26,4 @@ namespace Bullet {
         static AEntityPtr createDeathStarFromPacket(ACore &core, sf::Packet
         packet);
     };
-} // namespace Bullet
+}

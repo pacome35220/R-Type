@@ -1,17 +1,18 @@
 /**
  * @file      MonsterBullet.hpp
- * @brief     Monster bullet
  */
 
 #pragma once
 
 #include "ABullet.hpp"
 /**
- * @namespace Package to get all types of bullets
+ * @namespace Bullet To get all types of bullets
  */
 namespace Bullet {
     /**
-     * @class Monster "Include/Monster.hpp"
+     * @class Monster "Include/Bullet/Monster.hpp"
+     * @brief This is the monster Bullet
+     * @details The conventional bullet used by Monsters
      */
     class Monster: public ABullet {
     public:
@@ -24,4 +25,4 @@ namespace Bullet {
         static AEntityPtr createMonsterFromPacket(ACore &core, sf::Packet
         packet);
     };
-} // namespace Bullet
+}

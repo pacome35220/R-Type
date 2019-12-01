@@ -1,6 +1,5 @@
 /**
  * @file      Player.hpp
- * @brief     Player bullet
  */
 
 #pragma once
@@ -13,6 +12,8 @@
 namespace Bullet {
     /**
      * @class Player "Include/Bullet/Player.hpp"
+     * @brief This is the player Bullet
+     * @details The conventional bullet used by the player
      */
     class Player: public ABullet {
     public:
@@ -25,4 +26,4 @@ namespace Bullet {
         static AEntityPtr createPlayerFromPacket(ACore &core, sf::Packet
         packet);
     };
-} // namespace Bullet
+}
