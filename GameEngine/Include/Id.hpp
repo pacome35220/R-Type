@@ -1,7 +1,5 @@
 /**
  * @file      Id.hpp
- * @brief     This is the Id class
- * @details   This class will be used to generate a static id for each entities.
  */
 
 #pragma once
@@ -10,6 +8,8 @@
 
 /**
  * @class Id "Include/Id.hpp"
+ * @brief This is the Id class
+ * @details This class will be used to generate a static id for each entities.
  */
 class Id {
 public:
