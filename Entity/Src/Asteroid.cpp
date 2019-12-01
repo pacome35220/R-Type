@@ -53,7 +53,7 @@ void Asteroid::update() {
         this->entryPoint.addToDeletionQueue(this->getId());
         this->entryPoint.feedEntity(std::make_shared<Asteroid>(sf::Vector2f(100, 0), entryPoint));
     }
-    if (rand() % 1000 == 5)
+    if (rand() % 2000 == 5)
         this->entryPoint.feedEntity(std::make_shared<Asteroid>(sf::Vector2f(100, 0), entryPoint));
 }
 
