@@ -11,20 +11,19 @@
  * @brief To get all types of bullets
  */
 namespace Bullet {
-    /**
-     * @class DeathStar "Include/Bullet/DeathStar.hpp"
-     * @brief This is the deathStar Bullet
-     * @details Care, it is more powerful than a superlaser
-     */
-    class DeathStar: public ABullet {
-    public:
-        DeathStar(const sf::Vector2f &position, ACore &entryPoint,
-                  float amplitude = 1, int counter = 0);
-        ~DeathStar() = default;
+/**
+ * @class DeathStar "Include/Bullet/DeathStar.hpp"
+ * @brief This is the deathStar Bullet
+ * @details Care, it is more powerful than a superlaser
+ */
+class DeathStar : public ABullet {
+public:
+    DeathStar(const sf::Vector2f &position, ACore &entryPoint, float amplitude);
+    ~DeathStar() = default;
 
-    public:
-        void updateBullet() override;
-        static AEntityPtr createDeathStarFromPacket(ACore &core, sf::Packet
-        packet);
-    };
-}
+    void updateBullet() override;
+
+    sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
+    static AEntityPtr createDeathStarFromPacket(ACore &core, sf::Packet packet);
+};
+} // namespace Bullet

@@ -8,34 +8,26 @@
 #include <iostream>
 #include "Bullet/Monster.hpp"
 
-Bullet::Monster::Monster(const sf::Vector2f &position, ACore &entryPoint,
-                         float _amplitude, int _counter): ABullet(position,
-                                                                  entryPoint,
-                                                                  EI_MONSTER_BULLET,
-                                                                  _amplitude,
-                                                                  _counter) {
-}
+Bullet::Monster::Monster(const sf::Vector2f &position, ACore &entryPoint)
+    : ABullet(position, entryPoint, EI_MONSTER_BULLET) {}
 
 void Bullet::Monster::updateBullet() {
-    this->counter += 0.2;
     this->position.x -= 4;
 }
 
-AEntityPtr
-Bullet::Monster::createMonsterFromPacket(ACore &core, sf::Packet packet) {
+AEntityPtr Bullet::Monster::createMonsterFromPacket(ACore &core,
+                                                    sf::Packet packet) {
     sf::Vector2f pos;
-    float amplitude;
-    int counter;
     sf::Uint64 id;
 
-    packet >> id >> pos.x >> pos.y >> amplitude >> counter;
-    std::cout << "Bullet::Monster::createMonsterFromPacket " << std::endl
-              << "\t" << "id: " << id << std::endl << "\t" << "pos.x: " << pos.x
-              << std::endl << "\t" << "pos.y: " << pos.y << std::endl << "\t"
-              << "amplitude: " << amplitude << std::endl << "\t" << "counter: "
-              << counter << std::endl;
+    packet >> id >> pos.x >> pos.y;
 
-    auto tmp = std::make_shared<Monster>(pos, core, amplitude, counter);
+    std::cout << "Bullet::Monster::createMonsterFromPacket " << std::endl <<
+        "\t" << "id: " << id << std::endl <<
+        "\t" << "pos.x: " << pos.x << std::endl <<
+        "\t" << "pos.y: " << pos.y << std::endl;
+
+    auto tmp = std::make_shared<Monster>(pos, core);
 
     tmp->setId(id);
     return tmp;

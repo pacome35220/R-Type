@@ -1,5 +1,5 @@
 /**
- * @file      Speed.hpp
+ * @file Speed.hpp
  */
 
 #pragma once
@@ -11,16 +11,15 @@
  * @brief To get all types of monsters
  */
 namespace Monster {
-    /**
-     * @class Speed "Include/Monster/Speed.hpp"
-     * @brief This is the speed Monster
-     * @details Care he's faster than Flash McQueen
-     */
-    class Speed: public AMonster {
-    public:
-        Speed(ACore &entryPoint, const sf::Vector2f &position, float scale);
+/**
+ * @class Speed "Include/Monster/Speed.hpp"
+ * @brief This is the speed Monster
+ * @details Care he's faster than Flash McQueen
+ */
+class Speed: public AMonster {
+public:
+    Speed(ACore &entryPoint, const sf::Vector2f &position, float scale);
 
-    public:
-        void updateMonster() override;
-    };
-}
+    void onDeath() override;
+};
+} // namespace Monster
