@@ -1,6 +1,5 @@
 /**
  * @file      Action.hpp
- * @brief     This class manages the input of user's keyboard.
  */
 
 #pragma once
@@ -10,11 +9,13 @@
 #include <vector>
 
 /**
- * @namespace Package to manage whole entities in the project
+ * @namespace Manager
+ * @brief To manage whole entities
  */
 namespace Manager {
     /**
      * @class Action  "Include/Manager/Action.hpp"
+     * @brief Action manages the input of user's keyboard.
     */
     class Action {
     public:

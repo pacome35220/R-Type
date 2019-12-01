@@ -1,6 +1,5 @@
 /**
  * @file      Collision.hpp
- * @brief     This class manages all the entity collisions
  */
 
 #pragma once
@@ -12,11 +11,13 @@
 #include "EntityID.hpp"
 
 /**
- * @namespace Package to manage whole entities in the project
+ * @namespace Manager
+ * @brief To manage whole entities
  */
 namespace Manager {
     /**
      * @class Collision "Include/Manager/Collision.hpp"
+     * @brief Collision manages the collision between entities
     */
     class Collision {
     public:

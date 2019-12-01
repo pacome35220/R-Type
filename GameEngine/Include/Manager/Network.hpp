@@ -1,6 +1,5 @@
 /**
  * @file      NetworkManager.hpp
- * @brief     This is handle all the network functions
  */
 
 #pragma once
@@ -24,11 +23,13 @@
    | (((x) & 0x00000000000000ffull) << 56))
 
 /**
- * @namespace Package to manage whole entities in the project
+ * @namespace Manager
+ * @brief To manage whole entities
  */
 namespace Manager {
     /**
      * @class Network "Include/Manager/Network.hpp"
+     * @brief Network manages the network communication between entities
     */
     class Network {
     public:

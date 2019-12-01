@@ -1,9 +1,6 @@
 /**
  * @file      Resource.hpp
- * @brief     This class is used get and create the textures
- * @details   This class works like a factory, the textureFactory create the texture
- * @details   linked with the entityID and the textureFactory creates the texture with the path
- */
+*/
 
 #pragma once
 
@@ -12,11 +9,16 @@
 #include "EntityID.hpp"
 
 /**
- * @namespace Package to manage whole entities in the project
+ * @namespace Manager
+ * @brief To manage whole entities
  */
 namespace Manager {
     /**
      * @class File "Include/Manager/Resource.hpp"
+     * @brief Resource is used get and create the textures
+     * @details Resource works like a factory, the textureFactory create
+     * the texture linked with the entityID and the textureFactory creates the
+     * texture with the path
     */
     class Resource {
     public:
