@@ -32,7 +32,8 @@
  * @brief Feed the factory with all the texture
  * @param core
  */
-void feedTextureFactory(std::shared_ptr<Manager::Resource> resource) {
+void feedTextureFactory(std::shared_ptr<Manager::Resource> resource)
+{
     resource->feedTextureFactory(EI_CLASSIC_MONSTER, "./Assets/Sprites/Monster/Classic.png");
     resource->feedTextureFactory(EI_DUMB_MONSTER, "./Assets/Sprites/Monster/Dumb.png");
     resource->feedTextureFactory(EI_SPEED_MONSTER, "./Assets/Sprites/Monster/Speed.png");
@@ -68,7 +69,8 @@ void feedTextureFactory(std::shared_ptr<Manager::Resource> resource) {
  * @brief Feed EntityFactory
  * @param sharedPtr
  */
-void feedEntityFactory(std::shared_ptr<Manager::Network> network) {
+void feedEntityFactory(std::shared_ptr<Manager::Network> network)
+{
     network->getEntityFactory().addEntity(EI_CLASSIC_MONSTER,   AMonster::createMonsterFromPacket);
     network->getEntityFactory().addEntity(EI_DUMB_MONSTER,      AMonster::createMonsterFromPacket);
     network->getEntityFactory().addEntity(EI_SPEED_MONSTER,     AMonster::createMonsterFromPacket);
@@ -102,7 +104,8 @@ void feedEntityFactory(std::shared_ptr<Manager::Network> network) {
  * @param ip
  * @param port
  */
-void runClient(const std::string &ip, unsigned short port) {
+void runClient(const std::string &ip, unsigned short port)
+{
     sf::Packet packet;
     Core::Client core("R-Type Client");
 
@@ -130,9 +133,12 @@ void runClient(const std::string &ip, unsigned short port) {
  * @param argv
  * @return
  */
-int main(int argc, char **argv) {
-    if (argc < 3)
+int main(int argc, char **argv)
+{
+    if (argc != 3) {
+        std::cerr << argv[0] << " ip port" << std::endl;
         return EXIT_FAILURE;
+    }
     try {
         runClient(argv[1], std::stoi(argv[2]));
     } catch (const Error &error) {

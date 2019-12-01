@@ -4,8 +4,10 @@
 
 int main(int argc, char **argv)
 {
-    if (argc < 2)
+    if (argc != 2) {
+        std::cerr << argv[0] << " port" << std::endl;
         return EXIT_FAILURE;
+    }
     try {
         Server::start(std::atoi(argv[1]));
     }
