@@ -1,0 +1,91 @@
+R-Type 2019
+Pacome. Fran�on
+Camille. Police
+Hadi. Bereksi
+Marco. Gautier
+                                                                                                          November 2019
+
+
+                         R-Type communication protocol
+
+Status of this Memo
+
+        This memo provides information for the R-Type's communication protocol.  This memo does not specify an Internet standard of any kind.  The Distribution of this memo is unlimited.
+
+GNU license.
+
+Tables of Contents
+
+        1.   Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+        2.   communications� basis. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+        3.   Joining a server . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+        4.   Entities management - Entity Creation. . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+        5.   Entities management - Entity Update. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+        6.   Entities management - Entity Deletion. . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+        7.  action management . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+        8.  End of Connection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+
+
+1. Introduction
+
+        This Request for Comments (RFC) provides information about the communication protocol of the R-Type project. This RFC is part of a lots of useless stuff turning a fun project into a hideous one.
+        Through this RFC I will make sure that you, as a reader, understand how awful this project was, and that this project as a whole didn�t make any sense.
+
+2. Communications's basis
+
+        The server and the client communicate through the usage of packet. Packets implementation doesn't matter as long as their data is ordered. The first data object of a packet MUST be one of the
+        following instructions:
+
+- PT_PLAYER_JOIN,
+- PT_PORT_REDIRECTION,
+- PT_ENTITY_CREATION,
+- PT_ENTITY_UPDATE,
+- PT_ENTITY_DESTRUCTION,
+- PT_STREAM_END,
+- PT_INPUT
+
+3. Joining a server
+
+        To join a server, a packet starting with the instruction PT_PLAYER_JOIN MUST be sent.
+        To this request, the server MAY answer with a PORT_REDIRECTION packet.
+        If this happen, you SHOULD reiterate your request on the new port to join a game.
+
+Binary: doesn�t matter what you put inside
+
+4. Entities management - Entity Creation
+
+        A packet corresponding to an entity creation MUST start with the PT_ENTIY_CREATION instruction, followed
+        by the class ID of the entity.
+
+Binary: entityId: 4 bytes - optional: it depends of the entity
+
+5. Entities management - Entity Update
+
+        A packet corresponding to an entity update MUST start with the PT_ENTITY_UPDATE instruction, followed by the ID of the entity to be updated. In addition to that, the third parameter of the packet MUST be the class ID of the entity, in case it doesn�t exist on the client side.
+
+Binary: entityId: 4 bytes - Optional: x bytes - Id: 8 bytes
+
+6. Entities management - Entity deletion
+
+        A packet corresponding to an entity deletion MUST start with the PT_ENTITY_DESTRUCTION instruction.
+
+Binary: entityId:  4 bytes - Id: 8 bytes
+
+7. Action management
+
+        A Packet corresponding to an input MUST start with the PT_INPUT instruction, followed by the SFML key
+        code of the input.
+
+Binary: keycode: 4 bytes - SFML key: 4 bytes
+
+8. End of connection
+
+        The end of a stream must be signaled via a packet that start via the instruction PT_STREAM_END.
+
+Binary: packet: 4 bytes
+
+
+
+
+
+END.
