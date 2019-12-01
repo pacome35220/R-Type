@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** CPP_rtype_2019
 ** File description:
-** Action.cpp
+** Manager/Action.cpp
 */
 
 #include <iostream>
@@ -21,14 +21,6 @@ void Manager::Action::setIsFocused(bool state) {
     this->isFocused = state;
 }
 
-void Manager::Action::mapKey(sf::Keyboard::Key key) {
-    this->currentState[key] = false;
-}
-
-bool Manager::Action::isKeyMapped(sf::Keyboard::Key key) {
-    return this->currentState.find(key) != this->currentState.end();
-}
-
 bool Manager::Action::isKeyPressed(sf::Keyboard::Key key) {
     if (!this->isKeyMapped(key))
         this->mapKey(key);
@@ -45,11 +37,19 @@ std::vector<sf::Keyboard::Key> Manager::Action::getKeyPressed() {
 }
 
 /**
- * Flush all keys
+ * @brief Flush all keys
  */
 void Manager::Action::updateKeyPressed() {
     if (!this->isFocused)
         return;
     for (auto &it : this->currentState)
         it.second = sf::Keyboard::isKeyPressed(it.first);
+}
+
+void Manager::Action::mapKey(sf::Keyboard::Key key) {
+    this->currentState[key] = false;
+}
+
+bool Manager::Action::isKeyMapped(sf::Keyboard::Key key) {
+    return this->currentState.find(key) != this->currentState.end();
 }

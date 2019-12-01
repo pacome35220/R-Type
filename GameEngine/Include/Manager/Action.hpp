@@ -12,13 +12,11 @@
 /**
  * @namespace Package to manage whole entities in the project
  */
-namespace Manager
-{
+namespace Manager {
     /**
      * @class Action  "Include/Action.hpp"
     */
-    class Action
-    {
+    class Action {
     public:
         Action();
         ~Action() = default;
@@ -27,7 +25,7 @@ namespace Manager
     public:
         bool isKeyPressed(sf::Keyboard::Key key);
         void updateKeyPressed();
-        std::vector<sf::Keyboard::Key> getKeyPressed();
+        std::vector <sf::Keyboard::Key> getKeyPressed();
 
     private:
         bool isKeyMapped(sf::Keyboard::Key key);
