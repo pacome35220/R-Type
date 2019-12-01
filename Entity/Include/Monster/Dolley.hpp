@@ -18,6 +18,6 @@ class Dolley : public AMonster {
 public:
     Dolley(ACore &entryPoint, const sf::Vector2f &position);
 
-    void updateMonster() override;
+    void onDeath() override;
 };
 } // namespace Monster

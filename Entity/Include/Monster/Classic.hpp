@@ -19,6 +19,6 @@ public:
     Classic(ACore &entryPoint, const sf::Vector2f &position, float speed,
             float amplitude, float amplitudeSpeed, float scale);
 
-    void updateMonster() override;
+    void onDeath() override;
 };
 } // namespace Monster
