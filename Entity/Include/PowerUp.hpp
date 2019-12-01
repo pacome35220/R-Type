@@ -1,6 +1,5 @@
 /**
  * @file      PowerUp.hpp
- * @brief     Description
  */
 
 #pragma once
@@ -9,6 +8,7 @@
 
 /**
  * @class PowerUp "Include/PowerUp.hpp"
+ * @brief This is the power up AEntity
  */
 class PowerUp : public AEntity {
 public:
