@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** for_norme
+** CPP_rtype_2019
 ** File description:
 ** EntityFactory.cpp
 */
@@ -10,7 +10,7 @@
 #include "Error.hpp"
 
 /**
- * Add an entity to the factory
+ * @brief Add an entity to the factory
  * @param entityID
  * @param constructor
  */
@@ -25,7 +25,7 @@ void EntityFactory::addEntity(
 }
 
 /**
- * Call the constructor of the chosen entity and create it
+ * @brief Call the constructor of the chosen entity and create it
  * @param entityID
  * @param core
  * @param packet

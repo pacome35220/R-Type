@@ -1,24 +1,21 @@
-/*
-** EPITECH PROJECT, 2019
-** CPP_rtype_2019
-** File description:
-** Server.hpp
-*/
+/**
+ * @file      Client.hpp
+ */
 
 #pragma once
 
 #include "ACore.hpp"
 
 /**
- * @namespace Core package
+ * @namespace Core
+ * @brief To manage the entity on client or server side
  */
-namespace Core
-{
+namespace Core {
     /**
- * @class Server "Include/Core/Server.hpp"
- */
-    class Server : public ACore
-    {
+     * @class Server "Include/Core/Server.hpp"
+     * @brief This class manages all the server side ACore methods
+    */
+    class Server: public ACore {
     public:
         Server();
         ~Server() = default;
@@ -27,7 +24,8 @@ namespace Core
         void run() override;
         void updateEntities() override;
         void procDeletionQueue() override;
-        void onPlayerJoin(const sf::IpAddress &senderIP, unsigned short senderPort);
+        void onPlayerJoin(const sf::IpAddress &senderIP, unsigned short
+        senderPort);
         void feedEntity(AEntityPtr entity) override;
     };
 }

@@ -1,6 +1,5 @@
 /**
  * @file      NetworkManager.hpp
- * @brief     This is handle all the network functions
  */
 
 #pragma once
@@ -24,20 +23,18 @@
    | (((x) & 0x00000000000000ffull) << 56))
 
 /**
- * @namespace Package to manage whole entities in the project
+ * @namespace Manager
+ * @brief To manage whole entities
  */
-namespace Manager
-{
-/**
- * @class Network "Include/Network.hpp"
- */
+namespace Manager {
+    /**
+     * @class Network "Include/Manager/Network.hpp"
+     * @brief Network manages the network communication between entities
+    */
     class Network {
     public:
         Network();
         ~Network() = default;
-
-        std::string ipTarget;
-        unsigned short portTarget;
 
         void setSocket(std::shared_ptr<sf::UdpSocket>);
         void setIpTarget(const std::string &ipTarget);
@@ -46,16 +43,23 @@ namespace Manager
         EntityFactory &getEntityFactory();
 
     public:
-        void onPlayerJoin(ACore &core, const sf::IpAddress &senderIp, unsigned short senderPort);
+        void onPlayerJoin(ACore &core, const sf::IpAddress &senderIp,
+                          unsigned short senderPort);
         void sendPacket(sf::Packet, sf::IpAddress ip, unsigned short port);
         void readSocket(ACore &core);
         void streamInput(std::shared_ptr<Action> action);
         bool isClientKeyPressed(std::size_t clientId, sf::Keyboard::Key key);
-        void execEntityAction(AEntityPtr entity, network::PacketType packetType);
+        void execEntityAction(AEntityPtr entity, network::PacketType
+        packetType);
         void endOfStream();
+
     private:
         void addNewClient(const sf::IpAddress &ip, unsigned short port);
         void resetClientsKeyMap();
+
+    public:
+        std::string ipTarget;
+        unsigned short portTarget;
 
     private:
         std::vector<Client> clients;

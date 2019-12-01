@@ -1,6 +1,5 @@
 /**
- * @file      Angry.hpp
- * @brief     Description
+ * @file Angry.hpp
  */
 
 #pragma once
@@ -8,13 +7,16 @@
 #include "AMonster.hpp"
 
 /**
- * @namespace Package to get all types of monster
+ * @namespace Monster
+ * @brief To get all types of monsters
  */
 namespace Monster {
 /**
- * @class Angry "Include/Angry.hpp"
+ * @class Angry "Include/Monster/Angry.hpp"
+ * @brief This is the angry Monster
+ * @details He's really angry against your, care about it
  */
-class Angry : public AMonster {
+class Angry: public AMonster {
 public:
     Angry(ACore &entryPoint, const sf::Vector2f &position, float scale);
 

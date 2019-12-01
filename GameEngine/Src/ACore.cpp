@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** for_norme
+** CPP_rtype_2019
 ** File description:
 ** ACore.cpp
 */

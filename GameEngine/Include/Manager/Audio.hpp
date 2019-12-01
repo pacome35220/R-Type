@@ -1,6 +1,5 @@
 /**
  * @file      Audio.hpp
- * @brief     This class manages the music of the game
  */
 
 #pragma once
@@ -9,15 +8,15 @@
 #include <SFML/Audio.hpp>
 
 /**
- * @namespace Package to manage whole entities in the project
+ * @namespace Manager
+ * @brief To manage whole entities
  */
-namespace Manager
-{
+namespace Manager {
     /**
-     * @class Audio "Include/Audio.hpp"
+     * @class Audio "Include/Manager/Audio.hpp"
+     * @brief Aduio manages the music of the game
     */
-    class Audio
-    {
+    class Audio {
     public:
         Audio();
         ~Audio() = default;

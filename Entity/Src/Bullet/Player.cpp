@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** CPP_rtype_2019
 ** File description:
-** Player.cpp
+** Bullet/Player.cpp
 */
 
 #include <cmath>
@@ -19,8 +19,8 @@ Bullet::Player::Player(const sf::Vector2f &position, ACore &entryPoint,
 void Bullet::Player::updateBullet() {
     this->counter += 0.2;
     this->position.x += 4;
-    this->position.y =
-        this->originalY + cos(this->counter) * 10 * this->amplitude;
+    this->position.y = this->originalY
+                       + cos(this->counter) * 10 * this->amplitude;
 }
 
 sf::Packet Bullet::Player::buildMyAsAPacket(network::PacketType packetType) {

@@ -1,15 +1,16 @@
 /**
  * @file      EntityID.hpp
- * @brief     This file has the enum of the entities availables in our game.
  */
 
 #pragma once
 
 /**
- * @enum Define and refer to entities's types
+ * @enum EntityID
+ * @brief This file has the enum of the entities available in our game.
  */
 enum EntityID {
     EI_UNKNOWN = -1,
+
     EI_CLASSIC_MONSTER,
     EI_DUMB_MONSTER,
     EI_SPEED_MONSTER,

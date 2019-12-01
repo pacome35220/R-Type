@@ -1,9 +1,6 @@
 /**
  * @file      Resource.hpp
- * @brief     This class is used get and create the textures
- * @details   This class works like a factory, the textureFactory create the texture
- * @details   linked with the entityID and the textureFactory creates the texture with the path
- */
+*/
 
 #pragma once
 
@@ -12,19 +9,25 @@
 #include "EntityID.hpp"
 
 /**
- * @namespace Package to manage whole entities in the project
+ * @namespace Manager
+ * @brief To manage whole entities
  */
-namespace Manager
-{
-/**
- * @class File "Include/Resource.hpp"
- */
-    class Resource
-    {
+namespace Manager {
+    /**
+     * @class Resource "Include/Manager/Resource.hpp"
+     * @brief Resource manages the texture creation
+     * @details Resource works like a factory, the textureFactory create
+     * the texture linked with the entityID and the textureFactory creates the
+     * texture with the path
+    */
+    class Resource {
     public:
         Resource() = default;
         ~Resource() = default;
-        void feedTextureFactory(enum EntityID id, const std::string &texturePath);
+
+    public:
+        void feedTextureFactory(enum EntityID id, const std::string
+                &texturePath);
         bool loadTexture(enum EntityID id);
         sf::Texture &getTexture(enum EntityID id);
         const std::string &getTexturePath(enum EntityID id);

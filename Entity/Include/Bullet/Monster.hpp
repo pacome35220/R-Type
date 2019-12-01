@@ -1,18 +1,20 @@
 /**
- * @file      MonsterBullet.hpp
- * @brief     Description
+ * @file Monster.hpp
  */
 
 #pragma once
 
 #include "ABullet.hpp"
-/**
- * @namespace Package to get all types of bullets
- */
 
+/**
+ * @namespace Bullet
+ * @brief To get all types of bullets
+ */
 namespace Bullet {
 /**
- * @class Monster "Include/Monster.hpp"
+ * @class Monster "Include/Bullet/Monster.hpp"
+ * @brief This is the monster Bullet
+ * @details The conventional bullet used by Monsters
  */
 class Monster : public ABullet {
 public:

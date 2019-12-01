@@ -1,6 +1,5 @@
 /**
  * @file      Asteroid.hpp
- * @brief     Description
  */
 
 #pragma once
@@ -10,6 +9,8 @@
 
 /**
  * @class Asteroid "Include/Asteroid.hpp"
+ * @brief This is the asteroid AEntity
+ * @details Don't get a collision with it or you'll regret it !
  */
 class Asteroid : public AEntity {
 public:

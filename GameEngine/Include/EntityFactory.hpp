@@ -1,7 +1,5 @@
 /**
  * @file      EntityFactory.hpp
- * @brief     This is class is a factory.
- * @brief     This factory creates all the entity registered in it.
  */
 
 #pragma once
@@ -12,12 +10,15 @@
 
 /**
  * @class EntityFactory "Include/EntityFactory.hpp"
+ * @brief This is class is a factory.
+ * @details This factory creates all the entity registered in it.
  */
 class EntityFactory {
 public:
     EntityFactory() = default;
     ~EntityFactory() = default;
 
+public:
     void addEntity(
         enum EntityID entityID,
         std::function<AEntityPtr(ACore &core, sf::Packet packet)> constructor);

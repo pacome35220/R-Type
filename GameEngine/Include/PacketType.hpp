@@ -1,13 +1,13 @@
 /**
- * @file      Id.hpp
- * @brief     This is the enumeration of the packets types.
- * @details   This enumeration regroup all types used in the code.
+ * @file      PacketType.hpp
  */
 
 #pragma once
 
 /**
  * @namespace network  "Include/PacketType.hpp"
+ * @brief This is the enumeration of the packets types.
+ * @details This enumeration regroup all types used in the code.
  */
 namespace network {
     enum PacketType {

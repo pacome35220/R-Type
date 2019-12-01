@@ -1,6 +1,5 @@
 /**
- * @file      Dolley.hpp
- * @brief     Description
+ * @file Dolley.hpp
  */
 
 #pragma once
@@ -8,13 +7,16 @@
 #include "AMonster.hpp"
 
 /**
- * @namespace Package to get all types of monster
+ * @namespace Monster
+ * @brief To get all types of monsters
  */
 namespace Monster {
 /**
- * @class Dolley "Include/Dolley.hpp"
+ * @class Dolley "Include/Monster/Dolley.hpp"
+ * @brief This is the dolley Monster
+ * @details Care, this is the most powerful monster you've ever seen
  */
-class Dolley : public AMonster {
+class Dolley: public AMonster {
 public:
     Dolley(ACore &entryPoint, const sf::Vector2f &position);
 

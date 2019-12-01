@@ -1,6 +1,5 @@
 /**
- * @file      Classic.hpp
- * @brief     Description
+ * @file Classic.hpp
  */
 
 #pragma once
@@ -8,17 +7,20 @@
 #include "AMonster.hpp"
 
 /**
- * @namespace Package to get all types of monster
+ * @namespace Monster
+ * @brief To get all types of monsters
  */
 namespace Monster {
 /**
- * @class Classic "Include/Classic.hpp"
+ * @class Classic "Include/Monster/Classic.hpp"
+ * @brief This is the classic Monster
+ * @details Care about this monster, he's malicious
  */
-class Classic : public AMonster {
+class Classic: public AMonster {
 public:
     Classic(ACore &entryPoint, const sf::Vector2f &position, float speed,
             float amplitude, float amplitudeSpeed, float scale);
 
-    void onDeath() override;
+void onDeath() override;
 };
 } // namespace Monster

@@ -1,7 +1,5 @@
 /**
  * @file      ABullet.hpp
- * @brief     Abstract class of Bullet.
- * @details   It will be inherited by all types of bullets
  */
 
 #pragma once
@@ -11,8 +9,10 @@
 
 /**
  * @class ABullet "Include/ABullet.hpp"
+ * @brief This is the abstract class of Bullet.
+ * @details It will be inherited by all types of bullets (Bullet package)
  */
-class ABullet : public AEntity {
+class ABullet: public AEntity {
 public:
     ABullet(const sf::Vector2f &position, ACore &entryPoint, enum EntityID type,
             float amplitude = 1);

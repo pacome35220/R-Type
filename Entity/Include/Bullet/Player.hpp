@@ -1,6 +1,5 @@
 /**
- * @file      Player.hpp
- * @brief     Description
+ * @file Player.hpp
  */
 
 #pragma once
@@ -8,11 +7,14 @@
 #include "ABullet.hpp"
 
 /**
- * @namespace Package to get all types of bullets
+ * @namespace Bullet
+ * @brief To get all types of bullets
  */
 namespace Bullet {
 /**
- * @class Player "Include/Player.hpp"
+ * @class Player "Include/Bullet/Player.hpp"
+ * @brief This is the player Bullet
+ * @details The conventional bullet used by the player
  */
 class Player : public ABullet {
 public:
