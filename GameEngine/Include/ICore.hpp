@@ -1,8 +1,5 @@
 /**
  * @file      ICore.hpp
- * @brief     This is the Core interface
- * @details   This interface will be the parent of the CoreServer and CoreClients classes.
- * @details   It brings an abstraction for each of these classes
  */
 
 #pragma once
@@ -16,6 +13,9 @@ typedef std::shared_ptr<AEntity> AEntityPtr;
 
 /**
  * @interface ICore ICore.hpp "Include/ICore.hpp"
+ * @brief     This is the Core interface
+ * @details   This interface will be the parent of the Core package class.
+ * It brings an abstraction for each of these classes
  */
 class ICore {
 public:
