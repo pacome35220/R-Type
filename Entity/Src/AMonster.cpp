@@ -65,7 +65,7 @@ void AMonster::update()
 	this->position.y = this->originalY + std::cos(this->counter) * 10 * this->amplitude;
 
 	if (std::rand() % 1000 < 5)
-		entryPoint.feedEntity(std::make_shared<Bullet::Monster>(this->position, this->entryPoint, this->amplitude, this->counter));
+		entryPoint.feedEntity(std::make_shared<Bullet::Monster>(this->position, this->entryPoint));
 	if (this->position.x < -110 || this->position.x > 110 || this->position.y < -130 || this->position.y > 130) {
 		this->position.x = 109;
 		this->position.y = this->originalY;

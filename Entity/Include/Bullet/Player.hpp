@@ -18,7 +18,14 @@ class Player : public ABullet {
 public:
     Player(const sf::Vector2f &position, ACore &entryPoint, float _amplitude);
     ~Player() = default;
-    static AEntityPtr createPlayerFromPacket(ACore &core, sf::Packet packet);
+
     void updateBullet() override;
+
+    sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
+    static AEntityPtr createPlayerFromPacket(ACore &core, sf::Packet packet);
+
+private:
+    float counter;
+    float originalY;
 };
 } // namespace Bullet

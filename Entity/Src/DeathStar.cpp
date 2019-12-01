@@ -87,7 +87,7 @@ void DeathStar::shot() {
 
     if (counter < 10) {
         spawn.x += std::rand() % 7 - 7;
-        entryPoint.feedEntity(std::make_shared<Bullet::DeathStar>(spawn, entryPoint));
+        entryPoint.feedEntity(std::make_shared<Bullet::DeathStar>(spawn, entryPoint, 1));
         entryPoint.feedEntity(std::make_shared<Bullet::DeathStar>(spawn, entryPoint, -1));
     }
     counter++;

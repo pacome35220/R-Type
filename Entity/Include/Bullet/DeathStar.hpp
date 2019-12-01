@@ -16,10 +16,12 @@ namespace Bullet {
  */
 class DeathStar : public ABullet {
 public:
-    DeathStar(const sf::Vector2f &position, ACore &entryPoint, float amplitude = 1,
-              int counter = 0);
+    DeathStar(const sf::Vector2f &position, ACore &entryPoint, float amplitude);
     ~DeathStar() = default;
+
     void updateBullet() override;
+
+    sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
     static AEntityPtr createDeathStarFromPacket(ACore &core, sf::Packet packet);
 };
 

@@ -16,10 +16,11 @@ namespace Bullet {
  */
 class Monster : public ABullet {
 public:
-    Monster(const sf::Vector2f &position, ACore &entryPoint, float amplitude,
-            int count);
+    Monster(const sf::Vector2f &position, ACore &entryPoint);
     ~Monster() = default;
-    static AEntityPtr createMonsterFromPacket(ACore &core, sf::Packet packet);
+
     void updateBullet() override;
+
+    static AEntityPtr createMonsterFromPacket(ACore &core, sf::Packet packet);
 };
 } // namespace Bullet
