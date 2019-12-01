@@ -16,7 +16,7 @@
  */
 namespace Manager {
     /**
-     * @class File "Include/Resource.hpp"
+     * @class File "Include/Manager/Resource.hpp"
     */
     class Resource {
     public:

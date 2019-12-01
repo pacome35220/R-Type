@@ -13,7 +13,7 @@
  */
 namespace Manager {
     /**
-     * @class Audio "Include/Audio.hpp"
+     * @class Audio "Include/Manager/Audio.hpp"
     */
     class Audio {
     public:

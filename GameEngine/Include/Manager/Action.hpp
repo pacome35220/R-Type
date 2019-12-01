@@ -14,7 +14,7 @@
  */
 namespace Manager {
     /**
-     * @class Action  "Include/Action.hpp"
+     * @class Action  "Include/Manager/Action.hpp"
     */
     class Action {
     public:

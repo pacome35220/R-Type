@@ -16,7 +16,7 @@
  */
 namespace Manager {
     /**
-     * @class Collision "Include/Collision.hpp"
+     * @class Collision "Include/Manager/Collision.hpp"
     */
     class Collision {
     public:

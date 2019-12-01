@@ -28,7 +28,7 @@
  */
 namespace Manager {
     /**
-     * @class Network "Include/Network.hpp"
+     * @class Network "Include/Manager/Network.hpp"
     */
     class Network {
     public:
