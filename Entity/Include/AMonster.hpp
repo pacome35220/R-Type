@@ -1,7 +1,5 @@
 /**
- * @file      Monster.hpp
- * @brief     This is the parent class of all the monsters
- * @details   It inherits from AEntity
+ * @file AMonster.hpp
  */
 
 #pragma once
@@ -9,7 +7,10 @@
 #include "ACore.hpp"
 
 /**
- * @class Monster "Include/Monster.hpp"
+ * @class AMonster "Include/AMonster.hpp"
+ * @brief This is the abstract class of Monster.
+ * @details It will be inherited by all types of bullets (Monster package)
+ * @details It inherits from AEntity
  */
 class AMonster : public AEntity {
 public:
