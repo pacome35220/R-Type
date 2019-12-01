@@ -1,7 +1,5 @@
 /**
  * @file      EntityFactory.hpp
- * @brief     This is class is a factory.
- * @brief     This factory creates all the entity registered in it.
  */
 
 #pragma once
@@ -12,6 +10,8 @@
 
 /**
  * @class EntityFactory "Include/EntityFactory.hpp"
+ * @brief This is class is a factory.
+ * @details This factory creates all the entity registered in it.
  */
 class EntityFactory {
 public:
