@@ -20,9 +20,9 @@
 
 /**
  * Server entry point.
- * This server is the lobby (like in Fornite) binded on \port
- * All game rooms will be bind from \port + x
- * @param port
+ * This server is the lobby (like in Fornite) binded on \p port
+ * All game rooms will be bind on a new free port
+ * @param port lobby port
  */
 void Server::start(unsigned short port) {
     int idx = 0;
