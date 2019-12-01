@@ -1,6 +1,5 @@
 /**
  * @file      Parallax.hpp
- * @brief     Description
  */
 
 #pragma once
@@ -9,12 +8,15 @@
 
 /**
  * @class Parallax "Include/Parallax.hpp"
+ * @brief This is the parallax AEntity
+ * @details This is the background of the game
  */
 class Parallax : public AEntity {
 public:
     Parallax(ACore &core, sf::Vector2f pos);
     ~Parallax() = default;
 
+public:
     static AEntityPtr createParallaxFromPacket(ACore &core, sf::Packet packet);
     void onCollision(AEntityPtr entity) override;
     void update() override;
