@@ -1,5 +1,5 @@
 /**
- * @file      DeathStar.hpp
+ * @file DeathStar.hpp
  */
 
 #pragma once
@@ -7,7 +7,8 @@
 #include "ABullet.hpp"
 
 /**
- * @namespace Bullet To get all types of bullets
+ * @namespace Bullet
+ * @brief To get all types of bullets
  */
 namespace Bullet {
     /**

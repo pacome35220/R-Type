@@ -7,7 +7,8 @@
 #include "ABullet.hpp"
 
 /**
- * @namespace Package to get all types of bullets
+ * @namespace Bullet
+ * @brief To get all types of bullets
  */
 namespace Bullet {
     /**

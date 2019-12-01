@@ -1,12 +1,14 @@
 /**
- * @file      MonsterBullet.hpp
+ * @file Monster.hpp
  */
 
 #pragma once
 
 #include "ABullet.hpp"
+
 /**
- * @namespace Bullet To get all types of bullets
+ * @namespace Bullet
+ * @brief To get all types of bullets
  */
 namespace Bullet {
     /**
