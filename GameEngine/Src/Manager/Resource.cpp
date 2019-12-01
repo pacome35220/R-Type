@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** CPP_rtype_2019
 ** File description:
-** Resource.cpp
+** Manager/Resource.cpp
 */
 
 #include <iostream>
@@ -10,7 +10,7 @@
 #include "Manager/Resource.hpp"
 
 /**
- * feedTextureFactory associate an EntityID with his path
+ * @brief feedTextureFactory associate an EntityID with his path
  */
 void Manager::Resource::feedTextureFactory(enum EntityID id,
                                            const std::string &texturePath) {
@@ -19,7 +19,8 @@ void Manager::Resource::feedTextureFactory(enum EntityID id,
 }
 
 /**
- * After associating an id and a path by a feedTextureFactory call, loadTexture
+ * @brief After associating an id and a path by a feedTextureFactory call,
+ * loadTexture
  * loads the texture by the previously stored path.
  */
 bool Manager::Resource::loadTexture(enum EntityID id) {
@@ -31,14 +32,14 @@ bool Manager::Resource::loadTexture(enum EntityID id) {
 }
 
 /**
- * Get a ready-to-use texture from EntityID
+ * @brief Get a ready-to-use texture from EntityID
  */
 sf::Texture &Manager::Resource::getTexture(enum EntityID id) {
     return this->textureMap[id];
 }
 
 /**
- * Get a texture's path from EntityID
+ * @brief Get a texture's path from EntityID
  */
 const std::string &Manager::Resource::getTexturePath(enum EntityID id) {
     return this->textureFactory[id];

@@ -14,17 +14,18 @@
 /**
  * @namespace Package to manage whole entities in the project
  */
-namespace Manager
-{
-/**
- * @class File "Include/Resource.hpp"
- */
-    class Resource
-    {
+namespace Manager {
+    /**
+     * @class File "Include/Resource.hpp"
+    */
+    class Resource {
     public:
         Resource() = default;
         ~Resource() = default;
-        void feedTextureFactory(enum EntityID id, const std::string &texturePath);
+
+    public:
+        void
+        feedTextureFactory(enum EntityID id, const std::string &texturePath);
         bool loadTexture(enum EntityID id);
         sf::Texture &getTexture(enum EntityID id);
         const std::string &getTexturePath(enum EntityID id);
