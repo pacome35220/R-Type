@@ -16,28 +16,32 @@
 #include "Id.hpp"
 #include "PacketType.hpp"
 
+/**
+ * @brief We don't need to import all the class, just need to know they exist
+ */
 class ACore;
 class AEntity;
 
-typedef std::shared_ptr<AEntity> AEntityPtr;
+typedef std::shared_ptr <AEntity> AEntityPtr;
 
 /**
  * @class AEntity "Include/AEntity.hpp"
  */
 class AEntity: public Id {
 public:
-    AEntity(const sf::Vector2f &position, ACore &entryPoint, enum EntityID type);
+    AEntity(const sf::Vector2f &position, ACore &entryPoint,
+            enum EntityID type);
     virtual ~AEntity() = default;
     sf::Texture &getTexture();
     sf::Sprite &getSprite();
+    int getStreamTimer();
+    enum EntityID getEntityType();
 
 public:
     virtual void onCollision(AEntityPtr entity) = 0;
     virtual void update() = 0;
     virtual void increaseStreamTimer();
     void resetStreamTimer();
-    int getStreamTimer();
-    enum EntityID getEntityType();
 
 public:
     virtual sf::Packet buildMyAsAPacket(network::PacketType packetType);
