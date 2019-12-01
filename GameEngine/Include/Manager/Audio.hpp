@@ -30,7 +30,7 @@ namespace Manager {
     private:
         bool isPlaying;
         sf::Music backgroundMusic;
-        std::map <std::string, sf::Sound> musics;
+        std::map<std::string, sf::Sound> musics;
     };
 }
 

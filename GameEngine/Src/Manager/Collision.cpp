@@ -9,8 +9,8 @@
 #include "Manager/Collision.hpp"
 
 void Manager::Collision::detectCollision(
-        const std::vector <AEntityPtr> &entityList) {
-    std::list <AEntityPtr> collider;
+        const std::vector<AEntityPtr> &entityList) {
+    std::list<AEntityPtr> collider;
 
     if (entityList.size() < 3)
         return;
@@ -23,8 +23,8 @@ void Manager::Collision::detectCollision(
 
 }
 
-void Manager::Collision::processCollision(std::list <AEntityPtr> &entityList1,
-                                          std::list <AEntityPtr> &entityList2) {
+void Manager::Collision::processCollision(std::list<AEntityPtr> &entityList1,
+                                          std::list<AEntityPtr> &entityList2) {
     for (auto const &current: entityList1) {
         for (auto const &other: entityList2) {
             if (current->getId() == other->getId()

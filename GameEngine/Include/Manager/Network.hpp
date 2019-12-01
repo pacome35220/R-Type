@@ -35,10 +35,10 @@ namespace Manager {
         Network();
         ~Network() = default;
 
-        void setSocket(std::shared_ptr <sf::UdpSocket>);
+        void setSocket(std::shared_ptr<sf::UdpSocket>);
         void setIpTarget(const std::string &ipTarget);
         void setPortTarget(unsigned short portTarget);
-        const std::vector <Client> &getClients() const;
+        const std::vector<Client> &getClients() const;
         EntityFactory &getEntityFactory();
 
     public:
@@ -46,7 +46,7 @@ namespace Manager {
                           unsigned short senderPort);
         void sendPacket(sf::Packet, sf::IpAddress ip, unsigned short port);
         void readSocket(ACore &core);
-        void streamInput(std::shared_ptr <Action> action);
+        void streamInput(std::shared_ptr<Action> action);
         bool isClientKeyPressed(std::size_t clientId, sf::Keyboard::Key key);
         void execEntityAction(AEntityPtr entity, network::PacketType
         packetType);
@@ -61,8 +61,8 @@ namespace Manager {
         unsigned short portTarget;
 
     private:
-        std::vector <Client> clients;
-        std::shared_ptr <sf::UdpSocket> socket;
+        std::vector<Client> clients;
+        std::shared_ptr<sf::UdpSocket> socket;
         EntityFactory entityFactory;
     };
 } // namespace Manager

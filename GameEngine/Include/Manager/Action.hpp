@@ -25,7 +25,7 @@ namespace Manager {
     public:
         bool isKeyPressed(sf::Keyboard::Key key);
         void updateKeyPressed();
-        std::vector <sf::Keyboard::Key> getKeyPressed();
+        std::vector<sf::Keyboard::Key> getKeyPressed();
 
     private:
         bool isKeyMapped(sf::Keyboard::Key key);

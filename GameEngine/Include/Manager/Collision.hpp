@@ -24,11 +24,11 @@ namespace Manager {
         ~Collision() = default;
 
     public:
-        void detectCollision(const std::vector <AEntityPtr> &entityList);
+        void detectCollision(const std::vector<AEntityPtr> &entityList);
 
     private:
-        void processCollision(std::list <AEntityPtr> &entityList1,
-                              std::list <AEntityPtr> &entityList2);
+        void processCollision(std::list<AEntityPtr> &entityList1,
+                              std::list<AEntityPtr> &entityList2);
         bool entityCollision(const AEntityPtr &entity1, const AEntityPtr
         &entity2);
     };

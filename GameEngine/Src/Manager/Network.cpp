@@ -14,7 +14,7 @@
 Manager::Network::Network() {
 }
 
-void Manager::Network::setSocket(std::shared_ptr <sf::UdpSocket> _socket) {
+void Manager::Network::setSocket(std::shared_ptr<sf::UdpSocket> _socket) {
     this->socket = _socket;
     this->socket->setBlocking(false);
 }

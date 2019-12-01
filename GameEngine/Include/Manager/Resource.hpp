@@ -24,8 +24,8 @@ namespace Manager {
         ~Resource() = default;
 
     public:
-        void
-        feedTextureFactory(enum EntityID id, const std::string &texturePath);
+        void feedTextureFactory(enum EntityID id, const std::string
+                &texturePath);
         bool loadTexture(enum EntityID id);
         sf::Texture &getTexture(enum EntityID id);
         const std::string &getTexturePath(enum EntityID id);
