@@ -1,5 +1,5 @@
 /**
- * @file      Id.hpp
+ * @file      PacketType.hpp
  * @brief     This is the enumeration of the packets types.
  * @details   This enumeration regroup all types used in the code.
  */
