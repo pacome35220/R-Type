@@ -23,7 +23,6 @@ void Core::Server::run() {
         if (currentTotal - lastTotal >= 1000000 / this->frameRate) {
             clock.restart();
             this->updateEntities();
-            this->procTopQueue();
             this->procDeletionQueue();
             this->network->readSocket(*this);
             lastTotal = currentTotal;
@@ -52,7 +51,6 @@ void Core::Server::updateEntities() {
 
 void Core::Server::procDeletionQueue() {
     for (std::size_t i = 0 ; i < this->deletionQueue.size() ; i++) {
-        // for (const auto &entityToDelete : this->deletionQueue) {
         auto tmp = std::find(this->entities.begin(), this->entities.end(),
                              this->deletionQueue[i]);
         if (tmp != this->entities.end()) {

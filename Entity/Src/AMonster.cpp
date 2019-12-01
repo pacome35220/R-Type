@@ -41,7 +41,7 @@ void AMonster::update() {
         this->position.x = 109;
         this->position.y = this->originalY;
     }
-    if (this->health)
+    if (this->health < 0)
         this->onDeath();
 }
 

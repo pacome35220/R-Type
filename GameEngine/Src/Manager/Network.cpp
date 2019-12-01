@@ -59,7 +59,6 @@ void Manager::Network::sendPacket(sf::Packet packet, sf::IpAddress ip,
 }
 
 void Manager::Network::readSocket(ACore &core) {
-    // Receiver variable
     sf::Packet packet;
     sf::IpAddress sender;
     unsigned short senderPort;
@@ -117,7 +116,6 @@ void Manager::Network::readSocket(ACore &core) {
             if (!target) {
                 std::cout << "id: " << id << " not found so recreate it"
                           << std::endl;
-                // exit(42);
                 core.feedEntity(this->entityFactory.buildEntity(
                         (enum EntityID) entityID, core, packet));
             } else {
@@ -220,5 +218,3 @@ void Manager::Network::resetClientsKeyMap() {
     for (auto &client : this->clients)
         std::memset(client.keyMap, 0, sizeof(client.keyMap));
 }
-
-
