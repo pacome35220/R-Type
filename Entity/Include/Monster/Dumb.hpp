@@ -8,7 +8,8 @@
 #include "AMonster.hpp"
 
 /**
- * @namespace Monster To get all types of monsters
+ * @namespace Monster
+ * @brief To get all types of monsters
  */
 namespace Monster {
     /**
