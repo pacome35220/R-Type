@@ -1,5 +1,5 @@
 /**
- * @file DeathStar.hpp
+ * @file Bullet/DeathStar.hpp
  */
 
 #pragma once

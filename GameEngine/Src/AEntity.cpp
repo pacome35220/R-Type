@@ -40,7 +40,7 @@ void AEntity::resetStreamTimer() {
 
 /**
  * Build a packet from this attributes
- * @param _packetType
+ * @param packetType
  * @return The packet built
  */
 sf::Packet AEntity::buildMyAsAPacket(network::PacketType packetType) {
@@ -63,8 +63,8 @@ sf::Packet AEntity::buildMyAsAPacket(network::PacketType packetType) {
 }
 
 /**
- * Update this with the \_packet
- * @param _packet
+ * Update this with the \p packet
+ * @param packet
  */
 void AEntity::updateFromPacket(sf::Packet packet) {
     sf::Uint64 id;

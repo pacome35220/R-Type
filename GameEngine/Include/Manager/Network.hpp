@@ -1,5 +1,5 @@
 /**
- * @file      NetworkManager.hpp
+ * @file      Manager/Network.hpp
  */
 
 #pragma once

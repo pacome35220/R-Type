@@ -81,8 +81,8 @@ void Server::entityFeeder(Core::Server &core) {
 
 /**
  * threadEntryPoint is executed in a thread representing a room.
- * The room is a new server binded on \port
- * @param port
+ * The room receive un parameter a binded \p socket
+ * @param socket
  */
 void Server::threadEntryPoint(std::shared_ptr<sf::UdpSocket> socket) {
     std::cout << "New room on port: " << socket->getLocalPort() << std::endl;

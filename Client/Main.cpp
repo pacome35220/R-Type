@@ -30,7 +30,7 @@
 
 /**
  * @brief Feed the factory with all the texture
- * @param core
+ * @param resource
  */
 void feedTextureFactory(std::shared_ptr<Manager::Resource> resource)
 {
@@ -67,7 +67,7 @@ void feedTextureFactory(std::shared_ptr<Manager::Resource> resource)
 
 /**
  * @brief Feed EntityFactory
- * @param sharedPtr
+ * @param network
  */
 void feedEntityFactory(std::shared_ptr<Manager::Network> network)
 {
