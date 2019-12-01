@@ -112,6 +112,10 @@ void Player::handleInput() {
     }
 }
 
+void Player::increaseStreamTimer() {
+    this->streamTimer += 15;
+}
+
 void Player::update() {
     this->handleInput();
     if (this->position.x < -100 + 6)

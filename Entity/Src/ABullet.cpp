@@ -25,3 +25,6 @@ void ABullet::update() {
 void ABullet::onCollision(AEntityPtr entity) {
     (void)entity;
 }
+
+
+void ABullet::increaseStreamTimer() {}

@@ -21,6 +21,7 @@ public:
     sf::Packet buildMyAsAPacket(network::PacketType packetType) override;
     void onCollision(AEntityPtr entity) override;
     void update() override;
+    void increaseStreamTimer() override;
 
 private:
     void handleInput();
