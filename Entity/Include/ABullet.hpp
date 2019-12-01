@@ -12,7 +12,7 @@
 /**
  * @class ABullet "Include/ABullet.hpp"
  */
-class ABullet : public AEntity {
+class ABullet: public AEntity {
 public:
     ABullet(const sf::Vector2f &position, ACore &entryPoint, enum EntityID type,
             float amplitude, float counter);

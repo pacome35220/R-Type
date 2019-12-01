@@ -1,6 +1,6 @@
 /**
  * @file      MonsterBullet.hpp
- * @brief     Description
+ * @brief     Monster bullet
  */
 
 #pragma once
@@ -9,17 +9,19 @@
 /**
  * @namespace Package to get all types of bullets
  */
-
 namespace Bullet {
-/**
- * @class Monster "Include/Monster.hpp"
- */
-class Monster : public ABullet {
-public:
-    Monster(const sf::Vector2f &position, ACore &entryPoint, float amplitude,
-            int count);
-    ~Monster() = default;
-    static AEntityPtr createMonsterFromPacket(ACore &core, sf::Packet packet);
-    void updateBullet() override;
-};
+    /**
+     * @class Monster "Include/Monster.hpp"
+     */
+    class Monster: public ABullet {
+    public:
+        Monster(const sf::Vector2f &position, ACore &entryPoint,
+                float amplitude, int count);
+        ~Monster() = default;
+
+    public:
+        void updateBullet() override;
+        static AEntityPtr createMonsterFromPacket(ACore &core, sf::Packet
+        packet);
+    };
 } // namespace Bullet
